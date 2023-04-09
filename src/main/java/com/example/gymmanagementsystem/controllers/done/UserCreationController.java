@@ -1,4 +1,4 @@
-package com.example.gymmanagementsystem.controllers;
+package com.example.gymmanagementsystem.controllers.done;
 
 import com.example.gymmanagementsystem.dao.UserService;
 import com.example.gymmanagementsystem.entities.Users;

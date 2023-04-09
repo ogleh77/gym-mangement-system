@@ -3,7 +3,7 @@ package com.example.gymmanagementsystem.entities;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Users {
-    private final int userId;
+    private   int userId;
     private final SimpleStringProperty firstName = new SimpleStringProperty();
     private final SimpleStringProperty lastName = new SimpleStringProperty();
     private final SimpleStringProperty phone = new SimpleStringProperty();
@@ -25,6 +25,10 @@ public class Users {
         this.setPassword(password);
         this.image = image;
         this.setRole(role);
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public int getUserId() {

@@ -14,7 +14,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -138,11 +141,11 @@ public abstract class CommonClass {
     }
 
     //Alert and give message
-    public void informationAlert(String message) {
+    public Alert informationAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setContentText(message);
         alert.setTitle("Hablyo!");
-        alert.showAndWait();
+        return alert;
     }
 
     public Alert infoAlert(String message) {
@@ -271,7 +274,7 @@ public abstract class CommonClass {
     }
 
 
-    public byte[] readFile(String file)  {
+    public byte[] readFile(String file) {
 
         ByteArrayOutputStream bos = null;
         try {

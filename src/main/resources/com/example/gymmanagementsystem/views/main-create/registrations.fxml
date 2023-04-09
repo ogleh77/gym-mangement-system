@@ -15,7 +15,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="996.0" styleClass="home-pane" stylesheets="@../../style/css/long-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.shipable.controllers.main.RegistrationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="996.0" styleClass="home-pane" stylesheets="@../../style/css/long-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.RegistrationsController">
     <effect>
         <DropShadow height="26.92" radius="14.4425" width="32.85">
             <color>
@@ -34,7 +34,7 @@
             <Font name="Tahoma Bold" size="13.0" />
         </font>
     </JFXRadioButton>
-    <JFXRadioButton fx:id="female" layoutX="447.0" layoutY="406.0" prefHeight="17.0" prefWidth="74.0" text="Female" textFill="#328ca8" AnchorPane.leftAnchor="447.0">
+    <JFXRadioButton fx:id="female" layoutX="447.0" layoutY="406.0" prefHeight="17.0" prefWidth="89.0" text="Female" textFill="#328ca8" AnchorPane.leftAnchor="447.0">
         <font>
             <Font name="Tahoma Bold" size="13.0" />
         </font>
@@ -98,7 +98,7 @@
             </ImageView>
         </graphic>
     </JFXButton>
-    <JFXButton buttonType="RAISED" layoutX="953.0" layoutY="628.0" onAction="#clearHandler" prefHeight="40.0" prefWidth="143.0" styleClass="btn-reset" stylesheets="@../../style/css/button-style.css" text="Clear" textFill="WHITE" AnchorPane.bottomAnchor="85.0" AnchorPane.rightAnchor="76.0">
+    <JFXButton fx:id="clearBtn" buttonType="RAISED" layoutX="953.0" layoutY="628.0" onAction="#clearHandler" prefHeight="40.0" prefWidth="143.0" styleClass="btn-reset" stylesheets="@../../style/css/button-style.css" text="Clear" textFill="WHITE" AnchorPane.bottomAnchor="85.0" AnchorPane.rightAnchor="76.0">
         <font>
             <Font size="15.0" />
         </font>
@@ -152,33 +152,23 @@
             </HBox.margin>
         </Label>
     </HBox>
-   <TextField fx:id="Forearm" layoutX="780.0" layoutY="277.0" prefHeight="40.0" prefWidth="74.0" promptText="forearm" />
-   <TextField fx:id="hips" layoutX="897.0" layoutY="227.0" prefHeight="40.0" prefWidth="74.0" promptText="hips" />
-   <TextField fx:id="chest" layoutX="897.0" layoutY="276.0" prefHeight="40.0" prefWidth="74.0" promptText="chest" />
-   <ImageView fitHeight="29.0" fitWidth="25.0" layoutX="864.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true">
-      <image>
-         <Image url="@../../style/icons/icons8-chest-50.png" />
-      </image>
-   </ImageView>
-   <ImageView fitHeight="29.0" fitWidth="25.0" layoutX="744.0" layoutY="284.0" pickOnBounds="true" preserveRatio="true">
-      <image>
-         <Image url="@../../style/icons/icons8-forearm-50.png" />
-      </image>
-   </ImageView>
-   <ImageView fitHeight="29.0" fitWidth="36.0" layoutX="746.0" layoutY="233.0" pickOnBounds="true" preserveRatio="true">
-      <image>
-         <Image url="@../../style/icons/icons8-scales-50.png" />
-      </image>
-   </ImageView>
-   <ImageView fitHeight="29.0" fitWidth="25.0" layoutX="865.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true">
-      <image>
-         <Image url="@../../style/icons/icons8-legs-64.png" />
-      </image>
-   </ImageView>
-   <TextField fx:id="waist" layoutX="1009.0" layoutY="227.0" prefHeight="40.0" prefWidth="74.0" promptText="waist" />
-   <ImageView fitHeight="29.0" fitWidth="25.0" layoutX="981.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true">
-      <image>
-         <Image url="@../../style/icons/icons8-stomachache-50.png" />
-      </image>
-   </ImageView>
+    <TextField fx:id="Forearm" layoutX="780.0" layoutY="277.0" prefHeight="40.0" prefWidth="74.0" promptText="forearm" />
+    <TextField fx:id="hips" layoutX="897.0" layoutY="227.0" prefHeight="40.0" prefWidth="74.0" promptText="hips" />
+    <TextField fx:id="chest" layoutX="897.0" layoutY="276.0" prefHeight="40.0" prefWidth="74.0" promptText="chest" />
+    <ImageView fitHeight="29.0" fitWidth="25.0" layoutX="864.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../../style/icons/icons8-chest-50.png" />
+    </ImageView>
+    <ImageView fitHeight="29.0" fitWidth="25.0" layoutX="744.0" layoutY="284.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../../style/icons/icons8-forearm-50.png" />
+    </ImageView>
+    <ImageView fitHeight="29.0" fitWidth="36.0" layoutX="746.0" layoutY="233.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../../style/icons/icons8-scales-50.png" />
+    </ImageView>
+    <ImageView fitHeight="29.0" fitWidth="25.0" layoutX="865.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../../style/icons/icons8-legs-64.png" />
+    </ImageView>
+    <TextField fx:id="waist" layoutX="1009.0" layoutY="227.0" prefHeight="40.0" prefWidth="74.0" promptText="waist" />
+    <ImageView fitHeight="29.0" fitWidth="25.0" layoutX="981.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../../style/icons/icons8-stomachache-50.png" />
+    </ImageView>
 </AnchorPane>

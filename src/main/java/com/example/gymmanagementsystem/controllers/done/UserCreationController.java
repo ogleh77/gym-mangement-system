@@ -118,7 +118,7 @@ public class UserCreationController extends CommonClass implements Initializable
                                 UserService.insertUser(users());
                                 UserService.users().add(users());
                                 Platform.runLater(() -> {
-                                    Optional<ButtonType> result = informationAlert("New user created successfully")
+                                    Optional<ButtonType> result = informationAlert("New user created successfully 👍🏾")
                                             .showAndWait();
                                     if (result.isPresent() && result.get().getButtonData().isDefaultButton()) {
                                         closeStage(stage, username.getParent());
@@ -127,6 +127,7 @@ public class UserCreationController extends CommonClass implements Initializable
                             } catch (SQLException e) {
                                 Platform.runLater(() -> errorMessage(e.getMessage() + " ☹️"));
                             }
+
                         });
                     } catch (Exception e) {
 

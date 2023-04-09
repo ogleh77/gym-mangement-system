@@ -1,0 +1,81 @@
+.dash-pane {
+    -fx-pref-height: 850;
+    -fx-pref-width: 1400;
+    -fx-background-color: #f8f5f5;
+}
+
+.top-pane {
+    -fx-background-color: #328ca8;
+    -fx-pref-height: 37;
+
+}
+
+.menu-center-btn {
+    -fx-pref-width: 75;
+    -fx-pref-height: 59;
+    -fx-text-fill: #181818;
+    -fx-background-color: #afd6e3;
+}
+
+.top-menu-hover:hover {
+    -fx-background-color: #afd6e3;
+    -fx-cursor: hand;
+}
+
+.profile-hover:hover {
+    -fx-underline: true;
+    -fx-text-fill: #2a2ae3;
+    -fx-cursor: hand;
+}
+
+.notify-circle {
+    -fx-background-color: red;
+    -fx-border-radius: 70;
+    -fx-background-radius: 70;
+}
+
+.notify-circle-label {
+    -fx-text-fill: white;
+    -fx-font-family: Tahoma;
+    -fx-font-size: 12;
+}
+
+.side-pane {
+    -fx-background-color: #328ca8;
+    -fx-pref-width: 200;
+}
+
+.side-btn {
+    -fx-pref-width: 176;
+    -fx-pref-height: 46;
+    -fx-background-color: #328ca8;
+    -fx-text-fill: #efe7e7;
+
+}
+.side-btn-setting {
+    -fx-pref-width: 176;
+    -fx-pref-height: 46;
+    -fx-background-color: #328ca8;
+    -fx-text-fill: #efe7e7;
+}
+
+.side-btn:hover {
+    -fx-background-color: #afd6e3;
+    -fx-text-fill: black;
+    -fx-cursor: hand;
+}
+
+.menu-btn-side-pane {
+    -fx-pref-width: 176;
+    -fx-pref-height: 46;
+    -fx-background-color: #328ca8;
+    -fx-font-size: 18;
+    -fx-font-family: Arial;
+    -fx-text-fill: white;
+}
+
+.menu-btn-side-pane:hover {
+    -fx-background-color: #afd6e3;
+    -fx-text-fill: black;
+    -fx-cursor: hand;
+}

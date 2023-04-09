@@ -1,0 +1,50 @@
+.home-pane {
+    -fx-pref-width: 1200;
+    -fx-pref-height: 760;
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+}
+
+.dashboard {
+    -fx-background-color: #f8f5f5;
+    -fx-pref-width: 1200;
+    -fx-pref-height: 760;
+ }
+
+.top-pane {
+    -fx-background-color: #cce3ee;
+    -fx-pref-width: 1110;
+    -fx-pref-height: 40;
+    -fx-background-radius: 5;
+}
+
+.menu-center:hover{
+    -fx-background-color: #e8e0e0;
+        -fx-background-radius: 5;
+}
+.text-field {
+    -fx-background-color: #F6F6F6;
+    -fx-prompt-text-fill: gray;
+    -fx-text-fill: black;
+    -fx-font-family: Arial;
+    -fx-border-color: #3a6188;
+    -fx-border-width: 0.5;
+}
+
+.top-label {
+    -fx-text-fill: #888c8b;
+    -fx-font-family: "Arial Black";
+    -fx-font-size: 20;
+}
+
+.cancel-pane:hover {
+    -fx-background-color: #a8b9be;
+    -fx-background-radius: 5;
+}
+
+.label-background {
+    -fx-background-color: #dae0da;
+    -fx-font-size: 15;
+    -fx-font-family: Tahoma;
+    -fx-font-weight: bold;
+}

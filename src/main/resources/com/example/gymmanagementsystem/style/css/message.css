@@ -1,0 +1,15 @@
+.message-style {
+    -fx-text-fill: #6c7172;
+    -fx-font-family: Verdana;
+}
+
+.header-message-style {
+    -fx-text-fill: #282727;
+    -fx-font-family: Arial;
+    -fx-font-weight: 100;
+}
+
+.error-message-style {
+    -fx-text-fill: #c73838;
+    -fx-font-family: Verdana;
+}

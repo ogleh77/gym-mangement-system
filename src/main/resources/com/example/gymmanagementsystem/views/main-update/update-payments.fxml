@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" styleClass="home-pane" stylesheets="@../../style/css/long-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.shipable.newcontrollers.PaymentController">
+    <effect>
+        <DropShadow height="35.82" radius="17.41" spread="0.01" width="35.82">
+            <color>
+                <Color red="0.24705882370471954" green="0.6117647290229797" blue="0.9098039269447327" />
+            </color>
+        </DropShadow>
+    </effect>
+    <padding>
+        <Insets top="10.0" />
+    </padding>
+    <ImageView fitHeight="166.0" fitWidth="233.0" layoutX="242.0" layoutY="472.0" pickOnBounds="true" AnchorPane.bottomAnchor="122.0">
+        <Image url="@../../style/icons/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpeg" />
+    </ImageView>
+    <Label layoutX="666.0" layoutY="155.0" text="star date" textFill="#328ca8" AnchorPane.rightAnchor="469.0">
+        <font>
+            <Font name="Arial Bold" size="16.0" />
+        </font>
+    </Label>
+    <DatePicker fx:id="startDate" editable="false" layoutX="791.0" layoutY="144.0" prefHeight="36.0" prefWidth="313.0" promptText="dd-mm-yyyy" stylesheets="@../../style/css/combo-style.css" AnchorPane.rightAnchor="96.0" />
+    <ComboBox fx:id="boxChooser" layoutX="945.0" layoutY="332.0" prefHeight="34.0" prefWidth="161.0" promptText="coose vip box" stylesheets="@../../style/css/combo-style.css" AnchorPane.rightAnchor="94.0" />
+    <VBox layoutX="845.0" layoutY="453.0" style="-fx-background-color: white;" AnchorPane.rightAnchor="155.0">
+        <effect>
+            <DropShadow height="9.04" radius="4.762499999999999" spread="0.77" width="12.01">
+                <color>
+                    <Color red="0.8421052694320679" green="0.8421052694320679" blue="0.8421052694320679" />
+                </color>
+            </DropShadow>
+        </effect>
+        <ImageView fx:id="imgView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true">
+            <Image url="@../../style/icons/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpeg" />
+        </ImageView>
+    </VBox>
+    <JFXButton fx:id="createBtn" buttonType="RAISED" layoutX="758.0" layoutY="630.0" onAction="#createPaymentHandler" prefHeight="40.0" prefWidth="128.0" styleClass="btn-save" stylesheets="@../../style/css/button-style.css" text="Update payment" textFill="#d0cbcb" AnchorPane.bottomAnchor="83.0" AnchorPane.rightAnchor="271.0">
+        <font>
+            <Font name="Arial Black" size="12.0" />
+        </font>
+    </JFXButton>
+    <JFXButton buttonType="RAISED" layoutX="961.0" layoutY="630.0" prefHeight="40.0" prefWidth="120.0" styleClass="btn-reset" stylesheets="@../../style/css/button-style.css" text="Clear" textFill="WHITE" AnchorPane.bottomAnchor="83.0" AnchorPane.rightAnchor="68.0">
+        <font>
+            <Font size="15.0" />
+        </font>
+        <graphic>
+            <ImageView fitHeight="28.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@../../style/icons/icons8-clear-symbol-30.png" />
+            </ImageView>
+        </graphic>
+    </JFXButton>
+    <TextField fx:id="amountPaid" layoutX="790.0" layoutY="378.0" prefHeight="35.0" prefWidth="135.0" promptText="\$12" AnchorPane.rightAnchor="275.0" />
+    <Label layoutX="667.0" layoutY="386.0" prefHeight="20.0" prefWidth="97.0" text="amount paid" textFill="#328ca8" AnchorPane.rightAnchor="436.0">
+        <font>
+            <Font name="Arial Bold" size="16.0" />
+        </font>
+    </Label>
+    <ComboBox fx:id="paidBy" layoutX="945.0" layoutY="379.0" prefHeight="34.0" prefWidth="161.0" promptText="paid by" stylesheets="@../../style/css/combo-style.css" AnchorPane.rightAnchor="94.0" />
+    <Label fx:id="paymentInfo" alignment="CENTER" layoutX="144.0" layoutY="652.0" prefHeight="24.0" prefWidth="429.0" text="WAX KA BEDEL QAYBTA PAYMENT KA OO QUDHA" textFill="#328ca8">
+        <font>
+            <Font name="Verdana Bold" size="15.0" />
+        </font>
+    </Label>
+    <TextField fx:id="firstName" disable="true" layoutX="207.0" layoutY="155.0" prefHeight="40.0" prefWidth="333.0" promptText="e.g mohamed " AnchorPane.leftAnchor="207.0" />
+    <TextField fx:id="middleName" disable="true" layoutX="207.0" layoutY="218.0" prefHeight="40.0" prefWidth="333.0" promptText="e.g saeed" AnchorPane.leftAnchor="207.0" />
+    <TextField fx:id="phone" disable="true" layoutX="207.0" layoutY="354.0" prefHeight="40.0" prefWidth="333.0" promptText="e.g (063)XXX-XXX" AnchorPane.leftAnchor="207.0" />
+    <JFXRadioButton fx:id="male" disable="true" layoutX="240.0" layoutY="423.0" text="Male" AnchorPane.leftAnchor="240.0" />
+    <JFXRadioButton fx:id="female" disable="true" layoutX="418.0" layoutY="423.0" prefHeight="17.0" prefWidth="74.0" text="Female" AnchorPane.leftAnchor="418.0" />
+    <Label layoutX="93.0" layoutY="164.0" prefHeight="20.0" prefWidth="83.0" text="first name" textFill="#9e9898" AnchorPane.leftAnchor="93.0">
+        <font>
+            <Font name="Arial Bold" size="16.0" />
+        </font>
+    </Label>
+    <Label layoutX="93.0" layoutY="363.0" prefHeight="20.0" prefWidth="55.0" text="phone" textFill="#9e9898" AnchorPane.leftAnchor="93.0">
+        <font>
+            <Font name="Arial Bold" size="16.0" />
+        </font>
+    </Label>
+    <Label layoutX="93.0" layoutY="227.0" prefHeight="20.0" prefWidth="108.0" text="middle name" textFill="#9e9898" AnchorPane.leftAnchor="93.0">
+        <font>
+            <Font name="Arial Bold" size="16.0" />
+        </font>
+    </Label>
+    <Label layoutX="93.0" layoutY="423.0" text="gender" textFill="#9e9898" AnchorPane.leftAnchor="93.0">
+        <font>
+            <Font name="Arial Bold" size="14.0" />
+        </font>
+    </Label>
+    <TextField fx:id="lastName" disable="true" layoutX="207.0" layoutY="287.0" prefHeight="40.0" prefWidth="333.0" promptText="e.g oogle" AnchorPane.leftAnchor="207.0" />
+    <Label layoutX="93.0" layoutY="299.0" prefHeight="20.0" prefWidth="74.0" text="last name" textFill="#9e9898" AnchorPane.leftAnchor="93.0">
+        <font>
+            <Font name="Arial Bold" size="16.0" />
+        </font>
+    </Label>
+    <TextField fx:id="discount" layoutX="791.0" layoutY="263.0" prefHeight="35.0" prefWidth="313.0" promptText="\$0" AnchorPane.rightAnchor="96.0" />
+    <Label layoutX="665.0" layoutY="274.0" prefHeight="20.0" prefWidth="74.0" text="discount" textFill="#328ca8" AnchorPane.rightAnchor="461.0">
+        <font>
+            <Font name="Arial Bold" size="16.0" />
+        </font>
+    </Label>
+    <JFXCheckBox fx:id="poxing" layoutX="790.0" layoutY="337.0" text="poxing" textFill="#328ca8" AnchorPane.rightAnchor="330.0">
+        <font>
+            <Font name="Arial Bold" size="16.0" />
+        </font>
+    </JFXCheckBox>
+    <Label fx:id="dateLabel" layoutX="792.0" layoutY="236.0" prefHeight="20.0" prefWidth="313.0" styleClass="error-message-style" stylesheets="@../../style/css/message.css" text="start date ku kama horayn karo exp date ka" textFill="#c94141" visible="false">
+        <font>
+            <Font name="Verdana" size="14.0" />
+        </font>
+    </Label>
+    <HBox alignment="CENTER" prefHeight="40.0" prefWidth="994.0" spacing="800.0" styleClass="top-pane" AnchorPane.bottomAnchor="680.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+        <Label prefHeight="29.0" prefWidth="283.0" styleClass="top-label" text="UPDATE PAYMENT PAGE" textFill="#e8eeec">
+            <font>
+                <Font name="Arial Black" size="20.0" />
+            </font>
+            <HBox.margin>
+                <Insets left="30.0" />
+            </HBox.margin>
+        </Label>
+    </HBox>
+    <Label fx:id="infoMin" alignment="CENTER" layoutX="60.0" layoutY="677.0" prefHeight="24.0" prefWidth="572.0" text="Lagagama bahana qaybta costumerka " textAlignment="CENTER" textFill="#84888a">
+        <font>
+            <Font name="Arial Black" size="12.0" />
+        </font>
+    </Label>
+    <DatePicker fx:id="expDate" editable="false" layoutX="791.0" layoutY="195.0" prefHeight="36.0" prefWidth="313.0" promptText="dd-mm-yyyy" stylesheets="@../../style/css/combo-style.css" />
+    <Label layoutX="664.0" layoutY="203.0" text="exp date" textFill="#328ca8">
+        <font>
+            <Font name="Arial Bold" size="16.0" />
+        </font>
+    </Label>
+   <Label fx:id="discountValidation" layoutX="791.0" layoutY="301.0" prefHeight="20.0" prefWidth="313.0" styleClass="error-message-style" stylesheets="@../../style/css/message.css" text="Qimo dhimista u badani waa" textFill="#c94141" visible="false">
+      <font>
+         <Font name="Verdana" size="14.0" />
+      </font>
+   </Label>
+
+</AnchorPane>

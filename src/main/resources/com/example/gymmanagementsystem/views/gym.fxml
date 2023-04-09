@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="586.0" prefWidth="483.0" style="-fx-background-color: white;" stylesheets="@../../style/css/small-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.shipable.controllers.services.GymController">
+    <effect>
+        <DropShadow height="56.58" radius="23.3425" width="38.79" />
+    </effect>
+    <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="483.0" spacing="140.0" styleClass="top-pane">
+        <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="273.0" spacing="10.0">
+            <HBox.margin>
+                <Insets left="10.0" />
+            </HBox.margin>
+            <ImageView fitHeight="29.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@../../style/icons/whitedumbel.png" />
+            </ImageView>
+            <Label styleClass="top-label" text="GYM OPERATIONS" textFill="#f2ecec">
+                <font>
+                    <Font name="Arial Bold" size="13.0" />
+                </font>
+            </Label>
+        </HBox>
+        <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="61.0" spacing="10.0">
+            <HBox alignment="CENTER" onMouseClicked="#cancelHandler" prefHeight="36.0" prefWidth="58.0" styleClass="cancel-pane">
+                <HBox.margin>
+                    <Insets left="10.0" />
+                </HBox.margin>
+                <ImageView fitHeight="24.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../../style/icons/icons8-close-30.png" />
+                </ImageView>
+            </HBox>
+        </HBox>
+    </HBox>
+    <TextField fx:id="gymName" layoutX="25.0" layoutY="90.0" prefHeight="30.0" prefWidth="194.0" promptText="e.g togdheer gym" />
+    <TextField fx:id="poxingCost" layoutX="29.0" layoutY="218.0" prefHeight="30.0" prefWidth="194.0" promptText="e.g $3.0" />
+    <TextField fx:id="fitnessCost" layoutX="27.0" layoutY="154.0" prefHeight="30.0" prefWidth="194.0" promptText="e.g $12.0" />
+    <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="390.0" layoutY="486.0" onAction="#deleteBoxHandler" prefHeight="36.0" prefWidth="51.0" styleClass="delete-icon-only-btn" stylesheets="@../../style/css/button-style.css" text="+" textFill="#0775266b">
+        <font>
+            <Font name="Arial" size="10.0" />
+        </font>
+        <graphic>
+            <ImageView fitHeight="59.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@../../style/icons/icons8-delete-trash-48.png" />
+            </ImageView>
+        </graphic>
+    </JFXButton>
+    <TextField fx:id="maxDiscount" layoutX="28.0" layoutY="282.0" prefHeight="30.0" prefWidth="194.0" promptText="e.g $1" />
+    <TextField fx:id="addBox" layoutX="256.0" layoutY="441.0" prefHeight="36.0" prefWidth="220.0" promptText="Magaca khanada " />
+    <Separator layoutX="254.0" layoutY="198.0" prefHeight="4.0" prefWidth="211.0" />
+    <TextField fx:id="boxCost" layoutX="257.0" layoutY="89.0" prefHeight="29.0" prefWidth="211.0" promptText="e.g $12.0" />
+    <JFXButton fx:id="updateBtn" buttonType="RAISED" layoutX="31.0" layoutY="452.0" onAction="#updateHandler" prefHeight="42.0" prefWidth="172.0" styleClass="btn-upload-image" stylesheets="@../../style/css/button-style.css" text="Update Gym">
+        <graphic>
+            <ImageView fitHeight="59.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@../../style/icons/icons8-available-updates-24.png" />
+            </ImageView>
+        </graphic>
+    </JFXButton>
+    <Label layoutX="29.0" layoutY="532.0" styleClass="label-background" text="Halkan ka bedel ">
+        <font>
+            <Font name="Arial Bold" size="14.0" />
+        </font>
+    </Label>
+    <Label layoutX="29.0" layoutY="553.0" text="shayga aad donayso inad wax ku darto ama wax ka bedesho" />
+    <Label layoutX="257.0" layoutY="68.0" prefHeight="16.0" prefWidth="139.0" text="box cost" textFill="#46749f">
+        <font>
+            <Font name="Arial Bold" size="14.0" />
+        </font>
+    </Label>
+    <Label layoutX="27.0" layoutY="131.0" prefHeight="16.0" prefWidth="131.0" text="fitness cost" textFill="#46749f">
+        <font>
+            <Font name="Arial Bold" size="14.0" />
+        </font>
+    </Label>
+    <Label layoutX="26.0" layoutY="68.0" prefHeight="16.0" prefWidth="120.0" text="gym name" textFill="#46749f">
+        <font>
+            <Font name="Arial Bold" size="14.0" />
+        </font>
+    </Label>
+    <Label layoutX="27.0" layoutY="197.0" prefHeight="16.0" prefWidth="120.0" text="poxing cost" textFill="#46749f">
+        <font>
+            <Font name="Arial Bold" size="14.0" />
+        </font>
+    </Label>
+    <Label layoutX="28.0" layoutY="260.0" prefHeight="16.0" prefWidth="178.0" text="max discount" textFill="#46749f">
+        <font>
+            <Font name="Arial Bold" size="14.0" />
+        </font>
+    </Label>
+    <Label layoutX="258.0" layoutY="212.0" prefHeight="16.0" prefWidth="139.0" text="list of boxes" textFill="#46749f">
+        <font>
+            <Font name="Arial Bold" size="14.0" />
+        </font>
+    </Label>
+    <TextField fx:id="pendDate" layoutX="257.0" layoutY="151.0" prefHeight="30.0" prefWidth="211.0" promptText="e.g $12.0" />
+    <Label layoutX="257.0" layoutY="128.0" prefHeight="16.0" prefWidth="158.0" text="pending date" textFill="#46749f">
+        <font>
+            <Font name="Arial Bold" size="14.0" />
+        </font>
+    </Label>
+    <TextField fx:id="zaad" layoutX="27.0" layoutY="342.0" prefHeight="30.0" prefWidth="194.0" promptText="e.g $3.0" />
+    <TextField fx:id="eDahab" layoutX="27.0" layoutY="406.0" prefHeight="30.0" prefWidth="194.0" promptText="e.g $1" />
+    <Label layoutX="27.0" layoutY="319.0" prefHeight="16.0" prefWidth="120.0" text="Evocher Zaad" textFill="#46749f">
+        <font>
+            <Font name="Arial Bold" size="14.0" />
+        </font>
+    </Label>
+    <Label layoutX="27.0" layoutY="381.0" prefHeight="16.0" prefWidth="178.0" text="Evocher eDahab" textFill="#46749f">
+        <font>
+            <Font name="Arial Bold" size="14.0" />
+        </font>
+    </Label>
+    <ListView fx:id="listView" layoutX="255.0" layoutY="234.0" prefHeight="200.0" prefWidth="220.0" />
+    <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="285.0" layoutY="486.0" onAction="#createBoxHandler" prefHeight="36.0" prefWidth="51.0" styleClass="add-icon-only-btn" stylesheets="@../../style/css/button-style.css" text="+" textFill="#0775266b">
+        <font>
+            <Font name="Arial" size="10.0" />
+        </font>
+        <graphic>
+            <ImageView fitHeight="59.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@../../style/icons/icons8-add-new-48.png" />
+            </ImageView>
+        </graphic>
+    </JFXButton>
+</AnchorPane>

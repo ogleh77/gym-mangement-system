@@ -1,0 +1,45 @@
+.btn-upload-image {
+    -fx-font-family: Verdana;
+    -fx-font-size: 14;
+    -fx-text-fill: #171717;
+    -fx-pref-height: 47;
+    -fx-background-color: #afd6e3;
+}
+
+.btn-reset {
+    -fx-background-color: red;
+    -fx-font-family: Verdana;
+    -fx-font-size: 16;
+    -fx-text-fill: white;
+    -fx-pref-width: 171;
+    -fx-pref-height: 47;
+}
+
+.btn-delete {
+    -fx-font-family: Verdana;
+    -fx-font-size: 14;
+    -fx-text-fill: white;
+    -fx-pref-height: 47;
+    -fx-background-color: #d22b2b;
+}
+
+.btn-save {
+    -fx-background-color: #385d82;
+    -fx-font-family: Verdana;
+    -fx-font-size: 16;
+    -fx-text-fill: white;
+    -fx-pref-width: 171;
+    -fx-pref-height: 47;
+}
+
+.add-icon-only-btn {
+    -fx-background-color: #385d82;
+    -fx-pref-width: 51;
+    -fx-pref-height: 36;
+}
+
+.delete-icon-only-btn {
+    -fx-background-color: #d22b2b;
+    -fx-pref-width: 51;
+    -fx-pref-height: 36;
+}

@@ -83,7 +83,6 @@ public class PaymentController extends CommonClass implements Initializable {
     private DatePicker startDate;
     private ObservableList<Payments> paymentsList;
     private final Gym currentGym;
-    private Payments payment;
     private Payments updatePayment;
     private double _amountPaid;
     private double _discount;
@@ -125,10 +124,9 @@ public class PaymentController extends CommonClass implements Initializable {
             _amountPaid = (!amountPaid.getText().isEmpty() || !amountPaid.getText().isBlank() ? Double.parseDouble(amountPaid.getText()) : 0);
 
             startTask(service, createBtn, newPayment ? "Creating" : "Updating");
-
-            //  updatePayment();
         } catch (NumberFormatException e) {
-            throw new RuntimeException("Khalad ayaad u gelisay tirada ah " + e.getMessage());
+            errorMessage("Discount ka ama amountpaid ka hubi inaad ku tartay" +
+                    " points dheriya tusaale 20.0. error caused by" + e.getMessage());
         }
     }
 
@@ -162,13 +160,13 @@ public class PaymentController extends CommonClass implements Initializable {
         }
         for (Payments payment : paymentsList) {
             if (payment.isOnline()) {
-                this.payment = payment;
+                System.out.println("Payment is online "+payment.getExpDate()+" "+payment.isOnline());
+
                 blockFields(payment);
                 newPayment = false;
                 break;
-
             } else if (payment.isPending()) {
-                this.payment = payment;
+                System.out.println("Payment is pended "+payment.getExpDate()+" "+payment.isPending());
                 blockFields(payment);
                 newPayment = false;
                 break;
@@ -212,7 +210,6 @@ public class PaymentController extends CommonClass implements Initializable {
                             Thread.sleep(1000);
                             Platform.runLater(() -> {
                                 Optional<ButtonType> result = informationAlert("New payment Created Successfully").showAndWait();
-
                                 if (result.isPresent() && result.get().getButtonData().isDefaultButton()) {
                                     System.out.println("Ok");
                                 }
@@ -227,8 +224,6 @@ public class PaymentController extends CommonClass implements Initializable {
                                 }
                             });
                         }
-
-
                     } catch (Exception e) {
                         Platform.runLater(() -> errorMessage(e.getMessage()));
                     }
@@ -259,6 +254,7 @@ public class PaymentController extends CommonClass implements Initializable {
             if (!discount.getText().isBlank()) {
 
                 double _discount = Double.parseDouble(discount.getText());
+
                 if (_discount > currentGym.getMaxDiscount()) {
                     discountValidation.setText("Qimo dhimista u badani waa $" + currentGym.getMaxDiscount());
                     discountValidation.setVisible(true);

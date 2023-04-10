@@ -19,17 +19,18 @@ public class PaymentService {
             String customerGander = customer.getGander();
             paymentModel.insertPayment(customer.getPhone(), customerGander, customer.getPayments().get(0));
         } catch (SQLException e) {
-            throw new CustomException("Khalad ayaaa ka dhacay " + e.getMessage() + " " + "\n fadlan dib u search garee customerka kadibna payment usamee");
-        }
+            throw new CustomException("Khalad aya ka dhacay halkan "+e.getMessage()+" " +
+                    "fadlan isku day mar danbe hadaad fahamtey nooca khaladka");        }
 
     }
 
     public static void updatePayment(Payments payment) throws SQLException {
-        System.out.println(payment);
+
         try {
             paymentModel.update(payment);
         } catch (SQLException e) {
-            throw new CustomException("Khalad ayaaa ka dhacay " + e.getMessage() + " " + "\n fadlan dib u search garee customerka kadibna payment usamee");
+            throw new CustomException("Khalad aya ka dhacay halkan "+e.getMessage()+" " +
+                    "fadlan isku day mar danbe hadaad fahamtey nooca khaladka");
         }
 
     }
@@ -48,6 +49,7 @@ public class PaymentService {
             }
             paymentModel.holdPayment(payment, daysRemind);
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new CustomException(e.getMessage());
         }
     }

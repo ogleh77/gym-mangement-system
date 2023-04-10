@@ -7,6 +7,7 @@ import com.example.gymmanagementsystem.entities.Gym;
 import com.example.gymmanagementsystem.entities.Payments;
 import com.example.gymmanagementsystem.helpers.CommonClass;
 import com.example.gymmanagementsystem.helpers.CustomException;
+import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
@@ -87,6 +88,9 @@ public class CustomerInfoController extends CommonClass implements Initializable
     private TableColumn<Payments, String> vipBox;
     @FXML
     private TableColumn<Payments, String> year;
+    @FXML
+    private JFXButton pendBtn;
+
     private ObservableList<Payments> payments;
     private final Gym currentGym;
 
@@ -105,22 +109,9 @@ public class CustomerInfoController extends CommonClass implements Initializable
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Platform.runLater(() -> {
-            initFields();
+        Platform.runLater(this::initFields);
+        // TODO: 10/04/2023 Isku xidh table model click ta iyo haki btn change beviour kiisa insha Allah
 
-//            if (!payments.isEmpty()) {
-//                for (Payments payment : payments) {
-//                    EventHandler<MouseEvent> pending = event -> {
-//                        try {
-//                            checkPayment(payment);
-//                        } catch (SQLException e) {
-//                            errorMessage(e.getMessage());
-//                        }
-//                        tableView.refresh();
-//                    };
-//                 }
-//            }
-        });
     }
 
     @Override
@@ -130,10 +121,16 @@ public class CustomerInfoController extends CommonClass implements Initializable
             fullName.setText(customer.getFirstName() + " " + customer.getMiddleName() + " " + customer.getLastName());
             phone.setText(customer.getPhone());
             gander.setText(customer.getGander());
-            address.setText(customer.getAddress() == null ? " no address " : customer.getAddress());
+            address.setText(customer.getAddress() == null ? "no address " : customer.getAddress());
             shift.setText(customer.getShift());
-            weight.setText(customer.getWeight() + "");
+            weight.setText(customer.getWeight() + " kg");
             whoAdded.setText(customer.getWhoAdded());
+            waist.setText(customer.getWaist() + " cm");
+            hips.setText(customer.getHips() + " cm");
+
+            foreArm.setText(customer.getForeArm() + " cm");
+
+            chest.setText(customer.getChest() + " cm");
 
             try {
                 payments = PaymentService.fetchAllCustomersPayments(customer.getPhone());
@@ -149,15 +146,70 @@ public class CustomerInfoController extends CommonClass implements Initializable
         }
     }
 
-//----------------------Helper methods-------------------–
+    @FXML
+    void pendHandler() {
+
+        Payments selectedPayment = tableView.getSelectionModel().getSelectedItem();
+        try {
+            if (selectedPayment == null) {
+                throw new RuntimeException("Marka hore ka dooro table ka payment ka aad rabto inad " + "hakiso ama dib u furto");
+            }
+            checkPayment(selectedPayment);
+        } catch (Exception e) {
+            e.printStackTrace();
+            infoAlert(e.getMessage());
+        }
+
+    }
+
+    @FXML
+    void editHandler() {
+        Payments selectedPayment = tableView.getSelectionModel().getSelectedItem();
+        try {
+            if (selectedPayment == null) {
+                throw new RuntimeException("Marka hore ka dooro table ka payment ka aad rabto inad " + "wax ka bedesho");
+            }
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gymmanagementsystem/views/main-create/payments.fxml"));
+            Scene scene = new Scene(loader.load());
+            PaymentController controller = loader.getController();
+            controller.setUpdatePayment(selectedPayment);
+            controller.setCustomer(customer);
+            Stage stage = new Stage(StageStyle.UNDECORATED);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            errorMessage(e.getMessage());
+        }
+    }
+
+    @FXML
+    void deleteHandler() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gymmanagementsystem/views/main-create/payments.fxml"));
+        Scene scene = new Scene(loader.load());
+        PaymentController controller = loader.getController();
+        controller.setCustomer(customer);
+        controller.checkPayment(customer);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    //----------------------Helper methods----------------
+    private void checkPayment(Payments payment) throws SQLException {
+        if (payment.isPending()) {
+            unPayment(payment);
+        } else {
+            pendPayment(payment);
+        }
+        tableView.refresh();
+    }
 
     private void initFields() {
         if (payments.isEmpty()) {
             tableView.setPlaceholder(new Label("MACMIILKU PAYMENTS MALEH.."));
         } else {
             amountPaid.setCellValueFactory(payment -> new SimpleStringProperty("$" + payment.getValue().getAmountPaid()));
-            discount.setCellValueFactory(payment -> new SimpleStringProperty(payment.getValue().getDiscount() == 0 ?
-                    payment.getValue().getDiscount() + "" : "$" + payment.getValue().getDiscount()));
+            discount.setCellValueFactory(payment -> new SimpleStringProperty(payment.getValue().getDiscount() == 0 ? payment.getValue().getDiscount() + "" : "$" + payment.getValue().getDiscount()));
             expDate.setCellValueFactory(new PropertyValueFactory<>("expDate"));
             month.setCellValueFactory(new PropertyValueFactory<>("month"));
             paidBy.setCellValueFactory(new PropertyValueFactory<>("paidBy"));
@@ -175,15 +227,6 @@ public class CustomerInfoController extends CommonClass implements Initializable
 
 
     }
-
-//    private void checkPayment(Payments payment) throws SQLException {
-//        if (payment.isPending()) {
-//            unPayment(payment);
-//        } else {
-//            pendPayment(payment);
-//        }
-//
-//    }
 
     private void pendPayment(Payments payment) throws SQLException {
         LocalDate exp = payment.getExpDate();
@@ -211,7 +254,6 @@ public class CustomerInfoController extends CommonClass implements Initializable
             PaymentService.holdPayment(payment, currentGym.getPendingDate());
             payment.setPending(true);
             payment.setOnline(false);
-            tableView.refresh();
         } else {
             alert.close();
         }
@@ -236,26 +278,6 @@ public class CustomerInfoController extends CommonClass implements Initializable
         } else {
             alert.close();
         }
-    }
-
-    @FXML
-    void pendHandler() {
-
-
-    }
-
-
-    @FXML
-    void editHandler() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gymmanagementsystem/views/main-create/payments.fxml"));
-        Scene scene = new Scene(loader.load());
-        PaymentController controller = loader.getController();
-        controller.setUpdatePayment(tableView.getSelectionModel().getSelectedItem());
-        controller.setCustomer(customer);
-        Stage stage = new Stage(StageStyle.UNDECORATED);
-        stage.setScene(scene);
-        stage.show();
-
     }
 }
 

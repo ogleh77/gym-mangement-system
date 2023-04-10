@@ -138,23 +138,18 @@ public class Payments {
     }
 
     public String getDaysRemind() {
-         Period period = Period.between(LocalDate.now(), expDate);
-        if (period.getDays() <= 0) {
+        Period period = Period.between(LocalDate.now(), expDate);
+        if (period.getDays() <= 0 && period.getMonths() <= 0 && period.getYears() <= 0) {
             return "outdate";
         }
         if (period.getYears() > 0) {
-            return period.getYears() + " Y -" + period.getMonths() + " M -" + period.getDays() + " days";
+            return period.getYears() + " Y/ " + period.getMonths() + " M/" + period.getDays() + " days";
 
         } else if (period.getMonths() > 0) {
-            return period.getMonths() + " M -" + (period.getDays() > 1 ? period.getDays() + " days" : period.getDays() + " day");
+            return period.getMonths() + " M/" + (period.getDays() > 1 ? period.getDays() + " days" : period.getDays() + " day");
 
         }
-//        if (expDate.isAfter(LocalDate.now()))
-//            if (period.getMonths() > 0) {
-//                return period.getMonths()>1? period.getMonths()>1: " Month";
-        //}
-
-        return period.getDays() <=1 ? "1 day" : period.getDays() + " days";
+        return period.getDays() == 1 ? "1 day" : period.getDays() + " days";
     }
 
     @Override

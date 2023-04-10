@@ -98,6 +98,7 @@ public class PaymentModel {
             connection.commit();
         } catch (SQLException e) {
             connection.rollback();
+            throw e;
         }
     }
 

@@ -33,7 +33,7 @@
             <Font name="Verdana Bold" size="14.0" />
         </font>
     </Label>
-    <Label layoutX="120.0" layoutY="224.0" prefHeight="20.0" prefWidth="74.0" text="phone" textFill="#444646" AnchorPane.leftAnchor="120.0">
+    <Label layoutX="120.0" layoutY="224.0" prefHeight="20.0" prefWidth="54.0" text="phone" textFill="#444646" AnchorPane.leftAnchor="120.0">
         <font>
             <Font name="Verdana Bold" size="14.0" />
         </font>
@@ -43,12 +43,12 @@
             <Font name="Verdana Bold" size="14.0" />
         </font>
     </Label>
-    <Label layoutX="565.0" layoutY="230.0" text="waist" textFill="#444646" AnchorPane.rightAnchor="592.0">
+    <Label layoutX="562.0" layoutY="230.0" text="waist" textFill="#444646" AnchorPane.rightAnchor="595.0">
         <font>
             <Font name="Verdana Bold" size="14.0" />
         </font>
     </Label>
-    <Label layoutX="565.0" layoutY="190.0" text="weight" textFill="#444646" AnchorPane.rightAnchor="581.0">
+    <Label layoutX="562.0" layoutY="190.0" text="weight" textFill="#444646" AnchorPane.rightAnchor="584.0">
         <font>
             <Font name="Verdana Bold" size="14.0" />
         </font>
@@ -77,32 +77,32 @@
             </HBox.margin>
         </Label>
     </HBox>
-    <Label fx:id="fullName" layoutX="244.0" layoutY="187.0" prefHeight="20.0" prefWidth="220.0" text="Mohamed Saeed Mohamed" textFill="#879194" AnchorPane.leftAnchor="244.0" AnchorPane.rightAnchor="686.0">
+    <Label fx:id="fullName" layoutX="242.0" layoutY="187.0" prefHeight="20.0" prefWidth="220.0" text="Mohamed Saeed Mohamed" textFill="#879194" AnchorPane.leftAnchor="242.0" AnchorPane.rightAnchor="688.0">
         <font>
             <Font name="Helvetica" size="19.0" />
         </font>
     </Label>
-    <Label fx:id="phone" layoutX="244.0" layoutY="222.0" prefHeight="20.0" prefWidth="74.0" text="4303924" textFill="#879194" AnchorPane.leftAnchor="244.0" AnchorPane.rightAnchor="832.0">
+    <Label fx:id="phone" layoutX="242.0" layoutY="222.0" prefHeight="20.0" prefWidth="74.0" text="4303924" textFill="#879194" AnchorPane.leftAnchor="242.0" AnchorPane.rightAnchor="834.0">
         <font>
             <Font name="Helvetica" size="19.0" />
         </font>
     </Label>
-    <Label fx:id="gander" layoutX="244.0" layoutY="257.0" prefHeight="20.0" prefWidth="74.0" text="Male" textFill="#879194" AnchorPane.leftAnchor="244.0" AnchorPane.rightAnchor="832.0">
+    <Label fx:id="gander" layoutX="242.0" layoutY="257.0" prefHeight="20.0" prefWidth="74.0" text="Male" textFill="#879194" AnchorPane.leftAnchor="242.0" AnchorPane.rightAnchor="834.0">
         <font>
             <Font name="Helvetica" size="19.0" />
         </font>
     </Label>
-    <Label fx:id="shift" layoutX="244.0" layoutY="332.0" prefHeight="24.0" prefWidth="103.0" text="Afternoon" textFill="#879194" AnchorPane.rightAnchor="853.0">
+    <Label fx:id="shift" layoutX="242.0" layoutY="332.0" prefHeight="24.0" prefWidth="103.0" text="Afternoon" textFill="#879194" AnchorPane.rightAnchor="855.0">
         <font>
             <Font name="Helvetica" size="19.0" />
         </font>
     </Label>
-    <Label fx:id="weight" layoutX="659.0" layoutY="187.0" prefHeight="20.0" prefWidth="83.0" text="65kg" textFill="#879194" AnchorPane.rightAnchor="458.0">
+    <Label fx:id="weight" layoutX="654.0" layoutY="187.0" prefHeight="20.0" prefWidth="83.0" text="65kg" textFill="#879194" AnchorPane.rightAnchor="463.0">
         <font>
             <Font name="Helvetica" size="19.0" />
         </font>
     </Label>
-    <Label fx:id="waist" layoutX="656.0" layoutY="228.0" prefHeight="24.0" prefWidth="112.0" text="0" textFill="#879194" AnchorPane.rightAnchor="432.0">
+    <Label fx:id="waist" layoutX="654.0" layoutY="228.0" prefHeight="24.0" prefWidth="112.0" text="0" textFill="#879194" AnchorPane.rightAnchor="434.0">
         <font>
             <Font name="Helvetica" size="19.0" />
         </font>
@@ -112,7 +112,7 @@
             <Font name="Verdana Bold" size="14.0" />
         </font>
     </Label>
-    <Label fx:id="whoAdded" layoutX="244.0" layoutY="293.0" prefHeight="20.0" prefWidth="74.0" text="Oh" textFill="#879194">
+    <Label fx:id="whoAdded" layoutX="242.0" layoutY="293.0" prefHeight="20.0" prefWidth="74.0" text="Oh" textFill="#879194">
         <font>
             <Font name="Helvetica" size="19.0" />
         </font>
@@ -139,7 +139,7 @@
         </font>
     </Label>
     <Circle fill="#6d7883" layoutX="123.0" layoutY="478.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
-    <Label layoutX="741.0" layoutY="415.0" prefHeight="20.0" prefWidth="167.0" text="Payment actions" textFill="#505454">
+    <Label layoutX="764.0" layoutY="415.0" prefHeight="20.0" prefWidth="167.0" text="Payment actions" textFill="#505454">
         <font>
             <Font name="Verdana" size="15.0" />
         </font>
@@ -160,32 +160,32 @@
             <TableColumn fx:id="daysRemind" prefWidth="123.0" text="days left" />
         </columns>
     </TableView>
-    <Label layoutX="564.0" layoutY="269.0" text="hips" textFill="#444646">
+    <Label layoutX="563.0" layoutY="269.0" text="hips" textFill="#444646">
         <font>
             <Font name="Verdana Bold" size="14.0" />
         </font>
     </Label>
-    <Label fx:id="hips" layoutX="657.0" layoutY="268.0" prefHeight="24.0" prefWidth="112.0" text="0" textFill="#879194">
+    <Label fx:id="hips" layoutX="654.0" layoutY="267.0" prefHeight="24.0" prefWidth="112.0" text="0" textFill="#879194">
         <font>
             <Font name="Helvetica" size="19.0" />
         </font>
     </Label>
-    <Label layoutX="565.0" layoutY="305.0" text="chest" textFill="#444646">
+    <Label layoutX="563.0" layoutY="305.0" text="chest" textFill="#444646">
         <font>
             <Font name="Verdana Bold" size="14.0" />
         </font>
     </Label>
-    <Label fx:id="chest" layoutX="659.0" layoutY="304.0" prefHeight="24.0" prefWidth="112.0" text="0" textFill="#879194">
+    <Label fx:id="chest" layoutX="654.0" layoutY="302.0" prefHeight="24.0" prefWidth="112.0" text="0" textFill="#879194">
         <font>
             <Font name="Helvetica" size="19.0" />
         </font>
     </Label>
-    <Label layoutX="566.0" layoutY="343.0" text="forearm" textFill="#444646">
+    <Label layoutX="563.0" layoutY="343.0" text="forearm" textFill="#444646">
         <font>
             <Font name="Verdana Bold" size="14.0" />
         </font>
     </Label>
-    <Label fx:id="foreArm" layoutX="661.0" layoutY="340.0" prefHeight="24.0" prefWidth="112.0" text="0" textFill="#879194">
+    <Label fx:id="foreArm" layoutX="654.0" layoutY="340.0" prefHeight="24.0" prefWidth="112.0" text="0" textFill="#879194">
         <font>
             <Font name="Helvetica" size="19.0" />
         </font>
@@ -195,12 +195,12 @@
             <Font name="Verdana Bold" size="14.0" />
         </font>
     </Label>
-    <Label fx:id="address" layoutX="245.0" layoutY="369.0" prefHeight="24.0" prefWidth="103.0" text="no address" textFill="#879194">
+    <Label fx:id="address" layoutX="242.0" layoutY="369.0" prefHeight="24.0" prefWidth="214.0" text="no address" textFill="#879194">
         <font>
             <Font name="Helvetica" size="19.0" />
         </font>
     </Label>
-    <JFXButton layoutX="747.0" layoutY="444.0" onAction="#pendHandler" prefHeight="42.0" prefWidth="148.0" style="-fx-background-color: #328ca8;" text="Haki(pend)" textFill="WHITE">
+    <JFXButton fx:id="pendBtn" layoutX="761.0" layoutY="444.0" onAction="#pendHandler" prefHeight="42.0" prefWidth="148.0" style="-fx-background-color: #328ca8;" text="Haki(pend)" textFill="WHITE">
         <graphic>
             <ImageView fitHeight="32.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                 <Image url="@../../style/icons/icons8-mobile-payment-50.png" />
@@ -210,7 +210,7 @@
             <Font name="Verdana" size="14.0" />
         </font>
     </JFXButton>
-    <JFXButton layoutX="908.0" layoutY="444.0" onAction="#editHandler" prefHeight="42.0" prefWidth="107.0" style="-fx-background-color: #afd6e3;" text="edit" textFill="#363333">
+    <JFXButton layoutX="922.0" layoutY="444.0" onAction="#editHandler" prefHeight="42.0" prefWidth="107.0" style="-fx-background-color: #afd6e3;" text="edit" textFill="#363333">
         <graphic>
             <ImageView fitHeight="31.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                 <Image url="@../../style/icons/icons8-available-updates-24.png" />
@@ -220,7 +220,7 @@
             <Font name="Verdana" size="14.0" />
         </font>
     </JFXButton>
-    <JFXButton layoutX="1024.0" layoutY="445.0" prefHeight="42.0" prefWidth="107.0" style="-fx-background-color: red;" text="delete" textFill="WHITE">
+    <JFXButton layoutX="1038.0" layoutY="445.0" onAction="#deleteHandler" prefHeight="42.0" prefWidth="107.0" style="-fx-background-color: red;" text="delete" textFill="WHITE">
         <graphic>
             <ImageView fitHeight="31.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                 <Image url="@../../style/icons/icons8-delete-trash-48.png" />

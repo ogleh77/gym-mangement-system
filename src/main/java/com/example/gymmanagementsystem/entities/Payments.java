@@ -137,7 +137,7 @@ public class Payments {
         this.paymentID = paymentID;
     }
 
-//    public String getDaysRemind() {
+    //    public String getDaysRemind() {
 //        Period period = Period.between(LocalDate.now(), expDate);
 //        if (period.getDays() <= 0 && period.getMonths() <= 0 && period.getYears() <= 0) {
 //            return "outdate";
@@ -152,18 +152,19 @@ public class Payments {
 //        return period.getDays() == 1 ? "1 day" : period.getDays() + " days";
 //    }
     public String getDaysRemind() {
-       Period period = Period.between(LocalDate.now(),expDate);
+        Period period = Period.between(LocalDate.now(), expDate);
 
         if (period.getYears() > 0) {
-            return period.getYears() + "Yrs" + (period.getMonths() > 0 ? "/ " + period.getMonths() + " months " : "")
-                    + (period.getDays() > 0 ? "/ " + period.getDays() + "days" : "");
+            return period.getYears() + " sano " + (period.getMonths() > 0 ? "& " + period.getMonths() + " bilood" : "")
+                    + (period.getDays() > 0 ? " & " + period.getDays() + "malmood" : "");
         } else if (period.getMonths() > 0) {
-            return period.getMonths() + " months " + (period.getDays() > 0 ? " and " + period.getDays() + " days" : "");
+            return period.getMonths() + " bilood " + (period.getDays() > 0 ? " & " + period.getDays() + "malmood" : "");
         } else if (period.getDays() > 0) {
-            return period.getDays() > 1 ? "1 day" : period.getDays() + " days";
+            return period.getDays() == 1 ? "1 maalin" : period.getDays() + " malmood";
         }
         return "outdated";
     }
+
     @Override
     public String toString() {
         return "Payments{" +

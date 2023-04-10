@@ -10,6 +10,8 @@ import com.example.gymmanagementsystem.helpers.CustomException;
 import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +22,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -103,8 +104,8 @@ public class CustomerInfoController extends CommonClass implements Initializable
 
     public CustomerInfoController() throws SQLException {
         this.currentGym = GymService.getGym();
-        this.pendStyle = "-fx-background-color: #afd6e3;-fx-text-fill: black;-fx-font-family:Verdana;" + "-fx-pref-width: 100;-fx-font-size: 15";
-        this.unPendStyle = "-fx-background-color: red;-fx-text-fill: white;-fx-font-family:Verdana;" + "-fx-pref-width: 100;-fx-font-size: 15";
+        this.pendStyle = "-fx-background-color: #328ca8;-fx-text-fill: white;-fx-font-family:Verdana;" + "-fx-font-size: 14";
+        this.unPendStyle = "-fx-background-color: red;-fx-text-fill: black;-fx-font-family:Verdana;" + "-fx-font-size: 14";
     }
 
     @Override
@@ -112,6 +113,27 @@ public class CustomerInfoController extends CommonClass implements Initializable
         Platform.runLater(this::initFields);
         // TODO: 10/04/2023 Isku xidh table model click ta iyo haki btn change beviour kiisa insha Allah
 
+
+        tableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Payments>() {
+            @Override
+            public void changed(ObservableValue<? extends Payments> observable, Payments oldValue, Payments newValue) {
+
+                if (!newValue.isPending() && !newValue.isOnline()) {
+                    pendBtn.setDisable(true);
+                    pendBtn.setText("Haki(pend)");
+                    pendBtn.setStyle(pendStyle);
+                } else if (newValue.isPending()) {
+                    pendBtn.setText("Fur");
+                    pendBtn.setStyle(unPendStyle);
+                    pendBtn.setDisable(false);
+                } else {
+                    pendBtn.setText("Haki(pend)");
+                    pendBtn.setStyle(pendStyle);
+                    pendBtn.setDisable(false);
+                }
+
+            }
+        });
     }
 
     @Override
@@ -173,7 +195,7 @@ public class CustomerInfoController extends CommonClass implements Initializable
             PaymentController controller = loader.getController();
             controller.setUpdatePayment(selectedPayment);
             controller.setCustomer(customer);
-            Stage stage = new Stage( );
+            Stage stage = new Stage();
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {
@@ -229,23 +251,14 @@ public class CustomerInfoController extends CommonClass implements Initializable
 
     private void pendPayment(Payments payment) throws SQLException {
         LocalDate exp = payment.getExpDate();
-        LocalDate pendingDate = LocalDate.now();
+        String daysRemain = getDaysRemind(exp);
 
-        System.out.println("Exp date:- " + exp);
-        System.out.println("pend date:- " + pendingDate);
-        int daysRemind = Period.between(pendingDate, exp).getDays();
-        int month = Period.between(pendingDate, exp).getMonths();
-        System.out.println(month);
-        if (month > 0) {
-            daysRemind = 30;
-        }
-        System.out.println("Days rem " + daysRemind);
         if (ok == null && cancel == null) {
             ok = new ButtonType("Haa", ButtonBar.ButtonData.OK_DONE);
             cancel = new ButtonType("Maya!", ButtonBar.ButtonData.CANCEL_CLOSE);
         }
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Ma hubtaa inaad hakisto paymentkan oo ay u hadhay \n" + "Wakhtigiisa dhicitaanka " + daysRemind + " malmood", ok, cancel);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Ma hubtaa inaad hakisto paymentkan oo ay u hadhay \n" + "Wakhtigiisa dhicitaanka " + daysRemain, ok, cancel);
 
         Optional<ButtonType> result = alert.showAndWait();
 
@@ -253,6 +266,8 @@ public class CustomerInfoController extends CommonClass implements Initializable
             PaymentService.holdPayment(payment, currentGym.getPendingDate());
             payment.setPending(true);
             payment.setOnline(false);
+            pendBtn.setText("Fur");
+            pendBtn.setStyle(unPendStyle);
         } else {
             alert.close();
         }
@@ -274,9 +289,26 @@ public class CustomerInfoController extends CommonClass implements Initializable
             payment.setPending(false);
             payment.setOnline(true);
             payment.setExpDate(payment.getExpDate());
+            pendBtn.setText("Haki");
+            pendBtn.setStyle(pendStyle);
         } else {
             alert.close();
         }
+    }
+
+
+    private String getDaysRemind(LocalDate expDate) {
+        Period period = Period.between(LocalDate.now(), expDate);
+
+        if (period.getYears() > 0) {
+            return period.getYears() + " sano " + (period.getMonths() > 0 ? "& " + period.getMonths() + " bilood" : "")
+                    + (period.getDays() > 0 ? " & " + period.getDays() + "malmood" : "");
+        } else if (period.getMonths() > 0) {
+            return period.getMonths() + " bilood " + (period.getDays() > 0 ? " & " + period.getDays() + "malmood" : "");
+        } else if (period.getDays() > 0) {
+            return period.getDays() == 1 ? "1 maalin" : period.getDays() + " malmood";
+        }
+        return "outdated";
     }
 }
 

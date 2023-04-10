@@ -34,7 +34,7 @@ class PaymentServiceTest {
         } else if (period.getMonths() > 0) {
             return period.getMonths() + " month" + (period.getDays() > 0 ? " and " + period.getDays() + " days" : "");
         } else if (period.getDays() > 0) {
-            return period.getDays() > 1 ? "1 day" : period.getDays() + " days";
+            return period.getDays() == 1 ? "1 day" : period.getDays() + " days";
         }
         return "outdated";
     }

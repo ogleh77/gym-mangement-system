@@ -1,5 +1,6 @@
 package com.example.gymmanagementsystem.entities;
 
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -13,16 +14,19 @@ public class Gym {
     private final SimpleIntegerProperty eDahab = new SimpleIntegerProperty();
     private final SimpleIntegerProperty pendingDate = new SimpleIntegerProperty();
     private final SimpleDoubleProperty maxDiscount = new SimpleDoubleProperty();
+
+    private final SimpleBooleanProperty imageUpload = new SimpleBooleanProperty();
     private final ObservableList<Box> vipBoxes;
 
     public Gym(int gymId, String gymName, int zaad, int eDahab,
-               int pendingDate, double maxDiscount) {
+               int pendingDate, double maxDiscount, boolean imageUploadCheck) {
         this.gymId = gymId;
         this.setGymName(gymName);
         this.setZaad(zaad);
         this.seteDahab(eDahab);
         this.setPendingDate(pendingDate);
         this.setMaxDiscount(maxDiscount);
+        this.setImageUpload(imageUploadCheck);
         this.vipBoxes = FXCollections.observableArrayList();
     }
 
@@ -75,8 +79,29 @@ public class Gym {
         this.maxDiscount.set(maxDiscount);
     }
 
+    public boolean isImageUpload() {
+        return imageUpload.get();
+    }
+
+    public void setImageUpload(boolean imageUpload) {
+        this.imageUpload.set(imageUpload);
+    }
+
     public ObservableList<Box> getVipBoxes() {
         return vipBoxes;
     }
 
+    @Override
+    public String toString() {
+        return "Gym{" +
+                "gymId=" + gymId +
+                ", gymName=" + gymName +
+                ", zaad=" + zaad +
+                ", eDahab=" + eDahab +
+                ", pendingDate=" + pendingDate +
+                ", maxDiscount=" + maxDiscount +
+                ", imageUpload=" + imageUpload +
+                ", vipBoxes=" + vipBoxes +
+                '}';
+    }
 }

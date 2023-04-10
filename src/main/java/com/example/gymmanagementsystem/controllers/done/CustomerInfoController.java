@@ -1,4 +1,4 @@
-package com.example.gymmanagementsystem.controllers;
+package com.example.gymmanagementsystem.controllers.done;
 
 import com.example.gymmanagementsystem.dao.GymService;
 import com.example.gymmanagementsystem.dao.PaymentService;
@@ -10,8 +10,6 @@ import com.example.gymmanagementsystem.helpers.CustomException;
 import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -111,28 +109,23 @@ public class CustomerInfoController extends CommonClass implements Initializable
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Platform.runLater(this::initFields);
-        // TODO: 10/04/2023 Isku xidh table model click ta iyo haki btn change beviour kiisa insha Allah
 
+        tableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 
-        tableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Payments>() {
-            @Override
-            public void changed(ObservableValue<? extends Payments> observable, Payments oldValue, Payments newValue) {
-
-                if (!newValue.isPending() && !newValue.isOnline()) {
-                    pendBtn.setDisable(true);
-                    pendBtn.setText("Haki(pend)");
-                    pendBtn.setStyle(pendStyle);
-                } else if (newValue.isPending()) {
-                    pendBtn.setText("Fur");
-                    pendBtn.setStyle(unPendStyle);
-                    pendBtn.setDisable(false);
-                } else {
-                    pendBtn.setText("Haki(pend)");
-                    pendBtn.setStyle(pendStyle);
-                    pendBtn.setDisable(false);
-                }
-
+            if (!newValue.isPending() && !newValue.isOnline()) {
+                pendBtn.setDisable(true);
+                pendBtn.setText("Haki(pend)");
+                pendBtn.setStyle(pendStyle);
+            } else if (newValue.isPending()) {
+                pendBtn.setText("Fur");
+                pendBtn.setStyle(unPendStyle);
+                pendBtn.setDisable(false);
+            } else {
+                pendBtn.setText("Haki(pend)");
+                pendBtn.setStyle(pendStyle);
+                pendBtn.setDisable(false);
             }
+
         });
     }
 
@@ -177,7 +170,6 @@ public class CustomerInfoController extends CommonClass implements Initializable
             }
             checkPayment(selectedPayment);
         } catch (Exception e) {
-            e.printStackTrace();
             infoAlert(e.getMessage());
         }
 

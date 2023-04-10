@@ -148,16 +148,16 @@
         <columns>
             <TableColumn fx:id="paymentDate" prefWidth="98.0" text="last paid" />
             <TableColumn fx:id="expDate" prefWidth="97.0" text="exp date" />
-            <TableColumn fx:id="month" prefWidth="97.0" text="month" />
-            <TableColumn fx:id="year" text="year" />
-            <TableColumn fx:id="amountPaid" prefWidth="109.0" text="amount paid" />
-            <TableColumn fx:id="paidBy" prefWidth="114.0" text="paid by" />
-            <TableColumn fx:id="discount" prefWidth="102.0" text="discount" />
-            <TableColumn fx:id="poxing" prefWidth="64.0" text="poxing" />
-            <TableColumn fx:id="vipBox" prefWidth="74.0" text="vip box" />
-            <TableColumn fx:id="running" prefWidth="63.0" text="online" />
-            <TableColumn fx:id="pend" prefWidth="76.0" text="pending" />
-            <TableColumn fx:id="daysRemind" prefWidth="123.0" text="days left" />
+            <TableColumn fx:id="month" prefWidth="90.0" text="month" />
+            <TableColumn fx:id="year" prefWidth="77.0" text="year" />
+            <TableColumn fx:id="amountPaid" prefWidth="88.0" text="amount " />
+            <TableColumn fx:id="paidBy" prefWidth="92.0" text="paid by" />
+            <TableColumn fx:id="discount" prefWidth="87.0" text="discount" />
+            <TableColumn fx:id="poxing" prefWidth="70.0" text="poxing" />
+            <TableColumn fx:id="vipBox" prefWidth="70.0" text="vip box" />
+            <TableColumn fx:id="running" prefWidth="74.0" text="online" />
+            <TableColumn fx:id="pend" text="pending" />
+            <TableColumn fx:id="daysRemind" prefWidth="174.0" text="days left" />
         </columns>
     </TableView>
     <Label layoutX="563.0" layoutY="269.0" text="hips" textFill="#444646">

@@ -137,21 +137,33 @@ public class Payments {
         this.paymentID = paymentID;
     }
 
+//    public String getDaysRemind() {
+//        Period period = Period.between(LocalDate.now(), expDate);
+//        if (period.getDays() <= 0 && period.getMonths() <= 0 && period.getYears() <= 0) {
+//            return "outdate";
+//        }
+//        if (period.getYears() > 0) {
+//            return period.getYears() + " Y/ " + period.getMonths() + " M/" + period.getDays() + " days";
+//
+//        } else if (period.getMonths() > 0) {
+//            return period.getMonths() + " M/" + (period.getDays() > 1 ? period.getDays() + " days" : period.getDays() + " day");
+//
+//        }
+//        return period.getDays() == 1 ? "1 day" : period.getDays() + " days";
+//    }
     public String getDaysRemind() {
-        Period period = Period.between(LocalDate.now(), expDate);
-        if (period.getDays() <= 0 && period.getMonths() <= 0 && period.getYears() <= 0) {
-            return "outdate";
-        }
+       Period period = Period.between(LocalDate.now(),expDate);
+
         if (period.getYears() > 0) {
-            return period.getYears() + " Y/ " + period.getMonths() + " M/" + period.getDays() + " days";
-
+            return period.getYears() + "Yrs" + (period.getMonths() > 0 ? "/ " + period.getMonths() + " months " : "")
+                    + (period.getDays() > 0 ? "/ " + period.getDays() + "days" : "");
         } else if (period.getMonths() > 0) {
-            return period.getMonths() + " M/" + (period.getDays() > 1 ? period.getDays() + " days" : period.getDays() + " day");
-
+            return period.getMonths() + " months " + (period.getDays() > 0 ? " and " + period.getDays() + " days" : "");
+        } else if (period.getDays() > 0) {
+            return period.getDays() > 1 ? "1 day" : period.getDays() + " days";
         }
-        return period.getDays() == 1 ? "1 day" : period.getDays() + " days";
+        return "outdated";
     }
-
     @Override
     public String toString() {
         return "Payments{" +

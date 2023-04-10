@@ -148,7 +148,6 @@ public class CustomerInfoController extends CommonClass implements Initializable
 
     @FXML
     void pendHandler() {
-
         Payments selectedPayment = tableView.getSelectionModel().getSelectedItem();
         try {
             if (selectedPayment == null) {
@@ -174,7 +173,7 @@ public class CustomerInfoController extends CommonClass implements Initializable
             PaymentController controller = loader.getController();
             controller.setUpdatePayment(selectedPayment);
             controller.setCustomer(customer);
-            Stage stage = new Stage(StageStyle.UNDECORATED);
+            Stage stage = new Stage( );
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {

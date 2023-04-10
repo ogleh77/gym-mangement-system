@@ -1,7 +1,9 @@
 package com.example.gymmanagementsystem.controllers.done;
 
 import com.example.gymmanagementsystem.dao.CustomerService;
+import com.example.gymmanagementsystem.dao.GymService;
 import com.example.gymmanagementsystem.entities.Customers;
+import com.example.gymmanagementsystem.entities.Gym;
 import com.example.gymmanagementsystem.entities.Users;
 import com.example.gymmanagementsystem.helpers.CommonClass;
 import com.jfoenix.controls.JFXButton;
@@ -81,9 +83,11 @@ public class RegistrationsController extends CommonClass implements Initializabl
     private final int newCustomerID;
 
     private ObservableList<Customers> customersList;
+    private final Gym currentGym;
 
     public RegistrationsController() throws SQLException {
         newCustomerID = CustomerService.predictNextId();
+        this.currentGym = GymService.getGym();
     }
 
     @Override
@@ -114,7 +118,7 @@ public class RegistrationsController extends CommonClass implements Initializabl
     @FXML
     void customerSaveHandler() {
         if (isValid(getMandatoryFields(), genderGroup) && (phone.getText().length() == 7)) {
-            if (!imageUploaded) {
+            if (!imageUploaded && currentGym.isImageUpload()) {
                 checkImage(imgView, "Fadlan sawirku wuu kaa cawinayaa inaad wejiga \n" +
                         "macmiilka ka dhex garan kartid macamisha kle 😊");
             }
@@ -198,8 +202,9 @@ public class RegistrationsController extends CommonClass implements Initializabl
                         CustomerService.insertOrUpdateCustomer(savingCustomer(), isCustomerNew);
                         if (isCustomerNew) {
                             customersList.add(0, savingCustomer());
+                            Thread.sleep(1000);
                         }
-                        Thread.sleep(1000);
+
                     } catch (Exception e) {
                         if (e.getClass().isInstance(SQLException.class)) {
                             Platform.runLater(() -> errorMessage(e.getMessage() + "☹️"));

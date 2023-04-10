@@ -5,17 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c1a3bea-8a57-435b-b5d9-43e3f4a593e0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/DashboardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/HomeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/services/CustomerProfileController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/helpers/Openers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/views/dashboard.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/views/home.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/views/service/short-info.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/7925137b-de75-44f6-9f13-6c2b43cc5f58.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7925137b-de75-44f6-9f13-6c2b43cc5f58.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/database/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/database.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/CustomerInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/done/CustomerInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/PaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/done/PaymentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/entities/Gym.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/entities/Gym.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/entities/Payments.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/entities/Payments.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/GymModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/GymModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/views/main-create/payments.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/views/main-create/payments.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/views/service/customer-info.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/views/service/customer-info.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/GymController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/done/GymController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/done/CustomerInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/done/CustomerInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/done/RegistrationsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/done/RegistrationsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/views/gym.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/views/service/gym.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/views/service/gym.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,10 +31,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -56,7 +62,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "dart.analysis.tool.window.visible": "false",
     "extract.method.default.visibility": "private",
-    "last_opened_file_path": "/Users/mrd/Desktop/gym-management-system/src/main/resources/com/example/gymmanagementsystem/views/service",
+    "last_opened_file_path": "/Users/mrd/Desktop/gym-management-system/src/main/resources/com/example/gymmanagementsystem/views",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
@@ -70,13 +76,14 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/views" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/views/service" />
       <recent name="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/service" />
       <recent name="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dao" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/views/service" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/views" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
@@ -158,7 +165,8 @@
       <workItem from="1681041986948" duration="4831000" />
       <workItem from="1681068064583" duration="2722000" />
       <workItem from="1681105607704" duration="14477000" />
-      <workItem from="1681131931268" duration="4338000" />
+      <workItem from="1681131931268" duration="4649000" />
+      <workItem from="1681146206318" duration="5415000" />
     </task>
     <servers />
   </component>

@@ -166,7 +166,7 @@ public class CustomerInfoController extends CommonClass implements Initializable
         Payments selectedPayment = tableView.getSelectionModel().getSelectedItem();
         try {
             if (selectedPayment == null) {
-                throw new RuntimeException("Marka hore ka dooro table ka payment ka aad rabto inad " + "hakiso ama dib u furto");
+                throw new RuntimeException("No payment selected");
             }
             checkPayment(selectedPayment);
         } catch (Exception e) {
@@ -180,7 +180,7 @@ public class CustomerInfoController extends CommonClass implements Initializable
         Payments selectedPayment = tableView.getSelectionModel().getSelectedItem();
         try {
             if (selectedPayment == null) {
-                throw new RuntimeException("Marka hore ka dooro table ka payment ka aad rabto inad " + "wax ka bedesho");
+                throw new RuntimeException("No payment selected");
             }
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gymmanagementsystem/views/main-create/payments.fxml"));
             Scene scene = new Scene(loader.load());

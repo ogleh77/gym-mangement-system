@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="586.0" prefWidth="483.0" style="-fx-background-color: white;" stylesheets="@../../style/css/small-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.GymController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="586.0" prefWidth="483.0" style="-fx-background-color: white;" stylesheets="@../../style/css/small-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.done.GymController">
     <effect>
         <DropShadow height="56.58" radius="23.3425" width="38.79" />
     </effect>

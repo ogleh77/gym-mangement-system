@@ -1,4 +1,4 @@
-package com.example.gymmanagementsystem.controllers;
+package com.example.gymmanagementsystem.controllers.done;
 
 import com.example.gymmanagementsystem.dao.BoxService;
 import com.example.gymmanagementsystem.dao.GymService;

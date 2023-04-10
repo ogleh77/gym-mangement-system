@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.*?>
+<AnchorPane prefHeight="463.0" prefWidth="467.0" stylesheets="@../../style/css/small-style.css"
+            xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.gymmanagementsystem.controllers.services.CustomerProfileController">
+    <HBox alignment="CENTER_LEFT" prefHeight="34.0" prefWidth="467.0" spacing="240.0" styleClass="top-pane">
+        <Label styleClass="top-label" text="CUSTOMER PROFILE">
+            <HBox.margin>
+                <Insets left="10.0"/>
+            </HBox.margin>
+        </Label>
+        <HBox alignment="CENTER" onMouseClicked="#closeStage" prefHeight="23.0" prefWidth="31.0"
+              styleClass="cancel-pane">
+            <ImageView fitHeight="25.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@../../style/icons/icons8-close-30.png"/>
+            </ImageView>
+        </HBox>
+    </HBox>
+    <VBox layoutX="134.0" layoutY="82.0" AnchorPane.leftAnchor="134.0" AnchorPane.rightAnchor="133.0">
+        <effect>
+            <DropShadow height="32.73" radius="15.1325" width="29.8">
+                <color>
+                    <Color red="0.7764706015586853" green="0.7372549176216125" blue="0.7372549176216125"/>
+                </color>
+            </DropShadow>
+        </effect>
+        <ImageView fx:id="imgView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true">
+            <Image url="@../../style/icons/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpeg"/>
+        </ImageView>
+    </VBox>
+    <Label layoutX="44.0" layoutY="266.0" text="full name">
+        <font>
+            <Font name="Helvetica" size="19.0"/>
+        </font>
+    </Label>
+    <Label fx:id="fulname" layoutX="195.0" layoutY="266.0" text="full name">
+        <font>
+            <Font name="Verdana" size="19.0"/>
+        </font>
+    </Label>
+    <Label layoutX="44.0" layoutY="335.0" text="shift">
+        <font>
+            <Font name="Helvetica" size="19.0"/>
+        </font>
+    </Label>
+    <Label layoutX="44.0" layoutY="367.0" text="gander">
+        <font>
+            <Font name="Helvetica" size="19.0"/>
+        </font>
+    </Label>
+    <Label layoutX="44.0" layoutY="302.0" text="phone">
+        <font>
+            <Font name="Helvetica" size="19.0"/>
+        </font>
+    </Label>
+    <Label layoutX="44.0" layoutY="400.0" text="who registred">
+        <font>
+            <Font name="Helvetica" size="19.0"/>
+        </font>
+    </Label>
+    <Label fx:id="gender" layoutX="198.0" layoutY="367.0" text="full name">
+        <font>
+            <Font name="Verdana" size="19.0"/>
+        </font>
+    </Label>
+    <Label fx:id="shift" layoutX="198.0" layoutY="335.0" text="full name">
+        <font>
+            <Font name="Verdana" size="19.0"/>
+        </font>
+    </Label>
+    <Label fx:id="phone" layoutX="195.0" layoutY="302.0" text="full name">
+        <font>
+            <Font name="Verdana" size="19.0"/>
+        </font>
+    </Label>
+    <Label fx:id="whoAdded" layoutX="198.0" layoutY="400.0" text="full name">
+        <font>
+            <Font name="Verdana" size="19.0"/>
+        </font>
+    </Label>
+</AnchorPane>

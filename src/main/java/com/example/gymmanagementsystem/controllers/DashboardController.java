@@ -2,6 +2,7 @@ package com.example.gymmanagementsystem.controllers;
 
 import animatefx.animation.SlideInLeft;
 import animatefx.animation.SlideOutLeft;
+import com.example.gymmanagementsystem.controllers.done.HomeController;
 import com.example.gymmanagementsystem.controllers.done.RegistrationsController;
 import com.example.gymmanagementsystem.dao.GymService;
 import com.example.gymmanagementsystem.entities.Customers;
@@ -70,10 +71,8 @@ public class DashboardController extends CommonClass implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Platform.runLater(() -> {
-            // borderPane.setLeft(null);
-
+            borderPane.setLeft(null);
             stage = (Stage) borderPane.getScene().getWindow();
-
         });
     }
 
@@ -112,7 +111,7 @@ public class DashboardController extends CommonClass implements Initializable {
     @FXML
     public void homeHandler() {
         try {
-            FXMLLoader loader = openWindow("/com/example/gymmanagementsystem/views/home.fxml", borderPane, null, warningStack);
+            FXMLLoader loader = openWindow("/com/example/gymmanagementsystem/views/main-create/home.fxml", borderPane, null, warningStack);
             HomeController controller = loader.getController();
             controller.setActiveUser(activeUser);
             controller.setBorderPane(borderPane);

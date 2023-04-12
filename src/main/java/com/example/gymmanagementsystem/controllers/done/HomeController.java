@@ -1,4 +1,4 @@
-package com.example.gymmanagementsystem.controllers;
+package com.example.gymmanagementsystem.controllers.done;
 
 import com.example.gymmanagementsystem.controllers.done.CustomerInfoController;
 import com.example.gymmanagementsystem.controllers.done.PaymentController;
@@ -18,15 +18,13 @@ import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class HomeController extends CommonClass implements Initializable {
@@ -176,6 +174,12 @@ public class HomeController extends CommonClass implements Initializable {
     }
 
     public void deleteHandler() {
+        try {
+            Customers selectedItem = tableView.getSelectionModel().getSelectedItem();
+            deleteConfirm(selectedItem);
+        } catch (SQLException e) {
+            infoAlert(e.getMessage());
+        }
     }
 
     @Override
@@ -239,5 +243,17 @@ public class HomeController extends CommonClass implements Initializable {
 
     }
 
+    private void deleteConfirm(Customers customer) throws SQLException {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Ma hubtaa inaad masaxdo macmiilka " + customer.getFirstName() + " " + customer.getMiddleName() + " " + customer.getLastName(), no, ok);
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.isPresent() && result.get() == ok) {
+            CustomerService.deleteCustomer(customer);
+            informationAlert("Deleted successfully");
+        } else {
+            alert.close();
+        }
+    }
 
 }

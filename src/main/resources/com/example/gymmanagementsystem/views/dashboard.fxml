@@ -41,7 +41,7 @@
                 </HBox.margin>
                 <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="301.0" spacing="10.0">
                     <Circle fx:id="activeProfile" fill="DODGERBLUE" radius="19.0" stroke="#048be4" strokeLineCap="ROUND" strokeWidth="0.0" />
-               <MenuButton alignment="BOTTOM_RIGHT" mnemonicParsing="false" style="-fx-background-color: #328ca8;" text="Mohamed Ogleh">
+               <MenuButton alignment="BOTTOM_RIGHT" mnemonicParsing="false" popupSide="RIGHT" style="-fx-background-color: #328ca8;" text="Mohamed Ogleh">
                  <items>
                    <MenuItem mnemonicParsing="false" text="update" />
                    <MenuItem mnemonicParsing="false" text="logout" />

@@ -79,3 +79,8 @@
     -fx-background-color: #F6F6F6;
     -fx-border-color: #3a6188;
 }
+
+.progress-bar > .track {
+    -fx-text-box-border: forestgreen;
+    -fx-control-inner-background: #afd6e3;
+}

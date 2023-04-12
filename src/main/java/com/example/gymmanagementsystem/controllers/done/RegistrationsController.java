@@ -22,6 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 import java.io.ByteArrayInputStream;
 import java.net.URL;
@@ -98,6 +99,8 @@ public class RegistrationsController extends CommonClass implements Initializabl
             male.setToggleGroup(genderGroup);
             female.setToggleGroup(genderGroup);
             getMandatoryFields().addAll(firstName, middleName, lastName, phone, shift);
+
+            enterKeyFire(registerBtn,(Stage) borderPane.getCenter().getScene().getWindow());
         });
         phoneValidation();
         weightValidation();

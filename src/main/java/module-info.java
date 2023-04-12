@@ -4,7 +4,8 @@ module com.example.gymmanagementsystem {
     requires java.sql;
     requires com.jfoenix;
     requires AnimateFX;
-
+    requires org.apache.poi.poi;
+    requires org.apache.poi.ooxml;
 
     opens com.example.gymmanagementsystem to javafx.fxml;
     opens com.example.gymmanagementsystem.controllers to javafx.fxml;
@@ -13,5 +14,6 @@ module com.example.gymmanagementsystem {
     exports com.example.gymmanagementsystem.entities;
     opens com.example.gymmanagementsystem.controllers.done to javafx.fxml;
     opens com.example.gymmanagementsystem.controllers.services to javafx.fxml;
+    opens com.example.gymmanagementsystem.controllers.printers to javafx.fxml;
 
 }

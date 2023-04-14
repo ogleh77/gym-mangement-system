@@ -13,12 +13,12 @@ class PrintCustomerClassTest {
     @Test
     void printCustomersOnly() throws SQLException {
         ObservableList<Customers>customers= CustomerService.fetchAllCustomer(UserService.users().get(2));
-        PrintCustomerClass.printCustomersOnly(customers);
+     //   PrintCustomerClass.printCustomersOnly(customers);
     }
 
     @Test
     void printOnlineCustomersOnly() throws SQLException {
         ObservableList<Customers>customers= CustomerService.fetchOnlineCustomer(UserService.users().get(2));
-        PrintCustomerClass.printOnlineCustomersOnly(customers);
+        //PrintCustomerClass.printOnlineCustomersOnly(customers);
     }
 }

@@ -153,6 +153,23 @@ public class PaymentModel {
 
     }
 
+
+    public ObservableList<Payments> fetchCustomersOfflinePaymentWhereDate(String customerPhone, LocalDate from, LocalDate to) throws SQLException {
+
+        ObservableList<Payments> payments = FXCollections.observableArrayList();
+        Statement statement = connection.createStatement();
+
+        String query = "SELECT * FROM payments LEFT JOIN box b on payments.box_fk = b.box_id " +
+                "WHERE customer_phone_fk= '" + customerPhone + "' AND pending=false " +
+                "AND is_online=false AND exp_date BETWEEN '" + from + "' AND '" + to + "';";
+
+
+        ResultSet rs = statement.executeQuery(query);
+        return getPayments(payments, statement, rs);
+
+    }
+
+
     public ObservableList<Payments> fetchAllCustomersPayments(String phone) throws SQLException {
         ObservableList<Payments> payments = FXCollections.observableArrayList();
         Statement statement = connection.createStatement();
@@ -166,7 +183,9 @@ public class PaymentModel {
 
         ObservableList<Payments> payments = FXCollections.observableArrayList();
         Statement statement = connection.createStatement();
-        String query = "SELECT * FROM payments LEFT JOIN box b on payments.box_fk = b.box_id " + "WHERE customer_phone_fk='" + customerPhone + "'" + " AND is_online=false AND pending=false " + "AND exp_date between '" + fromDate + "' AND '" + toDate + "';";
+        String query = "SELECT * FROM payments LEFT JOIN box b on payments.box_fk = b.box_id " +
+                "WHERE customer_phone_fk= '" + customerPhone + "' AND pending=false " +
+                "AND is_online=false AND exp_date BETWEEN '" + fromDate + "' AND '" + toDate + "';";
 
         ResultSet rs = statement.executeQuery(query);
 

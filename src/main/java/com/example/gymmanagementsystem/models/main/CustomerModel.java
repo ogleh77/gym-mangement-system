@@ -10,6 +10,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.*;
+import java.time.LocalDate;
 
 public class CustomerModel {
     private static final Connection connection = DbConnection.getConnection();
@@ -43,25 +44,25 @@ public class CustomerModel {
         }
     }
 
-//    public ObservableList<Customers> fetchOfflineCustomers(Users activeUser) throws SQLException {
-//        ObservableList<Customers> customers = FXCollections.observableArrayList();
-//        String fetchCustomers = fetchByRoleAndGander(activeUser.getGender(), activeUser.getRole());
-//
-//        Statement statement = connection.createStatement();
-//        ResultSet rs = statement.executeQuery(fetchCustomers);
-//
-//        while (rs.next()) {
-//            String customerPhone = rs.getString("phone");
-//            ObservableList<Payments> payments = PaymentService.fetchCustomersOfflinePayment(customerPhone);
-//            if (payments == null || payments.isEmpty()) {
-//                continue;
-//            }
-//            getCustomers(customers, rs, payments);
-//        }
-//        rs.close();
-//        statement.close();
-//        return customers;
-//    }
+    public ObservableList<Customers> fetchOfflineCustomers(Users activeUser, LocalDate from, LocalDate to) throws SQLException {
+        ObservableList<Customers> customers = FXCollections.observableArrayList();
+        String fetchCustomers = fetchByRoleAndGander(activeUser.getGender(), activeUser.getRole());
+
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery(fetchCustomers);
+
+        while (rs.next()) {
+            String customerPhone = rs.getString("phone");
+            ObservableList<Payments> payments = PaymentService.fetchCustomersOfflinePayment(customerPhone, from, to);
+            if (payments == null || payments.isEmpty()) {
+                continue;
+            }
+            getCustomers(customers, rs, payments);
+        }
+        rs.close();
+        statement.close();
+        return customers;
+    }
 
     public ObservableList<Customers> fetchOnlineCustomers(Users activeUser) throws SQLException {
         ObservableList<Customers> customers = FXCollections.observableArrayList();
@@ -99,7 +100,7 @@ public class CustomerModel {
         return customers;
     }
 
-    public ObservableList<Customers> fetchQualifiedOfflineCustomers(String customerQuery, String fromDate, String toDate) throws SQLException {
+    public ObservableList<Customers> fetchQualifiedOfflineCustomers(String customerQuery, LocalDate from, LocalDate toDate) throws SQLException {
 
         ObservableList<Customers> customers = FXCollections.observableArrayList();
 
@@ -108,7 +109,8 @@ public class CustomerModel {
 
         while (rs.next()) {
             String customerPhone = rs.getString("phone");
-            ObservableList<Payments> payments = PaymentService.fetchQualifiedOfflinePayment(customerPhone, fromDate, toDate);
+            ObservableList<Payments> payments =
+                    PaymentService.fetchQualifiedOfflinePaymentWhereDate(customerPhone, from, toDate);
 
             if (payments == null || payments.isEmpty()) {
                 continue;

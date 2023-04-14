@@ -1,7 +1,6 @@
 package com.example.gymmanagementsystem.dao;
 
 
-
 import com.example.gymmanagementsystem.entities.Customers;
 import com.example.gymmanagementsystem.entities.Payments;
 import com.example.gymmanagementsystem.entities.Users;
@@ -94,10 +93,8 @@ public class CustomerService {
         return allCustomersList;
     }
 
-    public static ObservableList<Customers> fetchQualifiedOfflineCustomers(String customerQuery, LocalDate fromDate, LocalDate toDate) throws SQLException {
-        String from = fromDate.toString();
-        String to = toDate.toString();
-        ObservableList<Customers> offlineCustomers = customerModel.fetchQualifiedOfflineCustomers(customerQuery, from, to);
+    public static ObservableList<Customers> fetchQualifiedOfflineCustomersWhere(String customerQuery, LocalDate fromDate, LocalDate toDate) throws SQLException {
+        ObservableList<Customers> offlineCustomers = customerModel.fetchQualifiedOfflineCustomers(customerQuery, fromDate, toDate);
         Collections.sort(offlineCustomers);
         return offlineCustomers;
     }

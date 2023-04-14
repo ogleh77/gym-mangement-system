@@ -19,8 +19,9 @@ public class PaymentService {
             String customerGander = customer.getGander();
             paymentModel.insertPayment(customer.getPhone(), customerGander, customer.getPayments().get(0));
         } catch (SQLException e) {
-            throw new CustomException("Khalad aya ka dhacay halkan "+e.getMessage()+" " +
-                    "fadlan isku day mar danbe hadaad fahamtey nooca khaladka");        }
+            throw new CustomException("Khalad aya ka dhacay halkan " + e.getMessage() + " " +
+                    "fadlan isku day mar danbe hadaad fahamtey nooca khaladka");
+        }
 
     }
 
@@ -29,7 +30,7 @@ public class PaymentService {
         try {
             paymentModel.update(payment);
         } catch (SQLException e) {
-            throw new CustomException("Khalad aya ka dhacay halkan "+e.getMessage()+" " +
+            throw new CustomException("Khalad aya ka dhacay halkan " + e.getMessage() + " " +
                     "fadlan isku day mar danbe hadaad fahamtey nooca khaladka");
         }
 
@@ -76,11 +77,11 @@ public class PaymentService {
         return paymentModel.fetchCustomersOnlinePayment(customerPhone);
     }
 
-    public static ObservableList<Payments> fetchCustomersOfflinePayment(String customerPhone) throws SQLException {
-        return paymentModel.fetchCustomersOfflinePayment(customerPhone);
+    public static ObservableList<Payments> fetchCustomersOfflinePayment(String customerPhone, LocalDate from, LocalDate to) throws SQLException {
+        return paymentModel.fetchCustomersOfflinePaymentWhereDate(customerPhone, from, to);
     }
 
-    public static ObservableList<Payments> fetchQualifiedOfflinePayment(String customerPhone, String fromDate, String toDate) throws SQLException {
-        return paymentModel.fetchQualifiedOfflinePayment(customerPhone, fromDate, toDate);
+    public static ObservableList<Payments> fetchQualifiedOfflinePaymentWhereDate(String customerPhone, LocalDate fromDate, LocalDate toDate) throws SQLException {
+        return paymentModel.fetchCustomersOfflinePaymentWhereDate(customerPhone, fromDate, toDate);
     }
 }

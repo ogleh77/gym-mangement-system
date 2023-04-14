@@ -38,4 +38,35 @@ class PaymentServiceTest {
         }
         return "outdated";
     }
+
+    @Test
+    void insertPayment() {
+    }
+
+    @Test
+    void updatePayment() {
+    }
+
+    @Test
+    void holdPayment() {
+    }
+
+    @Test
+    void unHoldPayment() {
+    }
+
+    @Test
+    void fetchCustomersOnlinePayment() {
+    }
+
+    @Test
+    void fetchCustomersOfflinePayment() {
+    }
+
+    @Test
+    void fetchQualifiedOfflinePayment() throws SQLException {
+        System.out.println(PaymentService.fetchQualifiedOfflinePaymentWhereDate("7916173",
+                LocalDate.now().minusYears(3),
+                LocalDate.now()));
+    }
 }

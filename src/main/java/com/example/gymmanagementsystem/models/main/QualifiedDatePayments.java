@@ -45,7 +45,6 @@ public class QualifiedDatePayments {
                 "WHERE customer_phone_fk= '" + customerPhone + "' AND pending=false " +
                 "AND is_online=false AND exp_date BETWEEN '" + from + "' AND '" + to + "';";
 
-
         ResultSet rs = statement.executeQuery(query);
         return PaymentModel.getPayments(payments, statement, rs);
 
@@ -76,6 +75,5 @@ public class QualifiedDatePayments {
 
         ResultSet rs = statement.executeQuery(query);
         return PaymentModel.getPayments(payments, statement, rs);
-
     }
 }

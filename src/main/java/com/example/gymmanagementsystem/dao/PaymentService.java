@@ -77,11 +77,11 @@ public class PaymentService {
         return paymentModel.fetchCustomersOnlinePayment(customerPhone);
     }
 
-    public static ObservableList<Payments> fetchCustomersOfflinePayment(String customerPhone, LocalDate from, LocalDate to) throws SQLException {
-        return paymentModel.fetchCustomersOfflinePaymentWhereDate(customerPhone, from, to);
-    }
-
-    public static ObservableList<Payments> fetchQualifiedOfflinePaymentWhereDate(String customerPhone, LocalDate fromDate, LocalDate toDate) throws SQLException {
-        return paymentModel.fetchCustomersOfflinePaymentWhereDate(customerPhone, fromDate, toDate);
-    }
+//    public static ObservableList<Payments> fetchCustomersOfflinePayment(String customerPhone, LocalDate from, LocalDate to) throws SQLException {
+//        return paymentModel.fetchCustomersOfflinePaymentWhereDate(customerPhone, from, to);
+//    }
+//
+//    public static ObservableList<Payments> fetchQualifiedOfflinePaymentWhereDate(String customerPhone, LocalDate fromDate, LocalDate toDate) throws SQLException {
+//        return paymentModel.fetchCustomersOfflinePaymentWhereDate(customerPhone, fromDate, toDate);
+//    }
 }

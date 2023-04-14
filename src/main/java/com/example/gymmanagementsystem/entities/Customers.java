@@ -204,23 +204,6 @@ public class Customers implements Comparable<Customers> {
 
     @Override
     public String toString() {
-        return "Customers{" +
-                "customerId=" + customerId +
-                ", firstName=" + firstName +
-                ", lastName=" + lastName +
-                ", middleName=" + middleName +
-                ", phone=" + phone +
-                ", gander=" + gander +
-                ", shift=" + shift +
-                ", address=" + address +
-                ", image=" + Arrays.toString(image) +
-                ", weight=" + weight +
-                ", whoAdded=" + whoAdded +
-                ", waist=" + waist +
-                ", foreArm=" + foreArm +
-                ", hips=" + hips +
-                ", chest=" + chest +
-                ", payments=" + payments +
-                '}';
+        return firstName.get()+" "+phone.get()+" "+payments+"\n";
     }
 }

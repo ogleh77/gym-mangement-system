@@ -153,13 +153,12 @@ public class Payments {
 
     @Override
     public String toString() {
-        return "Payments{" +
+        return
                 "paymentID=" + paymentID +
-                ", startDate=" + startDate +
-                ", expDate=" + expDate +
-                ", amountPaid=" + amountPaid +
-                ", paidBy=" + paidBy +
-                ", discount=" + discount +
-                '}';
+                        ", startDate=" + startDate +
+                        ", expDate=" + expDate +
+                        ", amountPaid=" + amountPaid.get() +
+                        ", paidBy=" + paidBy.get() +
+                        '}' + "\n";
     }
 }

@@ -44,87 +44,7 @@ public class CustomerModel {
         }
     }
 
-    public ObservableList<Customers> fetchOfflineCustomers(Users activeUser, LocalDate from, LocalDate to) throws SQLException {
-        ObservableList<Customers> customers = FXCollections.observableArrayList();
-        String fetchCustomers = fetchByRoleAndGander(activeUser.getGender(), activeUser.getRole());
 
-        Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery(fetchCustomers);
-
-        while (rs.next()) {
-            String customerPhone = rs.getString("phone");
-            ObservableList<Payments> payments = PaymentService.fetchCustomersOfflinePayment(customerPhone, from, to);
-            if (payments == null || payments.isEmpty()) {
-                continue;
-            }
-            getCustomers(customers, rs, payments);
-        }
-        rs.close();
-        statement.close();
-        return customers;
-    }
-
-    public ObservableList<Customers> fetchOnlineCustomers(Users activeUser) throws SQLException {
-        ObservableList<Customers> customers = FXCollections.observableArrayList();
-
-        String fetchCustomers = fetchByRoleAndGander(activeUser.getGender(), activeUser.getRole());
-
-        Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery(fetchCustomers);
-
-        while (rs.next()) {
-            String customerPhone = rs.getString("phone");
-            ObservableList<Payments> payments = PaymentService.fetchCustomersOnlinePayment(customerPhone);
-            if (payments == null || payments.isEmpty()) {
-                continue;
-            }
-            getCustomers(customers, rs, payments);
-        }
-        rs.close();
-        statement.close();
-        return customers;
-    }
-
-    public ObservableList<Customers> fetchAllCustomers(Users activeUser) throws SQLException {
-        ObservableList<Customers> customers = FXCollections.observableArrayList();
-        String fetchCustomers = fetchByRoleAndGander(activeUser.getGender(), activeUser.getRole());
-        Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery(fetchCustomers);
-
-        while (rs.next()) {
-            getCustomers(customers, rs, null);
-        }
-
-        rs.close();
-        statement.close();
-        return customers;
-    }
-
-    public ObservableList<Customers> fetchQualifiedOfflineCustomers(String customerQuery, LocalDate from, LocalDate toDate) throws SQLException {
-
-        ObservableList<Customers> customers = FXCollections.observableArrayList();
-
-        Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery(customerQuery);
-
-        while (rs.next()) {
-            String customerPhone = rs.getString("phone");
-            ObservableList<Payments> payments =
-                    PaymentService.fetchQualifiedOfflinePaymentWhereDate(customerPhone, from, toDate);
-
-            if (payments == null || payments.isEmpty()) {
-                continue;
-            }
-            Customers customer = new Customers(rs.getInt("customer_id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("middle_name"), rs.getString("phone"), rs.getString("gander"), rs.getString("shift"), rs.getString("address"), rs.getBytes("image"), rs.getDouble("weight"), rs.getString("who_added"));
-
-            customer.setPayments(payments);
-            customers.add(customer);
-
-        }
-
-        return customers;
-
-    }
 
     public int nextID() throws SQLException {
         String query = "SELECT * FROM SQLITE_SEQUENCE WHERE name='customers'";
@@ -139,7 +59,7 @@ public class CustomerModel {
     }
 
     //---------------––Helpers---------------------
-    private void getCustomers(ObservableList<Customers> customers, ResultSet rs, ObservableList<Payments> payment) throws SQLException {
+    public static void getCustomers(ObservableList<Customers> customers, ResultSet rs, ObservableList<Payments> payment) throws SQLException {
         Customers customer = new Customers(rs.getInt("customer_id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("middle_name"), rs.getString("phone"), rs.getString("gander"), rs.getString("shift"), rs.getString("address"), rs.getBytes("image"), rs.getDouble("weight"), rs.getString("who_added"));
         customer.setChest(rs.getDouble("chest"));
         customer.setForeArm(rs.getDouble("fore_arm"));
@@ -181,7 +101,7 @@ public class CustomerModel {
         ps.close();
     }
 
-    private String fetchByRoleAndGander(String gander, String role) {
+    public static String fetchByRoleAndGander(String gander, String role) {
         String fetchQuery = "SELECT * FROM customers WHERE gander='" + gander + "' ORDER BY customer_id ";
         if (role.equals("super_admin")) {
             fetchQuery = "SELECT * FROM customers ORDER BY customer_id ";

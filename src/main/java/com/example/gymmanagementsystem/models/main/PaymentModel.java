@@ -144,31 +144,14 @@ public class PaymentModel {
         return getPayments(payments, statement, rs);
     }
 
-    public ObservableList<Payments> fetchCustomersOfflinePayment(String customerPhone) throws SQLException {
-
-        ObservableList<Payments> payments = FXCollections.observableArrayList();
-        Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("SELECT * FROM payments LEFT JOIN box b on payments.box_fk = b.box_id " + "WHERE customer_phone_fk=" + customerPhone + "  AND pending=false AND is_online=false ");
-        return getPayments(payments, statement, rs);
-
-    }
-
-
-    public ObservableList<Payments> fetchCustomersOfflinePaymentWhereDate(String customerPhone, LocalDate from, LocalDate to) throws SQLException {
-
-        ObservableList<Payments> payments = FXCollections.observableArrayList();
-        Statement statement = connection.createStatement();
-
-        String query = "SELECT * FROM payments LEFT JOIN box b on payments.box_fk = b.box_id " +
-                "WHERE customer_phone_fk= '" + customerPhone + "' AND pending=false " +
-                "AND is_online=false AND exp_date BETWEEN '" + from + "' AND '" + to + "';";
-
-
-        ResultSet rs = statement.executeQuery(query);
-        return getPayments(payments, statement, rs);
-
-    }
-
+//    public ObservableList<Payments> fetchCustomersOfflinePayment(String customerPhone) throws SQLException {
+//
+//        ObservableList<Payments> payments = FXCollections.observableArrayList();
+//        Statement statement = connection.createStatement();
+//        ResultSet rs = statement.executeQuery("SELECT * FROM payments LEFT JOIN box b on payments.box_fk = b.box_id " + "WHERE customer_phone_fk=" + customerPhone + "  AND pending=false AND is_online=false ");
+//        return getPayments(payments, statement, rs);
+//
+//    }
 
     public ObservableList<Payments> fetchAllCustomersPayments(String phone) throws SQLException {
         ObservableList<Payments> payments = FXCollections.observableArrayList();
@@ -241,7 +224,7 @@ public class PaymentModel {
         return 0;
     }
 
-    private ObservableList<Payments> getPayments(ObservableList<Payments> payments, Statement statement, ResultSet rs) throws SQLException {
+    public static ObservableList<Payments> getPayments(ObservableList<Payments> payments, Statement statement, ResultSet rs) throws SQLException {
         Payments payment;
         while (rs.next()) {
 
@@ -259,7 +242,7 @@ public class PaymentModel {
         return payments;
     }
 
-    private Payments getPayments(ResultSet rs) throws SQLException {
+    public static Payments getPayments(ResultSet rs) throws SQLException {
         return new Payments(rs.getInt("payment_id"), LocalDate.parse(rs.getString("start_date")), LocalDate.parse(rs.getString("exp_date")), rs.getString("month"), rs.getString("year"), rs.getDouble("amount_paid"), rs.getString("paid_by"), rs.getDouble("discount"), rs.getBoolean("poxing"), rs.getString("customer_phone_fk"), rs.getBoolean("is_online"), rs.getBoolean("pending"));
     }
 

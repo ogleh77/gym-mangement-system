@@ -82,19 +82,19 @@ public class CustomerService {
 //    }
 
     public static ObservableList<Customers> fetchOnlineCustomer(Users activeUser) throws SQLException {
-        onlineCustomers = customerModel.fetchOnlineCustomers(activeUser);
+     //   onlineCustomers = customerModel.fetchOnlineCustomers(activeUser);
         Collections.sort(onlineCustomers);
 
         return onlineCustomers;
     }
 
     public static ObservableList<Customers> fetchAllCustomer(Users activeUser) throws SQLException {
-        allCustomersList = customerModel.fetchAllCustomers(activeUser);
+      //  allCustomersList = customerModel.fetchAllCustomers(activeUser);
         return allCustomersList;
     }
 
     public static ObservableList<Customers> fetchQualifiedOfflineCustomersWhere(String customerQuery, LocalDate fromDate, LocalDate toDate) throws SQLException {
-        ObservableList<Customers> offlineCustomers = customerModel.fetchQualifiedOfflineCustomers(customerQuery, fromDate, toDate);
+     //   ObservableList<Customers> offlineCustomers = customerModel.fetchQualifiedOfflineCustomers(customerQuery, fromDate, toDate);
         Collections.sort(offlineCustomers);
         return offlineCustomers;
     }

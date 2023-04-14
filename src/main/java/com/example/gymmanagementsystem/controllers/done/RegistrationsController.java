@@ -1,7 +1,7 @@
 package com.example.gymmanagementsystem.controllers.done;
 
-import com.example.gymmanagementsystem.dao.CustomerService;
-import com.example.gymmanagementsystem.dao.GymService;
+//import com.example.gymmanagementsystem.dao.main.CustomerService;
+import com.example.gymmanagementsystem.dao.service.GymService;
 import com.example.gymmanagementsystem.entities.Customers;
 import com.example.gymmanagementsystem.entities.Gym;
 import com.example.gymmanagementsystem.entities.Users;
@@ -81,13 +81,13 @@ public class RegistrationsController extends CommonClass implements Initializabl
     @FXML
     private JFXButton clearBtn;
     private boolean isCustomerNew = true;
-    private final int newCustomerID;
+    //private final int newCustomerID;
 
     private ObservableList<Customers> customersList;
     private final Gym currentGym;
 
     public RegistrationsController() throws SQLException {
-        newCustomerID = CustomerService.predictNextId();
+      //  newCustomerID = CustomerService.predictNextId();
         this.currentGym = GymService.getGym();
     }
 
@@ -180,12 +180,12 @@ public class RegistrationsController extends CommonClass implements Initializabl
     public void setActiveUser(Users activeUser) {
         super.setActiveUser(activeUser);
         if (customer == null) {
-            try {
-                customersList = CustomerService.fetchAllCustomer(activeUser);
-            } catch (SQLException e) {
-                e.printStackTrace();
-                errorMessage(e.getMessage());
-            }
+//            try {
+//             //   customersList = CustomerService.fetchAllCustomer(activeUser);
+//            } catch (SQLException e) {
+//                e.printStackTrace();
+//                errorMessage(e.getMessage());
+//            }
         }
     }
 
@@ -202,7 +202,7 @@ public class RegistrationsController extends CommonClass implements Initializabl
                 @Override
                 protected Void call() throws InterruptedException {
                     try {
-                        CustomerService.insertOrUpdateCustomer(savingCustomer(), isCustomerNew);
+                        //CustomerService.insertOrUpdateCustomer(savingCustomer(), isCustomerNew);
                         if (isCustomerNew) {
                             customersList.add(0, savingCustomer());
                             Thread.sleep(1000);
@@ -240,7 +240,7 @@ public class RegistrationsController extends CommonClass implements Initializabl
         double _chest = (!chest.getText().isEmpty() || !chest.getText().isBlank() ? Double.parseDouble(chest.getText()) : 0);
 
         if (customer == null) {
-            customer = new Customers(newCustomerID, firstName.getText().trim(), lastName.getText().trim(), middleName.getText().trim(), phone.getText().trim(), gander, _shift, _address, selectedFile == null ? null : readFile(selectedFile.getAbsolutePath()), _weight, activeUser.getUsername());
+           // customer = new Customers(newCustomerID, firstName.getText().trim(), lastName.getText().trim(), middleName.getText().trim(), phone.getText().trim(), gander, _shift, _address, selectedFile == null ? null : readFile(selectedFile.getAbsolutePath()), _weight, activeUser.getUsername());
         } else {
             customer.setShift(_shift);
             customer.setCustomerId(customerId);

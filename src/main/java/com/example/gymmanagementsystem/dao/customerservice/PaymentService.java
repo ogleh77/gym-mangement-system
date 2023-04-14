@@ -1,10 +1,9 @@
-package com.example.gymmanagementsystem.dao;
-
+package com.example.gymmanagementsystem.dao.customerservice;
 
 import com.example.gymmanagementsystem.entities.Customers;
 import com.example.gymmanagementsystem.entities.Payments;
 import com.example.gymmanagementsystem.helpers.CustomException;
-import com.example.gymmanagementsystem.models.main.PaymentModel;
+import com.example.gymmanagementsystem.models.paymentmodel.PaymentModel;
 import javafx.collections.ObservableList;
 
 import java.sql.SQLException;
@@ -12,7 +11,9 @@ import java.time.LocalDate;
 import java.time.Period;
 
 public class PaymentService {
+
     private static final PaymentModel paymentModel = new PaymentModel();
+
 
     public static void insertPayment(Customers customer) throws SQLException {
         try {
@@ -26,7 +27,6 @@ public class PaymentService {
     }
 
     public static void updatePayment(Payments payment) throws SQLException {
-
         try {
             paymentModel.update(payment);
         } catch (SQLException e) {
@@ -63,9 +63,13 @@ public class PaymentService {
         }
     }
 
-    public static ObservableList<Payments> fetchAllCustomersPayments(String customerPhone) throws CustomException {
+
+    //----------------------------_Payment service list-----------------------
+
+
+    public static ObservableList<Payments> fetchAllPayments(String customerPhone) throws CustomException {
         try {
-            return paymentModel.fetchAllCustomersPayments(customerPhone);
+            return paymentModel.fetchAllPayments(customerPhone);
         } catch (SQLException e) {
             throw new CustomException("Khalad aya dhacay marka lasoo akhrinayay macmilkan payments-kiisa \n" +
                     e.getMessage());
@@ -73,15 +77,25 @@ public class PaymentService {
 
     }
 
-    public static ObservableList<Payments> fetchCustomersOnlinePayment(String customerPhone) throws SQLException {
-        return paymentModel.fetchCustomersOnlinePayment(customerPhone);
+    public static ObservableList<Payments> fetchAllOnlinePayment(String customerPhone) throws SQLException {
+        return paymentModel.fetchAllOnlinePayment(customerPhone);
     }
 
-//    public static ObservableList<Payments> fetchCustomersOfflinePayment(String customerPhone, LocalDate from, LocalDate to) throws SQLException {
-//        return paymentModel.fetchCustomersOfflinePaymentWhereDate(customerPhone, from, to);
-//    }
-//
-//    public static ObservableList<Payments> fetchQualifiedOfflinePaymentWhereDate(String customerPhone, LocalDate fromDate, LocalDate toDate) throws SQLException {
-//        return paymentModel.fetchCustomersOfflinePaymentWhereDate(customerPhone, fromDate, toDate);
-//    }
+
+    public static ObservableList<Payments> fetchOnlinePaymentBetween(String customerPhone, LocalDate fromDate
+            , LocalDate toDate) throws SQLException {
+        return paymentModel.fetchOnlinePaymentWhereDate(customerPhone, fromDate, toDate);
+    }
+
+    public static ObservableList<Payments> fetchOfflinePaymentBetween(String customerPhone, LocalDate fromDate
+            , LocalDate toDate) throws SQLException {
+        return paymentModel.fetchOfflinePaymentWhereDate(customerPhone, fromDate, toDate);
+    }
+
+    public static ObservableList<Payments> fetchPendingPaymentBetween(String customerPhone, LocalDate fromDate
+            , LocalDate toDate) throws SQLException {
+        return paymentModel.fetchPendingPaymentWhereDate(customerPhone, fromDate, toDate);
+    }
+
+
 }

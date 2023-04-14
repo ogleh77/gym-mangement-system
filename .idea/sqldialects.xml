@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="file://$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/BoxModel.java" dialect="GenericSQL" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/DailyReportModel.java" dialect="GenericSQL" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/GymModel.java" dialect="GenericSQL" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/UserModel.java" dialect="GenericSQL" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/main/CustomerModel.java" dialect="GenericSQL" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/main/PaymentModel.java" dialect="GenericSQL" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/main/QualifiedDatePayments.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/customermodel/CustomerModel.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/paymentmodel/PaymentModel.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/service/BoxModel.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/service/DailyReportModel.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/service/GymModel.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/service/UserModel.java" dialect="GenericSQL" />
   </component>
 </project>

@@ -1,22 +1,21 @@
-package com.example.gymmanagementsystem.dao;
-
+package com.example.gymmanagementsystem.dao.customerservice;
 
 import com.example.gymmanagementsystem.entities.Customers;
 import com.example.gymmanagementsystem.entities.Payments;
 import com.example.gymmanagementsystem.entities.Users;
 import com.example.gymmanagementsystem.helpers.CustomException;
-import com.example.gymmanagementsystem.models.main.CustomerModel;
+import com.example.gymmanagementsystem.models.customermodel.CustomerModel;
 import javafx.collections.ObservableList;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.Collections;
 
 public class CustomerService {
-
     private static final CustomerModel customerModel = new CustomerModel();
     private static ObservableList<Customers> allCustomersList;
-    private static ObservableList<Customers> offlineCustomers;
+    private static ObservableList<Customers> onlineCustomersByDate;
+    private static ObservableList<Customers> offlineCustomersByDate;
+    private static ObservableList<Customers> pendCustomersByDate;
     private static ObservableList<Customers> onlineCustomers;
 
     public static void insertOrUpdateCustomer(Customers customer, boolean newCustomer) throws SQLException {
@@ -49,7 +48,7 @@ public class CustomerService {
                 throw new CustomException("Fadlan ka dooro table ka macmiilka aad donayso inad masaxdo");
             } else {
 
-                ObservableList<Payments> payments = PaymentService.fetchAllCustomersPayments(customer.getPhone());
+                ObservableList<Payments> payments = PaymentService.fetchAllPayments(customer.getPhone());
 
                 String pendPaymentMessage = "Macmiilkan waxa uu xidhay payment sasoo ay tahay ma delete garayn kartid" +
                         "Marka hore dib u fur paymentkisa marka wakhtigu u dhamadana wad masaxi kartaa insha Allah.";
@@ -65,7 +64,6 @@ public class CustomerService {
                 }
                 allCustomersList.remove(customer);
                 customerModel.delete(customer);
-
             }
         } catch (SQLException e) {
             throw new CustomException(e.getMessage());
@@ -73,37 +71,47 @@ public class CustomerService {
 
     }
 
-// public static ObservableList<Customers> fetchOfflineCustomer(Users activeUser) throws SQLException {
-//        if (offlineCustomers == null) {
-//            offlineCustomers = customerModel.fetchOfflineCustomers(activeUser);
-//        }
-//        Collections.sort(offlineCustomers);
-//        return offlineCustomers;
-//    }
 
-    public static ObservableList<Customers> fetchOnlineCustomer(Users activeUser) throws SQLException {
-     //   onlineCustomers = customerModel.fetchOnlineCustomers(activeUser);
-        Collections.sort(onlineCustomers);
+    //---------------------------Customers Lists--------------------------------
 
-        return onlineCustomers;
-    }
 
     public static ObservableList<Customers> fetchAllCustomer(Users activeUser) throws SQLException {
-      //  allCustomersList = customerModel.fetchAllCustomers(activeUser);
+        if (allCustomersList == null) {
+            allCustomersList = customerModel.fetchAllCustomers(activeUser);
+        }
         return allCustomersList;
     }
 
-    public static ObservableList<Customers> fetchQualifiedOfflineCustomersWhere(String customerQuery, LocalDate fromDate, LocalDate toDate) throws SQLException {
-     //   ObservableList<Customers> offlineCustomers = customerModel.fetchQualifiedOfflineCustomers(customerQuery, fromDate, toDate);
-        Collections.sort(offlineCustomers);
-        return offlineCustomers;
+    public static ObservableList<Customers> fetchAllOnlineCustomer(Users activeUser) throws SQLException {
+        if (onlineCustomers == null) {
+            onlineCustomers = customerModel.fetchOnlineCustomers(activeUser);
+        }
+        return onlineCustomers;
     }
 
-    public static int predictNextId() throws CustomException {
-        try {
-            return (1 + customerModel.nextID());
-        } catch (SQLException e) {
-            throw new CustomException("Khalad " + e.getMessage());
+
+    public static ObservableList<Customers> fetchOnlineCustomersWhereDateBetween(Users activeUser, LocalDate fromDate, LocalDate toDate) throws SQLException {
+        if (onlineCustomersByDate == null) {
+            onlineCustomersByDate = customerModel.fetchOnlineCustomersWhereDate(activeUser, fromDate, toDate);
         }
+        return onlineCustomersByDate;
     }
+
+    public static ObservableList<Customers> fetchOfflineCustomersWhereDateBetween(Users activeUser, LocalDate fromDate, LocalDate toDate) throws SQLException {
+        if (offlineCustomersByDate == null) {
+            offlineCustomersByDate = customerModel.fetchOfflineCustomersWhereDate(activeUser, fromDate, toDate);
+        }
+        return offlineCustomersByDate;
+    }
+
+    public static ObservableList<Customers> fetchPendCustomersWhereDateBetween(Users activeUser, LocalDate fromDate, LocalDate toDate) throws SQLException {
+        if (pendCustomersByDate == null) {
+            pendCustomersByDate=customerModel.fetchPendCustomersWhereDate(activeUser, fromDate, toDate);
+        }
+
+        return pendCustomersByDate;
+    }
+    //-------------------------------Helpers------------------------------------
+
+
 }

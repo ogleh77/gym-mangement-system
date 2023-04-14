@@ -1,7 +1,7 @@
 package com.example.gymmanagementsystem;
 
 import com.example.gymmanagementsystem.controllers.DailyReportController;
-import com.example.gymmanagementsystem.dao.UserService;
+import com.example.gymmanagementsystem.dao.service.UserService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

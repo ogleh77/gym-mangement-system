@@ -1,7 +1,7 @@
 package com.example.gymmanagementsystem.controllers.done;
 
-import com.example.gymmanagementsystem.dao.BoxService;
-import com.example.gymmanagementsystem.dao.GymService;
+import com.example.gymmanagementsystem.dao.service.BoxService;
+import com.example.gymmanagementsystem.dao.service.GymService;
 import com.example.gymmanagementsystem.entities.Box;
 import com.example.gymmanagementsystem.entities.Gym;
 import com.example.gymmanagementsystem.helpers.CommonClass;

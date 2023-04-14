@@ -1,4 +1,4 @@
-package com.example.gymmanagementsystem.models;
+package com.example.gymmanagementsystem.models.service;
 
 
 

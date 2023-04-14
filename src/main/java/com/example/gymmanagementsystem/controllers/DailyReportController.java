@@ -1,7 +1,7 @@
 package com.example.gymmanagementsystem.controllers;
 
 import com.example.gymmanagementsystem.controllers.printers.CustomersPrinter;
-import com.example.gymmanagementsystem.dao.CustomerService;
+//import com.example.gymmanagementsystem.dao.main.CustomerService;
 import com.example.gymmanagementsystem.entities.Customers;
 import com.example.gymmanagementsystem.entities.DailyReport;
 import com.example.gymmanagementsystem.entities.Users;
@@ -133,10 +133,10 @@ public class DailyReportController extends CommonClass implements Initializable 
 
 
         if (selectedFile != null) {
-            ObservableList<Customers> customers = CustomerService.fetchAllCustomer(activeUser);
+       //     ObservableList<Customers> customers = CustomerService.fetchAllCustomer(activeUser);
             CustomersPrinter printer = new CustomersPrinter();
 
-            printer.printCustomers(customers, selectedFile);
+         //   printer.printCustomers(customers, selectedFile);
         }
     }
 

@@ -1,7 +1,7 @@
 package com.example.gymmanagementsystem.controllers.done;
 
-import com.example.gymmanagementsystem.dao.GymService;
-import com.example.gymmanagementsystem.dao.PaymentService;
+import com.example.gymmanagementsystem.dao.service.GymService;
+
 import com.example.gymmanagementsystem.entities.Customers;
 import com.example.gymmanagementsystem.entities.Gym;
 import com.example.gymmanagementsystem.entities.Payments;
@@ -147,11 +147,11 @@ public class CustomerInfoController extends CommonClass implements Initializable
 
             chest.setText(customer.getChest() + " cm");
 
-            try {
-                payments = PaymentService.fetchAllCustomersPayments(customer.getPhone());
-            } catch (CustomException e) {
-                errorMessage(e.getMessage());
-            }
+//            try {
+//                payments = PaymentService.fetchAllCustomersPayments(customer.getPhone());
+//            } catch (CustomException e) {
+//                errorMessage(e.getMessage());
+//            }
             if (customer.getImage() != null) {
                 ByteArrayInputStream bis = new ByteArrayInputStream(customer.getImage());
                 Image image = new Image(bis);
@@ -168,7 +168,7 @@ public class CustomerInfoController extends CommonClass implements Initializable
             if (selectedPayment == null) {
                 throw new RuntimeException("No payment selected");
             }
-            checkPayment(selectedPayment);
+            //checkPayment(selectedPayment);
         } catch (Exception e) {
             infoAlert(e.getMessage());
         }
@@ -208,14 +208,14 @@ public class CustomerInfoController extends CommonClass implements Initializable
     }
 
     //----------------------Helper methods----------------
-    private void checkPayment(Payments payment) throws SQLException {
-        if (payment.isPending()) {
-            unPayment(payment);
-        } else {
-            pendPayment(payment);
-        }
-        tableView.refresh();
-    }
+//    private void checkPayment(Payments payment) throws SQLException {
+//        if (payment.isPending()) {
+//            unPayment(payment);
+//        } else {
+//            pendPayment(payment);
+//        }
+//        tableView.refresh();
+//    }
 
     private void initFields() {
         if (payments.isEmpty()) {
@@ -241,52 +241,52 @@ public class CustomerInfoController extends CommonClass implements Initializable
 
     }
 
-    private void pendPayment(Payments payment) throws SQLException {
-        LocalDate exp = payment.getExpDate();
-        String daysRemain = getDaysRemind(exp);
-
-        if (ok == null && cancel == null) {
-            ok = new ButtonType("Haa", ButtonBar.ButtonData.OK_DONE);
-            cancel = new ButtonType("Maya!", ButtonBar.ButtonData.CANCEL_CLOSE);
-        }
-
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Ma hubtaa inaad hakisto paymentkan oo ay u hadhay \n" + "Wakhtigiisa dhicitaanka " + daysRemain, ok, cancel);
-
-        Optional<ButtonType> result = alert.showAndWait();
-
-        if (result.isPresent() && result.get() == ok) {
-            PaymentService.holdPayment(payment, currentGym.getPendingDate());
-            payment.setPending(true);
-            payment.setOnline(false);
-            pendBtn.setText("Fur");
-            pendBtn.setStyle(unPendStyle);
-        } else {
-            alert.close();
-        }
-    }
-
-    private void unPayment(Payments payment) throws SQLException {
-
-        if (ok == null && cancel == null) {
-            ok = new ButtonType("Haa", ButtonBar.ButtonData.OK_DONE);
-            cancel = new ButtonType("Maya!", ButtonBar.ButtonData.CANCEL_CLOSE);
-        }
-
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Ma hubtaa inaad dib u furto paymentkan ", ok, cancel);
-
-        Optional<ButtonType> result = alert.showAndWait();
-
-        if (result.isPresent() && result.get() == ok) {
-            PaymentService.unHoldPayment(payment);
-            payment.setPending(false);
-            payment.setOnline(true);
-            payment.setExpDate(payment.getExpDate());
-            pendBtn.setText("Haki");
-            pendBtn.setStyle(pendStyle);
-        } else {
-            alert.close();
-        }
-    }
+//    private void pendPayment(Payments payment) throws SQLException {
+//        LocalDate exp = payment.getExpDate();
+//        String daysRemain = getDaysRemind(exp);
+//
+//        if (ok == null && cancel == null) {
+//            ok = new ButtonType("Haa", ButtonBar.ButtonData.OK_DONE);
+//            cancel = new ButtonType("Maya!", ButtonBar.ButtonData.CANCEL_CLOSE);
+//        }
+//
+//        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Ma hubtaa inaad hakisto paymentkan oo ay u hadhay \n" + "Wakhtigiisa dhicitaanka " + daysRemain, ok, cancel);
+//
+//        Optional<ButtonType> result = alert.showAndWait();
+//
+//        if (result.isPresent() && result.get() == ok) {
+//            PaymentService.holdPayment(payment, currentGym.getPendingDate());
+//            payment.setPending(true);
+//            payment.setOnline(false);
+//            pendBtn.setText("Fur");
+//            pendBtn.setStyle(unPendStyle);
+//        } else {
+//            alert.close();
+//        }
+//    }
+//
+//    private void unPayment(Payments payment) throws SQLException {
+//
+//        if (ok == null && cancel == null) {
+//            ok = new ButtonType("Haa", ButtonBar.ButtonData.OK_DONE);
+//            cancel = new ButtonType("Maya!", ButtonBar.ButtonData.CANCEL_CLOSE);
+//        }
+//
+//        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Ma hubtaa inaad dib u furto paymentkan ", ok, cancel);
+//
+//        Optional<ButtonType> result = alert.showAndWait();
+//
+//        if (result.isPresent() && result.get() == ok) {
+//            PaymentService.unHoldPayment(payment);
+//            payment.setPending(false);
+//            payment.setOnline(true);
+//            payment.setExpDate(payment.getExpDate());
+//            pendBtn.setText("Haki");
+//            pendBtn.setStyle(pendStyle);
+//        } else {
+//            alert.close();
+//        }
+//    }
 
 
     private String getDaysRemind(LocalDate expDate) {

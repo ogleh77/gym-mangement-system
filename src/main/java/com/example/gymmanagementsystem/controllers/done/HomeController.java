@@ -1,11 +1,9 @@
 package com.example.gymmanagementsystem.controllers.done;
 
-import com.example.gymmanagementsystem.controllers.done.CustomerInfoController;
-import com.example.gymmanagementsystem.controllers.done.PaymentController;
-import com.example.gymmanagementsystem.controllers.done.RegistrationsController;
-import com.example.gymmanagementsystem.dao.CustomerService;
-import com.example.gymmanagementsystem.dao.GymService;
-import com.example.gymmanagementsystem.dao.UserService;
+
+import com.example.gymmanagementsystem.dao.customerservice.CustomerService;
+import com.example.gymmanagementsystem.dao.service.GymService;
+import com.example.gymmanagementsystem.dao.service.UserService;
 import com.example.gymmanagementsystem.entities.Customers;
 import com.example.gymmanagementsystem.entities.Gym;
 import com.example.gymmanagementsystem.entities.Users;
@@ -66,13 +64,13 @@ public class HomeController extends CommonClass implements Initializable {
     @FXML
     private Label edahab;
     private final int nextUserId;
-    private final int nextCustomerId;
+    //private final int nextCustomerId;
 
     private final Gym currentGym;
 
     public HomeController() throws SQLException {
         nextUserId = (UserService.predictNextId() - 1);
-        nextCustomerId = (CustomerService.predictNextId() - 1);
+        //nextCustomerId = (CustomerService.predictNextId() - 1);
         this.currentGym = GymService.getGym();
     }
 
@@ -82,7 +80,7 @@ public class HomeController extends CommonClass implements Initializable {
             initTable();
             searchFilter();
             usersCount.setText(nextUserId == 1 ? nextUserId + " user" : nextUserId + " users");
-            customersCount.setText(nextCustomerId == 1 ? nextCustomerId + " member" : nextCustomerId + " members");
+          //  customersCount.setText(nextCustomerId == 1 ? nextCustomerId + " member" : nextCustomerId + " members");
             edahab.setText("eDahab: " + currentGym.geteDahab());
             zaad.setText("Zaad: " + currentGym.getZaad());
 

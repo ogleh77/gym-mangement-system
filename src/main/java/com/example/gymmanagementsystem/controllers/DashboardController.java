@@ -4,7 +4,7 @@ import animatefx.animation.SlideInLeft;
 import animatefx.animation.SlideOutLeft;
 import com.example.gymmanagementsystem.controllers.done.HomeController;
 import com.example.gymmanagementsystem.controllers.done.RegistrationsController;
-import com.example.gymmanagementsystem.dao.GymService;
+import com.example.gymmanagementsystem.dao.service.GymService;
 import com.example.gymmanagementsystem.entities.Customers;
 import com.example.gymmanagementsystem.entities.Gym;
 import com.example.gymmanagementsystem.helpers.CommonClass;

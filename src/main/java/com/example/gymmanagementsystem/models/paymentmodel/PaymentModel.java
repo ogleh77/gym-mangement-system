@@ -1,11 +1,11 @@
-package com.example.gymmanagementsystem.models.main;
+package com.example.gymmanagementsystem.models.paymentmodel;
 
-import com.example.gymmanagementsystem.dao.BoxService;
+import com.example.gymmanagementsystem.dao.service.BoxService;
 import com.example.gymmanagementsystem.entities.Box;
 import com.example.gymmanagementsystem.entities.Payments;
 import com.example.gymmanagementsystem.helpers.CustomException;
 import com.example.gymmanagementsystem.helpers.DbConnection;
-import com.example.gymmanagementsystem.models.DailyReportModel;
+import com.example.gymmanagementsystem.models.service.DailyReportModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -134,7 +134,20 @@ public class PaymentModel {
 
     }
 
-    public ObservableList<Payments> fetchCustomersOnlinePayment(String customerPhone) throws SQLException {
+
+    //---------------------------------Payment Lists-----------------------
+
+
+    public ObservableList<Payments> fetchAllPayments(String phone) throws SQLException {
+        ObservableList<Payments> payments = FXCollections.observableArrayList();
+        Statement statement = connection.createStatement();
+
+        ResultSet rs = statement.executeQuery("SELECT * FROM payments LEFT JOIN box b on payments.box_fk = b.box_id " + "WHERE customer_phone_fk=" + phone + " ORDER BY exp_date DESC ");
+
+        return getPayments(payments, statement, rs);
+    }
+
+    public ObservableList<Payments> fetchAllOnlinePayment(String customerPhone) throws SQLException {
 
         ObservableList<Payments> payments = FXCollections.observableArrayList();
         Statement statement = connection.createStatement();
@@ -144,60 +157,48 @@ public class PaymentModel {
         return getPayments(payments, statement, rs);
     }
 
-//    public ObservableList<Payments> fetchCustomersOfflinePayment(String customerPhone) throws SQLException {
-//
-//        ObservableList<Payments> payments = FXCollections.observableArrayList();
-//        Statement statement = connection.createStatement();
-//        ResultSet rs = statement.executeQuery("SELECT * FROM payments LEFT JOIN box b on payments.box_fk = b.box_id " + "WHERE customer_phone_fk=" + customerPhone + "  AND pending=false AND is_online=false ");
-//        return getPayments(payments, statement, rs);
-//
-//    }
-
-    public ObservableList<Payments> fetchAllCustomersPayments(String phone) throws SQLException {
-        ObservableList<Payments> payments = FXCollections.observableArrayList();
-        Statement statement = connection.createStatement();
-
-        ResultSet rs = statement.executeQuery("SELECT * FROM payments LEFT JOIN box b on payments.box_fk = b.box_id " + "WHERE customer_phone_fk=" + phone + " ORDER BY exp_date DESC ");
-
-        return getPayments(payments, statement, rs);
-    }
-
-    public ObservableList<Payments> fetchQualifiedOfflinePayment(String customerPhone, String fromDate, String toDate) throws SQLException {
+    public ObservableList<Payments> fetchOfflinePaymentWhereDate(String customerPhone, LocalDate from, LocalDate to) throws SQLException {
 
         ObservableList<Payments> payments = FXCollections.observableArrayList();
         Statement statement = connection.createStatement();
+
         String query = "SELECT * FROM payments LEFT JOIN box b on payments.box_fk = b.box_id " +
-                "WHERE customer_phone_fk= '" + customerPhone + "' AND pending=false " +
-                "AND is_online=false AND exp_date BETWEEN '" + fromDate + "' AND '" + toDate + "';";
+                "WHERE customer_phone_fk= '" + customerPhone + "' AND is_online=false AND pending=false " +
+                "AND exp_date BETWEEN '" + from + "' AND '" + to + "';";
 
         ResultSet rs = statement.executeQuery(query);
-
-        getPayments(payments, statement, rs);
-        statement.close();
-        rs.close();
-        return payments;
+        return PaymentModel.getPayments(payments, statement, rs);
 
     }
 
-    public static void offPayment(Payments payment) throws SQLException {
-        connection.setAutoCommit(false);
-        try {
-            Statement statement = connection.createStatement();
-            String query = "UPDATE payments SET is_online=false WHERE payment_id=" + payment.getPaymentID();
-            if (payment.getBox() != null) {
-                BoxService.updateBox(payment.getBox());
-            }
-            statement.executeUpdate(query);
-            connection.commit();
-        } catch (SQLException e) {
-            connection.rollback();
-            e.printStackTrace();
-            throw new CustomException("Khalad ayaa dhacay mmarka lama off garaynyay paymentkan " + e.getMessage());
-        }
+    public ObservableList<Payments> fetchOnlinePaymentWhereDate(String customerPhone, LocalDate from, LocalDate to) throws SQLException {
+
+        ObservableList<Payments> payments = FXCollections.observableArrayList();
+        Statement statement = connection.createStatement();
+
+        String query = "SELECT * FROM payments LEFT JOIN box b on payments.box_fk = b.box_id " +
+                "WHERE customer_phone_fk= '" + customerPhone + "' AND is_online=true AND exp_date BETWEEN '" + from + "' AND '" + to + "';";
+
+
+        ResultSet rs = statement.executeQuery(query);
+        return PaymentModel.getPayments(payments, statement, rs);
 
     }
-    //__________------------Helpers____________-----------
 
+    public ObservableList<Payments> fetchPendingPaymentWhereDate(String customerPhone, LocalDate from, LocalDate to) throws SQLException {
+
+        ObservableList<Payments> payments = FXCollections.observableArrayList();
+        Statement statement = connection.createStatement();
+
+        String query = "SELECT * FROM payments LEFT JOIN box b on payments.box_fk = b.box_id " +
+                "WHERE customer_phone_fk= '" + customerPhone + "' AND pending=true AND exp_date BETWEEN '" + from + "' AND '" + to + "';";
+
+
+        ResultSet rs = statement.executeQuery(query);
+        return PaymentModel.getPayments(payments, statement, rs);
+    }
+
+    //---------------------------------Helpers-----------------------------
 
     private static void makeReport(Payments payment, String customerGender) throws SQLException {
         Statement st = connection.createStatement();
@@ -245,5 +246,4 @@ public class PaymentModel {
     public static Payments getPayments(ResultSet rs) throws SQLException {
         return new Payments(rs.getInt("payment_id"), LocalDate.parse(rs.getString("start_date")), LocalDate.parse(rs.getString("exp_date")), rs.getString("month"), rs.getString("year"), rs.getDouble("amount_paid"), rs.getString("paid_by"), rs.getDouble("discount"), rs.getBoolean("poxing"), rs.getString("customer_phone_fk"), rs.getBoolean("is_online"), rs.getBoolean("pending"));
     }
-
 }

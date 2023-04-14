@@ -1,11 +1,11 @@
-package com.example.gymmanagementsystem.dao;
+package com.example.gymmanagementsystem.dao.service;
 
 
 
 
 import com.example.gymmanagementsystem.entities.Users;
 import com.example.gymmanagementsystem.helpers.CustomException;
-import com.example.gymmanagementsystem.models.UserModel;
+import com.example.gymmanagementsystem.models.service.UserModel;
 import javafx.collections.ObservableList;
 
 import java.sql.SQLException;

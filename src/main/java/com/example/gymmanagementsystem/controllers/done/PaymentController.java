@@ -1,8 +1,8 @@
 package com.example.gymmanagementsystem.controllers.done;
 
 import animatefx.animation.FadeIn;
-import com.example.gymmanagementsystem.dao.GymService;
-import com.example.gymmanagementsystem.dao.PaymentService;
+import com.example.gymmanagementsystem.dao.service.GymService;
+//import com.example.gymmanagementsystem.dao.main.PaymentService;
 import com.example.gymmanagementsystem.entities.Box;
 import com.example.gymmanagementsystem.entities.Customers;
 import com.example.gymmanagementsystem.entities.Gym;
@@ -153,11 +153,11 @@ public class PaymentController extends CommonClass implements Initializable {
     }
 
     public void checkPayment(Customers customer) {
-        try {
-            paymentsList = PaymentService.fetchAllCustomersPayments(customer.getPhone());
-        } catch (SQLException e) {
-            errorMessage(e.getMessage());
-        }
+//        try {
+//            paymentsList = PaymentService.fetchAllCustomersPayments(customer.getPhone());
+//        } catch (SQLException e) {
+//            errorMessage(e.getMessage());
+//        }
         for (Payments payment : paymentsList) {
             if (payment.isOnline()) {
                 System.out.println("Payment is online "+payment.getExpDate()+" "+payment.isOnline());
@@ -322,7 +322,7 @@ public class PaymentController extends CommonClass implements Initializable {
         updatePayment.setOnline(updatePayment.isOnline());
         updatePayment.setPending(updatePayment.isPending());
         updatePayment.setPaidBy(paidBy.getValue());
-        PaymentService.updatePayment(updatePayment);
+        //PaymentService.updatePayment(updatePayment);
     }
 
 
@@ -333,6 +333,6 @@ public class PaymentController extends CommonClass implements Initializable {
             payment.setBox(boxChooser.getValue());
         }
         customer.getPayments().add(0, payment);
-        PaymentService.insertPayment(customer);
+        //PaymentService.insertPayment(customer);
     }
 }

@@ -1,8 +1,8 @@
-package com.example.gymmanagementsystem.dao;
+package com.example.gymmanagementsystem.dao.service;
 
 import com.example.gymmanagementsystem.entities.Gym;
 import com.example.gymmanagementsystem.helpers.CustomException;
-import com.example.gymmanagementsystem.models.GymModel;
+import com.example.gymmanagementsystem.models.service.GymModel;
 
 import java.sql.SQLException;
 

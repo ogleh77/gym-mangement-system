@@ -1,6 +1,6 @@
 package com.example.gymmanagementsystem.controllers.done;
 
-import com.example.gymmanagementsystem.dao.UserService;
+import com.example.gymmanagementsystem.dao.service.UserService;
 import com.example.gymmanagementsystem.entities.Users;
 import com.example.gymmanagementsystem.helpers.CommonClass;
 import com.jfoenix.controls.JFXButton;

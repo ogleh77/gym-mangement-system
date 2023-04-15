@@ -5,13 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c1a3bea-8a57-435b-b5d9-43e3f4a593e0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/ReportControllerHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/dailyReports.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dao/main/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dao/main/CustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/DailyReportController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/DashboardController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/SecondCantaroller.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/TestController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/done/CustomerInfoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/done/GymController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/done/HomeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/done/PaymentController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/done/RegistrationsController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/done/UserCreationController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/done/UserUpdateController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/services/CustomerProfileController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/services/RealReportController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/helpers/CommonClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/helpers/CommonClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/~$customers.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/~$offline_customers.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/~$online_customers.xlsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,35 +55,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/mrd/Desktop/gym-management-system/src/main/java/com/example/gymmanagementsystem/controllers&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "dart.analysis.tool.window.visible": "false",
+    "extract.method.default.visibility": "private",
+    "last_opened_file_path": "/Users/mrd/Desktop/gym-management-system/src/main/resources/com/example/gymmanagementsystem/newviews",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;sqlite&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlite"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews" />
       <recent name="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/views" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/views/service" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/service" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dao" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/style/icons" />
@@ -151,17 +164,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ExportDataToExcelTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="com.example.gymmanagementsystem.newviews in gym-management-system" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="gym-management-system" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.gymmanagementsystem.exporttoxls.*" />
+          <option name="PATTERN" value="com.example.gymmanagementsystem.newviews.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.gymmanagementsystem.exporttoxls" />
-      <option name="MAIN_CLASS_NAME" value="com.example.gymmanagementsystem.exporttoxls.ExportDataToExcelTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="com.example.gymmanagementsystem.newviews" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -169,10 +181,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.HelloApplication" />
+        <item itemvalue="JUnit.com.example.gymmanagementsystem.newviews in gym-management-system" />
         <item itemvalue="JUnit.DataTest" />
         <item itemvalue="JUnit.DataTest.setDataTest" />
         <item itemvalue="JUnit.DataTest.dataTest" />
-        <item itemvalue="JUnit.ExportDataToExcelTest" />
       </list>
     </recent_temporary>
   </component>
@@ -210,7 +222,8 @@
       <workItem from="1681449387911" duration="11496000" />
       <workItem from="1681470519296" duration="8882000" />
       <workItem from="1681537665126" duration="10242000" />
-      <workItem from="1681555971165" duration="3034000" />
+      <workItem from="1681555971165" duration="3125000" />
+      <workItem from="1681563506514" duration="4620000" />
     </task>
     <servers />
   </component>

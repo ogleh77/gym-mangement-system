@@ -221,7 +221,7 @@ public abstract class CommonClass {
         return fadeIn;
     }
 
-    private Shake getShake() {
+    public Shake getShake() {
         if (shake == null) {
             shake = new Shake();
             System.out.println("Shake init");

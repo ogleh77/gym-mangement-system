@@ -1,4 +1,4 @@
-package com.example.gymmanagementsystem.controllers.printer;
+package com.example.gymmanagementsystem.exporttoxls;
 
 import com.example.gymmanagementsystem.entities.main.Customers;
 import com.example.gymmanagementsystem.entities.main.Payments;
@@ -12,7 +12,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.File;
 import java.io.FileOutputStream;
 
-public class PrinterToXls {
+public class ExportDataToExcel {
 
     public static void exportAllCustomersToXls(ObservableList<Customers> customers, File file) {
         try (Workbook workbook = new XSSFWorkbook()) {
@@ -61,35 +61,44 @@ public class PrinterToXls {
         }
     }
 
-    public static void exportPendingCustomersToXls(ObservableList<Customers> customers, File file) {
+    public static void exportPendingCustomersToExcel(ObservableList<Customers> customers, File file) {
         try (Workbook workbook = new XSSFWorkbook()) {
-            XSSFSheet sheet = (XSSFSheet) workbook.createSheet("Pending customers");
-
-            sheet.setColumnWidth(0, 8000);
-
-            sheet.setColumnWidth(4, 4500);
-
-            sheet.setColumnWidth(6, 4500);
-
-            sheet.setZoom(150);
-
-            createHeader(true, sheet);
-
-            int rowCount = 2;
-            for (Customers customer : customers) {
-
-                commonRows(sheet, rowCount, customer);
-                rowCount++;
-            }
-            saveToXlsFile(file, workbook);
+            XSSFSheet sheet = (XSSFSheet) workbook.createSheet("pending customers");
+            sameFieldsOfflineAndOnline(customers, file, sheet, false);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
+//    public static void exportPendingCustomersToXls(ObservableList<Customers> customers, File file) {
+//        try (Workbook workbook = new XSSFWorkbook()) {
+//            XSSFSheet sheet = (XSSFSheet) workbook.createSheet("Pending customers");
+//
+//            sheet.setColumnWidth(0, 8000);
+//
+//            sheet.setColumnWidth(4, 4500);
+//
+//            sheet.setColumnWidth(6, 4500);
+//
+//            sheet.setZoom(150);
+//
+//            createHeader(true, sheet);
+//
+//            int rowCount = 2;
+//            for (Customers customer : customers) {
+//
+//                commonRows(sheet, rowCount, customer);
+//                rowCount++;
+//            }
+//            saveToXlsFile(file, workbook);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+
+
     //-------------------------helpers---------------------
-    public static void commonRows(XSSFSheet sheet, int rowCount, Customers customer) {
+
+    private static void commonRows(XSSFSheet sheet, int rowCount, Customers customer) {
 
         XSSFRow row = sheet.createRow(rowCount);
 
@@ -106,8 +115,6 @@ public class PrinterToXls {
         row.createCell(9).setCellValue(customer.getChest() + " cm");
         row.createCell(10).setCellValue(customer.getWaist() + " cm");
     }
-
-
     private static void sameFieldsOfflineAndOnline(ObservableList<Customers> customers, File file, XSSFSheet sheet, boolean isOffline) {
         sheet.setColumnWidth(0, 8000);
 
@@ -148,7 +155,6 @@ public class PrinterToXls {
 
         saveToXlsFile(file, sheet.getWorkbook());
     }
-
     private static void createHeader(boolean customersOnly, Sheet sheet) {
 
         XSSFRow header = (XSSFRow) sheet.createRow(0);
@@ -195,7 +201,6 @@ public class PrinterToXls {
 
         }
     }
-
     private static void saveToXlsFile(File file, Workbook workbook) {
         try {
             FileOutputStream outputStream = new FileOutputStream(file);

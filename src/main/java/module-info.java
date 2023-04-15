@@ -15,5 +15,7 @@ module com.example.gymmanagementsystem {
     opens com.example.gymmanagementsystem.controllers.services to javafx.fxml;
      exports com.example.gymmanagementsystem.entities.main;
     exports com.example.gymmanagementsystem.entities.service;
+    opens com.example.gymmanagementsystem.dao to javafx.fxml;
+    exports com.example.gymmanagementsystem.controllers;
 
 }

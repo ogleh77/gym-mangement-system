@@ -76,17 +76,11 @@ public class CustomerService {
 
 
     public static ObservableList<Customers> fetchAllCustomer(Users activeUser) throws SQLException {
-        if (allCustomersList == null) {
-            allCustomersList = customerModel.fetchAllCustomers(activeUser);
-        }
-        return allCustomersList;
+        return allCustomersList = customerModel.fetchAllCustomers(activeUser);
     }
 
     public static ObservableList<Customers> fetchAllOnlineCustomer(Users activeUser) throws SQLException {
-        if (onlineCustomers == null) {
-            onlineCustomers = customerModel.fetchOnlineCustomers(activeUser);
-        }
-        return onlineCustomers;
+        return customerModel.fetchOnlineCustomers(activeUser);
     }
 
 

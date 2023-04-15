@@ -1,6 +1,6 @@
 package com.example.gymmanagementsystem.dao.service;
 
-import com.example.gymmanagementsystem.entities.Gym;
+import com.example.gymmanagementsystem.entities.service.Gym;
 import com.example.gymmanagementsystem.helpers.CustomException;
 import com.example.gymmanagementsystem.models.service.GymModel;
 

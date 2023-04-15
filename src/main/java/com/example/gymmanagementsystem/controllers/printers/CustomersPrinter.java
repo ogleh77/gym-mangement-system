@@ -1,6 +1,6 @@
 package com.example.gymmanagementsystem.controllers.printers;
 
-import com.example.gymmanagementsystem.entities.Customers;
+import com.example.gymmanagementsystem.entities.main.Customers;
 import javafx.collections.ObservableList;
 import javafx.stage.FileChooser;
 import org.apache.poi.ss.usermodel.Cell;

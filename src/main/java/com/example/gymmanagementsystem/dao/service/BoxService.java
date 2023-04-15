@@ -1,7 +1,7 @@
 package com.example.gymmanagementsystem.dao.service;
 
 
-import com.example.gymmanagementsystem.entities.Box;
+import com.example.gymmanagementsystem.entities.service.Box;
 import com.example.gymmanagementsystem.helpers.CustomException;
 import com.example.gymmanagementsystem.models.service.BoxModel;
 import javafx.collections.ObservableList;

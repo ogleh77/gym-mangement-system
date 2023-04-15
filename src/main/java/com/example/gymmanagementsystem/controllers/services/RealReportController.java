@@ -1,6 +1,6 @@
 package com.example.gymmanagementsystem.controllers.services;
 
-import com.example.gymmanagementsystem.entities.Customers;
+import com.example.gymmanagementsystem.entities.main.Customers;
 import com.example.gymmanagementsystem.helpers.CommonClass;
 import javafx.fxml.Initializable;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;

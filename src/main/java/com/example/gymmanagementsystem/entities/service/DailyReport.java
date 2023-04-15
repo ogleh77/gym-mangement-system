@@ -1,4 +1,4 @@
-package com.example.gymmanagementsystem.entities;
+package com.example.gymmanagementsystem.entities.service;
 
 public class DailyReport {
     private final String day;

@@ -1,9 +1,9 @@
-package com.example.gymmanagementsystem.dao.customerservice;
+package com.example.gymmanagementsystem.dao.main;
 
-import com.example.gymmanagementsystem.entities.Customers;
-import com.example.gymmanagementsystem.entities.Payments;
+import com.example.gymmanagementsystem.entities.main.Customers;
+import com.example.gymmanagementsystem.entities.main.Payments;
 import com.example.gymmanagementsystem.helpers.CustomException;
-import com.example.gymmanagementsystem.models.paymentmodel.PaymentModel;
+import com.example.gymmanagementsystem.models.main.PaymentModel;
 import javafx.collections.ObservableList;
 
 import java.sql.SQLException;

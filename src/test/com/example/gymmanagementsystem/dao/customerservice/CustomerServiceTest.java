@@ -1,7 +1,8 @@
 package com.example.gymmanagementsystem.dao.customerservice;
 
+import com.example.gymmanagementsystem.dao.main.CustomerService;
 import com.example.gymmanagementsystem.dao.service.UserService;
-import com.example.gymmanagementsystem.entities.Users;
+import com.example.gymmanagementsystem.entities.service.Users;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;

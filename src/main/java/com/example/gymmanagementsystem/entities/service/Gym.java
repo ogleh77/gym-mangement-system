@@ -1,4 +1,4 @@
-package com.example.gymmanagementsystem.entities;
+package com.example.gymmanagementsystem.entities.service;
 
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;

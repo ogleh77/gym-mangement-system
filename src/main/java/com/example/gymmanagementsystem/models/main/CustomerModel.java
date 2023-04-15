@@ -1,9 +1,9 @@
-package com.example.gymmanagementsystem.models.customermodel;
+package com.example.gymmanagementsystem.models.main;
 
-import com.example.gymmanagementsystem.dao.customerservice.PaymentService;
-import com.example.gymmanagementsystem.entities.Customers;
-import com.example.gymmanagementsystem.entities.Payments;
-import com.example.gymmanagementsystem.entities.Users;
+import com.example.gymmanagementsystem.dao.main.PaymentService;
+import com.example.gymmanagementsystem.entities.main.Customers;
+import com.example.gymmanagementsystem.entities.main.Payments;
+import com.example.gymmanagementsystem.entities.service.Users;
 import com.example.gymmanagementsystem.helpers.DbConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

@@ -2,11 +2,10 @@ package com.example.gymmanagementsystem.controllers.done;
 
 import com.example.gymmanagementsystem.dao.service.GymService;
 
-import com.example.gymmanagementsystem.entities.Customers;
-import com.example.gymmanagementsystem.entities.Gym;
-import com.example.gymmanagementsystem.entities.Payments;
+import com.example.gymmanagementsystem.entities.main.Customers;
+import com.example.gymmanagementsystem.entities.service.Gym;
+import com.example.gymmanagementsystem.entities.main.Payments;
 import com.example.gymmanagementsystem.helpers.CommonClass;
-import com.example.gymmanagementsystem.helpers.CustomException;
 import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
@@ -27,7 +26,6 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class CustomerInfoController extends CommonClass implements Initializable {

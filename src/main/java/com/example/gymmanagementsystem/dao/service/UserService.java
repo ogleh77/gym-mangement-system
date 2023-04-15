@@ -3,7 +3,7 @@ package com.example.gymmanagementsystem.dao.service;
 
 
 
-import com.example.gymmanagementsystem.entities.Users;
+import com.example.gymmanagementsystem.entities.service.Users;
 import com.example.gymmanagementsystem.helpers.CustomException;
 import com.example.gymmanagementsystem.models.service.UserModel;
 import javafx.collections.ObservableList;

@@ -2,9 +2,9 @@ package com.example.gymmanagementsystem.controllers.done;
 
 //import com.example.gymmanagementsystem.dao.main.CustomerService;
 import com.example.gymmanagementsystem.dao.service.GymService;
-import com.example.gymmanagementsystem.entities.Customers;
-import com.example.gymmanagementsystem.entities.Gym;
-import com.example.gymmanagementsystem.entities.Users;
+import com.example.gymmanagementsystem.entities.main.Customers;
+import com.example.gymmanagementsystem.entities.service.Gym;
+import com.example.gymmanagementsystem.entities.service.Users;
 import com.example.gymmanagementsystem.helpers.CommonClass;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXRadioButton;

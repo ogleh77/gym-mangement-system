@@ -1,5 +1,6 @@
-package com.example.gymmanagementsystem.entities;
+package com.example.gymmanagementsystem.entities.main;
 
+import com.example.gymmanagementsystem.entities.service.Box;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;

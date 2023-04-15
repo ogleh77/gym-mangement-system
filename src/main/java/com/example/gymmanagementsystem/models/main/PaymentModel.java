@@ -1,8 +1,8 @@
-package com.example.gymmanagementsystem.models.paymentmodel;
+package com.example.gymmanagementsystem.models.main;
 
 import com.example.gymmanagementsystem.dao.service.BoxService;
-import com.example.gymmanagementsystem.entities.Box;
-import com.example.gymmanagementsystem.entities.Payments;
+import com.example.gymmanagementsystem.entities.service.Box;
+import com.example.gymmanagementsystem.entities.main.Payments;
 import com.example.gymmanagementsystem.helpers.CustomException;
 import com.example.gymmanagementsystem.helpers.DbConnection;
 import com.example.gymmanagementsystem.models.service.DailyReportModel;

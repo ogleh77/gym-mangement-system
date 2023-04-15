@@ -5,12 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c1a3bea-8a57-435b-b5d9-43e3f4a593e0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/customermodel/CustomerModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customers.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/offline.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/online_customers.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/printer/PrinterToXls.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/xlsfiles/PrintCustomersToXls.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/xlsfiles/PrintOfflineCustomersXls.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/xlsfiles/PrintOnlineCustomersXls.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/xlsfiles/PrintToExcel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/com/example/gymmanagementsystem/controllers/printer/PrinterToXlsTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/com/example/gymmanagementsystem/xlsfiles/PrintToExcelTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/~$customers.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/~$offline.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customers.xls" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onlinePayments.xls" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/HelloApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/DailyReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/DailyReportController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/DashboardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/done/CustomerInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/done/CustomerInfoController.java" afterDir="false" />
@@ -20,23 +28,29 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/done/RegistrationsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/done/RegistrationsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/done/UserCreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/done/UserCreationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/done/UserUpdateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/done/UserUpdateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dao/BoxService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dao/service/BoxService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dao/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dao/customerservice/CustomerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dao/GymService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dao/service/GymService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dao/PaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dao/customerservice/PaymentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dao/QualifiedPaymentsDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dao/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dao/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/entities/Payments.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/entities/Payments.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/BoxModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/service/BoxModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/DailyReportModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/service/DailyReportModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/GymModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/service/GymModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/UserModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/service/UserModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/main/CustomerModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/main/PaymentModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/paymentmodel/PaymentModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/main/QualifiedDateCustomers.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/main/QualifiedDatePayments.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/com/example/gymmanagementsystem/models/main/QualifiedDateCustomersTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/com/example/gymmanagementsystem/models/main/QualifiedDatePaymentsTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/printers/CustomersPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/printers/CustomersPrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/services/CustomerProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/services/CustomerProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/services/RealReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/services/RealReportController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dao/customerservice/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dao/main/CustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dao/customerservice/PaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dao/main/PaymentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dao/service/BoxService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dao/service/BoxService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dao/service/GymService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dao/service/GymService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dao/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dao/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/entities/Box.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/entities/service/Box.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/entities/Customers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/entities/main/Customers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/entities/DailyReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/entities/service/DailyReport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/entities/Gym.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/entities/service/Gym.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/entities/Payments.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/entities/main/Payments.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/entities/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/entities/service/Users.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/helpers/CommonClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/helpers/CommonClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/customermodel/CustomerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/main/CustomerModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/paymentmodel/PaymentModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/main/PaymentModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/service/BoxModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/service/BoxModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/service/DailyReportModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/service/DailyReportModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/service/GymModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/service/GymModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/service/UserModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/service/UserModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/com/example/gymmanagementsystem/dao/customerservice/CustomerServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/com/example/gymmanagementsystem/dao/customerservice/CustomerServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,88 +122,87 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.example.gymmanagementsystem.controllers.printer" />
+      <recent name="com.example.gymmanagementsystem.xlsfiles" />
       <recent name="com.example.gymmanagementsystem.dao.customerservice" />
       <recent name="com.example.gymmanagementsystem.models.main" />
       <recent name="com.example.gymmanagementsystem.dao" />
-      <recent name="com.example.gymmanagementsystem.controllers" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CustomerServiceTest.fetchPendCustomersWhereDateBetween">
-    <configuration name="CustomerServiceTest.fetchAllCustomer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.PrinterToXlsTest">
+    <configuration name="PrintToExcelTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="gym-management-system" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.gymmanagementsystem.dao.customerservice.*" />
+          <option name="PATTERN" value="com.example.gymmanagementsystem.xlsfiles.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.gymmanagementsystem.dao.customerservice" />
-      <option name="MAIN_CLASS_NAME" value="com.example.gymmanagementsystem.dao.customerservice.CustomerServiceTest" />
-      <option name="METHOD_NAME" value="fetchAllCustomer" />
+      <option name="PACKAGE_NAME" value="com.example.gymmanagementsystem.xlsfiles" />
+      <option name="MAIN_CLASS_NAME" value="com.example.gymmanagementsystem.xlsfiles.PrintToExcelTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PrintToExcelTest.exportOfflineCustomersToExcel" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="gym-management-system" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.gymmanagementsystem.xlsfiles.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.gymmanagementsystem.xlsfiles" />
+      <option name="MAIN_CLASS_NAME" value="com.example.gymmanagementsystem.xlsfiles.PrintToExcelTest" />
+      <option name="METHOD_NAME" value="exportOfflineCustomersToExcel" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CustomerServiceTest.fetchAllOnlineCustomer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PrinterToXlsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="gym-management-system" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.gymmanagementsystem.dao.customerservice.*" />
+          <option name="PATTERN" value="com.example.gymmanagementsystem.controllers.printer.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.gymmanagementsystem.dao.customerservice" />
-      <option name="MAIN_CLASS_NAME" value="com.example.gymmanagementsystem.dao.customerservice.CustomerServiceTest" />
-      <option name="METHOD_NAME" value="fetchAllOnlineCustomer" />
+      <option name="PACKAGE_NAME" value="com.example.gymmanagementsystem.controllers.printer" />
+      <option name="MAIN_CLASS_NAME" value="com.example.gymmanagementsystem.controllers.printer.PrinterToXlsTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PrinterToXlsTest.exportOnlineCustomersToExcel" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="gym-management-system" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.gymmanagementsystem.controllers.printer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.gymmanagementsystem.controllers.printer" />
+      <option name="MAIN_CLASS_NAME" value="com.example.gymmanagementsystem.controllers.printer.PrinterToXlsTest" />
+      <option name="METHOD_NAME" value="exportOnlineCustomersToExcel" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CustomerServiceTest.fetchOfflineCustomersWhereDateBetween" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PrinterToXlsTest.printAllCustomersToXls" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="gym-management-system" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.gymmanagementsystem.dao.customerservice.*" />
+          <option name="PATTERN" value="com.example.gymmanagementsystem.controllers.printer.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.gymmanagementsystem.dao.customerservice" />
-      <option name="MAIN_CLASS_NAME" value="com.example.gymmanagementsystem.dao.customerservice.CustomerServiceTest" />
-      <option name="METHOD_NAME" value="fetchOfflineCustomersWhereDateBetween" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CustomerServiceTest.fetchOnlineCustomersWhereDateBetween" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="gym-management-system" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.gymmanagementsystem.dao.customerservice.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.gymmanagementsystem.dao.customerservice" />
-      <option name="MAIN_CLASS_NAME" value="com.example.gymmanagementsystem.dao.customerservice.CustomerServiceTest" />
-      <option name="METHOD_NAME" value="fetchOnlineCustomersWhereDateBetween" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CustomerServiceTest.fetchPendCustomersWhereDateBetween" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="gym-management-system" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.gymmanagementsystem.dao.customerservice.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.gymmanagementsystem.dao.customerservice" />
-      <option name="MAIN_CLASS_NAME" value="com.example.gymmanagementsystem.dao.customerservice.CustomerServiceTest" />
-      <option name="METHOD_NAME" value="fetchPendCustomersWhereDateBetween" />
+      <option name="PACKAGE_NAME" value="com.example.gymmanagementsystem.controllers.printer" />
+      <option name="MAIN_CLASS_NAME" value="com.example.gymmanagementsystem.controllers.printer.PrinterToXlsTest" />
+      <option name="METHOD_NAME" value="printAllCustomersToXls" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -197,11 +210,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CustomerServiceTest.fetchPendCustomersWhereDateBetween" />
-        <item itemvalue="JUnit.CustomerServiceTest.fetchOfflineCustomersWhereDateBetween" />
-        <item itemvalue="JUnit.CustomerServiceTest.fetchOnlineCustomersWhereDateBetween" />
-        <item itemvalue="JUnit.CustomerServiceTest.fetchAllOnlineCustomer" />
-        <item itemvalue="JUnit.CustomerServiceTest.fetchAllCustomer" />
+        <item itemvalue="JUnit.PrinterToXlsTest" />
+        <item itemvalue="JUnit.PrinterToXlsTest.exportOnlineCustomersToExcel" />
+        <item itemvalue="JUnit.PrinterToXlsTest.printAllCustomersToXls" />
+        <item itemvalue="JUnit.PrintToExcelTest" />
+        <item itemvalue="JUnit.PrintToExcelTest.exportOfflineCustomersToExcel" />
       </list>
     </recent_temporary>
   </component>
@@ -237,7 +250,8 @@
       <workItem from="1681413420922" duration="407000" />
       <workItem from="1681416256342" duration="532000" />
       <workItem from="1681449387911" duration="11496000" />
-      <workItem from="1681470519296" duration="8643000" />
+      <workItem from="1681470519296" duration="8882000" />
+      <workItem from="1681537665126" duration="9280000" />
     </task>
     <servers />
   </component>

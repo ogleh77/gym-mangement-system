@@ -1,11 +1,9 @@
-package com.example.gymmanagementsystem.entities;
+package com.example.gymmanagementsystem.entities.main;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
-import java.util.Arrays;
 
 public class Customers implements Comparable<Customers> {
     private int customerId;

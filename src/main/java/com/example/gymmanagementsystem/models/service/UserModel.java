@@ -1,6 +1,6 @@
 package com.example.gymmanagementsystem.models.service;
 
-import com.example.gymmanagementsystem.entities.Users;
+import com.example.gymmanagementsystem.entities.service.Users;
 import com.example.gymmanagementsystem.helpers.DbConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

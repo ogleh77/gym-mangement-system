@@ -2,9 +2,8 @@ package com.example.gymmanagementsystem.controllers;
 
 import com.example.gymmanagementsystem.controllers.printers.CustomersPrinter;
 //import com.example.gymmanagementsystem.dao.main.CustomerService;
-import com.example.gymmanagementsystem.entities.Customers;
-import com.example.gymmanagementsystem.entities.DailyReport;
-import com.example.gymmanagementsystem.entities.Users;
+import com.example.gymmanagementsystem.entities.service.DailyReport;
+import com.example.gymmanagementsystem.entities.service.Users;
 import com.example.gymmanagementsystem.helpers.CommonClass;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;

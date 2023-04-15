@@ -1,8 +1,8 @@
 package com.example.gymmanagementsystem.helpers;
 
 import animatefx.animation.*;
-import com.example.gymmanagementsystem.entities.Customers;
-import com.example.gymmanagementsystem.entities.Users;
+import com.example.gymmanagementsystem.entities.main.Customers;
+import com.example.gymmanagementsystem.entities.service.Users;
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

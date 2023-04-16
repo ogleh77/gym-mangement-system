@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="996.0" styleClass="home-pane" stylesheets="@../../style/css/long-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.done.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="996.0" styleClass="home-pane" stylesheets="@../../style/css/long-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.main.HomeController">
     <HBox alignment="CENTER" prefWidth="1150.0" spacing="490.0" styleClass="top-pane" AnchorPane.bottomAnchor="680.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0">
         <Label maxWidth="-Infinity" prefHeight="29.0" prefWidth="138.0" styleClass="top-label" text="HOME PAGE">
             <HBox.margin>
@@ -39,13 +39,14 @@
             <columns>
                 <TableColumn fx:id="customerId" prefWidth="66.0" text="Id" />
                 <TableColumn fx:id="fullName" prefWidth="208.0" text="Full name" />
-                <TableColumn fx:id="phone" prefWidth="101.0" text="phone" />
-                <TableColumn fx:id="gander" prefWidth="96.0" text="gander" />
-                <TableColumn fx:id="shift" prefWidth="111.0" text="shift" />
-                <TableColumn fx:id="address" prefWidth="152.0" text="address" />
-                <TableColumn fx:id="weight" prefWidth="115.0" text="weight" />
-                <TableColumn fx:id="waist" prefWidth="91.0" text="waist" />
-                <TableColumn fx:id="imagePath" prefWidth="133.0" text="image" />
+                <TableColumn fx:id="phone" prefWidth="93.0" text="phone" />
+                <TableColumn fx:id="gander" prefWidth="86.0" text="gander" />
+                <TableColumn fx:id="shift" prefWidth="94.0" text="shift" />
+                <TableColumn fx:id="address" prefWidth="128.0" text="address" />
+                <TableColumn fx:id="weight" prefWidth="89.0" text="weight" />
+                <TableColumn fx:id="waist" prefWidth="82.0" text="waist" />
+                <TableColumn fx:id="imagePath" prefWidth="92.0" text="image" />
+            <TableColumn fx:id="status" prefWidth="126.0" text=" status " />
             </columns>
         </TableView>
     </VBox>
@@ -174,9 +175,9 @@
                 <font>
                     <Font name="Verdana" size="14.0" />
                 </font>
-            <HBox.margin>
-               <Insets left="10.0" />
-            </HBox.margin>
+                <HBox.margin>
+                    <Insets left="10.0" />
+                </HBox.margin>
             </JFXButton>
             <JFXButton onAction="#fullInfoHandler" prefHeight="40.0" prefWidth="107.0" style="-fx-background-color: dodgerblue;" text="Info" textFill="#e4dfdf">
                 <graphic>

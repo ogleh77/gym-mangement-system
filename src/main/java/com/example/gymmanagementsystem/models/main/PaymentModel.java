@@ -1,8 +1,8 @@
 package com.example.gymmanagementsystem.models.main;
 
 import com.example.gymmanagementsystem.dao.service.BoxService;
-import com.example.gymmanagementsystem.entities.service.Box;
 import com.example.gymmanagementsystem.entities.main.Payments;
+import com.example.gymmanagementsystem.entities.service.Box;
 import com.example.gymmanagementsystem.helpers.CustomException;
 import com.example.gymmanagementsystem.helpers.DbConnection;
 import com.example.gymmanagementsystem.models.service.DailyReportModel;
@@ -70,6 +70,19 @@ public class PaymentModel {
             ps.close();
             System.out.println("Updated");
 
+        } catch (SQLException e) {
+            connection.rollback();
+            throw e;
+        }
+    }
+
+    public void deletePayment(Payments payment) throws SQLException {
+        connection.setAutoCommit(false);
+        try {
+            String query = "DELETE FROM payments WHERE payment_id=" + payment.getPaymentID();
+            Statement statement = connection.createStatement();
+            statement.execute(query);
+            connection.commit();
         } catch (SQLException e) {
             connection.rollback();
             throw e;

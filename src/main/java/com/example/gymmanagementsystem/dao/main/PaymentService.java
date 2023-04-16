@@ -36,6 +36,15 @@ public class PaymentService {
 
     }
 
+    public static void deletePayment(Payments payment) throws SQLException {
+        try {
+            paymentModel.deletePayment(payment);
+        } catch (SQLException e) {
+            throw new CustomException("SQL error " + e.getMessage());
+        }
+
+    }
+
     public static void holdPayment(Payments payment, int allowedDays) throws SQLException {
         try {
             LocalDate exp = payment.getExpDate();

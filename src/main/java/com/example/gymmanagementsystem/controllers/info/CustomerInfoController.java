@@ -7,7 +7,6 @@ import com.example.gymmanagementsystem.entities.main.Customers;
 import com.example.gymmanagementsystem.entities.main.Payments;
 import com.example.gymmanagementsystem.entities.service.Gym;
 import com.example.gymmanagementsystem.helpers.CommonClass;
-import com.example.gymmanagementsystem.helpers.CustomException;
 import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
@@ -23,7 +22,6 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -132,11 +130,9 @@ public class CustomerInfoController extends CommonClass implements Initializable
             hips.setText(customer.getHips() + " cm");
             foreArm.setText(customer.getForeArm() + " cm");
             chest.setText(customer.getChest() + " cm");
-            try {
-                payments = PaymentService.fetchAllPayments(customer.getPhone());
-            } catch (CustomException e) {
-                errorMessage(e.getMessage());
-            }
+
+            payments = customer.getPayments();
+
             if (customer.getImage() != null) {
                 ByteArrayInputStream bis = new ByteArrayInputStream(customer.getImage());
                 Image image = new Image(bis);
@@ -180,7 +176,7 @@ public class CustomerInfoController extends CommonClass implements Initializable
     }
 
     @FXML
-    void deleteHandler() throws IOException {
+    void deleteHandler() {
 
         if (tableView.getSelectionModel().getSelectedItem() != null) {
             Payments payment = tableView.getSelectionModel().getSelectedItem();
@@ -195,7 +191,7 @@ public class CustomerInfoController extends CommonClass implements Initializable
                 try {
                     PaymentService.deletePayment(payment);
                     payments.remove(payment);
-                 } catch (Exception e) {
+                } catch (Exception e) {
                     errorMessage(e.getMessage());
                 }
             } else {

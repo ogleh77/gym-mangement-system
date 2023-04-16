@@ -1,8 +1,6 @@
 package com.example.gymmanagementsystem.dao.service;
 
 
-
-
 import com.example.gymmanagementsystem.entities.service.Users;
 import com.example.gymmanagementsystem.helpers.CustomException;
 import com.example.gymmanagementsystem.models.service.UserModel;
@@ -11,6 +9,7 @@ import javafx.collections.ObservableList;
 import java.sql.SQLException;
 
 public class UserService {
+    private static int nextID = 0;
     private static final UserModel userModel;
     private static ObservableList<Users> users = null;
 
@@ -68,10 +67,14 @@ public class UserService {
     }
 
     public static int predictNextId() throws SQLException {
-        try {
-            return (userModel.nextID() + 1);
-        } catch (SQLException e) {
-            throw new CustomException("Khalad caused predict nextId " + e.getMessage());
+        if (nextID == 0) {
+            try {
+                return (userModel.nextID() + 1);
+            } catch (SQLException e) {
+                throw new CustomException("SQL error caused predict nextId " + e.getMessage());
+            }
         }
+        return nextID;
     }
+
 }

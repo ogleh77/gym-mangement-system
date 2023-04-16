@@ -65,8 +65,12 @@ public class CustomerModel {
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery(fetchCustomers);
 
+
         while (rs.next()) {
-            getCustomers(customers, rs, null);
+            String customerPhone = rs.getString("phone");
+            ObservableList<Payments> payments =
+                    PaymentService.fetchAllPayments(customerPhone);
+            getCustomers(customers, rs, payments);
         }
 
         rs.close();
@@ -191,7 +195,11 @@ public class CustomerModel {
 
 
     private static void getCustomers(ObservableList<Customers> customers, ResultSet rs, ObservableList<Payments> payment) throws SQLException {
-        Customers customer = new Customers(rs.getInt("customer_id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("middle_name"), rs.getString("phone"), rs.getString("gander"), rs.getString("shift"), rs.getString("address"), rs.getBytes("image"), rs.getDouble("weight"), rs.getString("who_added"));
+        Customers customer = new Customers(rs.getInt("customer_id"), rs.getString("first_name"),
+                rs.getString("last_name"), rs.getString("middle_name"),
+                rs.getString("phone"), rs.getString("gander"), rs.getString("shift"),
+                rs.getString("address"), rs.getBytes("image"), rs.getDouble("weight"),
+                rs.getString("who_added"));
         customer.setChest(rs.getDouble("chest"));
         customer.setForeArm(rs.getDouble("fore_arm"));
         customer.setWaist(rs.getDouble("waist"));

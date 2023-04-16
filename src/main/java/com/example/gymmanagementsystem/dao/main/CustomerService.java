@@ -9,9 +9,9 @@ import javafx.collections.ObservableList;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.Collections;
 
 public class CustomerService {
+    private static int nextCustomerId = 0;
     private static final CustomerModel customerModel = new CustomerModel();
     private static ObservableList<Customers> allCustomersList;
     private static ObservableList<Customers> onlineCustomersByDate;
@@ -73,11 +73,15 @@ public class CustomerService {
     }
 
     public static int predictNextId() throws CustomException {
-        try {
-            return (1 + customerModel.nextID());
-        } catch (SQLException e) {
-            throw new CustomException("Khalad nex pridiction caused" + e.getMessage());
+        if (nextCustomerId == 0) {
+
+            try {
+                return (1 + customerModel.nextID());
+            } catch (SQLException e) {
+                throw new CustomException("Khalad nex pridiction caused" + e.getMessage());
+            }
         }
+        return nextCustomerId;
     }
     //---------------------------Customers Lists--------------------------------
 
@@ -116,6 +120,8 @@ public class CustomerService {
     public static ObservableList<Customers> fetchQualifiedOfflineCustomers(String customerQuery, LocalDate fromDate, LocalDate toDate) throws SQLException {
         return customerModel.fetchQualifiedOfflineCustomers(customerQuery, fromDate, toDate);
     }
+
+
     //-------------------------------Helpers------------------------------------
 
 

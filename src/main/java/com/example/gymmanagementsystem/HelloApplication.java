@@ -1,7 +1,7 @@
 package com.example.gymmanagementsystem;
 
 
-import com.example.gymmanagementsystem.controllers.info.OutDatedController;
+import com.example.gymmanagementsystem.controllers.main.HomeController;
 import com.example.gymmanagementsystem.dao.service.UserService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,12 +15,14 @@ import java.sql.SQLException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/gymmanagementsystem/newviews/info/outdated.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/gymmanagementsystem/newviews/main/home.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        OutDatedController controller = fxmlLoader.getController();
-        controller.setActiveUser(UserService.users().get(4));
+        HomeController controller = fxmlLoader.getController();
+        controller.setActiveUser(UserService.users().get(0));
+//        OutDatedController controller = fxmlLoader.getController();
+//        controller.setActiveUser(UserService.users().get(4));
 //        CustomerInfoController controller = fxmlLoader.getController();
-//        Customers customer = CustomerService.fetchAllCustomer(UserService.users().get(0)).get(0);
+//        Customers customer = CustomerService.fetchAllCustomer(UserService.users().get(0)).get(1);
 //        customer.setPayments(PaymentService.fetchAllPayments(customer.getPhone()));
 //        controller.setCustomer(customer);
         //UpdateUserController controller = fxmlLoader.getController();
@@ -34,7 +36,7 @@ public class HelloApplication extends Application {
         stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
 
-        // TODO: 16/04/2023 Insha Allah implement delete payment
+
     }
 
     public static void main(String[] args) {

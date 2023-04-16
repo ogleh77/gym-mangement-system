@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Collections;
 
 public class CustomerService {
     private static final CustomerModel customerModel = new CustomerModel();
@@ -106,10 +107,14 @@ public class CustomerService {
 
     public static ObservableList<Customers> fetchPendCustomersWhereDateBetween(Users activeUser, LocalDate fromDate, LocalDate toDate) throws SQLException {
         if (pendCustomersByDate == null) {
-            pendCustomersByDate=customerModel.fetchPendCustomersWhereDate(activeUser, fromDate, toDate);
+            pendCustomersByDate = customerModel.fetchPendCustomersWhereDate(activeUser, fromDate, toDate);
         }
 
         return pendCustomersByDate;
+    }
+
+    public static ObservableList<Customers> fetchQualifiedOfflineCustomers(String customerQuery, LocalDate fromDate, LocalDate toDate) throws SQLException {
+        return customerModel.fetchQualifiedOfflineCustomers(customerQuery, fromDate, toDate);
     }
     //-------------------------------Helpers------------------------------------
 

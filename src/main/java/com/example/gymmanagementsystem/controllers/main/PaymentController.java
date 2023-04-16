@@ -131,10 +131,7 @@ public class PaymentController extends CommonClass implements Initializable {
                 startTask(service, createBtn, newPayment ? "Creating" : "Updating");
             }
         } catch (Exception e) {
-            if (e.getClass().isInstance(NumberFormatException.class)) {
-                errorMessage("Fadlan si sax ah u geli discount ka ama amount ka la bixshay" + e.getMessage());
-            } else errorMessage(e.getMessage());
-            //   throw new RuntimeException("Khalad ayaad u gelisay tirada ah " + e.getMessage());
+            errorMessage("Fadlan si sax ah u geli discount ka ama amount ka la bixshay" + e.getMessage());
         }
     }
 

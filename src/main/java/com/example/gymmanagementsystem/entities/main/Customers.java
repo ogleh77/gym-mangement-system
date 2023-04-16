@@ -196,7 +196,7 @@ public class Customers implements Comparable<Customers> {
 
     @Override
     public int compareTo(Customers o) {
-        if (this.payments.get(0).getExpDate().isAfter(o.payments.get(0).getExpDate())) return 1;
+        if (this.payments.get(0).getExpDate().isBefore(o.payments.get(0).getExpDate())) return 1;
         return 0;
     }
 

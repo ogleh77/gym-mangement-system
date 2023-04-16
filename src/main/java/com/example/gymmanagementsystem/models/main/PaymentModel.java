@@ -164,7 +164,7 @@ public class PaymentModel {
 
         String query = "SELECT * FROM payments LEFT JOIN box b on payments.box_fk = b.box_id " +
                 "WHERE customer_phone_fk= '" + customerPhone + "' AND is_online=false AND pending=false " +
-                "AND exp_date BETWEEN '" + from + "' AND '" + to + "';";
+                "AND exp_date BETWEEN '" + from + "' AND '" + to + "' ORDER BY exp_date ASC;";
 
         ResultSet rs = statement.executeQuery(query);
         return PaymentModel.getPayments(payments, statement, rs);

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.*?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="149.0"
+            prefWidth="513.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.gymmanagementsystem.controllers.info.CardController">
+    <effect>
+        <DropShadow height="38.79" radius="18.895" width="38.79">
+            <color>
+                <Color red="0.24705882370471954" green="0.6117647290229797" blue="0.9098039269447327"/>
+            </color>
+        </DropShadow>
+    </effect>
+    <ImageView fx:id="customerPhoto" fitHeight="130.0" fitWidth="156.0" layoutX="9.0" layoutY="10.0"
+               pickOnBounds="true">
+        <Image url="@../../style/icons/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpeg"/>
+    </ImageView>
+    <Label layoutX="186.0" layoutY="7.0" text="Full name:">
+        <font>
+            <Font name="Verdana Bold" size="14.0"/>
+        </font>
+    </Label>
+    <Label fx:id="fullName" layoutX="280.0" layoutY="7.0" prefHeight="18.0" prefWidth="221.0" text="Mohamed Saeed">
+        <font>
+            <Font name="Verdana Bold" size="14.0"/>
+        </font>
+    </Label>
+    <Label layoutX="186.0" layoutY="61.0" text="Phone:" textFill="#5b5b5b">
+        <font>
+            <Font name="Verdana Bold" size="14.0"/>
+        </font>
+    </Label>
+    <Label fx:id="phone" layoutX="280.0" layoutY="61.0" text="4303924" textFill="#5b5b5b">
+        <font>
+            <Font name="Verdana Bold" size="14.0"/>
+        </font>
+    </Label>
+    <Label layoutX="186.0" layoutY="88.0" text="Last paid" textFill="#5b5b5b">
+        <font>
+            <Font name="Verdana Bold" size="14.0"/>
+        </font>
+    </Label>
+    <Label fx:id="lastPaid" layoutX="278.0" layoutY="88.0" text="20/11/2022" textFill="#5b5b5b">
+        <font>
+            <Font name="Verdana Bold" size="14.0"/>
+        </font>
+    </Label>
+    <Label layoutX="187.0" layoutY="115.0" text="Out dated" textFill="#b5513c">
+        <font>
+            <Font name="Verdana Bold" size="14.0"/>
+        </font>
+    </Label>
+    <Label fx:id="outDated" layoutX="279.0" layoutY="115.0" prefHeight="20.0" prefWidth="137.0" text="20 days ago"
+           textFill="#b5513c">
+        <font>
+            <Font name="Verdana Bold" size="14.0"/>
+        </font>
+    </Label>
+    <Label layoutX="186.0" layoutY="36.0" text="Shift:" textFill="#5b5b5b">
+        <font>
+            <Font name="Verdana Bold" size="14.0"/>
+        </font>
+    </Label>
+    <Label fx:id="shift" layoutX="279.0" layoutY="36.0" text="Morning" textFill="#5b5b5b">
+        <font>
+            <Font name="Verdana Bold" size="14.0"/>
+        </font>
+    </Label>
+    <Separator layoutX="170.0" layoutY="4.0" orientation="VERTICAL" prefHeight="130.0" prefWidth="0.0"/>
+</AnchorPane>

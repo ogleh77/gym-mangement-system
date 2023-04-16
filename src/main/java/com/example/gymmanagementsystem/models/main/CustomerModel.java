@@ -162,7 +162,31 @@ public class CustomerModel {
         return customers;
     }
 
+    public ObservableList<Customers> fetchQualifiedOfflineCustomers(String customerQuery, LocalDate fromDate, LocalDate
+            toDate) throws SQLException {
 
+        ObservableList<Customers> customers = FXCollections.observableArrayList();
+
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery(customerQuery);
+
+        while (rs.next()) {
+            String customerPhone = rs.getString("phone");
+            ObservableList<Payments> payments = PaymentService.fetchOfflinePaymentBetween(customerPhone, fromDate, toDate);
+
+            if (payments == null || payments.isEmpty()) {
+                continue;
+            }
+            Customers customer = new Customers(rs.getInt("customer_id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("middle_name"), rs.getString("phone"), rs.getString("gander"), rs.getString("shift"), rs.getString("address"), rs.getBytes("image"), rs.getDouble("weight"), rs.getString("who_added"));
+
+            customer.setPayments(payments);
+            customers.add(customer);
+
+        }
+
+        return customers;
+
+    }
     //-------------------------------Helpers------------------------------------
 
 

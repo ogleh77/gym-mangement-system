@@ -81,6 +81,8 @@ public class PaymentController extends CommonClass implements Initializable {
     private JFXCheckBox poxing;
     @FXML
     private DatePicker startDate;
+    @FXML
+    private Label topLabel;
     private ObservableList<Payments> paymentsList;
     private final Gym currentGym;
     private Payments payment;
@@ -125,7 +127,8 @@ public class PaymentController extends CommonClass implements Initializable {
 
             startTask(service, createBtn, newPayment ? "Creating" : "Updating");
         } catch (NumberFormatException e) {
-            throw new RuntimeException("Khalad ayaad u gelisay tirada ah " + e.getMessage());
+            errorMessage("Fadlan si sax ah u geli discount ka ama amount ka la bixshay" + e.getMessage());
+         //   throw new RuntimeException("Khalad ayaad u gelisay tirada ah " + e.getMessage());
         }
     }
 
@@ -223,7 +226,7 @@ public class PaymentController extends CommonClass implements Initializable {
             boxChooser.setValue(updatePayment.getBox());
         }
         createBtn.setText("Update payment");
-
+        topLabel.setText("UPDATE PAYMENT FORM");
         if (LocalDate.now().isAfter(updatePayment.getExpDate()) ||
                 LocalDate.now().isEqual(updatePayment.getExpDate())) {
             startDate.setDisable(true);

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="434.0" prefWidth="596.0" styleClass="small-pane" stylesheets="@../../style/css/small-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.SplashScreenController">
+<AnchorPane prefHeight="434.0" prefWidth="596.0" styleClass="small-pane" stylesheets="@../../style/css/small-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.service.SplashScreenController">
     <Label fx:id="waiting" alignment="CENTER" layoutX="201.0" layoutY="386.0" prefHeight="24.0" prefWidth="199.0" text="progress form" textFill="#5e7573">
         <font>
             <Font name="Arial Bold" size="12.0" />

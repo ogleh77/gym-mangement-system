@@ -71,7 +71,13 @@ public class CustomerService {
 
     }
 
-
+    public static int predictNextId() throws CustomException {
+        try {
+            return (1 + customerModel.nextID());
+        } catch (SQLException e) {
+            throw new CustomException("Khalad nex pridiction caused" + e.getMessage());
+        }
+    }
     //---------------------------Customers Lists--------------------------------
 
 

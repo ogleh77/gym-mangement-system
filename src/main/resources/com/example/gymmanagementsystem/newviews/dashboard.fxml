@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="borderPane" prefHeight="802.0" prefWidth="1403.0" styleClass="dash-pane" stylesheets="@../style/css/dashboard-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.DashboardController">
+    <top>
+        <HBox fx:id="topPane" alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="top-pane" BorderPane.alignment="CENTER">
+             <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="537.0" spacing="10.0">
+                 <HBox fx:id="menuHBox" alignment="CENTER" onMouseClicked="#menuClicked" prefHeight="31.0" prefWidth="40.0" styleClass="top-menu-hover">
+                     <HBox.margin>
+                         <Insets bottom="5.0" left="5.0" top="5.0" />
+                     </HBox.margin>
+                     <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                         <Image url="@../style/icons/icons8-menu-30.png" />
+                     </ImageView>
+                 </HBox>
+                 <Label fx:id="gymName" prefHeight="33.0" prefWidth="425.0" text="Togdheer fitness center" textFill="#fffbfb">
+                     <font>
+                         <Font name="Verdana" size="19.0" />
+                     </font>
+                 </Label>
+             </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="864.0" HBox.hgrow="ALWAYS">
+                <HBox.margin>
+                    <Insets left="50.0" />
+                </HBox.margin>
+                <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="301.0" spacing="10.0">
+                    <Circle fx:id="activeProfile" fill="DODGERBLUE" radius="19.0" stroke="#048be4" strokeLineCap="ROUND" strokeWidth="0.0" />
+               <MenuButton alignment="BOTTOM_RIGHT" mnemonicParsing="false" popupSide="RIGHT" style="-fx-background-color: #328ca8;" text="Mohamed Ogleh">
+                 <items>
+                   <MenuItem mnemonicParsing="false" text="update" />
+                   <MenuItem mnemonicParsing="false" text="logout" />
+                 </items>
+                  <HBox.margin>
+                     <Insets bottom="2.0" />
+                  </HBox.margin>
+                  <font>
+                     <Font name="Verdana" size="15.0" />
+                  </font>
+               </MenuButton>
+                </HBox>
+                <StackPane fx:id="warningStack" prefHeight="41.0" prefWidth="55.0" styleClass="top-menu-hover">
+                    <HBox.margin>
+                        <Insets bottom="2.0" left="15.0" top="2.0" />
+                    </HBox.margin>
+                    <ImageView fitHeight="27.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@../style/icons/icons8-bell-48.png" />
+                    </ImageView>
+                    <HBox fx:id="warningParent" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="20.0" prefWidth="23.0" styleClass="notify-circle">
+                        <StackPane.margin>
+                            <Insets left="20.0" top="-20.0" />
+                        </StackPane.margin>
+                        <Label fx:id="warningLabel" styleClass="notify-circle-label" text="9+">
+                            <font>
+                                <Font name="System Bold" size="13.0" />
+                            </font>
+                        </Label>
+                        <padding>
+                            <Insets bottom="1.0" right="1.0" top="1.0" />
+                        </padding>
+                    </HBox>
+                </StackPane>
+                <HBox alignment="CENTER_RIGHT" prefHeight="45.0" prefWidth="476.0" spacing="10.0" HBox.hgrow="ALWAYS">
+                    <HBox.margin>
+                        <Insets left="26.0" />
+                    </HBox.margin>
+                    <HBox alignment="CENTER" prefHeight="37.0" prefWidth="44.0" styleClass="top-menu-hover">
+                        <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <Image url="@../style/icons/icons8-collapse-30.png" />
+                        </ImageView>
+                    </HBox>
+                    <HBox alignment="CENTER" prefHeight="37.0" prefWidth="44.0" styleClass="cancel-pane" stylesheets="@../style/css/small-style.css">
+                        <ImageView fitHeight="26.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                            <Image url="@../style/icons/icons8-close-30.png" />
+                        </ImageView>
+                    </HBox>
+                </HBox>
+            </HBox>
+        </HBox>
+    </top>
+    <left>
+        <VBox fx:id="sidePane" alignment="TOP_CENTER" prefHeight="755.0" prefWidth="159.0" spacing="25.0" styleClass="side-pane" BorderPane.alignment="CENTER">
+            <effect>
+                <DropShadow radius="7.775" width="12.1">
+                    <color>
+                        <Color red="0.75" green="0.7256944179534912" blue="0.7256944179534912" />
+                    </color>
+                </DropShadow>
+            </effect>
+            <BorderPane.margin>
+                <Insets top="2.0" />
+            </BorderPane.margin>
+            <Label text="Customer care" textFill="#dddcdc">
+                <font>
+                    <Font name="Arial Black" size="13.0" />
+                </font>
+                <VBox.margin>
+                    <Insets right="70.0" top="80.0" />
+                </VBox.margin>
+            </Label>
+            <Separator opacity="0.5" prefWidth="200.0">
+                <VBox.margin>
+                    <Insets left="10.0" right="10.0" top="-10.0" />
+                </VBox.margin>
+            </Separator>
+            <JFXButton buttonType="RAISED" prefHeight="35.0" prefWidth="159.0" styleClass="side-btn" text="Dashboard" textFill="#e8dcdc">
+                <graphic>
+                    <ImageView fitHeight="25.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@../style/icons/icons8-dashboard-layout-24.png" />
+                    </ImageView>
+                </graphic>
+                <VBox.margin>
+                    <Insets />
+                </VBox.margin>
+                <font>
+                    <Font name="Arial" size="18.0" />
+                </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" prefHeight="37.0" prefWidth="163.0" styleClass="side-btn" text="Home data" textFill="#e8dcdc">
+                <graphic>
+                    <ImageView fitHeight="24.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@../style/icons/icons8-home-24.png" />
+                    </ImageView>
+                </graphic>
+                <font>
+                    <Font name="Arial" size="18.0" />
+                </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" styleClass="side-btn" text="Registrations" textFill="#e8dcdc">
+                <graphic>
+                    <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@../style/icons/icons8-registration-30.png" />
+                    </ImageView>
+                </graphic>
+                <font>
+                    <Font name="Arial" size="18.0" />
+                </font>
+            </JFXButton>
+            <Label text="Mangement" textFill="#dddcdc">
+                <font>
+                    <Font name="Arial Bold" size="13.0" />
+                </font>
+                <VBox.margin>
+                    <Insets right="100.0" top="10.0" />
+                </VBox.margin>
+            </Label>
+            <Separator opacity="0.5" prefWidth="200.0">
+                <VBox.margin>
+                    <Insets left="10.0" right="10.0" top="-10.0" />
+                </VBox.margin>
+            </Separator>
+            <JFXButton buttonType="RAISED" prefHeight="37.0" prefWidth="164.0" styleClass="side-btn" text="Reports" textFill="#e8dcdc">
+                <graphic>
+                    <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@../style/icons/icons8-business-report-50.png" />
+                    </ImageView>
+                </graphic>
+                <font>
+                    <Font name="Arial" size="18.0" />
+                </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" prefHeight="46.0" prefWidth="176.0" styleClass="side-btn" text="Out dated" textFill="#e8dcdc">
+                <graphic>
+                    <ImageView fitHeight="28.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@../style/icons/icons8-user-30.png" />
+                    </ImageView>
+                </graphic>
+                <font>
+                    <Font name="Arial" size="18.0" />
+                </font>
+            </JFXButton>
+            <MenuButton mnemonicParsing="false" popupSide="LEFT" styleClass="menu-btn-side-pane" text="Settings" textFill="#ebe3e3">
+                <items>
+                    <MenuItem mnemonicParsing="false" text="Backup">
+                        <graphic>
+                            <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../style/icons/backup.png" />
+                            </ImageView>
+                        </graphic>
+                    </MenuItem>
+                    <MenuItem fx:id="addUserBtn" mnemonicParsing="false" text="Add user">
+                        <graphic>
+                            <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../style/icons/adduser.png" />
+                            </ImageView>
+                        </graphic>
+                    </MenuItem>
+                    <MenuItem fx:id="updateUserBtn" mnemonicParsing="false" text="Update user">
+                        <graphic>
+                            <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../style/icons/icons8-available-updates-24.png" />
+                            </ImageView>
+                        </graphic>
+                    </MenuItem>
+                    <MenuItem fx:id="gymBtn" mnemonicParsing="false" text="GYM">
+                        <graphic>
+                            <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../style/icons/balck.png" />
+                            </ImageView>
+                        </graphic>
+                    </MenuItem>
+                </items>
+                <effect>
+                    <DropShadow blurType="GAUSSIAN" height="23.97" radius="9.26" width="15.07">
+                        <color>
+                            <Color red="0.038559939712285995" green="0.03926047682762146" blue="0.03947368264198303" />
+                        </color>
+                    </DropShadow>
+                </effect>
+                <graphic>
+                    <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@../style/icons/icons8-settings-24.png" />
+                    </ImageView>
+                </graphic>
+            </MenuButton>
+        </VBox>
+    </left>
+</BorderPane>

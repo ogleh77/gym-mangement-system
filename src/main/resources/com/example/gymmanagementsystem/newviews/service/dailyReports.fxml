@@ -15,7 +15,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="home-pane" stylesheets="@../style/css/long-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.service.ReportControllerHandler">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="home-pane" stylesheets="@../../style/css/long-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.service.ReportControllerHandler">
     <HBox alignment="CENTER" layoutX="105.0" layoutY="28.0" prefHeight="36.0" prefWidth="1016.0" spacing="500.0" styleClass="top-pane" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
         <Label prefHeight="33.0" prefWidth="181.0" styleClass="top-label" text="REPORTS PAGE" textFill="#fffbfb">
             <font>
@@ -28,10 +28,10 @@
             <Font name="Verdana Bold" size="13.0" />
         </font>
     </Label>
-    <JFXButton layoutX="131.0" layoutY="583.0" onAction="#exportToExcelHandler" styleClass="btn-upload-image" stylesheets="@../style/css/button-style.css" text="Export to MS excel">
+    <JFXButton layoutX="131.0" layoutY="583.0" onAction="#exportToExcelHandler" styleClass="btn-upload-image" stylesheets="@../../style/css/button-style.css" text="Export to MS excel">
         <graphic>
             <ImageView fitHeight="28.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                <Image url="@../style/icons/icons8-excel-24.png" />
+                <Image url="@../../style/icons/icons8-excel-24.png" />
             </ImageView>
         </graphic>
     </JFXButton>
@@ -40,8 +40,8 @@
             <Font name="Verdana Bold" size="12.0" />
         </font>
     </Label>
-    <DatePicker fx:id="printStartDate" editable="false" layoutX="286.0" layoutY="494.0" prefHeight="30.0" prefWidth="156.0" promptText="dd/mm/yyyy" stylesheets="@../style/css/combo-style.css" />
-    <DatePicker fx:id="printEndDate" editable="false" layoutX="286.0" layoutY="538.0" prefHeight="30.0" prefWidth="156.0" promptText="dd/mm/yyyy" stylesheets="@../style/css/combo-style.css" />
+    <DatePicker fx:id="printStartDate" editable="false" layoutX="286.0" layoutY="494.0" prefHeight="30.0" prefWidth="156.0" promptText="dd/mm/yyyy" stylesheets="@../../style/css/combo-style.css" />
+    <DatePicker fx:id="printEndDate" editable="false" layoutX="286.0" layoutY="538.0" prefHeight="30.0" prefWidth="156.0" promptText="dd/mm/yyyy" stylesheets="@../../style/css/combo-style.css" />
     <Label layoutX="61.0" layoutY="497.0" prefHeight="24.0" prefWidth="210.0" text="Ka bilabmaya (Starting from)" textFill="#8d8585">
         <font>
             <Font name="Verdana Bold" size="12.0" />
@@ -57,7 +57,7 @@
             <Font name="Verdana Bold" size="12.0" />
         </font>
     </Label>
-    <TableView fx:id="dailyTbView" layoutX="552.0" layoutY="111.0" prefHeight="225.0" prefWidth="616.0" stylesheets="@../style/css/home-table.css">
+    <TableView fx:id="dailyTbView" layoutX="552.0" layoutY="111.0" prefHeight="225.0" prefWidth="616.0" stylesheets="@../../style/css/home-table.css">
         <columns>
             <TableColumn fx:id="dailyReportDay" prefWidth="127.0" text="report day" />
             <TableColumn fx:id="totalRegister" prefWidth="169.0" text="total of registration" />
@@ -69,13 +69,13 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
         </columnResizePolicy>
     </TableView>
-    <DatePicker fx:id="startDate" editable="false" layoutX="600.0" layoutY="402.0" prefHeight="24.0" prefWidth="193.0" promptText="dd/mm/yyyy" stylesheets="@../style/css/combo-style.css" />
-    <DatePicker fx:id="endDate" editable="false" layoutX="842.0" layoutY="403.0" prefHeight="24.0" prefWidth="193.0" promptText="dd/mm/yyyy" stylesheets="@../style/css/combo-style.css" />
-    <JFXButton fx:id="searchBtn" layoutX="1050.0" layoutY="393.0" prefHeight="33.0" prefWidth="109.0" styleClass="btn-upload-image" stylesheets="@../style/css/button-style.css" text="Search">
+    <DatePicker fx:id="startDate" editable="false" layoutX="600.0" layoutY="402.0" prefHeight="24.0" prefWidth="193.0" promptText="dd/mm/yyyy" stylesheets="@../../style/css/combo-style.css" />
+    <DatePicker fx:id="endDate" editable="false" layoutX="842.0" layoutY="403.0" prefHeight="24.0" prefWidth="193.0" promptText="dd/mm/yyyy" stylesheets="@../../style/css/combo-style.css" />
+    <JFXButton fx:id="searchBtn" layoutX="1050.0" layoutY="393.0" prefHeight="33.0" prefWidth="109.0" styleClass="btn-upload-image" stylesheets="@../../style/css/button-style.css" text="Search">
         <graphic>
             <ImageView fx:id="imgViewSearch" fitHeight="23.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                 <image>
-                    <Image url="@../style/icons/icons8-search-50.png" />
+                    <Image url="@../../style/icons/icons8-search-50.png" />
                 </image>
             </ImageView>
         </graphic>
@@ -90,7 +90,7 @@
             <Font name="Tahoma Bold" size="14.0" />
         </font>
     </Label>
-    <TableView fx:id="reportTbView" layoutX="552.0" layoutY="459.0" prefHeight="225.0" prefWidth="616.0" stylesheets="@../style/css/home-table.css">
+    <TableView fx:id="reportTbView" layoutX="552.0" layoutY="459.0" prefHeight="225.0" prefWidth="616.0" stylesheets="@../../style/css/home-table.css">
         <columns>
             <TableColumn fx:id="reportTotalDay" prefWidth="127.0" text="report day" />
             <TableColumn fx:id="reportTotalReg" prefWidth="169.0" text="total of registration" />
@@ -110,12 +110,12 @@
     </Label>
     <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="143.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
         <image>
-            <Image url="@../style/icons/blck_report.png" />
+            <Image url="@../../style/icons/blck_report.png" />
         </image>
     </ImageView>
    <ImageView fx:id="loadingImage" fitHeight="33.0" fitWidth="78.0" layoutX="204.0" layoutY="643.0" pickOnBounds="true" preserveRatio="true" visible="false">
       <image>
-         <Image url="@../style/icons/loading_5.gif" />
+         <Image url="@../../style/icons/loading_5.gif" />
       </image>
    </ImageView>
    <JFXRadioButton fx:id="customersOnly" layoutX="60.0" layoutY="354.0" text="Macamiisha oo qudha(customers only)" textFill="#797272">

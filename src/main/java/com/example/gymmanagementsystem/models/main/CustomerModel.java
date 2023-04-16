@@ -164,6 +164,8 @@ public class CustomerModel {
 
 
     //-------------------------------Helpers------------------------------------
+
+
     private static void getCustomers(ObservableList<Customers> customers, ResultSet rs, ObservableList<Payments> payment) throws SQLException {
         Customers customer = new Customers(rs.getInt("customer_id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("middle_name"), rs.getString("phone"), rs.getString("gander"), rs.getString("shift"), rs.getString("address"), rs.getBytes("image"), rs.getDouble("weight"), rs.getString("who_added"));
         customer.setChest(rs.getDouble("chest"));

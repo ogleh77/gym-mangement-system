@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.*?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="996.0" styleClass="home-pane"
+            stylesheets="@../../style/css/long-style.css" xmlns="http://javafx.com/javafx/18"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.gymmanagementsystem.controllers.main.RegistrationController">
+    <effect>
+        <DropShadow height="26.92" radius="14.4425" width="32.85">
+            <color>
+                <Color red="0.24705882370471954" green="0.6117647290229797" blue="0.9098039269447327"/>
+            </color>
+        </DropShadow>
+    </effect>
+    <ImageView fitHeight="194.0" fitWidth="284.0" layoutX="218.0" layoutY="433.0" pickOnBounds="true"
+               AnchorPane.bottomAnchor="123.0">
+        <Image url="@../../style/icons/form_img.png"/>
+    </ImageView>
+    <TextField fx:id="firstName" layoutX="234.0" layoutY="152.0" prefHeight="40.0" prefWidth="333.0"
+               promptText="Mohamed" AnchorPane.leftAnchor="234.0"/>
+    <TextField fx:id="middleName" layoutX="234.0" layoutY="213.0" prefHeight="40.0" prefWidth="333.0" promptText="Saeed"
+               AnchorPane.leftAnchor="234.0"/>
+    <TextField fx:id="lastName" layoutX="234.0" layoutY="271.0" prefHeight="40.0" prefWidth="333.0" promptText="Ogleh"
+               AnchorPane.leftAnchor="234.0"/>
+    <JFXRadioButton fx:id="male" layoutX="273.0" layoutY="406.0" text="Male" textFill="#328ca8"
+                    AnchorPane.leftAnchor="273.0">
+        <font>
+            <Font name="Tahoma Bold" size="13.0"/>
+        </font>
+    </JFXRadioButton>
+    <JFXRadioButton fx:id="female" layoutX="447.0" layoutY="406.0" prefHeight="17.0" prefWidth="89.0" text="Female"
+                    textFill="#328ca8" AnchorPane.leftAnchor="447.0">
+        <font>
+            <Font name="Tahoma Bold" size="13.0"/>
+        </font>
+    </JFXRadioButton>
+    <Label layoutX="110.0" layoutY="162.0" prefHeight="20.0" prefWidth="83.0" text="first name" textFill="#328ca8"
+           AnchorPane.leftAnchor="110.0">
+        <font>
+            <Font name="Arial Bold" size="16.0"/>
+        </font>
+    </Label>
+    <Label layoutX="110.0" layoutY="281.0" prefHeight="20.0" prefWidth="83.0" text="last name" textFill="#328ca8"
+           AnchorPane.leftAnchor="110.0">
+        <font>
+            <Font name="Arial Bold" size="16.0"/>
+        </font>
+    </Label>
+    <Label layoutX="110.0" layoutY="223.0" prefHeight="20.0" prefWidth="108.0" text="middle name" textFill="#328ca8"
+           AnchorPane.leftAnchor="110.0">
+        <font>
+            <Font name="Arial Bold" size="16.0"/>
+        </font>
+    </Label>
+    <Label layoutX="111.0" layoutY="406.0" text="gender" textFill="#328ca8" AnchorPane.leftAnchor="111.0">
+        <font>
+            <Font name="Arial Bold" size="14.0"/>
+        </font>
+    </Label>
+    <ComboBox fx:id="shift" layoutX="728.0" layoutY="148.0" prefHeight="36.0" prefWidth="313.0"
+              promptText="choose shift" stylesheets="@../../style/css/combo-style.css" AnchorPane.rightAnchor="109.0"/>
+    <Label layoutX="654.0" layoutY="158.0" text="Shift" textFill="#328ca8" AnchorPane.rightAnchor="460.0">
+        <font>
+            <Font name="Arial Bold" size="16.0"/>
+        </font>
+    </Label>
+    <TextField fx:id="weight" layoutX="781.0" layoutY="229.0" prefHeight="40.0" prefWidth="74.0" promptText="weight"
+               AnchorPane.rightAnchor="345.0"/>
+    <Label layoutX="698.0" layoutY="342.0" text="address" textFill="#328ca8" AnchorPane.rightAnchor="440.0">
+        <font>
+            <Font name="Arial Bold" size="16.0"/>
+        </font>
+    </Label>
+    <Label layoutX="778.0" layoutY="198.0" text="Measuremnts" textFill="#328ca8" AnchorPane.rightAnchor="318.0">
+        <font>
+            <Font name="Arial Bold" size="16.0"/>
+        </font>
+    </Label>
+    <VBox layoutX="801.0" layoutY="391.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="209.0"
+          AnchorPane.rightAnchor="149.0">
+        <effect>
+            <DropShadow height="35.66" radius="15.864999999999998" spread="0.77" width="29.8">
+                <color>
+                    <Color red="0.7763158082962036" green="0.7367811799049377" blue="0.7367811799049377"/>
+                </color>
+            </DropShadow>
+        </effect>
+        <ImageView fx:id="imgView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true">
+            <Image url="@../../style/icons/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpeg"/>
+        </ImageView>
+    </VBox>
+    <JFXButton fx:id="registerBtn" buttonType="RAISED" layoutX="778.0" layoutY="628.0" onAction="#customerSaveHandler"
+               prefHeight="47.0" prefWidth="128.0" styleClass="btn-save" stylesheets="@../../style/css/button-style.css"
+               text="Save" textFill="#d0cbcb" AnchorPane.bottomAnchor="85.0" AnchorPane.rightAnchor="251.0">
+        <font>
+            <Font name="Arial" size="14.0"/>
+        </font>
+        <graphic>
+            <ImageView fitHeight="24.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@../../style/icons/icons8-save-30.png"/>
+            </ImageView>
+        </graphic>
+    </JFXButton>
+    <JFXButton fx:id="clearBtn" buttonType="RAISED" layoutX="953.0" layoutY="628.0" onAction="#clearHandler"
+               prefHeight="40.0" prefWidth="143.0" styleClass="btn-reset"
+               stylesheets="@../../style/css/button-style.css" text="Clear" textFill="WHITE"
+               AnchorPane.bottomAnchor="85.0" AnchorPane.rightAnchor="76.0">
+        <font>
+            <Font size="15.0"/>
+        </font>
+        <graphic>
+            <ImageView fitHeight="24.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@../../style/icons/icons8-clear-symbol-30.png"/>
+            </ImageView>
+        </graphic>
+    </JFXButton>
+    <JFXButton buttonType="RAISED" layoutX="860.0" layoutY="567.0" onAction="#uploadImageHandler" prefHeight="40.0"
+               prefWidth="183.0" styleClass="btn-upload-image" stylesheets="@../../style/css/button-style.css"
+               text="Upload image" textFill="WHITE" AnchorPane.bottomAnchor="146.0" AnchorPane.rightAnchor="157.0">
+        <font>
+            <Font size="15.0"/>
+        </font>
+        <graphic>
+            <ImageView fitHeight="23.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@../../style/icons/icons8-upload-24.png"/>
+            </ImageView>
+        </graphic>
+    </JFXButton>
+    <TextField fx:id="phone" layoutX="234.0" layoutY="330.0" prefHeight="40.0" prefWidth="333.0" promptText="XXX-XXXX"
+               AnchorPane.leftAnchor="234.0"/>
+    <Label layoutX="110.0" layoutY="339.0" prefHeight="20.0" prefWidth="74.0" text="phone" textFill="#328ca8"
+           AnchorPane.leftAnchor="110.0">
+        <font>
+            <Font name="Arial Bold" size="16.0"/>
+        </font>
+    </Label>
+    <Label alignment="CENTER" layoutX="80.0" layoutY="640.0" prefHeight="24.0" prefWidth="579.0"
+           styleClass="label-background" text="Formka macluumaadka shaqsiga ah ee macmiilka" textFill="#328ca8">
+        <font>
+            <Font name="Tahoma Bold" size="15.0"/>
+        </font>
+    </Label>
+    <Label alignment="CENTER" layoutX="57.0" layoutY="663.0" prefHeight="24.0" prefWidth="625.0"
+           styleClass="message-style" stylesheets="@../../style/css/message.css"
+           text="Markaaad buuxiso xogta macmiilka kadib tabo SAVE button-ka" textFill="#6b6565">
+        <font>
+            <Font name="Tahoma Bold" size="12.0"/>
+        </font>
+    </Label>
+    <TextField fx:id="address" layoutX="778.0" layoutY="332.0" prefHeight="40.0" prefWidth="313.0"
+               promptText="e.g (063)XXX-XXX" AnchorPane.rightAnchor="109.0"/>
+    <Label layoutX="235.0" layoutY="382.0" prefHeight="24.0" prefWidth="333.0" textFill="#dd2c2c" visible="false"
+           AnchorPane.bottomAnchor="344.0">
+        <font>
+            <Font name="Arial" size="14.0"/>
+        </font>
+    </Label>
+    <Label fx:id="phoneValidation" layoutX="236.0" layoutY="372.0" prefHeight="20.0" prefWidth="293.0" text="message"
+           textFill="#bf1a1a" visible="false">
+        <font>
+            <Font name="Helvetica" size="16.0"/>
+        </font>
+    </Label>
+    <HBox alignment="CENTER" prefWidth="1180.0" spacing="440.0" styleClass="top-pane" AnchorPane.bottomAnchor="680.0"
+          AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+        <Label fx:id="headerInfo" styleClass="top-label" text="REGISTRATION PAGE">
+            <HBox.margin>
+                <Insets left="30.0"/>
+            </HBox.margin>
+        </Label>
+    </HBox>
+    <TextField fx:id="Forearm" layoutX="780.0" layoutY="277.0" prefHeight="40.0" prefWidth="74.0" promptText="forearm"/>
+    <TextField fx:id="hips" layoutX="897.0" layoutY="227.0" prefHeight="40.0" prefWidth="74.0" promptText="hips"/>
+    <TextField fx:id="chest" layoutX="897.0" layoutY="276.0" prefHeight="40.0" prefWidth="74.0" promptText="chest"/>
+    <ImageView fitHeight="29.0" fitWidth="25.0" layoutX="864.0" layoutY="283.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@../../style/icons/icons8-chest-50.png"/>
+    </ImageView>
+    <ImageView fitHeight="29.0" fitWidth="25.0" layoutX="744.0" layoutY="284.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@../../style/icons/icons8-forearm-50.png"/>
+    </ImageView>
+    <ImageView fitHeight="29.0" fitWidth="36.0" layoutX="746.0" layoutY="233.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@../../style/icons/icons8-scales-50.png"/>
+    </ImageView>
+    <ImageView fitHeight="29.0" fitWidth="25.0" layoutX="865.0" layoutY="235.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@../../style/icons/icons8-legs-64.png"/>
+    </ImageView>
+    <TextField fx:id="waist" layoutX="1009.0" layoutY="227.0" prefHeight="40.0" prefWidth="74.0" promptText="waist"/>
+    <ImageView fitHeight="29.0" fitWidth="25.0" layoutX="981.0" layoutY="235.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@../../style/icons/icons8-stomachache-50.png"/>
+    </ImageView>
+</AnchorPane>

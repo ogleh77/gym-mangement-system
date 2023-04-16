@@ -14,7 +14,7 @@ public class UserModel {
         String insertUserQuery = "INSERT INTO users(first_name, last_name, phone, gender, shift, username, password, image, role) " +
                 "VALUES (?,?,?,?,?,?,?,?,?)";
         insertOrUpdateUser(users, insertUserQuery);
-     }
+    }
 
     public void update(Users users) throws SQLException {
         String updateUser = "UPDATE users SET first_name=?,last_name=?,phone=?,gender=?,shift=?,username=?,password=?,image=?,role=? \n" +
@@ -23,11 +23,17 @@ public class UserModel {
     }
 
     public void delete(Users users) throws SQLException {
-        String deleteUser = "DELETE FROM users " +
-                "WHERE username='" + users.getUsername() + "'";
-        Statement statement = connection.createStatement();
-        statement.execute(deleteUser);
-
+        connection.setAutoCommit(false);
+        try {
+            String deleteUser = "DELETE FROM users " +
+                    "WHERE username='" + users.getUsername() + "'";
+            Statement statement = connection.createStatement();
+            statement.execute(deleteUser);
+            connection.commit();
+        } catch (SQLException e) {
+            connection.rollback();
+            throw e;
+        }
     }
 
     public ObservableList<Users> fetch() throws SQLException {
@@ -63,18 +69,26 @@ public class UserModel {
     //----------------Helper methods-----------------
 
     private void insertOrUpdateUser(Users users, String updateUser) throws SQLException {
-        PreparedStatement ps = connection.prepareStatement(updateUser);
-        ps.setString(1, users.getFirstName());
-        ps.setString(2, users.getLastName());
-        ps.setString(3, users.getPhone());
-        ps.setString(4, users.getGender());
-        ps.setString(5, users.getShift());
-        ps.setString(6, users.getUsername());
-        ps.setString(7, users.getPassword());
-        ps.setBytes(8, users.getImage());
-        ps.setString(9, users.getRole());
-        ps.executeUpdate();
-        ps.close();
+        connection.setAutoCommit(false);
+        try {
+            PreparedStatement ps = connection.prepareStatement(updateUser);
+            ps.setString(1, users.getFirstName());
+            ps.setString(2, users.getLastName());
+            ps.setString(3, users.getPhone());
+            ps.setString(4, users.getGender());
+            ps.setString(5, users.getShift());
+            ps.setString(6, users.getUsername());
+            ps.setString(7, users.getPassword());
+            ps.setBytes(8, users.getImage());
+            ps.setString(9, users.getRole());
+            ps.executeUpdate();
+            ps.close();
+            connection.commit();
+        } catch (SQLException e) {
+            connection.rollback();
+            throw e;
+        }
+
     }
 
 

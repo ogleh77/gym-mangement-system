@@ -122,13 +122,19 @@ public class PaymentController extends CommonClass implements Initializable {
     @FXML
     void createPaymentHandler() {
         try {
+
             _discount = (!discount.getText().isEmpty() || !discount.getText().isBlank() ? Double.parseDouble(discount.getText()) : 0);
             _amountPaid = (!amountPaid.getText().isEmpty() || !amountPaid.getText().isBlank() ? Double.parseDouble(amountPaid.getText()) : 0);
+            checkDate(startDate.getValue(), expDate.getValue());
 
-            startTask(service, createBtn, newPayment ? "Creating" : "Updating");
-        } catch (NumberFormatException e) {
-            errorMessage("Fadlan si sax ah u geli discount ka ama amount ka la bixshay" + e.getMessage());
-         //   throw new RuntimeException("Khalad ayaad u gelisay tirada ah " + e.getMessage());
+            if (isValid(getMandatoryFields(), null)) {
+                startTask(service, createBtn, newPayment ? "Creating" : "Updating");
+            }
+        } catch (Exception e) {
+            if (e.getClass().isInstance(NumberFormatException.class)) {
+                errorMessage("Fadlan si sax ah u geli discount ka ama amount ka la bixshay" + e.getMessage());
+            } else errorMessage(e.getMessage());
+            //   throw new RuntimeException("Khalad ayaad u gelisay tirada ah " + e.getMessage());
         }
     }
 
@@ -299,7 +305,7 @@ public class PaymentController extends CommonClass implements Initializable {
     }
 
     private void tellInfo(LocalDate expDate, boolean isPending) {
-        paymentInfo.setText(isPending ? "Macmillku payment ayaa u xidhan" : "Macmiilkan wakhtigu kama dhicin ");
+        paymentInfo.setText(isPending ? "Macmillka payment ayaa u xidhan" : "Macmiilkan wakhtigu kama dhicin ");
         infoMin.setText(isPending ? "Macmiilka waxa u xidhay payment saaso ay tahay looma samayn karo " + "payment cusub" : "wuxuse ka dhaacyaa [" + expDate.toString() + "] Insha Allah");
         paymentInfo.setStyle("-fx-text-fill: #d20e0e; -fx-font-family: Verdana;-fx-font-size: 15");
         FadeIn fadeIn = new FadeIn(paymentInfo);
@@ -336,5 +342,9 @@ public class PaymentController extends CommonClass implements Initializable {
         PaymentService.insertPayment(customer);
     }
 
-
+    private void checkDate(LocalDate startDate, LocalDate endDate) {
+        if (startDate.isAfter(endDate)) {
+            throw new RuntimeException("Wakhtiga bilowgu kama danbayn karo wakhtiga dhamanayo paymentku");
+        }
+    }
 }

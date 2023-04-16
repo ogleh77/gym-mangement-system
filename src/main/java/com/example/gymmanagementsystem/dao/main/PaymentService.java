@@ -50,7 +50,6 @@ public class PaymentService {
             }
             paymentModel.holdPayment(payment, daysRemind);
         } catch (SQLException e) {
-            e.printStackTrace();
             throw new CustomException(e.getMessage());
         }
     }

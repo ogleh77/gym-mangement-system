@@ -166,7 +166,7 @@ public class CustomerInfoController extends CommonClass implements Initializable
             if (selectedPayment == null) {
                 throw new RuntimeException("No payment selected");
             }
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gymmanagementsystem/views/main-create/payments.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gymmanagementsystem/newviews/main/payments.fxml"));
             Scene scene = new Scene(loader.load());
             PaymentController controller = loader.getController();
             controller.setUpdatePayment(selectedPayment);
@@ -181,7 +181,7 @@ public class CustomerInfoController extends CommonClass implements Initializable
 
     @FXML
     void deleteHandler() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gymmanagementsystem/views/main-create/payments.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gymmanagementsystem/newviews/main/payments.fxml"));
         Scene scene = new Scene(loader.load());
         PaymentController controller = loader.getController();
         controller.setCustomer(customer);

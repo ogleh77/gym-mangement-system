@@ -109,7 +109,9 @@ public class RegistrationController extends CommonClass implements Initializable
         forearmValidation();
 
         service.setOnSucceeded(e -> {
-            System.out.println("Done");
+            registerBtn.setGraphic(getFirstImage("/com/example/gymmanagementsystem/style/icons/icons8-save-30.png"));
+            registerBtn.setText(isCustomerNew ? "Payment" : "Updated");
+
         });
     }
 
@@ -120,7 +122,7 @@ public class RegistrationController extends CommonClass implements Initializable
                 checkImage(imgView, "Fadlan sawirku wuu kaa cawinayaa inaad wejiga \n" +
                         "macmiilka ka dhex garan kartid macamisha kle 😊");
             }
-//            clearBtn.setDisable(true);
+            clearBtn.setDisable(true);
             startTask(service, registerBtn, isCustomerNew ? "Saving" : "Updating");
         }
     }
@@ -205,7 +207,6 @@ public class RegistrationController extends CommonClass implements Initializable
                             Optional<ButtonType> result = informationAlert(isCustomerNew ? "New customer registered successfully" :
                                     "Customer updated successfully").showAndWait();
 
-
                             if (result.isPresent() && result.get().getButtonData().isDefaultButton()) {
                                 if (isCustomerNew) System.out.println("Go payments");
                                 else System.out.println("Do nothing");
@@ -219,7 +220,7 @@ public class RegistrationController extends CommonClass implements Initializable
                         if (e.getClass().isInstance(SQLException.class)) {
                             Platform.runLater(() -> errorMessage(e.getMessage() + "☹️"));
                         } else if (e.getMessage().matches("multiple points")) {
-                            Platform.runLater(() -> errorMessage("Fadlan hubi inaad si khaldan u gelisay lambarada measurements-ka\n " + "error caused by ☹️" + e.getMessage()));
+                            Platform.runLater(() -> errorMessage("Fadlan hubi inaad si khaldan u gelisay lambarada measurements-ka\n" + "error caused by " + e.getMessage() + "☹️"));
                         } else {
                             Platform.runLater(() -> errorMessage("error caused by" + e.getMessage()));
                         }

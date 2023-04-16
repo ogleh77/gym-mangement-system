@@ -24,7 +24,7 @@ public class UserService {
                 throw new CustomException("Username ka " + user.getUsername() + " horaa loo isticmalay");
             }
             userModel.insert(user);
-        } catch (SQLException e) {
+        } catch (Exception e) {
             if (e.getMessage().contains("(UNIQUE constraint failed: users.username")) {
                 throw new CustomException("username ka " + user.getUsername() + " horaa lo isticmalay");
             } else if (e.getMessage().contains("(UNIQUE constraint failed: users.phone")) {

@@ -8,8 +8,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/database/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/database.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/main/PaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/main/PaymentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/main/payments.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/main/payments.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dao/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dao/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +50,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "dart.analysis.tool.window.visible": "false",
     "extract.method.default.visibility": "private",
-    "last_opened_file_path": "/Users/mrd/Desktop/gym-management-system/src/main/resources/com/example/gymmanagementsystem/newviews/main",
+    "last_opened_file_path": "/Users/mrd/Desktop/gym-management-system/src/main/java/com/example/gymmanagementsystem/controllers/users",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
@@ -64,11 +64,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/users" />
+      <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/users" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/main" />
+      <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/info" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers" />
-      <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/views" />
-      <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/views/service" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/service" />
@@ -209,7 +209,7 @@
       <workItem from="1681537665126" duration="10242000" />
       <workItem from="1681555971165" duration="3125000" />
       <workItem from="1681563506514" duration="5861000" />
-      <workItem from="1681621797943" duration="10239000" />
+      <workItem from="1681621797943" duration="13179000" />
     </task>
     <servers />
   </component>

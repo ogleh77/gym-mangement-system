@@ -181,14 +181,28 @@ public class CustomerInfoController extends CommonClass implements Initializable
 
     @FXML
     void deleteHandler() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gymmanagementsystem/newviews/main/payments.fxml"));
-        Scene scene = new Scene(loader.load());
-        PaymentController controller = loader.getController();
-        controller.setCustomer(customer);
-        controller.checkPayment(customer);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.show();
+
+        if (tableView.getSelectionModel().getSelectedItem() != null) {
+            Payments payment = tableView.getSelectionModel().getSelectedItem();
+            ButtonType haa = new ButtonType("Haa", ButtonBar.ButtonData.YES);
+            ButtonType maya = new ButtonType("Maya", ButtonBar.ButtonData.NO);
+
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Ma hubtaa inaad masaxdo paymentkan", haa, maya);
+            alert.setTitle("Digniin");
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if (result.isPresent() && result.get().equals(haa)) {
+                try {
+                    PaymentService.deletePayment(payment);
+                    payments.remove(payment);
+                 } catch (Exception e) {
+                    errorMessage(e.getMessage());
+                }
+            } else {
+                alert.close();
+            }
+        }
+
     }
 
     //----------------------Helper methods----------------

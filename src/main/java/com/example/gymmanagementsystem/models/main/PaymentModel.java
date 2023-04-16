@@ -201,6 +201,7 @@ public class PaymentModel {
     //---------------------------------Helpers-----------------------------
 
     private static void makeReport(Payments payment, String customerGender) throws SQLException {
+
         Statement st = connection.createStatement();
         if (customerGender.equals("Male") && payment.getBox() != null) {
             DailyReportModel.dailyReportMaleWithBox(st);

@@ -26,7 +26,6 @@ public class CustomerModel {
 
     public void delete(Customers customer) throws SQLException {
         connection.setAutoCommit(false);
-
         try {
             String deleteCustomerQuery = "DELETE FROM customers WHERE phone=" + customer.getPhone();
             String deletePaymentsQuery = "DELETE FROM payments WHERE customer_phone_fk=" + customer.getPhone();
@@ -40,6 +39,7 @@ public class CustomerModel {
             connection.commit();
         } catch (SQLException e) {
             connection.rollback();
+            throw e;
         }
     }
 
@@ -180,32 +180,37 @@ public class CustomerModel {
     }
 
     private void insertOrUpdateStatement(Customers customer, String query, boolean insert) throws SQLException {
-        PreparedStatement ps = connection.prepareStatement(query);
-        ps.setString(1, customer.getFirstName());
-        ps.setString(2, customer.getMiddleName());
-        ps.setString(3, customer.getLastName());
-        ps.setString(4, customer.getPhone());
-        ps.setString(5, customer.getGander());
-        ps.setString(6, customer.getShift());
-        ps.setString(7, customer.getAddress());
-        ps.setBytes(8, customer.getImage());
-        ps.setDouble(9, customer.getWeight());
-        if (insert) {
-            ps.setString(10, customer.getWhoAdded());
-            ps.setDouble(11, customer.getWaist());
-            ps.setDouble(12, customer.getHips());
-            ps.setDouble(13, customer.getChest());
-            ps.setDouble(14, customer.getForeArm());
-        } else {
-            ps.setDouble(10, customer.getWaist());
-            ps.setDouble(11, customer.getHips());
-            ps.setDouble(12, customer.getChest());
-            ps.setDouble(13, customer.getForeArm());
+        connection.setAutoCommit(false);
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setString(1, customer.getFirstName());
+            ps.setString(2, customer.getMiddleName());
+            ps.setString(3, customer.getLastName());
+            ps.setString(4, customer.getPhone());
+            ps.setString(5, customer.getGander());
+            ps.setString(6, customer.getShift());
+            ps.setString(7, customer.getAddress());
+            ps.setBytes(8, customer.getImage());
+            ps.setDouble(9, customer.getWeight());
+            if (insert) {
+                ps.setString(10, customer.getWhoAdded());
+                ps.setDouble(11, customer.getWaist());
+                ps.setDouble(12, customer.getHips());
+                ps.setDouble(13, customer.getChest());
+                ps.setDouble(14, customer.getForeArm());
+            } else {
+                ps.setDouble(10, customer.getWaist());
+                ps.setDouble(11, customer.getHips());
+                ps.setDouble(12, customer.getChest());
+                ps.setDouble(13, customer.getForeArm());
+            }
+            ps.executeUpdate();
+            ps.close();
+            connection.commit();
+        } catch (SQLException e) {
+            connection.rollback();
+            throw e;
         }
-
-
-        ps.executeUpdate();
-        ps.close();
     }
 
     private String fetchByRoleAndGander(String gander, String role) {

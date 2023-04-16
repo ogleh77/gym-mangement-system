@@ -1,7 +1,6 @@
 package com.example.gymmanagementsystem.dao.service;
 
 import com.example.gymmanagementsystem.entities.service.Gym;
-import com.example.gymmanagementsystem.helpers.CustomException;
 import com.example.gymmanagementsystem.models.service.GymModel;
 
 import java.sql.SQLException;
@@ -11,18 +10,12 @@ public class GymService {
     private static Gym currentGym = null;
 
     public static void updateGym(Gym gym) throws SQLException {
-        try {
-            gymModel.update(gym);
-            currentGym = gym;
-        } catch (SQLException e) {
-            throw new CustomException("Khalad ayaa dhacay fadlan hubi in wax ka bedelku dhaqan galay\n" +
-                    "hadii kalese ku celi mar kale " + e.getMessage());
-        }
+        gymModel.update(gym);
+        currentGym = gym;
     }
 
     public static Gym getGym() throws SQLException {
         if (currentGym == null) {
-            System.out.println("Called");
             currentGym = gymModel.currentGym();
         }
         return currentGym;

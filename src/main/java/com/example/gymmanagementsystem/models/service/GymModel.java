@@ -11,17 +11,24 @@ public class GymModel {
     public static Connection connection = DbConnection.getConnection();
 
     public void update(Gym gym) throws SQLException {
-        String updateQuery = "UPDATE gym SET gym_name=? ,pending_date=?,max_discount=?,zaad_merchant=?," +
-                "edahab_merchant=? ,image_checker=? WHERE gym_id=" + gym.getGymId();
-        PreparedStatement ps = connection.prepareStatement(updateQuery);
-        ps.setString(1, gym.getGymName());
-        ps.setInt(2, gym.getPendingDate());
-        ps.setDouble(3, gym.getMaxDiscount());
-        ps.setInt(4, gym.getZaad());
-        ps.setInt(5, gym.geteDahab());
-        ps.setBoolean(6, gym.isImageUpload());
-        ps.executeUpdate();
-        ps.close();
+        connection.setAutoCommit(false);
+        try {
+            String updateQuery = "UPDATE gym SET gym_name=? ,pending_date=?,max_discount=?,zaad_merchant=?," +
+                    "edahab_merchant=? ,image_checker=? WHERE gym_id=" + gym.getGymId();
+            PreparedStatement ps = connection.prepareStatement(updateQuery);
+            ps.setString(1, gym.getGymName());
+            ps.setInt(2, gym.getPendingDate());
+            ps.setDouble(3, gym.getMaxDiscount());
+            ps.setInt(4, gym.getZaad());
+            ps.setInt(5, gym.geteDahab());
+            ps.setBoolean(6, gym.isImageUpload());
+            ps.executeUpdate();
+            ps.close();
+            connection.commit();
+        } catch (SQLException e) {
+            connection.rollback();
+            throw e;
+        }
     }
 
     public Gym currentGym() throws SQLException {

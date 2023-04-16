@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<AnchorPane styleClass="small-pane" stylesheets="@../../style/css/small-style.css" xmlns="http://javafx.com/javafx/18"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.gymmanagementsystem.controllers.service.LoginController">
+    <effect>
+        <DropShadow height="31.38" radius="12.594999999999999"/>
+    </effect>
+    <ImageView fitHeight="197.0" fitWidth="255.0" layoutX="14.0" layoutY="122.0" pickOnBounds="true">
+        <Image url="@../../style/icons/bike.png"/>
+    </ImageView>
+    <HBox fx:id="topPane" alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="600.0" spacing="200.0"
+          styleClass="top-pane">
+        <HBox alignment="CENTER_LEFT" prefHeight="43.0" prefWidth="346.0" spacing="10.0">
+            <HBox.margin>
+                <Insets/>
+            </HBox.margin>
+            <ImageView fitHeight="22.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@../../style/icons/whitedumbel.png"/>
+                <HBox.margin>
+                    <Insets left="10.0"/>
+                </HBox.margin>
+            </ImageView>
+            <Label fx:id="gymTitle" prefHeight="29.0" prefWidth="246.0" styleClass="top-label"
+                   text="Togdheer gym center" textFill="#c6d0cd"/>
+        </HBox>
+        <HBox alignment="CENTER" onMouseClicked="#exitHandler" prefHeight="38.0" prefWidth="47.0"
+              styleClass="cancel-pane">
+            <HBox.margin>
+                <Insets left="10.0"/>
+            </HBox.margin>
+            <ImageView fitHeight="25.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@../../style/icons/icons8-close-30.png"/>
+            </ImageView>
+        </HBox>
+    </HBox>
+    <ImageView fitHeight="25.0" fitWidth="32.0" layoutX="246.0" layoutY="159.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@../../style/icons/icons8-account-50.png"/>
+    </ImageView>
+    <ComboBox fx:id="userCombo" layoutX="289.0" layoutY="154.0" prefHeight="36.0" prefWidth="255.0"
+              promptText="choose username" stylesheets="@../../style/css/combo-style.css"/>
+    <ImageView fitHeight="25.0" fitWidth="32.0" layoutX="246.0" layoutY="220.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@../../style/icons/icons8-forgot-password-50.png"/>
+    </ImageView>
+    <PasswordField fx:id="password" layoutX="289.0" layoutY="211.0" prefHeight="43.0" prefWidth="255.0"
+                   promptText="password"/>
+    <JFXButton fx:id="loginBtn" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="352.0" layoutY="308.0"
+               onAction="#loginHandler" prefHeight="43.0" prefWidth="158.0" styleClass="btn-save"
+               stylesheets="@../../style/css/button-style.css" text="Login">
+        <font>
+            <Font name="Arial" size="17.0"/>
+        </font>
+    </JFXButton>
+    <Label alignment="CENTER" layoutX="62.0" layoutY="351.0" prefHeight="24.0" prefWidth="162.0"
+           styleClass="label-background" text="Formka Gelista" textFill="#3e6157">
+        <font>
+            <Font name="Arial Black" size="16.0"/>
+        </font>
+    </Label>
+    <Label layoutX="62.0" layoutY="376.0" prefHeight="24.0" prefWidth="237.0"
+           text="Geli password kaga leh userkad dooratay" textFill="#5e7573">
+        <font>
+            <Font name="Arial Bold" size="11.0"/>
+        </font>
+    </Label>
+</AnchorPane>

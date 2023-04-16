@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="434.0" prefWidth="596.0" styleClass="small-pane" stylesheets="@../../style/css/small-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.SplashScreenController">
+    <Label fx:id="waiting" alignment="CENTER" layoutX="201.0" layoutY="386.0" prefHeight="24.0" prefWidth="199.0" text="progress form" textFill="#5e7573">
+        <font>
+            <Font name="Arial Bold" size="12.0" />
+        </font>
+    </Label>
+    <ProgressBar fx:id="progress" layoutX="166.0" layoutY="352.0" prefHeight="24.0" prefWidth="269.0" progress="0.0" />
+    <ImageView fx:id="loadingImage" fitHeight="199.0" fitWidth="302.0" layoutX="149.0" layoutY="81.0" pickOnBounds="true">
+        <Image url="@../../style/icons/loading_man.gif" />
+    </ImageView>
+    <HBox fx:id="topPane" alignment="CENTER" prefHeight="43.0" prefWidth="600.0" spacing="290.0" styleClass="top-pane">
+        <HBox alignment="CENTER" prefHeight="43.0" prefWidth="259.0" spacing="10.0">
+            <HBox.margin>
+                <Insets left="20.0" />
+            </HBox.margin>
+            <ImageView fitHeight="25.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@../../style/icons/whitedumbel.png" />
+            </ImageView>
+            <Label prefHeight="24.0" prefWidth="191.0" text="SPLASH SCREEN" textFill="#c6d0cd">
+                <font>
+                    <Font name="Arial Black" size="16.0" />
+                </font>
+            </Label>
+        </HBox>
+    </HBox>
+    <JFXButton fx:id="welcomeBtn" layoutX="205.0" layoutY="292.0" prefHeight="43.0" prefWidth="191.0" styleClass="btn-upload-image" stylesheets="@../../style/css/button-style.css" text="WELCOME" textFill="#d3d0d0">
+        <font>
+            <Font name="Arial Black" size="13.0" />
+        </font>
+    </JFXButton>
+</AnchorPane>

@@ -1,4 +1,4 @@
-package com.example.gymmanagementsystem.controllers;
+package com.example.gymmanagementsystem.controllers.service;
 
 import com.example.gymmanagementsystem.dao.main.CustomerService;
 import com.example.gymmanagementsystem.entities.main.Customers;
@@ -16,6 +16,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.net.URL;
@@ -42,7 +43,7 @@ public class ReportControllerHandler extends CommonClass implements Initializabl
     private ImageView loadingImage;
     @FXML
     private Label exportLabel;
-    private File selectedFile = new File("customers.xlsx");
+    private File selectedFile;
     private final ToggleGroup choseGroup = new ToggleGroup();
 
     @Override
@@ -59,17 +60,19 @@ public class ReportControllerHandler extends CommonClass implements Initializabl
 
     @FXML
     void exportToExcelHandler() {
-        if (validChoose()&&isValid(getMandatoryFields(), null)) {
+        saveFile();
 
-            if (start) {
-                exportingService.restart();
-            } else {
-                exportingService.start();
-                start = true;
+            if (validChoose() && isValid(getMandatoryFields(), null)) {
+                if (selectedFile != null) {
+                if (start) {
+                    exportingService.restart();
+                } else {
+                    exportingService.start();
+                    start = true;
+                }
             }
-        } else {
-            System.out.println("Invalid");
         }
+
     }
 
 
@@ -115,6 +118,8 @@ public class ReportControllerHandler extends CommonClass implements Initializabl
                     try {
                         chooseExports(printStartDate.getValue(), printEndDate.getValue());
                         Thread.sleep(1000);
+                        Platform.runLater(() -> infoAlert("Report exported successfully path: \n"
+                                + selectedFile.getAbsolutePath()));
                     } catch (Exception e) {
                         e.printStackTrace();
                         errorMessage(e.getMessage());
@@ -165,4 +170,13 @@ public class ReportControllerHandler extends CommonClass implements Initializabl
             ExportDataToExcel.exportPendingCustomersToExcel(customers, selectedFile);
         }
     }
+
+    private void saveFile() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("All Files", "*.xlsx"));
+        selectedFile = fileChooser.showSaveDialog(customersOnly.getScene().getWindow());
+        System.out.println(selectedFile);
+    }
+
 }

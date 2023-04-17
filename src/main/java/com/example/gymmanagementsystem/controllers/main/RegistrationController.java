@@ -121,8 +121,7 @@ public class RegistrationController extends CommonClass implements Initializable
     void customerSaveHandler() {
         if (isValid(getMandatoryFields(), genderGroup) && (phone.getText().length() == 7)) {
             if (currentGym.isImageUpload() && !imageUploaded) {
-                checkImage(imgView, "Fadlan sawirku wuu kaa cawinayaa inaad wejiga \n" +
-                        "macmiilka ka dhex garan kartid macamisha kle 😊");
+                checkImage(imgView, "Fadlan sawirku wuu kaa cawinayaa inaad wejiga \n" + "macmiilka ka dhex garan kartid macamisha kle 😊");
             }
             clearBtn.setDisable(true);
             startTask(service, registerBtn, isCustomerNew ? "Saving" : "Updating");
@@ -162,7 +161,7 @@ public class RegistrationController extends CommonClass implements Initializable
             Forearm.setText(String.valueOf(customer.getForeArm()));
             hips.setText(String.valueOf(customer.getHips()));
             chest.setText(String.valueOf(customer.getChest()));
-
+// TODO: 17/04/2023 check why is redudent alert is occuring insha Allah
             if (customer.getImage() != null) {
                 ByteArrayInputStream bis = new ByteArrayInputStream(customer.getImage());
                 Image image = new Image(bis);
@@ -207,8 +206,7 @@ public class RegistrationController extends CommonClass implements Initializable
                             System.out.println(customersList);
                         }
                         Platform.runLater(() -> {
-                            Optional<ButtonType> result = informationAlert(isCustomerNew ? "New customer registered successfully" :
-                                    "Customer updated successfully").showAndWait();
+                            Optional<ButtonType> result = informationAlert(isCustomerNew ? "New customer registered successfully" : "Customer updated successfully").showAndWait();
 
                             if (result.isPresent() && result.get().getButtonData().isDefaultButton()) {
                                 if (isCustomerNew) System.out.println("Go payments");

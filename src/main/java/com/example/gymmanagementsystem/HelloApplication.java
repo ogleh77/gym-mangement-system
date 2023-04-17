@@ -35,6 +35,8 @@ public class HelloApplication extends Application {
         // controller.setUpdatePayment(PaymentService.fetchAllPayments("8435290").get(0));
         // TODO: 17/04/2023 Set payment off insha Allah customer delete open the delete
         // TODO: 17/04/2023 Payment controller re check insha Allah
+
+        // TODO: 17/04/2023 Add registration daily report insha Allah
         stage.setScene(scene);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.show();

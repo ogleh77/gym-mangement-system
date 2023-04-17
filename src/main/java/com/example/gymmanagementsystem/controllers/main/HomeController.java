@@ -158,7 +158,7 @@ public class HomeController extends CommonClass implements Initializable {
                 throw new RuntimeException("No customer selected");
             }
             if (tableView.getSelectionModel().getSelectedItem() != null) {
-                FXMLLoader loader = openNormalWindow("/com/example/gymmanagementsystem/views/main-create/registrations.fxml", borderPane);
+                FXMLLoader loader = openNormalWindow("/com/example/gymmanagementsystem/newviews/main/registrations.fxml", borderPane);
                 RegistrationController controller = loader.getController();
                 controller.setCustomer(tableView.getSelectionModel().getSelectedItem());
                 controller.setActiveUser(activeUser);
@@ -170,33 +170,34 @@ public class HomeController extends CommonClass implements Initializable {
 
     }
 
-    public void deleteHandler() throws SQLException {
+    public void deleteHandler() {
         Customers customer = tableView.getSelectionModel().getSelectedItem();
 
-        if (customer != null) {
+        if (customer == null) {
+            throw new RuntimeException("No customer selected");
+        }
+        try {
+            ButtonType haa = new ButtonType("Haa", ButtonBar.ButtonData.YES);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Ma hubtaa inaad masaxdo macmiilkan "
+                    , haa, new ButtonType("Maya", ButtonBar.ButtonData.NO));
 
-            try {
-                ButtonType haa = new ButtonType("Haa", ButtonBar.ButtonData.YES);
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Ma hubtaa inaad masaxdo macmiilkan "
-                        , haa, new ButtonType("Maya", ButtonBar.ButtonData.NO));
+            Optional<ButtonType> result = alert.showAndWait();
 
-                Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get().equals(haa)) {
 
-                if (result.isPresent() && result.get().equals(haa)) {
+                CustomerService.deleteCustomer(customer);
+                infoAlert("Customer has been deleted successfully.");
 
-                    CustomerService.deleteCustomer(customer);
-                    infoAlert("Customer has been deleted successfully.");
-
-                } else {
-                    alert.close();
-                }
-
-
-            } catch (Exception e) {
-                errorMessage(e.getMessage());
+            } else {
+                alert.close();
             }
+
+
+        } catch (Exception e) {
+            errorMessage(e.getMessage());
         }
     }
+
 
     @Override
     public void setBorderPane(BorderPane borderPane) {

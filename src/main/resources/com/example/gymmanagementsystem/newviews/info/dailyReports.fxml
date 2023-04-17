@@ -71,7 +71,7 @@
     </TableView>
     <DatePicker fx:id="startDate" editable="false" layoutX="600.0" layoutY="402.0" prefHeight="24.0" prefWidth="193.0" promptText="dd/mm/yyyy" stylesheets="@../../style/css/combo-style.css" />
     <DatePicker fx:id="endDate" editable="false" layoutX="842.0" layoutY="403.0" prefHeight="24.0" prefWidth="193.0" promptText="dd/mm/yyyy" stylesheets="@../../style/css/combo-style.css" />
-    <JFXButton fx:id="searchBtn" layoutX="1050.0" layoutY="393.0" prefHeight="33.0" prefWidth="109.0" styleClass="btn-upload-image" stylesheets="@../../style/css/button-style.css" text="Search">
+    <JFXButton fx:id="searchBtn" layoutX="1050.0" layoutY="393.0" onAction="#searchHandler" prefHeight="33.0" prefWidth="109.0" styleClass="btn-upload-image" stylesheets="@../../style/css/button-style.css" text="Search">
         <graphic>
             <ImageView fx:id="imgViewSearch" fitHeight="23.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                 <image>

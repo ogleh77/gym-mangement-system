@@ -31,6 +31,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Optional;
@@ -81,6 +82,7 @@ public class DashboardController extends CommonClass implements Initializable {
         Platform.runLater(() -> {
             gymName.textProperty().bind(currentGym.gymNameProperty());
             // TODO: 17/04/2023 Markad bedesho user nameka haka muqdo xaga sare insha Allah
+            // TODO: 17/04/2023 picture change also takes place insha Allah
             activeUserName.textProperty().bind(activeUser.usernameProperty());
             dashboardStage = (Stage) activeProfile.getScene().getWindow();
             borderPane.setLeft(null);
@@ -106,10 +108,12 @@ public class DashboardController extends CommonClass implements Initializable {
         }
         visible = !visible;
     }
+
     @FXML
     void minimizeHandler() {
         dashboardStage.setIconified(true);
     }
+
     @FXML
     void closeHandler() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Ma hubtaa inad ka baxayso system ka", no, ok);
@@ -156,6 +160,12 @@ public class DashboardController extends CommonClass implements Initializable {
         } catch (Exception e) {
             errorMessage(e.getMessage());
         }
+    }
+
+    @FXML
+    void reportHandler() throws IOException {
+        openWindow("/com/example/gymmanagementsystem/newviews/info/dailyReports.fxml", borderPane, null, warningStack);
+
     }
 
     @FXML

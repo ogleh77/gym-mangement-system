@@ -146,9 +146,13 @@ public class ReportControllerHandler extends CommonClass implements Initializabl
 
     @FXML
     void exportToExcelHandler() {
-        saveFile();
 
+        getMandatoryFields().clear();
+        if (!customersOnly.isSelected()) {
+            getMandatoryFields().addAll(printStartDate, printEndDate);
+        }
         if (validChoose() && isValid(getMandatoryFields(), null)) {
+            saveFile();
             if (selectedFile != null) {
                 if (start) {
                     exportingService.restart();
@@ -163,7 +167,6 @@ public class ReportControllerHandler extends CommonClass implements Initializabl
 
 
     private void init() {
-        getMandatoryFields().addAll(startDate, endDate);
         customersOnly.setToggleGroup(choseGroup);
         onlineCustomers.setToggleGroup(choseGroup);
         offlineCustomers.setToggleGroup(choseGroup);
@@ -270,6 +273,8 @@ public class ReportControllerHandler extends CommonClass implements Initializabl
 
     @FXML
     void searchHandler() {
+        getMandatoryFields().clear();
+        getMandatoryFields().addAll(startDate, endDate);
         if (isValid(getMandatoryFields(), null)) {
             if (start) {
                 service.restart();

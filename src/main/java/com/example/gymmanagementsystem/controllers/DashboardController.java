@@ -6,6 +6,7 @@ import com.example.gymmanagementsystem.controllers.info.OutDatedController;
 import com.example.gymmanagementsystem.controllers.main.HomeController;
 import com.example.gymmanagementsystem.controllers.main.RegistrationController;
 import com.example.gymmanagementsystem.controllers.users.UpdateUserController;
+import com.example.gymmanagementsystem.controllers.users.UserChooserController;
 import com.example.gymmanagementsystem.dao.service.GymService;
 import com.example.gymmanagementsystem.dao.service.UserService;
 import com.example.gymmanagementsystem.entities.main.Customers;
@@ -203,11 +204,11 @@ public class DashboardController extends CommonClass implements Initializable {
     @FXML
     void updateUsersHandler() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gymmanagementsystem/newviews/users/user-update.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gymmanagementsystem/newviews/users/user-chooser.fxml"));
             Scene scene = new Scene(loader.load());
-            UpdateUserController controller = loader.getController();
-            Users user = UserService.users().get(4);
-            controller.setUser(user);
+            UserChooserController controller = loader.getController();
+            //Users user = UserService.users().get(4);
+            controller.tempActiveUser(activeUser);
             Stage stage = new Stage(StageStyle.UNDECORATED);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);

@@ -213,6 +213,24 @@ public class PaymentModel {
         return PaymentModel.getPayments(payments, statement, rs);
     }
 
+
+    public static void offPayment(Payments payment) throws SQLException {
+        connection.setAutoCommit(false);
+        try {
+            Statement statement = connection.createStatement();
+            String query = "UPDATE payments SET is_online=false WHERE payment_id=" + payment.getPaymentID();
+            if (payment.getBox() != null) {
+                BoxService.updateBox(payment.getBox());
+            }
+            statement.executeUpdate(query);
+            connection.commit();
+        } catch (SQLException e) {
+            connection.rollback();
+            e.printStackTrace();
+            throw new CustomException("Khalad ayaa dhacay mmarka lama off garaynyay paymentkan " + e.getMessage());
+        }
+
+    }
     //---------------------------------Helpers-----------------------------
 
     private static void makeReport(Payments payment, String customerGender) throws SQLException {

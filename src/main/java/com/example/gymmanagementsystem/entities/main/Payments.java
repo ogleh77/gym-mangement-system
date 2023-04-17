@@ -154,6 +154,6 @@ public class Payments {
 
     @Override
     public String toString() {
-        return expDate + " " + amountPaid.get() + " " + paidBy.get()+" online "+isOnline()+" pend: "+pending;
+        return expDate + " " + amountPaid.get() + " " + paidBy.get()+" online "+online.get()+" pend: "+pending.get();
     }
 }

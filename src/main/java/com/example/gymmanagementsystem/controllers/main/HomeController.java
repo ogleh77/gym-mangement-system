@@ -5,7 +5,6 @@ import com.example.gymmanagementsystem.dao.main.CustomerService;
 import com.example.gymmanagementsystem.dao.service.GymService;
 import com.example.gymmanagementsystem.dao.service.UserService;
 import com.example.gymmanagementsystem.entities.main.Customers;
-import com.example.gymmanagementsystem.entities.main.Payments;
 import com.example.gymmanagementsystem.entities.service.Gym;
 import com.example.gymmanagementsystem.entities.service.Users;
 import com.example.gymmanagementsystem.helpers.CommonClass;
@@ -169,42 +168,31 @@ public class HomeController extends CommonClass implements Initializable {
 
     }
 
-    public void deleteHandler() {
-
+    public void deleteHandler() throws SQLException {
         Customers customer = tableView.getSelectionModel().getSelectedItem();
+
         if (customer != null) {
+
             try {
-                System.out.println(customer);
+                ButtonType haa = new ButtonType("Haa", ButtonBar.ButtonData.YES);
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Ma hubtaa inaad masaxdo macmiilkan "
+                        , haa, new ButtonType("Maya", ButtonBar.ButtonData.NO));
 
-                if (!customer.getPayments().isEmpty()) {
-                    for (Payments payment : customer.getPayments()) {
-                        if (payment.isOnline() || payment.isPending()) {
-                            throw new RuntimeException("Ma masaxi kartid macmiilkan sababtoo ah " +
-                                    "weli wakhtigu kama dhicin"
-                            );
-                        }
-                        break;
-                    }
+                Optional<ButtonType> result = alert.showAndWait();
+
+                if (result.isPresent() && result.get().equals(haa)) {
+
+                    CustomerService.deleteCustomer(customer);
+                    infoAlert("Customer has been deleted successfully.");
+
                 } else {
-                    ButtonType haa = new ButtonType("Haa", ButtonBar.ButtonData.YES);
-                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Ma hubtaa inaad masaxdo macmiilkan "
-                            , haa, new ButtonType("Maya", ButtonBar.ButtonData.NO));
-
-                    Optional<ButtonType> result = alert.showAndWait();
-
-                    if (result.isPresent() && result.get().equals(haa)) {
-                        System.out.println("Deleted");
-                        // TODO: 16/04/2023 Remove from table and delete insha Allah
-                        //CustomerService.fetchAllCustomer(UserService.users().get(0)).remove(customer);
-                        tableView.getItems().remove(customer);
-                    } else {
-                        alert.close();
-                    }
+                    alert.close();
                 }
+
+
             } catch (Exception e) {
                 errorMessage(e.getMessage());
             }
-
         }
     }
 

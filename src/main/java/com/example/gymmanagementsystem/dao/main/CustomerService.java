@@ -45,26 +45,26 @@ public class CustomerService {
 
     public static void deleteCustomer(Customers customer) throws SQLException {
         try {
-            if (customer == null) {
-                throw new CustomException("Fadlan ka dooro table ka macmiilka aad donayso inad masaxdo");
-            } else {
+            ObservableList<Payments> payments = PaymentService.fetchAllPayments(customer.getPhone());
 
-                ObservableList<Payments> payments = PaymentService.fetchAllPayments(customer.getPhone());
+            String pendPaymentMessage = "Macmiilkan waxa uu xidhay payment sasoo ay tahay ma delete garayn kartid" +
+                    "Marka hore dib u fur paymentkisa marka wakhtigu u dhamadana wad masaxi kartaa insha Allah.";
+            String onlinePaymentMessage = "Macmiilkan waxa uu u socda payment sasoo ay tahay ma delete garayn kartid" +
+                    " ilaa wakhtigiisa uu dhamaysanyo insha Allah.";
 
-                String pendPaymentMessage = "Macmiilkan waxa uu xidhay payment sasoo ay tahay ma delete garayn kartid" +
-                        "Marka hore dib u fur paymentkisa marka wakhtigu u dhamadana wad masaxi kartaa insha Allah.";
-                String onlinePaymentMessage = "Macmiilkan waxa uu u socda payment sasoo ay tahay ma delete garayn kartid" +
-                        " ilaa wakhtigiisa uu dhamaysanyo insha Allah.";
-                if (customer.getPayments() != null) {
-                    for (Payments payment : payments) {
-                        if (payment.isOnline() || payment.isPending()) {
-                            throw new CustomException(payment.isOnline() ? onlinePaymentMessage : pendPaymentMessage);
-                        }
-                        customerModel.delete(customer);
-                    }
-                }
+            if (customer.getPayments().isEmpty()) {
                 allCustomersList.remove(customer);
+                System.out.println("Deleted without payments");
                 customerModel.delete(customer);
+            } else {
+                for (Payments payment : payments) {
+                    if (payment.isOnline() || payment.isPending()) {
+                        throw new CustomException(payment.isOnline() ? onlinePaymentMessage : pendPaymentMessage);
+                    }
+                    //  customerModel.delete(customer);
+                    allCustomersList.remove(customer);
+                    System.out.println("Deleted with payments");
+                }
             }
         } catch (SQLException e) {
             throw new CustomException(e.getMessage());

@@ -6,11 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9c1a3bea-8a57-435b-b5d9-43e3f4a593e0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/database.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/DashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/info/OutDatedController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/info/OutDatedController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/main/PaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/main/PaymentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/main/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/main/RegistrationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/dashboard.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +48,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "dart.analysis.tool.window.visible": "false",
     "extract.method.default.visibility": "private",
-    "last_opened_file_path": "/Users/mrd/Desktop/gym-management-system/src/main/resources/com/example/gymmanagementsystem/newviews/users",
+    "last_opened_file_path": "/Users/mrd/Desktop/gym-management-system/src/main/java/com/example/gymmanagementsystem/controllers/main",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
@@ -65,18 +62,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/main" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/users" />
       <recent name="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/users" />
       <recent name="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/info" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/info" />
-      <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/service" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/main" />
+      <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/info" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/service" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/style/icons" />
-      <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/views/main-create" />
-      <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/views/service" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -212,7 +209,7 @@
       <workItem from="1681563506514" duration="5861000" />
       <workItem from="1681621797943" duration="25131000" />
       <workItem from="1681713782243" duration="9312000" />
-      <workItem from="1681735641752" duration="2974000" />
+      <workItem from="1681735641752" duration="3789000" />
     </task>
     <servers />
   </component>

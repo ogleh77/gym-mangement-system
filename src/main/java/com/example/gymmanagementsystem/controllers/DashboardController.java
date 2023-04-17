@@ -1,8 +1,10 @@
 package com.example.gymmanagementsystem.controllers;
 
+import animatefx.animation.FadeInDownBig;
 import animatefx.animation.SlideInLeft;
 import animatefx.animation.SlideOutLeft;
 import com.example.gymmanagementsystem.controllers.info.OutDatedController;
+import com.example.gymmanagementsystem.controllers.main.DashboardMenuController;
 import com.example.gymmanagementsystem.controllers.main.HomeController;
 import com.example.gymmanagementsystem.controllers.main.RegistrationController;
 import com.example.gymmanagementsystem.controllers.users.UpdateUserController;
@@ -20,10 +22,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Modality;
@@ -93,6 +92,12 @@ public class DashboardController extends CommonClass implements Initializable {
             updateUserBtn.setDisable(!activeUser.getRole().equals("super_admin"));
             gymBtn.setDisable(!activeUser.getRole().equals("super_admin"));
         });
+
+        try {
+            dashboard();
+        } catch (IOException e) {
+            errorMessage(e.getMessage());
+        }
     }
 
     @FXML
@@ -264,6 +269,42 @@ public class DashboardController extends CommonClass implements Initializable {
     }
 
     //--------------------__Helpers_------------------
+
+    private void dashboard() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gymmanagementsystem/newviews/main/dashboard-menu.fxml"));
+        AnchorPane anchorPane = loader.load();
+        FadeInDownBig fadeIn = new FadeInDownBig(anchorPane);
+        fadeIn.setOnFinished(e -> {
+            DashboardMenuController controller = loader.getController();
+            controller.setMenus(borderPane, sidePane, menuHBox, warningStack);
+            controller.setActiveUser(activeUser);
+            borderPane.setCenter(anchorPane);
+        });
+        fadeIn.setSpeed(1.5);
+        fadeIn.play();
+    }
+
+    private void openLogin() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Ma hubtaa inaad ka baxdo user ka " + activeUser.getUsername(), no, ok);
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.isPresent() && result.get() == ok) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/shipable/views/service/login.fxml"));
+            Stage stage = new Stage(StageStyle.UNDECORATED);
+            Scene scene;
+            closeStage(dashboardStage, activeProfile.getParent());
+            try {
+                scene = new Scene(loader.load());
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+
+        } else alert.close();
+    }
+
     private void borderPaneDrag() {
         topPane.setOnMousePressed(event -> {
             xOffset = dashboardStage.getX() - event.getScreenX();

@@ -21,7 +21,7 @@
     <top>
         <HBox fx:id="topPane" alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="top-pane" BorderPane.alignment="CENTER">
              <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="537.0" spacing="10.0">
-                 <HBox fx:id="menuHBox" alignment="CENTER" onMouseClicked="#menuClicked" prefHeight="31.0" prefWidth="40.0" styleClass="top-menu-hover">
+                 <HBox fx:id="menuHBox" alignment="CENTER" onMouseClicked="#menuClicked" prefHeight="31.0" prefWidth="40.0" styleClass="top-menu-hover" visible="false">
                      <HBox.margin>
                          <Insets bottom="5.0" left="5.0" top="5.0" />
                      </HBox.margin>

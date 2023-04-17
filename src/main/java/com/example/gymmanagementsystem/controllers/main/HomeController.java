@@ -1,6 +1,7 @@
 package com.example.gymmanagementsystem.controllers.main;
 
 import com.example.gymmanagementsystem.controllers.info.CustomerInfoController;
+import com.example.gymmanagementsystem.dao.Data;
 import com.example.gymmanagementsystem.dao.main.CustomerService;
 import com.example.gymmanagementsystem.dao.service.GymService;
 import com.example.gymmanagementsystem.dao.service.UserService;
@@ -87,31 +88,6 @@ public class HomeController extends CommonClass implements Initializable {
             zaad.setText("Zaad: " + currentGym.getZaad());
         });
 
-        //        tableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<>() {
-//            @Override
-//            public void changed(ObservableValue<? extends Customers> observable, Customers oldValue, Customers newValue) {
-//
-//
-//             if (tableView.getSelectionModel().set)
-//
-//                FXMLLoader loader = new FXMLLoader(getClass().
-//                        getResource("/com/example/gymmanagementsystem/views/service/short-info.fxml"));
-//                try {
-//                    Scene scene = new Scene(loader.load());
-//                    CustomerProfileController controller = loader.getController();
-//                    controller.setCustomer(tableView.getSelectionModel().getSelectedItem());
-//                    Stage stage = new Stage(StageStyle.UNDECORATED);
-//                    stage.setScene(scene);
-//                    stage.initModality(Modality.APPLICATION_MODAL);
-//                    stage.show();
-//                } catch (IOException e) {
-//                    errorMessage(e.getMessage());
-//                    e.printStackTrace();
-//                }
-//
-//
-//            }
-//        });
     }
 
     public void paymentHandler() {
@@ -207,12 +183,7 @@ public class HomeController extends CommonClass implements Initializable {
     @Override
     public void setActiveUser(Users activeUser) {
         super.setActiveUser(activeUser);
-        try {
-            // TODO: 16/04/2023 Change to Data to fetch customers insha Allah
-            customersList = CustomerService.fetchAllCustomer(activeUser);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        customersList = Data.getAllCustomersList();
     }
 
     //------------------------Helper methods-------------------

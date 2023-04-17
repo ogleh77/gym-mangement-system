@@ -77,7 +77,7 @@ public class DashboardMenuController extends CommonClass {
 
         if (result.isPresent() && result.get() == ok) {
             System.out.println("Yes");
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gymmanagementsystem/views/service/login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gymmanagementsystem/newviews/service/login.fxml"));
             Stage stage = new Stage(StageStyle.UNDECORATED);
             Scene scene;
             closeStage(thisStage, menuHBo.getParent());

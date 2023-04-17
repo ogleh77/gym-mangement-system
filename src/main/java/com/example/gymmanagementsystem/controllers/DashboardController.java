@@ -1,5 +1,6 @@
 package com.example.gymmanagementsystem.controllers;
 
+import animatefx.animation.FadeIn;
 import animatefx.animation.FadeInDownBig;
 import animatefx.animation.SlideInLeft;
 import animatefx.animation.SlideOutLeft;
@@ -82,7 +83,6 @@ public class DashboardController extends CommonClass implements Initializable {
             gymName.textProperty().bind(currentGym.gymNameProperty());
             // TODO: 17/04/2023 Markad bedesho user nameka haka muqdo xaga sare insha Allah
             // TODO: 17/04/2023 picture change also takes place insha Allah
-            activeUserName.textProperty().bind(activeUser.usernameProperty());
             dashboardStage = (Stage) activeProfile.getScene().getWindow();
             borderPane.setLeft(null);
 
@@ -133,6 +133,11 @@ public class DashboardController extends CommonClass implements Initializable {
     }
 
     @FXML
+    void logoutHandler() {
+        openLogin();
+    }
+
+    @FXML
     void homeHandler() {
         try {
             FXMLLoader loader = openWindow("/com/example/gymmanagementsystem/newviews/main/home.fxml", borderPane, null, warningStack);
@@ -142,6 +147,13 @@ public class DashboardController extends CommonClass implements Initializable {
         } catch (Exception e) {
             errorMessage(e.getMessage());
         }
+    }
+
+    @FXML
+    void dashboardHandler() throws IOException {
+        dashboard();
+        borderPane.setLeft(null);
+        menuHBox.setVisible(!menuHBox.isVisible());
     }
 
     @FXML
@@ -171,7 +183,6 @@ public class DashboardController extends CommonClass implements Initializable {
     @FXML
     void reportHandler() throws IOException {
         openWindow("/com/example/gymmanagementsystem/newviews/info/dailyReports.fxml", borderPane, null, warningStack);
-
     }
 
     @FXML
@@ -181,6 +192,7 @@ public class DashboardController extends CommonClass implements Initializable {
             Scene scene = new Scene(loader.load());
             UpdateUserController controller = loader.getController();
             controller.setActiveUser(activeUser);
+            controller.setStage(dashboardStage);
             Stage stage = new Stage(StageStyle.UNDECORATED);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
@@ -212,7 +224,6 @@ public class DashboardController extends CommonClass implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gymmanagementsystem/newviews/users/user-chooser.fxml"));
             Scene scene = new Scene(loader.load());
             UserChooserController controller = loader.getController();
-            //Users user = UserService.users().get(4);
             controller.tempActiveUser(activeUser);
             Stage stage = new Stage(StageStyle.UNDECORATED);
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -268,7 +279,18 @@ public class DashboardController extends CommonClass implements Initializable {
         }
     }
 
-    //--------------------__Helpers_------------------
+    public void setWarningList(ObservableList<Customers> warningList) {
+        this.warningList = warningList;
+        if (warningList.isEmpty()) {
+            warningParent.setVisible(false);
+        } else {
+            warningLabel.setText(warningList.size() < 9 ? String.valueOf(warningList.size()) : "9 +");
+            FadeIn fadeIn = new FadeIn(warningParent);
+            fadeIn.setCycleCount(20);
+            fadeIn.play();
+        }
+    }
+//--------------------__Helpers_------------------
 
     private void dashboard() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gymmanagementsystem/newviews/main/dashboard-menu.fxml"));
@@ -285,21 +307,23 @@ public class DashboardController extends CommonClass implements Initializable {
     }
 
     private void openLogin() {
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "Ma hubtaa inaad ka baxdo user ka " + activeUser.getUsername(), no, ok);
 
         Optional<ButtonType> result = alert.showAndWait();
 
         if (result.isPresent() && result.get() == ok) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/shipable/views/service/login.fxml"));
+            System.out.println("Yes");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gymmanagementsystem/newviews/service/login.fxml"));
             Stage stage = new Stage(StageStyle.UNDECORATED);
             Scene scene;
-            closeStage(dashboardStage, activeProfile.getParent());
+            closeStage(dashboardStage, menuHBox.getParent());
             try {
                 scene = new Scene(loader.load());
                 stage.setScene(scene);
                 stage.show();
             } catch (IOException ex) {
-                throw new RuntimeException(ex);
+                errorMessage(ex.getMessage());
             }
 
         } else alert.close();

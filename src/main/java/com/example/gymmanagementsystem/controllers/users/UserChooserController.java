@@ -28,6 +28,8 @@ public class UserChooserController extends CommonClass implements Initializable 
     private ListView<Users> listView;
     private Stage thisStage;
 
+    private final ButtonType okBtn = new ButtonType("Haa", ButtonBar.ButtonData.OK_DONE);
+    private final ButtonType cancelBtn = new ButtonType("Maya", ButtonBar.ButtonData.OK_DONE);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -75,7 +77,7 @@ public class UserChooserController extends CommonClass implements Initializable 
     void deleteHandler() {
         try {
             if (listView.getSelectionModel().getSelectedItem() == null) {
-                throw new CustomException("Marka hore soo dooro user-ka aad rabto inaad delete-garyso.");
+                throw new CustomException("No user selected.");
             }
             confirmDelete(listView.getSelectionModel().getSelectedItem().getUsername());
         } catch (Exception e) {
@@ -90,9 +92,6 @@ public class UserChooserController extends CommonClass implements Initializable 
     }
 
     private void confirmDelete(String username) throws SQLException {
-
-        ButtonType okBtn = new ButtonType("Haa", ButtonBar.ButtonData.OK_DONE);
-        ButtonType cancelBtn = new ButtonType("Maya", ButtonBar.ButtonData.OK_DONE);
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Ma hubtaa inaad delete garayso " + "userka " + username, okBtn, cancelBtn);
 

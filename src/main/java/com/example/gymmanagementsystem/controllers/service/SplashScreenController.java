@@ -1,5 +1,7 @@
 package com.example.gymmanagementsystem.controllers.service;
 
+import com.example.gymmanagementsystem.HelloApplication;
+import com.example.gymmanagementsystem.controllers.DashboardController;
 import com.example.gymmanagementsystem.dao.Data;
 import com.example.gymmanagementsystem.dao.main.CustomerService;
 import com.example.gymmanagementsystem.entities.main.Customers;
@@ -12,13 +14,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -75,30 +80,39 @@ public class SplashScreenController extends CommonClass implements Initializable
         private final LocalDate now = LocalDate.now();
 
         @Override
-        protected Void call() throws Exception {
-            ObservableList<Customers> offlineCustomers = CustomerService.fetchAllOnlineCustomer(activeUser);
-            int i = 0;
-            int sleepTime = offlineCustomers.size() <= 10 ? 1000 : 100;
+        protected Void call() {
+            try {
+                ObservableList<Customers> offlineCustomers = CustomerService.fetchAllOnlineCustomer(activeUser);
+                int i = 0;
+                int sleepTime = 100;
 
-            for (Customers customer : offlineCustomers) {
-                i++;
-                updateMessage("checking for updates .. ");
-                updateProgress(i, offlineCustomers.size());
-                for (Payments payment : customer.getPayments()) {
-                    LocalDate expDate = payment.getExpDate();
-                    if (now.plusDays(2).isEqual(expDate) || now.plusDays(1).isEqual(expDate) || now.isEqual(expDate)) {
-                        warningList.add(customer);
-                    } else if (now.isAfter(payment.getExpDate())) {
-//                        PaymentModel.offPayment(payment);
+                for (Customers customer : offlineCustomers) {
+                    i++;
+                    updateMessage("checking for updates .. ");
+                    updateProgress(i, offlineCustomers.size());
+                    for (Payments payment : customer.getPayments()) {
+                        LocalDate expDate = payment.getExpDate();
+                        if (now.plusDays(2).isEqual(expDate) || now.plusDays(1).isEqual(expDate) || now.isEqual(expDate)) {
+                            warningList.add(customer);
+                        } else if (now.isAfter(payment.getExpDate())) {
+                            // TODO: 17/04/2023 set the payment off
+                            //PaymentModel.offPayment(payment);
+                        }
                     }
+                    Thread.sleep(sleepTime);
                 }
-                Thread.sleep(sleepTime);
+                ObservableList<Customers> customers = CustomerService.fetchAllCustomer(activeUser);
+                System.out.println(customers.size());
+
+                updateMessage("fetching All customers");
+                Data.setAllCustomersList(customers);
+                Thread.sleep(1000);
+                updateMessage("fetched successfully..");
+            } catch (Exception e) {
+                Platform.runLater(() -> {
+                    errorMessage(e.getMessage());
+                });
             }
-            Thread.sleep(300);
-            ObservableList<Customers> customers = CustomerService.fetchAllCustomer(activeUser);
-            System.out.println(customers.size());
-            Data.setAllCustomersList(customers);
-            updateMessage("fetched successfully..");
             return null;
         }
     };
@@ -120,17 +134,17 @@ public class SplashScreenController extends CommonClass implements Initializable
 
     private void openDashboard() throws IOException {
         System.out.println("Customers in data " + Data.getAllCustomersList().size());
-//        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/shipable/views/dashboard.fxml"));
-//        Scene scene = null;
-//        scene = new Scene(fxmlLoader.load());
-////        DashboardController controller = fxmlLoader.getController();
-////        controller.setWarningList(warningList);
-////        controller.setActiveUser(activeUser);
-//        Stage stage = new Stage(StageStyle.UNDECORATED);
-//        stage.setScene(scene);
-//        URL url = getClass().getResource("/com/example/shipable/style/icons/app-icon.jpeg");
-//        stage.getIcons().add(new Image(String.valueOf(url)));
-//        stage.show();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/gymmanagementsystem/newviews/dashboard.fxml"));
+        Scene scene = null;
+        scene = new Scene(fxmlLoader.load());
+        DashboardController controller = fxmlLoader.getController();
+        controller.setWarningList(warningList);
+        controller.setActiveUser(activeUser);
+        Stage stage = new Stage(StageStyle.UNDECORATED);
+        stage.setScene(scene);
+        URL url = getClass().getResource("/com/example/gymmanagementsystem/style/icons/app-icon.jpeg");
+        stage.getIcons().add(new Image(String.valueOf(url)));
+        stage.show();
 
         System.out.println("Welcome home");
     }

@@ -18,7 +18,6 @@ import javafx.stage.Stage;
 
 import java.io.ByteArrayInputStream;
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class UpdateUserController extends CommonClass implements Initializable {
@@ -80,7 +79,7 @@ public class UpdateUserController extends CommonClass implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         Platform.runLater(() -> {
             stage = (Stage) topText.getScene().getWindow();
-            enterKeyFire(updateBtn,stage);
+            enterKeyFire(updateBtn, stage);
             initFields();
         });
 
@@ -217,6 +216,8 @@ public class UpdateUserController extends CommonClass implements Initializable {
                 imageView.setImage(image);
                 imageUploaded = true;
             }
+            updateBtn.setText("Change image");
+
         }
     }
 

@@ -120,13 +120,14 @@ public class HomeController extends CommonClass implements Initializable {
             if (customer == null) {
                 throw new RuntimeException("No customer selected");
             }
-            FXMLLoader loader = openNormalWindow("/com/example/gymmanagementsystem/views/main-create/payments.fxml", borderPane);
+            FXMLLoader loader = openNormalWindow("/com/example/gymmanagementsystem/newviews/main/payments.fxml", borderPane);
             PaymentController controller = loader.getController();
             controller.setCustomer(tableView.getSelectionModel().getSelectedItem());
             controller.setBorderPane(borderPane);
             controller.setActiveUser(activeUser);
             controller.checkPayment(customer);
         } catch (Exception e) {
+            e.printStackTrace();
             errorMessage(e.getMessage());
         }
 
@@ -139,9 +140,10 @@ public class HomeController extends CommonClass implements Initializable {
                 throw new RuntimeException("No customer selected");
             }
             if (tableView.getSelectionModel().getSelectedItem() != null) {
-                FXMLLoader loader = openNormalWindow("/com/example/gymmanagementsystem/views/service/customer-info.fxml", borderPane);
+                FXMLLoader loader = openNormalWindow("/com/example/gymmanagementsystem/newviews/info/customer-info.fxml", borderPane);
                 CustomerInfoController controller = loader.getController();
                 controller.setCustomer(tableView.getSelectionModel().getSelectedItem());
+                controller.setBorderPane(borderPane);
             }
         } catch (Exception e) {
             errorMessage(e.getMessage());

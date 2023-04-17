@@ -1,6 +1,7 @@
 package com.example.gymmanagementsystem;
 
 
+import com.example.gymmanagementsystem.controllers.DashboardController;
 import com.example.gymmanagementsystem.controllers.main.HomeController;
 import com.example.gymmanagementsystem.dao.service.UserService;
 import javafx.application.Application;
@@ -15,9 +16,9 @@ import java.sql.SQLException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/gymmanagementsystem/newviews/main/home.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/gymmanagementsystem/newviews/dashboard.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        HomeController controller = fxmlLoader.getController();
+        DashboardController controller = fxmlLoader.getController();
         controller.setActiveUser(UserService.users().get(0));
 //        OutDatedController controller = fxmlLoader.getController();
 //        controller.setActiveUser(UserService.users().get(4));
@@ -32,6 +33,8 @@ public class HelloApplication extends Application {
         //  controller.setActiveUser(UserService.users().get(0));
         //   controller.setCustomer(CustomerService.fetchAllCustomer(UserService.users().get(0)).get(0));
         // controller.setUpdatePayment(PaymentService.fetchAllPayments("8435290").get(0));
+        // TODO: 17/04/2023 Set payment off insha Allah customer delete open the delete
+        // TODO: 17/04/2023 Payment controller re check insha Allah
         stage.setScene(scene);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.show();

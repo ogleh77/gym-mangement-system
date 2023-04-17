@@ -19,6 +19,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -62,6 +63,7 @@ public class OutDatedController extends CommonClass implements Initializable {
             shift.getItems().add("All");
             shift.setValue("All");
             getMandatoryFields().addAll(fromDate, toDate);
+            enterKeyFire(searchHandler, (Stage) fromDate.getScene().getWindow());
         });
 
         service.setOnSucceeded(e -> {
@@ -126,7 +128,7 @@ public class OutDatedController extends CommonClass implements Initializable {
                 CardController controller = loader.getController();
                 controller.setCustomer(outDatedCustomers.get(i));
                 gridView.add(anchorPane, column++, row);
-             }
+            }
 
         } catch (Exception e) {
             e.printStackTrace();

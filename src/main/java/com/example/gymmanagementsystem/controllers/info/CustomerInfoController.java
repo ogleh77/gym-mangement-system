@@ -14,12 +14,11 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
+import javafx.scene.layout.BorderPane;
 
 import java.io.ByteArrayInputStream;
 import java.net.URL;
@@ -99,19 +98,20 @@ public class CustomerInfoController extends CommonClass implements Initializable
     public void initialize(URL location, ResourceBundle resources) {
         Platform.runLater(this::initFields);
         tableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.isPending() && !newValue.isOnline()) {
-                pendBtn.setDisable(true);
-                pendBtn.setText("Haki(pend)");
-                pendBtn.setStyle(pendStyle);
-            } else if (newValue.isPending()) {
-                pendBtn.setText("Fur");
-                pendBtn.setStyle(unPendStyle);
-                pendBtn.setDisable(false);
-            } else {
-                pendBtn.setText("Haki(pend)");
-                pendBtn.setStyle(pendStyle);
-                pendBtn.setDisable(false);
-            }
+            if (newValue != null)
+                if (!newValue.isPending() && !newValue.isOnline()) {
+                    pendBtn.setDisable(true);
+                    pendBtn.setText("Haki(pend)");
+                    pendBtn.setStyle(pendStyle);
+                } else if (newValue.isPending()) {
+                    pendBtn.setText("Fur");
+                    pendBtn.setStyle(unPendStyle);
+                    pendBtn.setDisable(false);
+                } else {
+                    pendBtn.setText("Haki(pend)");
+                    pendBtn.setStyle(pendStyle);
+                    pendBtn.setDisable(false);
+                }
         });
     }
 
@@ -162,14 +162,10 @@ public class CustomerInfoController extends CommonClass implements Initializable
             if (selectedPayment == null) {
                 throw new RuntimeException("No payment selected");
             }
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gymmanagementsystem/newviews/main/payments.fxml"));
-            Scene scene = new Scene(loader.load());
+            FXMLLoader loader = openNormalWindow("/com/example/gymmanagementsystem/newviews/main/payments.fxml", borderPane);
             PaymentController controller = loader.getController();
             controller.setUpdatePayment(selectedPayment);
             controller.setCustomer(customer);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
         } catch (Exception e) {
             errorMessage(e.getMessage());
         }
@@ -281,5 +277,10 @@ public class CustomerInfoController extends CommonClass implements Initializable
             return period.getDays() == 1 ? "1 maalin" : period.getDays() + " malmood";
         }
         return "outdated";
+    }
+
+    @Override
+    public void setBorderPane(BorderPane borderPane) {
+        super.setBorderPane(borderPane);
     }
 }

@@ -55,7 +55,7 @@
             <Font name="Arial Black" size="12.0" />
         </font>
     </JFXButton>
-    <JFXButton buttonType="RAISED" layoutX="961.0" layoutY="630.0" prefHeight="40.0" prefWidth="120.0" styleClass="btn-reset" stylesheets="@../../style/css/button-style.css" text="Reset" textFill="WHITE" AnchorPane.bottomAnchor="83.0" AnchorPane.rightAnchor="68.0">
+    <JFXButton buttonType="RAISED" layoutX="961.0" layoutY="630.0" onAction="#resetHandler" prefHeight="40.0" prefWidth="120.0" styleClass="btn-reset" stylesheets="@../../style/css/button-style.css" text="Reset" textFill="WHITE" AnchorPane.bottomAnchor="83.0" AnchorPane.rightAnchor="68.0">
         <font>
             <Font size="15.0" />
         </font>

@@ -16,13 +16,6 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="home-pane" stylesheets="@../../style/css/long-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.info.CustomerInfoController">
-    <effect>
-        <DropShadow height="35.83" radius="17.415" width="35.83">
-            <color>
-                <Color red="0.24705882370471954" green="0.6117647290229797" blue="0.9098039269447327" />
-            </color>
-        </DropShadow>
-    </effect>
     <Label layoutX="119.0" layoutY="189.0" prefHeight="20.0" prefWidth="83.0" text="full name" textFill="#444646" AnchorPane.leftAnchor="119.0">
         <font>
             <Font name="Verdana Bold" size="14.0" />

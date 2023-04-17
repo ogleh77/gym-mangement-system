@@ -41,10 +41,24 @@
                 </HBox.margin>
                 <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="301.0" spacing="10.0">
                     <Circle fx:id="activeProfile" fill="DODGERBLUE" radius="19.0" stroke="#048be4" strokeLineCap="ROUND" strokeWidth="0.0" />
-               <MenuButton alignment="BOTTOM_RIGHT" mnemonicParsing="false" popupSide="RIGHT" style="-fx-background-color: #328ca8;" text="Mohamed Ogleh">
+               <MenuButton fx:id="activeUserName" contentDisplay="TEXT_ONLY" mnemonicParsing="false" style="-fx-background-color: #328ca8;" text="Mohamed Ogleh">
                  <items>
-                   <MenuItem mnemonicParsing="false" text="update" />
-                   <MenuItem mnemonicParsing="false" text="logout" />
+                   <MenuItem mnemonicParsing="false" onAction="#updateMeHandler" text="update my profile">
+                        <graphic>
+                           <ImageView fitHeight="27.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../style/icons/icons8-available-updates-24.png" />
+                              </image>
+                           </ImageView>
+                        </graphic></MenuItem>
+                   <MenuItem mnemonicParsing="false" text="logout from system">
+                        <graphic>
+                           <ImageView fitHeight="27.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../style/icons/icons8-bell-48.png" />
+                              </image>
+                           </ImageView>
+                        </graphic></MenuItem>
                  </items>
                   <HBox.margin>
                      <Insets bottom="2.0" />
@@ -79,12 +93,12 @@
                     <HBox.margin>
                         <Insets left="26.0" />
                     </HBox.margin>
-                    <HBox alignment="CENTER" prefHeight="37.0" prefWidth="44.0" styleClass="top-menu-hover">
+                    <HBox alignment="CENTER" onMouseClicked="#minimizeHandler" prefHeight="37.0" prefWidth="44.0" styleClass="top-menu-hover">
                         <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                             <Image url="@../style/icons/icons8-collapse-30.png" />
                         </ImageView>
                     </HBox>
-                    <HBox alignment="CENTER" prefHeight="37.0" prefWidth="44.0" styleClass="cancel-pane" stylesheets="@../style/css/small-style.css">
+                    <HBox alignment="CENTER" onMouseClicked="#closeHandler" prefHeight="37.0" prefWidth="44.0" styleClass="cancel-pane" stylesheets="@../style/css/small-style.css">
                         <ImageView fitHeight="26.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                             <Image url="@../style/icons/icons8-close-30.png" />
                         </ImageView>
@@ -131,7 +145,7 @@
                     <Font name="Arial" size="18.0" />
                 </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" prefHeight="37.0" prefWidth="163.0" styleClass="side-btn" text="Home data" textFill="#e8dcdc">
+            <JFXButton buttonType="RAISED" onAction="#homeHandler" prefHeight="37.0" prefWidth="163.0" styleClass="side-btn" text="Home data" textFill="#e8dcdc">
                 <graphic>
                     <ImageView fitHeight="24.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                         <Image url="@../style/icons/icons8-home-24.png" />
@@ -141,7 +155,7 @@
                     <Font name="Arial" size="18.0" />
                 </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" styleClass="side-btn" text="Registrations" textFill="#e8dcdc">
+            <JFXButton buttonType="RAISED" onAction="#registrationHandler" styleClass="side-btn" text="Registrations" textFill="#e8dcdc">
                 <graphic>
                     <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                         <Image url="@../style/icons/icons8-registration-30.png" />
@@ -174,7 +188,7 @@
                     <Font name="Arial" size="18.0" />
                 </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" prefHeight="46.0" prefWidth="176.0" styleClass="side-btn" text="Out dated" textFill="#e8dcdc">
+            <JFXButton buttonType="RAISED" onAction="#outdatedCustomersHandler" prefHeight="46.0" prefWidth="176.0" styleClass="side-btn" text="Out dated" textFill="#e8dcdc">
                 <graphic>
                     <ImageView fitHeight="28.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                         <Image url="@../style/icons/icons8-user-30.png" />
@@ -193,21 +207,21 @@
                             </ImageView>
                         </graphic>
                     </MenuItem>
-                    <MenuItem fx:id="addUserBtn" mnemonicParsing="false" text="Add user">
+                    <MenuItem fx:id="addUserBtn" mnemonicParsing="false" onAction="#addUserHandler" text="Add user">
                         <graphic>
                             <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                 <Image url="@../style/icons/adduser.png" />
                             </ImageView>
                         </graphic>
                     </MenuItem>
-                    <MenuItem fx:id="updateUserBtn" mnemonicParsing="false" text="Update user">
+                    <MenuItem fx:id="updateUserBtn" mnemonicParsing="false" onAction="#updateUsersHandler" text="Update user">
                         <graphic>
                             <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                 <Image url="@../style/icons/icons8-available-updates-24.png" />
                             </ImageView>
                         </graphic>
                     </MenuItem>
-                    <MenuItem fx:id="gymBtn" mnemonicParsing="false" text="GYM">
+                    <MenuItem fx:id="gymBtn" mnemonicParsing="false" onAction="#gymHandler" text="GYM">
                         <graphic>
                             <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                 <Image url="@../style/icons/balck.png" />

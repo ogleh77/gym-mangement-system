@@ -79,6 +79,8 @@ public class RegistrationController extends CommonClass implements Initializable
     private TextField waist;
     @FXML
     private JFXButton clearBtn;
+    @FXML
+    private JFXButton imageUploadBtn;
 
     private boolean isCustomerNew = true;
     private final int newCustomerID;
@@ -166,6 +168,7 @@ public class RegistrationController extends CommonClass implements Initializable
                 Image image = new Image(bis);
                 imageUploaded = true;
                 imgView.setImage(image);
+                imageUploadBtn.setText("Change image");
             }
 
             headerInfo.setText("CUSTOMER UPDATE PAGE");

@@ -20,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.ByteArrayInputStream;
@@ -102,8 +103,9 @@ public class PaymentController extends CommonClass implements Initializable {
             if (updatePayment == null) {
                 startDate.setValue(LocalDate.now());
                 expDate.setValue(LocalDate.now().plusDays(30));
-
             }
+
+            enterKeyFire(createBtn, (Stage) startDate.getScene().getWindow());
         });
         try {
             amountValidation();
@@ -133,6 +135,14 @@ public class PaymentController extends CommonClass implements Initializable {
         } catch (Exception e) {
             errorMessage("Fadlan si sax ah u geli discount ka ama amount ka la bixshay" + e.getMessage());
         }
+    }
+
+    @FXML
+    void resetHandler() {
+        discount.setText(String.valueOf(0));
+        amountPaid.setText("");
+        boxChooser.setValue(null);
+        paidBy.setValue(null);
     }
 
     @Override
@@ -181,6 +191,7 @@ public class PaymentController extends CommonClass implements Initializable {
                                 Optional<ButtonType> result = informationAlert("Payment updated Successfully").showAndWait();
                                 if (result.isPresent() && result.get().getButtonData().isDefaultButton()) {
                                     System.out.println("Ok");
+                                    createBtn.setDisable(true);
                                 }
                             });
                         }

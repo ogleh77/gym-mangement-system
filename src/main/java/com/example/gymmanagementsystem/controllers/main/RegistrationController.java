@@ -20,7 +20,6 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
 
 import java.io.ByteArrayInputStream;
 import java.net.URL;
@@ -96,7 +95,6 @@ public class RegistrationController extends CommonClass implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Platform.runLater(() -> {
-            enterKeyFire(registerBtn, (Stage) registerBtn.getScene().getWindow());
             shift.setItems(getShift());
             male.setToggleGroup(genderGroup);
             female.setToggleGroup(genderGroup);

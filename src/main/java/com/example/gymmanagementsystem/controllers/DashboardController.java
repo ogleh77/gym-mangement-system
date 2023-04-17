@@ -8,7 +8,6 @@ import com.example.gymmanagementsystem.controllers.main.RegistrationController;
 import com.example.gymmanagementsystem.controllers.users.UpdateUserController;
 import com.example.gymmanagementsystem.controllers.users.UserChooserController;
 import com.example.gymmanagementsystem.dao.service.GymService;
-import com.example.gymmanagementsystem.dao.service.UserService;
 import com.example.gymmanagementsystem.entities.main.Customers;
 import com.example.gymmanagementsystem.entities.service.Gym;
 import com.example.gymmanagementsystem.entities.service.Users;
@@ -158,6 +157,7 @@ public class DashboardController extends CommonClass implements Initializable {
             FXMLLoader loader = openWindow("/com/example/gymmanagementsystem/newviews/info/outdated.fxml", borderPane, null, warningStack);
             OutDatedController controller = loader.getController();
             controller.setActiveUser(activeUser);
+            controller.setBorderPane(borderPane);
         } catch (Exception e) {
             errorMessage(e.getMessage());
         }

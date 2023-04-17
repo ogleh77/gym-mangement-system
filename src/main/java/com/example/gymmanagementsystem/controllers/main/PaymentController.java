@@ -105,7 +105,7 @@ public class PaymentController extends CommonClass implements Initializable {
                 expDate.setValue(LocalDate.now().plusDays(30));
             }
 
-            enterKeyFire(createBtn, (Stage) startDate.getScene().getWindow());
+
         });
         try {
             amountValidation();

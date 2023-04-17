@@ -63,8 +63,7 @@ public class OutDatedController extends CommonClass implements Initializable {
             shift.getItems().add("All");
             shift.setValue("All");
             getMandatoryFields().addAll(fromDate, toDate);
-//            enterKeyFire(searchHandler, (Stage) fromDate.getScene().getWindow());
-        });
+         });
 
         service.setOnSucceeded(e -> {
             searchHandler.setGraphic(null);

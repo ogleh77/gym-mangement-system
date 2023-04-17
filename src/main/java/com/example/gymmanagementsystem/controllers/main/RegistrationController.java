@@ -113,7 +113,7 @@ public class RegistrationController extends CommonClass implements Initializable
         service.setOnSucceeded(e -> {
             registerBtn.setGraphic(getFirstImage("/com/example/gymmanagementsystem/style/icons/icons8-save-30.png"));
             registerBtn.setText(isCustomerNew ? "Payment" : "Updated");
-
+            clearBtn.setDisable(false);
         });
     }
 
@@ -205,17 +205,15 @@ public class RegistrationController extends CommonClass implements Initializable
                             customersList.add(savingCustomer());
                             System.out.println(customersList);
                         }
+                        Thread.sleep(1000);
                         Platform.runLater(() -> {
                             Optional<ButtonType> result = informationAlert(isCustomerNew ? "New customer registered successfully" : "Customer updated successfully").showAndWait();
 
                             if (result.isPresent() && result.get().getButtonData().isDefaultButton()) {
                                 if (isCustomerNew) System.out.println("Go payments");
-                                else System.out.println("Do nothing");
-                            } else {
-                                System.out.println("Cancel");
                             }
                         });
-                        Thread.sleep(1000);
+
                     } catch (Exception e) {
                         e.printStackTrace();
                         if (e.getClass().isInstance(SQLException.class)) {

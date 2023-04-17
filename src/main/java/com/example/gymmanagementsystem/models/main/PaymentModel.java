@@ -37,7 +37,7 @@ public class PaymentModel {
             ps.setString(7, customerPhone);
             ps.setString(8, payment.getMonth());
             ps.executeUpdate();
-            //   makeReport(payment, customerGender);
+            makeReport(payment, customerGender);
             connection.commit();
             ps.close();
         } catch (SQLException e) {
@@ -82,6 +82,8 @@ public class PaymentModel {
             String query = "DELETE FROM payments WHERE payment_id=" + payment.getPaymentID();
             Statement statement = connection.createStatement();
             statement.execute(query);
+            if (payment.getBox() != null)
+                BoxService.updateBox(payment.getBox());
             connection.commit();
         } catch (SQLException e) {
             connection.rollback();

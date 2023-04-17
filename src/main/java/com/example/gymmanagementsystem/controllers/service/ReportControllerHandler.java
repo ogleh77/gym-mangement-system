@@ -304,6 +304,7 @@ public class ReportControllerHandler extends CommonClass implements Initializabl
             dailyTbView.setPlaceholder(label);
         }
         dailyTbView.setItems(DailyReportModel.getWeeklyPayments(LocalDate.now()));
+
     }
 
     private void generateTable() throws SQLException {

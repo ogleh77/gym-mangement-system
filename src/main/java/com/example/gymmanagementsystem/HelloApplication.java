@@ -1,9 +1,7 @@
 package com.example.gymmanagementsystem;
 
 
-import com.example.gymmanagementsystem.controllers.DashboardController;
-import com.example.gymmanagementsystem.controllers.main.HomeController;
-import com.example.gymmanagementsystem.dao.service.UserService;
+import com.example.gymmanagementsystem.dependencies.Alerts;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -37,11 +35,14 @@ public class HelloApplication extends Application {
         // TODO: 17/04/2023 Payment controller re check insha Allah
 
         // TODO: 17/04/2023 Add registration daily report insha Allah
+
+        // TODO: 19/04/2023 User delete bind to home usercounter insha Allah 
+        // TODO: 19/04/2023 wide pane remove the drop shadows insha Allah
         stage.setScene(scene);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
 
-
+        Alerts.notificationAlert("Hello ", "Title");
     }
 
     public static void main(String[] args) {

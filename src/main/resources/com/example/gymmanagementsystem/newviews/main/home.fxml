@@ -259,11 +259,11 @@
             <Font name="Arial Black" size="12.0" />
         </font>
     </Label>
-    <effect>
-        <DropShadow height="35.82" radius="17.41" width="35.82">
-            <color>
-                <Color red="0.24705882370471954" green="0.6117647290229797" blue="0.9098039269447327" />
-            </color>
-        </DropShadow>
-    </effect>
+   <effect>
+      <DropShadow height="6.17" radius="2.585" width="6.17">
+         <color>
+            <Color red="0.6263401508331299" green="0.6677733063697815" blue="0.6973684430122375" />
+         </color>
+      </DropShadow>
+   </effect>
 </AnchorPane>

@@ -14,8 +14,7 @@
 }
 .cancel-pane:hover {
     -fx-background-color: #b71818;
-    -fx-background-radius: 5;
-}
+ }
 
 .label-background {
     -fx-background-color: #dae0da;

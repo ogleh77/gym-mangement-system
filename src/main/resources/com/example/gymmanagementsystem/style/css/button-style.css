@@ -6,15 +6,29 @@
     -fx-background-color: #afd6e3;
 }
 
-.btn-normal {
-    -fx-background-color:  #afd6e3;
+.btn-upload-image:hover {
+    -fx-font-family: Verdana;
+    -fx-font-size: 14;
+    -fx-text-fill: #171717;
+    -fx-pref-height: 47;
+    -fx-background-color: #b0ddee;
 }
 
-
-
+.btn-normal {
+    -fx-background-color: #afd6e3;
+}
 
 .btn-reset {
     -fx-background-color: red;
+    -fx-font-family: Verdana;
+    -fx-font-size: 16;
+    -fx-text-fill: white;
+    -fx-pref-width: 171;
+    -fx-pref-height: 47;
+}
+
+.btn-reset:hover {
+    -fx-background-color: #f83e3e;
     -fx-font-family: Verdana;
     -fx-font-size: 16;
     -fx-text-fill: white;
@@ -30,8 +44,26 @@
     -fx-background-color: #d22b2b;
 }
 
+.btn-delete:hover {
+    -fx-font-family: Verdana;
+    -fx-font-size: 14;
+    -fx-text-fill: white;
+    -fx-pref-height: 47;
+    -fx-background-color: #de4343;
+}
+
+
 .btn-save {
     -fx-background-color: #385d82;
+    -fx-font-family: Verdana;
+    -fx-font-size: 14;
+    -fx-text-fill: #f8f2f2;
+    -fx-pref-width: 171;
+    -fx-pref-height: 47;
+}
+
+.btn-save:hover {
+    -fx-background-color: #416c9a;
     -fx-font-family: Verdana;
     -fx-font-size: 14;
     -fx-text-fill: #f8f2f2;
@@ -49,4 +81,43 @@
     -fx-background-color: #d22b2b;
     -fx-pref-width: 51;
     -fx-pref-height: 36;
+}
+
+.setting-menu-button {
+    -fx-background-color: #328ca8;
+}
+
+.setting-menu-button .label {
+    -fx-text-fill: #3a3939;
+    -fx-font-family: Verdana;
+    -fx-font-size: 15;
+}
+
+.setting-menu-button .label:hover {
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+    -fx-underline: true;
+}
+
+.setting-menu-button:hover {
+    -fx-background-color: #1eade3;
+
+}
+
+/*------------profile menu----------------*/
+
+.profile-menu-button {
+    -fx-background-color: #328ca8;
+}
+
+.profile-menu-button .label {
+    -fx-text-fill: #3a3939;
+    -fx-font-family: Verdana;
+    -fx-font-size: 15;
+}
+
+.profile-menu-button .label:hover {
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+    -fx-underline: true;
 }

@@ -49,7 +49,7 @@
         <Image url="@../../style/icons/icons8-forgot-password-50.png" />
     </ImageView>
     <PasswordField fx:id="password" layoutX="289.0" layoutY="211.0" prefHeight="43.0" prefWidth="255.0" promptText="password" />
-    <JFXButton fx:id="loginBtn" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="352.0" layoutY="308.0" onAction="#loginHandler" prefHeight="43.0" prefWidth="158.0" styleClass="btn-save" stylesheets="@../../style/css/button-style.css" text="Gal (Login)">
+    <JFXButton fx:id="loginBtn" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="373.0" layoutY="272.0" onAction="#loginHandler" prefHeight="43.0" prefWidth="158.0" styleClass="btn-save" stylesheets="@../../style/css/button-style.css" text="Gal (Login)">
         <font>
             <Font name="Arial" size="7.0" />
         </font>

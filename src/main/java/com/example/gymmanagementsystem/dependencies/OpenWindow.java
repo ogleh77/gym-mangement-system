@@ -44,13 +44,10 @@ public class OpenWindow {
         getSlideUp().setNode(anchorPane);
         getSlideUp().play();
         borderPane.setCenter(anchorPane);
-//        getSlideUp().setOnFinished(e -> {
         getFadeIn().setNode(hBox);
         HBox topBox = (HBox) borderPane.getTop();
         topBox.getChildren().add(1, hBox);
         getFadeIn().play();
-//        });
-
         return loader;
     }
 
@@ -72,8 +69,8 @@ public class OpenWindow {
         FXMLLoader loader = new FXMLLoader(OpenWindow.class.getResource("/com/example/gymmanagementsystem/newviews/main/dashboard-menu.fxml"));
         AnchorPane anchorPane = loader.load();
         FadeIn fadeIn = new FadeIn(anchorPane);
-//        if (topPane.getChildren().size() >= 3)
-//            topPane.getChildren().remove(1);
+        HBox hBox = (HBox) borderPane.getTop();
+        hBox.getChildren().remove(topPane);
 //        fadeIn.setOnFinished(e -> {
         DashboardMenuController controller = loader.getController();
         controller.setBorderPane(borderPane);

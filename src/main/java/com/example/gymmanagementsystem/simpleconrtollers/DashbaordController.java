@@ -2,6 +2,7 @@ package com.example.gymmanagementsystem.simpleconrtollers;
 
 import com.example.gymmanagementsystem.controllers.users.UpdateUserController;
 import com.example.gymmanagementsystem.dao.service.UserService;
+import com.example.gymmanagementsystem.dependencies.Alerts;
 import com.example.gymmanagementsystem.dependencies.OpenWindow;
 import com.example.gymmanagementsystem.entities.service.Users;
 import com.example.gymmanagementsystem.helpers.CommonClass;
@@ -53,7 +54,7 @@ public class DashbaordController extends CommonClass implements Initializable {
             borderPaneDropped();
 
             try {
-                 OpenWindow.dashboardWindow(borderPane,menuHBox);
+                OpenWindow.dashboardWindow(borderPane, menuHBox);
 
             } catch (Exception e) {
                 throw new RuntimeException(e);
@@ -73,7 +74,7 @@ public class DashbaordController extends CommonClass implements Initializable {
 
     @FXML
     void dashboardHandler() throws Exception {
-        OpenWindow.dashboardWindow(borderPane,menuHBox);
+        OpenWindow.dashboardWindow(borderPane, menuHBox);
     }
 
     @FXML
@@ -104,6 +105,20 @@ public class DashbaordController extends CommonClass implements Initializable {
     @FXML
     void outdatedHandler() throws IOException {
         OpenWindow.mainWindow("/com/example/gymmanagementsystem/newviews/info/outdated.fxml", borderPane);
+    }
+
+    @FXML
+    void closeHandler() {
+        boolean data = Alerts.confirmationAlert("Ma hubtaa inaad ka baxdo systemka", "Doorasho");
+        if (data) {
+            OpenWindow.closeStage(dashboardStage, activeProfile);
+        }
+        System.out.println(data);
+    }
+
+    @FXML
+    void minimizeHandler() {
+        dashboardStage.setIconified(true);
     }
 
     private void borderPaneDrag() {

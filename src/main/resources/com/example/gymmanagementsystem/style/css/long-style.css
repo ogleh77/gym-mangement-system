@@ -40,10 +40,6 @@
     -fx-font-size: 20;
 }
 
-.cancel-pane:hover {
-    -fx-background-color: #a8b9be;
-    -fx-background-radius: 5;
-}
 
 .label-background {
     -fx-background-color: #dae0da;

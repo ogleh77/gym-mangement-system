@@ -8,6 +8,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Pagination?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.paint.Color?>
@@ -32,7 +34,7 @@
         </effect>
         <Label layoutX="19.0" layoutY="6.0" text="Customer query filter" textFill="#3a6188">
             <font>
-                <Font name="Verdana" size="15.0" />
+                <Font name="Tahoma" size="15.0" />
             </font>
         </Label>
         <JFXRadioButton fx:id="male" layoutX="211.0" layoutY="42.0" text="Male" textFill="#686565">
@@ -42,6 +44,9 @@
             <unSelectedColor>
                 <Color red="0.19607843458652496" green="0.5490196347236633" blue="0.658823549747467" />
             </unSelectedColor>
+         <selectedColor>
+            <Color red="0.06530214101076126" green="0.5958820581436157" blue="0.8815789222717285" />
+         </selectedColor>
         </JFXRadioButton>
         <JFXRadioButton fx:id="female" layoutX="283.0" layoutY="42.0" text="Female" textFill="#686565">
             <font>
@@ -50,6 +55,9 @@
             <unSelectedColor>
                 <Color red="0.19607843458652496" green="0.5490196347236633" blue="0.658823549747467" />
             </unSelectedColor>
+         <selectedColor>
+            <Color red="0.06530214101076126" green="0.5958820581436157" blue="0.8815789222717285" />
+         </selectedColor>
         </JFXRadioButton>
         <JFXRadioButton fx:id="both" layoutX="373.0" layoutY="42.0" text="both" textFill="#686565">
             <font>
@@ -58,10 +66,13 @@
             <unSelectedColor>
                 <Color red="0.19607843458652496" green="0.5490196347236633" blue="0.658823549747467" />
             </unSelectedColor>
+         <selectedColor>
+            <Color red="0.06530214101076126" green="0.5958820581436157" blue="0.8815789222717285" />
+         </selectedColor>
         </JFXRadioButton>
         <ComboBox fx:id="shift" layoutX="19.0" layoutY="36.0" prefHeight="29.0" prefWidth="183.0" stylesheets="@../../style/css/combo-style.css" />
     </AnchorPane>
-    <AnchorPane layoutX="522.0" layoutY="72.0" prefHeight="72.0" prefWidth="629.0" style="-fx-background-color: white; -fx-border-radius: 10; -fx-background-position: 10;">
+    <AnchorPane layoutX="568.0" layoutY="72.0" prefHeight="72.0" prefWidth="582.0" style="-fx-background-color: white; -fx-border-radius: 10; -fx-background-position: 10;">
         <effect>
             <DropShadow height="35.85" radius="17.425" width="35.85">
                 <color>
@@ -71,7 +82,7 @@
         </effect>
         <Label layoutX="20.0" layoutY="7.0" text="Payment date query" textFill="#3a6188">
             <font>
-                <Font name="Verdana" size="15.0" />
+                <Font name="Tahoma" size="15.0" />
             </font>
         </Label>
         <DatePicker fx:id="toDate" editable="false" layoutX="310.0" layoutY="34.0" stylesheets="@../../style/css/combo-style.css" />
@@ -81,10 +92,17 @@
                 <Font name="Verdana" size="14.0" />
             </font>
         </Label>
-        <JFXButton fx:id="searchHandler" buttonType="RAISED" layoutX="519.0" layoutY="22.0" onAction="#searchHandler" prefHeight="45.0" prefWidth="105.0" style="-fx-background-color: #3a6188;" text="Search" textFill="WHITE">
+        <JFXButton fx:id="searchHandler" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="527.0" layoutY="33.0" onAction="#searchHandler" prefHeight="30.0" prefWidth="44.0" styleClass="btn-normal" stylesheets="@../../style/css/button-style.css" text="Search" textFill="WHITE">
             <font>
                 <Font name="Helvetica" size="14.0" />
             </font>
+         <graphic>
+            <ImageView fitHeight="19.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../style/icons/icons8-search-50.png" />
+               </image>
+            </ImageView>
+         </graphic>
         </JFXButton>
         <Label layoutX="281.0" layoutY="37.0" prefHeight="24.0" prefWidth="20.0" text="To" textFill="#686565">
             <font>
@@ -93,9 +111,9 @@
         </Label>
     </AnchorPane>
     <effect>
-        <DropShadow height="35.82" radius="17.41" width="35.82">
+        <DropShadow height="31.82" radius="15.6675" width="32.85">
             <color>
-                <Color red="0.24705882370471954" green="0.6117647290229797" blue="0.9098039269447327" />
+                <Color red="0.772549033164978" green="0.8117647171020508" blue="0.843137264251709" />
             </color>
         </DropShadow>
     </effect>

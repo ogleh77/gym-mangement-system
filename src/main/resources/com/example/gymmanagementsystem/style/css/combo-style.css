@@ -75,9 +75,15 @@
     -fx-background-insets: 0 0 -1 0, 0, 1, 2;
     -fx-background-radius: 3px, 3px, 2px, 1px;
 }
+
 .combo-box-base {
     -fx-background-color: #F6F6F6;
     -fx-border-color: #3a6188;
+}
+
+.combo-box-popup .list-view .list-cell {
+    -fx-font-family: Verdana;
+
 }
 
 .progress-bar > .track {

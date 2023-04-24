@@ -1,13 +1,14 @@
 package com.example.gymmanagementsystem.controllers.service;
 
-import com.example.gymmanagementsystem.HelloApplication;
 import com.example.gymmanagementsystem.controllers.DashboardController;
 import com.example.gymmanagementsystem.dao.Data;
 import com.example.gymmanagementsystem.dao.main.CustomerService;
+import com.example.gymmanagementsystem.dependencies.OpenWindow;
 import com.example.gymmanagementsystem.entities.main.Customers;
 import com.example.gymmanagementsystem.entities.main.Payments;
 import com.example.gymmanagementsystem.entities.service.Users;
 import com.example.gymmanagementsystem.helpers.CommonClass;
+import com.example.gymmanagementsystem.simpleconrtollers.DashbaordController;
 import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -16,7 +17,6 @@ import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
@@ -133,19 +133,9 @@ public class SplashScreenController extends CommonClass implements Initializable
     }
 
     private void openDashboard() throws IOException {
-        System.out.println("Customers in data " + Data.getAllCustomersList().size());
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/gymmanagementsystem/newviews/dashboard.fxml"));
-        Scene scene = null;
-        scene = new Scene(fxmlLoader.load());
-        DashboardController controller = fxmlLoader.getController();
-        controller.setWarningList(warningList);
+        FXMLLoader loader = OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/redash/redash.fxml", null);
+        DashbaordController controller = loader.getController();
+        //controller.setWarningList(warningList);
         controller.setActiveUser(activeUser);
-        Stage stage = new Stage(StageStyle.UNDECORATED);
-        stage.setScene(scene);
-        URL url = getClass().getResource("/com/example/gymmanagementsystem/style/icons/app-icon.jpeg");
-        stage.getIcons().add(new Image(String.valueOf(url)));
-        stage.show();
-
-        System.out.println("Welcome home");
     }
 }

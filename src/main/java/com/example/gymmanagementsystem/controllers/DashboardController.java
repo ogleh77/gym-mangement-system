@@ -298,7 +298,8 @@ public class DashboardController extends CommonClass implements Initializable {
         FadeInDownBig fadeIn = new FadeInDownBig(anchorPane);
         fadeIn.setOnFinished(e -> {
             DashboardMenuController controller = loader.getController();
-            controller.setMenus(borderPane, sidePane, menuHBox, warningStack);
+           // controller.setMenus(borderPane, sidePane, menuHBox, warningStack);
+            controller.setMenus(menuHBox);
             controller.setActiveUser(activeUser);
             borderPane.setCenter(anchorPane);
         });

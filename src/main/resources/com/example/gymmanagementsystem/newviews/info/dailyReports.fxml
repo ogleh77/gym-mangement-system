@@ -163,9 +163,9 @@
       </font>
    </JFXRadioButton>
     <effect>
-        <DropShadow height="29.9" radius="15.1875" width="32.85">
+        <DropShadow height="32.12" radius="15.7425" width="32.85">
             <color>
-                <Color red="0.24705882370471954" green="0.6117647290229797" blue="0.9098039269447327" />
+                <Color red="0.772549033164978" green="0.8117647171020508" blue="0.843137264251709" />
             </color>
         </DropShadow>
     </effect>

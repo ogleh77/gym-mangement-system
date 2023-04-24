@@ -6,54 +6,52 @@
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
-<AnchorPane prefHeight="518.0" prefWidth="468.0" stylesheets="@../../style/css/small-style.css"
-            xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.gymmanagementsystem.controllers.info.WarningController">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="541.0" prefWidth="594.0" stylesheets="@../../style/css/small-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.info.WarningController">
     <HBox alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="596.0" spacing="180.0" styleClass="top-pane">
         <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="342.0">
-            <ImageView fitHeight="26.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                 <HBox.margin>
-                    <Insets left="10.0"/>
+                    <Insets left="10.0" />
                 </HBox.margin>
-                <Image url="@../../style/icons/icons8-bell-48.png"/>
+                <Image url="@../../style/icons/icons8-bell-48.png" />
             </ImageView>
             <Label prefHeight="29.0" prefWidth="218.0" styleClass="top-label" text="Warnings">
                 <HBox.margin>
-                    <Insets left="10.0"/>
+                    <Insets left="10.0" />
                 </HBox.margin>
             </Label>
         </HBox>
-        <HBox alignment="CENTER" onMouseClicked="#cancelHandler" prefHeight="35.0" prefWidth="43.0"
-              styleClass="cancel-pane">
+        <HBox alignment="CENTER" onMouseClicked="#cancelHandler" prefHeight="35.0" prefWidth="43.0" styleClass="cancel-pane">
             <HBox.margin>
-                <Insets left="30.0"/>
+                <Insets left="31.0" />
             </HBox.margin>
-            <ImageView fitHeight="27.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                <Image url="@../../style/icons/icons8-close-30.png"/>
+            <ImageView fitHeight="23.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@../../style/icons/icons8-close-30.png" />
             </ImageView>
         </HBox>
     </HBox>
-    <ScrollPane hbarPolicy="NEVER" layoutY="85.0" prefHeight="456.0" prefWidth="596.0"
-                style="-fx-background-color: white;">
+    <ScrollPane hbarPolicy="NEVER" layoutY="85.0" prefHeight="456.0" prefWidth="596.0" style="-fx-background-color: #fafafa;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <VBox fx:id="vbox" alignment="CENTER" prefHeight="4.0" prefWidth="595.0" spacing="5.0">
             <padding>
-                <Insets top="10.0"/>
+                <Insets top="10.0" />
             </padding>
         </VBox>
     </ScrollPane>
-    <Label layoutX="11.0" layoutY="54.0"
-           text="Halkan waxad ka ogaan kartaa 3 casho ka hor inta macamiilka wakhtigu ka dhicin" textFill="#107559">
+    <Label alignment="CENTER" layoutX="11.0" layoutY="54.0" text="Halkan waxad ka ogaan kartaa 3 casho ka hor inta macamiilka wakhtigu ka dhicin" textFill="#879194" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <font>
-            <Font name="Verdana Bold" size="12.0"/>
+            <Font name="Tahoma Bold" size="12.0" />
         </font>
     </Label>
     <effect>
         <DropShadow height="34.35" radius="16.302500000000002" spread="0.03" width="32.86">
             <color>
-                <Color red="0.4868420958518982" green="0.4395102262496948" blue="0.4395102262496948"/>
+                <Color red="0.4868420958518982" green="0.4395102262496948" blue="0.4395102262496948" />
             </color>
         </DropShadow>
     </effect>

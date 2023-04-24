@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Optional;
 
 public abstract class CommonClass {
@@ -233,7 +234,7 @@ public abstract class CommonClass {
         this.customer = customer;
     }
 
-    public void setActiveUser(Users activeUser) {
+    public void setActiveUser(Users activeUser)  {
         this.activeUser = activeUser;
     }
 

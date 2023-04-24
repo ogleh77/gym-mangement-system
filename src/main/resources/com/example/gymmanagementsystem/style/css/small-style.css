@@ -1,12 +1,11 @@
 .small-pane {
-    -fx-background-color: white;
+    -fx-background-color: #fafafa;
     -fx-pref-width: 596;
     -fx-pref-height: 434;
 }
+
 .top-pane {
-    -fx-background-color: #2B4865;
-    /*-fx-pref-width: 1150;*/
-    /*-fx-pref-height: 40;*/
+    -fx-background-color:  #328ca8;
 }
 .top-label {
     -fx-text-fill: #f5f6f5;

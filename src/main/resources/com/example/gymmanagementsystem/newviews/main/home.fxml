@@ -16,41 +16,32 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="996.0" styleClass="home-pane" stylesheets="@../../style/css/long-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.main.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="996.0" styleClass="home-pane" stylesheets="@../../style/css/long-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.simpleconrtollers.HomeController">
     <HBox alignment="CENTER" prefWidth="1150.0" spacing="490.0" styleClass="top-pane" AnchorPane.bottomAnchor="680.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0">
-        <Label maxWidth="-Infinity" prefHeight="29.0" prefWidth="138.0" styleClass="top-label" text="HOME PAGE">
+        <Label maxWidth="-Infinity" prefHeight="29.0" prefWidth="218.0" styleClass="top-label" text="FORM-KA BILOWGA">
             <HBox.margin>
                 <Insets left="30.0" />
             </HBox.margin>
         </Label>
     </HBox>
-    <VBox alignment="CENTER" layoutX="64.0" layoutY="484.0" prefHeight="240.0" prefWidth="1085.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+    <VBox alignment="CENTER" layoutX="50.0" layoutY="501.0" prefHeight="240.0" prefWidth="1120.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="30.0">
         <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" />
         </padding>
-        <effect>
-            <DropShadow height="35.82" radius="17.41" width="35.82">
-                <color>
-                    <Color red="0.8549019694328308" green="0.8470588326454163" blue="0.8470588326454163" />
-                </color>
-            </DropShadow>
-        </effect>
         <TableView fx:id="tableView" prefHeight="201.0" prefWidth="1030.0" stylesheets="@../../style/css/home-table.css">
             <columns>
                 <TableColumn fx:id="customerId" prefWidth="66.0" text="Id" />
-                <TableColumn fx:id="fullName" prefWidth="208.0" text="Full name" />
-                <TableColumn fx:id="phone" prefWidth="93.0" text="phone" />
-                <TableColumn fx:id="gander" prefWidth="86.0" text="gander" />
-                <TableColumn fx:id="shift" prefWidth="94.0" text="shift" />
-                <TableColumn fx:id="address" prefWidth="128.0" text="address" />
-                <TableColumn fx:id="weight" prefWidth="89.0" text="weight" />
-                <TableColumn fx:id="waist" prefWidth="82.0" text="waist" />
-                <TableColumn fx:id="imagePath" prefWidth="92.0" text="image" />
-            <TableColumn fx:id="status" prefWidth="126.0" text=" status " />
+                <TableColumn fx:id="fullName" prefWidth="208.0" text="Magacoo dhamaystiran" />
+                <TableColumn fx:id="phone" prefWidth="93.0" text="Talefanka" />
+                <TableColumn fx:id="gander" prefWidth="73.0" text="Jinsiga" />
+                <TableColumn fx:id="shift" prefWidth="91.0" text="Wakhtiga" />
+                <TableColumn fx:id="address" prefWidth="118.0" text="Ciwaanka" />
+                <TableColumn fx:id="weight" prefWidth="83.0" text="Culayska" />
+                <TableColumn fx:id="waist" prefWidth="82.0" text="Dhexda" />
+                <TableColumn fx:id="imagePath" prefWidth="93.0" text="Sawirka" />
+                <TableColumn fx:id="status" prefWidth="175.0" text="Mar-xalada(status)" />
             </columns>
         </TableView>
-    </VBox>
-    <HBox alignment="CENTER" layoutX="1.0" layoutY="108.0" prefHeight="148.0" prefWidth="1094.0" spacing="100.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
         <effect>
             <DropShadow height="35.82" radius="17.41" width="35.82">
                 <color>
@@ -58,212 +49,180 @@
                 </color>
             </DropShadow>
         </effect>
-        <VBox alignment="CENTER" prefHeight="111.0" prefWidth="194.0" style="-fx-background-color: white;">
-            <effect>
-                <DropShadow height="25.44" radius="12.59" width="26.92">
-                    <color>
-                        <Color red="0.24705882370471954" green="0.6117647290229797" blue="0.9098039269447327" />
-                    </color>
-                </DropShadow>
-            </effect>
-            <Label text="GYM USERS" textFill="#616060">
-                <VBox.margin>
-                    <Insets bottom="10.0" />
-                </VBox.margin>
-                <font>
-                    <Font name="Arial Black" size="13.0" />
-                </font>
-            </Label>
-            <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                <Image url="@../../style/icons/balck.png" />
-            </ImageView>
-            <HBox alignment="CENTER" prefHeight="20.0" prefWidth="294.0">
-                <VBox.margin>
-                    <Insets />
-                </VBox.margin>
-                <Label fx:id="usersCount" text="4 users" textFill="#888c8d">
-                    <font>
-                        <Font name="Arial Black" size="14.0" />
-                    </font>
-                </Label>
-            </HBox>
-        </VBox>
-        <VBox alignment="CENTER" prefHeight="148.0" prefWidth="204.0" style="-fx-background-color: white;">
-            <effect>
-                <DropShadow height="23.96" radius="12.22" width="26.92">
-                    <color>
-                        <Color red="0.24798975884914398" green="0.6109374761581421" blue="0.9078947305679321" />
-                    </color>
-                </DropShadow>
-            </effect>
-            <Label text="NUMBER OF CUSTOMERS" textFill="#616060">
-                <VBox.margin>
-                    <Insets bottom="10.0" />
-                </VBox.margin>
-                <font>
-                    <Font name="Arial Black" size="13.0" />
-                </font>
-            </Label>
-            <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                <Image url="@../../style/icons/icon.png" />
-            </ImageView>
-            <HBox alignment="CENTER" prefHeight="20.0" prefWidth="294.0">
-                <VBox.margin>
-                    <Insets />
-                </VBox.margin>
-                <Label fx:id="customersCount" text="40 members" textFill="#888c8d">
-                    <font>
-                        <Font name="Arial Black" size="14.0" />
-                    </font>
-                </Label>
-            </HBox>
-        </VBox>
-        <VBox alignment="CENTER" prefHeight="111.0" prefWidth="194.0" style="-fx-background-color: white;">
-            <effect>
-                <DropShadow height="23.96" radius="12.22" width="26.92">
-                    <color>
-                        <Color red="0.24798975884914398" green="0.6109374761581421" blue="0.9078947305679321" />
-                    </color>
-                </DropShadow>
-            </effect>
-            <Label text="GYM INFORMATION" textFill="#616060">
-                <VBox.margin>
-                    <Insets bottom="10.0" />
-                </VBox.margin>
-                <font>
-                    <Font name="Arial Black" size="13.0" />
-                </font>
-            </Label>
-            <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                <Image url="@../../style/icons/info.png" />
-            </ImageView>
-            <HBox alignment="CENTER" prefHeight="20.0" prefWidth="294.0">
-                <Label fx:id="zaad" text="evocher :-458443" textFill="#888c8d">
-                    <font>
-                        <Font name="Arial Black" size="14.0" />
-                    </font>
-                </Label>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="20.0" prefWidth="294.0">
-                <Label fx:id="edahab" text="edahab:- 493393" textFill="#888c8d">
-                    <font>
-                        <Font name="Arial Black" size="14.0" />
-                    </font>
-                </Label>
-            </HBox>
-        </VBox>
-    </HBox>
-    <HBox alignment="CENTER" layoutX="47.0" layoutY="434.0" prefHeight="42.0" prefWidth="1100.0" spacing="15.0">
-        <Label text="KU RAADI MAGACA AMA NUBERKA" textFill="#73848a">
-            <font>
-                <Font name="Arial Black" size="12.0" />
-            </font>
-        </Label>
-        <HBox alignment="CENTER_RIGHT">
-            <TextField fx:id="search" prefHeight="33.0" prefWidth="304.0" promptText="e.g mohamed or 4303924" />
-            <ImageView fitHeight="30.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
-                <Image url="@../../style/icons/icons8-search-50.png" />
-            </ImageView>
-        </HBox>
-        <HBox spacing="10.0">
-            <JFXButton onAction="#paymentHandler" prefHeight="42.0" prefWidth="125.0" style="-fx-background-color: #328ca8;" text="Payment" textFill="WHITE">
-                <graphic>
-                    <ImageView fitHeight="32.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@../../style/icons/icons8-mobile-payment-50.png" />
-                    </ImageView>
-                </graphic>
-                <font>
-                    <Font name="Verdana" size="14.0" />
-                </font>
-                <HBox.margin>
-                    <Insets left="10.0" />
-                </HBox.margin>
-            </JFXButton>
-            <JFXButton onAction="#fullInfoHandler" prefHeight="40.0" prefWidth="107.0" style="-fx-background-color: dodgerblue;" text="Info" textFill="#e4dfdf">
-                <graphic>
-                    <ImageView fitHeight="31.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@../../style/icons/info-black.png" />
-                    </ImageView>
-                </graphic>
-                <font>
-                    <Font name="Verdana" size="14.0" />
-                </font>
-            </JFXButton>
-            <JFXButton onAction="#updateHandler" prefHeight="40.0" prefWidth="107.0" style="-fx-background-color: #afd6e3;" text="Update" textFill="#171717">
-                <graphic>
-                    <ImageView fitHeight="29.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@../../style/icons/icons8-available-updates-24.png" />
-                    </ImageView>
-                </graphic>
-                <font>
-                    <Font name="Verdana" size="14.0" />
-                </font>
-            </JFXButton>
-            <JFXButton onAction="#deleteHandler" prefHeight="40.0" prefWidth="107.0" style="-fx-background-color: red;" text="Delete" textFill="#fffefe">
-                <graphic>
-                    <ImageView fitHeight="27.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@../../style/icons/icons8-delete-trash-48.png" />
-                    </ImageView>
-                </graphic>
-                <font>
-                    <Font name="Verdana" size="14.0" />
-                </font>
-            </JFXButton>
-        </HBox>
-    </HBox>
-    <VBox alignment="CENTER_LEFT" layoutX="26.0" layoutY="296.0" prefHeight="104.0" prefWidth="612.0" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="512.0">
-        <Label text="TALABOYINKA LOO RACAYO WAX KA BEDELKA MACMIILKA" textFill="#616060">
-            <VBox.margin>
-                <Insets bottom="5.0" left="30.0" />
-            </VBox.margin>
-            <font>
-                <Font name="Arial Black" size="14.0" />
-            </font>
-        </Label>
-        <HBox alignment="CENTER_LEFT" prefHeight="20.0" prefWidth="604.0" spacing="10.0">
-            <VBox.margin>
-                <Insets left="10.0" />
-            </VBox.margin>
-            <Circle fill="#868a8d" radius="7.0" stroke="WHITE" strokeType="INSIDE" />
-            <Label text="Marka hore search garee macmiilka aad donayso hadii listka hoose aanu ku jirin." textFill="#6c7172">
-                <font>
-                    <Font name="Tahoma" size="16.0" />
-                </font>
-            </Label>
-        </HBox>
-        <HBox alignment="CENTER_LEFT" spacing="10.0">
-            <VBox.margin>
-                <Insets left="10.0" />
-            </VBox.margin>
-            <Circle fill="#868a8d" radius="7.0" stroke="WHITE" strokeType="INSIDE" />
-            <Label text="Ku dul dhufo xogta macmiilka aad donayso inaad wax ka bedesho  " textFill="#6c7172">
-                <font>
-                    <Font name="Tahoma" size="16.0" />
-                </font>
-            </Label>
-        </HBox>
-        <HBox alignment="CENTER_LEFT" spacing="10.0">
-            <VBox.margin>
-                <Insets left="10.0" />
-            </VBox.margin>
-            <Circle fill="#868a8d" radius="7.0" stroke="WHITE" strokeType="INSIDE" />
-            <Label text="Dooro nooca actionka aad donayso inad ku samyso macmiilka" textFill="#6c7172">
-                <font>
-                    <Font name="Tahoma" size="16.0" />
-                </font>
-            </Label>
-        </HBox>
     </VBox>
-    <Label layoutX="661.0" layoutY="406.0" text="CLICK ON AN ACTION" textFill="#73848a">
+     <VBox alignment="CENTER" layoutX="204.0" layoutY="108.0" prefHeight="148.0" prefWidth="194.0" style="-fx-background-color: white;">
+         <effect>
+             <DropShadow height="25.44" radius="12.59" width="26.92">
+                 <color>
+                     <Color red="0.24705882370471954" green="0.6117647290229797" blue="0.9098039269447327" />
+                 </color>
+             </DropShadow>
+         </effect>
+         <Label text="GYM USERS" textFill="#616060">
+             <VBox.margin>
+                 <Insets bottom="10.0" />
+             </VBox.margin>
+             <font>
+                 <Font name="Arial Black" size="13.0" />
+             </font>
+         </Label>
+         <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+             <Image url="@../../style/icons/balck.png" />
+         </ImageView>
+          <Label fx:id="usersCount" text="4 users" textFill="#879194">
+              <font>
+                  <Font name="Arial Black" size="14.0" />
+              </font>
+          </Label>
+     </VBox>
+     <VBox alignment="CENTER" layoutX="498.0" layoutY="108.0" prefHeight="148.0" prefWidth="204.0" style="-fx-background-color: white;">
+         <effect>
+             <DropShadow height="23.96" radius="12.22" width="26.92">
+                 <color>
+                     <Color red="0.24798975884914398" green="0.6109374761581421" blue="0.9078947305679321" />
+                 </color>
+             </DropShadow>
+         </effect>
+         <Label text="NUMBER OF MEMBERS" textFill="#616060">
+             <VBox.margin>
+                 <Insets bottom="10.0" />
+             </VBox.margin>
+             <font>
+                 <Font name="Arial Black" size="13.0" />
+             </font>
+         </Label>
+         <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+             <Image url="@../../style/icons/icon.png" />
+         </ImageView>
+          <Label fx:id="customersCount" text="40 members" textFill="#879194">
+              <font>
+                  <Font name="Arial Black" size="14.0" />
+              </font>
+          </Label>
+     </VBox>
+     <VBox alignment="CENTER" layoutX="802.0" layoutY="108.0" prefHeight="148.0" prefWidth="194.0" style="-fx-background-color: white;">
+         <effect>
+             <DropShadow height="23.96" radius="12.22" width="26.92">
+                 <color>
+                     <Color red="0.24798975884914398" green="0.6109374761581421" blue="0.9078947305679321" />
+                 </color>
+             </DropShadow>
+         </effect>
+         <Label text="GYM INFORMATION" textFill="#616060">
+             <VBox.margin>
+                 <Insets bottom="10.0" />
+             </VBox.margin>
+             <font>
+                 <Font name="Arial Black" size="13.0" />
+             </font>
+         </Label>
+         <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+             <Image url="@../../style/icons/info.png" />
+         </ImageView>
+          <Label fx:id="zaad" text="evocher 458443" textFill="#879194">
+              <font>
+                  <Font name="Arial Black" size="14.0" />
+              </font>
+          </Label>
+          <Label fx:id="edahab" text="eDahab 493393" textFill="#879194">
+              <font>
+                  <Font name="Arial Black" size="14.0" />
+              </font>
+          </Label>
+     </VBox>
+     <Label layoutX="59.0" layoutY="464.0" text="KU RAADI MAGACA AMA NUBERKA" textFill="#73848a">
+         <font>
+             <Font name="Arial Black" size="12.0" />
+         </font>
+     </Label>
+      <TextField fx:id="search" layoutX="308.0" layoutY="455.0" prefHeight="33.0" prefWidth="304.0" promptText="e.g mohamed or 4303924" />
+      <ImageView fitHeight="25.0" fitWidth="22.0" layoutX="617.0" layoutY="461.0" pickOnBounds="true" preserveRatio="true">
+          <Image url="@../../style/icons/icons8-search-50.png" />
+      </ImageView>
+     <HBox layoutX="649.0" layoutY="451.0" spacing="10.0">
+         <JFXButton onAction="#paymentHandler" prefHeight="42.0" prefWidth="125.0" style="-fx-background-color: #328ca8;" text="Payment" textFill="WHITE">
+             <graphic>
+                 <ImageView fitHeight="32.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                     <Image url="@../../style/icons/icons8-mobile-payment-50.png" />
+                 </ImageView>
+             </graphic>
+             <font>
+                 <Font name="Verdana" size="14.0" />
+             </font>
+             <HBox.margin>
+                 <Insets left="10.0" />
+             </HBox.margin>
+         </JFXButton>
+         <JFXButton onAction="#fullInfoHandler" prefHeight="40.0" prefWidth="107.0" style="-fx-background-color: dodgerblue;" text="Info" textFill="#e4dfdf">
+             <graphic>
+                 <ImageView fitHeight="31.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <Image url="@../../style/icons/info-black.png" />
+                 </ImageView>
+             </graphic>
+             <font>
+                 <Font name="Verdana" size="14.0" />
+             </font>
+         </JFXButton>
+         <JFXButton onAction="#updateHandler" prefHeight="40.0" prefWidth="107.0" style="-fx-background-color: #afd6e3;" text="Update" textFill="#171717">
+             <graphic>
+                 <ImageView fitHeight="29.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <Image url="@../../style/icons/icons8-available-updates-24.png" />
+                 </ImageView>
+             </graphic>
+             <font>
+                 <Font name="Verdana" size="14.0" />
+             </font>
+         </JFXButton>
+         <JFXButton onAction="#deleteHandler" prefHeight="40.0" prefWidth="107.0" style="-fx-background-color: red;" text="Delete" textFill="#fffefe">
+             <graphic>
+                 <ImageView fitHeight="27.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                     <Image url="@../../style/icons/icons8-delete-trash-48.png" />
+                 </ImageView>
+             </graphic>
+             <font>
+                 <Font name="Verdana" size="14.0" />
+             </font>
+         </JFXButton>
+     </HBox>
+     <Label layoutX="56.0" layoutY="320.0" text="TALABOYINKA LOO RACAYO WAX KA BEDELKA MACMIILKA" textFill="#616060">
+         <font>
+             <Font name="Verdana Bold" size="14.0" />
+         </font>
+     </Label>
+     <HBox alignment="CENTER_LEFT" layoutX="36.0" layoutY="343.0" prefHeight="20.0" prefWidth="604.0" spacing="10.0">
+         <Circle fill="#879194" radius="7.0" stroke="WHITE" strokeType="INSIDE" />
+         <Label text="Marka hore search garee macmiilka aad donayso hadii listka hoose aanu ku jirin." textFill="#879194">
+             <font>
+                 <Font name="Tahoma" size="16.0" />
+             </font>
+         </Label>
+     </HBox>
+     <HBox alignment="CENTER_LEFT" layoutX="36.0" layoutY="363.0" spacing="10.0">
+         <Circle fill="#879194" radius="7.0" stroke="WHITE" strokeType="INSIDE" />
+         <Label text="Ku dul dhufo xogta macmiilka aad donayso inaad wax ka bedesho  " textFill="#879194">
+             <font>
+                 <Font name="Tahoma" size="16.0" />
+             </font>
+         </Label>
+     </HBox>
+     <HBox alignment="CENTER_LEFT" layoutX="36.0" layoutY="383.0" spacing="10.0">
+         <Circle fill="#879194" radius="7.0" stroke="WHITE" strokeType="INSIDE" />
+         <Label text="Dooro nooca actionka aad donayso inad ku samyso macmiilka" textFill="#879194">
+             <font>
+                 <Font name="Tahoma" size="16.0" />
+             </font>
+         </Label>
+     </HBox>
+    <Label layoutX="661.0" layoutY="421.0" text="CLICK ON AN ACTION" textFill="#73848a">
         <font>
             <Font name="Arial Black" size="12.0" />
         </font>
     </Label>
-   <effect>
-      <DropShadow height="6.17" radius="2.585" width="6.17">
-         <color>
-            <Color red="0.6263401508331299" green="0.6677733063697815" blue="0.6973684430122375" />
-         </color>
-      </DropShadow>
-   </effect>
+    <effect>
+        <DropShadow height="31.37" radius="15.555" width="32.85">
+            <color>
+                <Color red="0.772549033164978" green="0.8117647171020508" blue="0.843137264251709" />
+            </color>
+        </DropShadow>
+    </effect>
 </AnchorPane>

@@ -1,7 +1,10 @@
 .home-pane {
     -fx-pref-width: 1200;
     -fx-pref-height: 760;
-    -fx-background-color: white;
+
+    /*-fx-background-color: #f5f2f2;*/
+        -fx-background-color: #fffefe;
+
     -fx-background-radius: 10;
 }
 

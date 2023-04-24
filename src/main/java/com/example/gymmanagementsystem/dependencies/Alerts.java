@@ -10,7 +10,6 @@ public class Alerts {
 
     public static Alert notificationAlert(String message, String title) {
         if (notificationAlert != null) return notificationAlert;
-
         notificationAlert = new Alert(Alert.AlertType.INFORMATION);
         notificationAlert.setTitle(title);
         notificationAlert.setContentText(message);
@@ -35,5 +34,7 @@ public class Alerts {
         errorAlert.showAndWait();
         return errorAlert;
     }
+
+
 
 }

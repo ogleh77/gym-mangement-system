@@ -38,12 +38,15 @@ public class HelloApplication extends Application {
 
         // TODO: 19/04/2023 User delete bind to home usercounter insha Allah 
         // TODO: 19/04/2023 wide pane remove the drop shadows insha Allah
+        // TODO: 23/04/2023 Shift ga ka dhig afsomali 
+
+        // TODO: 23/04/2023 hadii muddo joogo dashboard ka ku celi insha Allah
+        // TODO: 23/04/2023 Samee window opener ka hore fade out ku samaynaya ka danbana fadin  insha Allah 
         stage.setScene(scene);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
 
-        Alerts.notificationAlert("Hello ", "Title");
-    }
+     }
 
     public static void main(String[] args) {
         launch();

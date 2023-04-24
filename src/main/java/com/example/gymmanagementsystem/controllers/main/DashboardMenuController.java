@@ -2,7 +2,9 @@ package com.example.gymmanagementsystem.controllers.main;
 
 
 import com.example.gymmanagementsystem.controllers.info.OutDatedController;
+import com.example.gymmanagementsystem.dependencies.OpenWindow;
 import com.example.gymmanagementsystem.helpers.CommonClass;
+import com.example.gymmanagementsystem.simpleconrtollers.HomeController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -28,7 +30,7 @@ public class DashboardMenuController extends CommonClass {
 
     @FXML
     void homeMenuHandler() throws IOException {
-        FXMLLoader loader = openWindow("/com/example/gymmanagementsystem/newviews/main/home.fxml", borderPane, menuHBo, notificationsHBox);
+        FXMLLoader loader = OpenWindow.openFromDashboardWindow("/com/example/gymmanagementsystem/newviews/main/home.fxml", borderPane, menuHBo);
         HomeController controller = loader.getController();
         controller.setActiveUser(activeUser);
         controller.setBorderPane(borderPane);
@@ -36,7 +38,7 @@ public class DashboardMenuController extends CommonClass {
 
     @FXML
     void registrationMenuHandler() throws IOException {
-        FXMLLoader loader = openWindow("/com/example/gymmanagementsystem/newviews/main/registrations.fxml", borderPane, menuHBo, notificationsHBox);
+        FXMLLoader loader = OpenWindow.openFromDashboardWindow("/com/example/gymmanagementsystem/newviews/main/registrations.fxml", borderPane, menuHBo);
         RegistrationController controller = loader.getController();
         controller.setActiveUser(activeUser);
         controller.setBorderPane(borderPane);
@@ -45,7 +47,7 @@ public class DashboardMenuController extends CommonClass {
 
     @FXML
     void outDatedMenuHandler() throws IOException {
-        FXMLLoader loader = openWindow("/com/example/gymmanagementsystem/newviews/info/outdated.fxml", borderPane, menuHBo, notificationsHBox);
+        FXMLLoader loader = OpenWindow.openFromDashboardWindow("/com/example/gymmanagementsystem/newviews/info/outdated.fxml", borderPane, menuHBo);
         OutDatedController controller = loader.getController();
         controller.setActiveUser(activeUser);
     }
@@ -57,15 +59,13 @@ public class DashboardMenuController extends CommonClass {
 
     @FXML
     void reportMenuHandler() throws IOException {
-        openWindow("/com/example/gymmanagementsystem/newviews/info/dailyReports.fxml", borderPane, menuHBo, notificationsHBox);
+        OpenWindow.openFromDashboardWindow("/com/example/gymmanagementsystem/newviews/info/dailyReports.fxml", borderPane, menuHBo);
 
     }
 
-    public void setMenus(BorderPane borderPane, VBox sidePane, HBox menuHBox, StackPane notificationsHBox) {
-        this.borderPane = borderPane;
-        this.sidePane = sidePane;
-        this.notificationsHBox = notificationsHBox;
+    public void setMenus(HBox menuHBox) {
         this.menuHBo = menuHBox;
+        System.out.println(menuHBox);
     }
 
 
@@ -90,5 +90,10 @@ public class DashboardMenuController extends CommonClass {
             }
 
         } else alert.close();
+    }
+
+    @Override
+    public void setBorderPane(BorderPane borderPane) {
+        this.borderPane = borderPane;
     }
 }

@@ -1,7 +1,11 @@
 .dash-pane {
     -fx-pref-height: 850;
     -fx-pref-width: 1400;
-    -fx-background-color: #f8f5f5;
+    -fx-background-color: #fafafa;
+    /*-fx-background-color: #f1f6ff;*/
+    /*-fx-background-color: #a8b9be;*/
+    /*-fx-background-color: #f3f0f0;*/
+
 }
 
 .top-pane {
@@ -18,9 +22,14 @@
 }
 
 .top-menu-hover:hover {
-    -fx-background-color: #afd6e3;
+    -fx-background-color: #16a2d7;
     -fx-cursor: hand;
 }
+.top-menu-hover:focused {
+    -fx-background-color: #1eade3;
+    -fx-cursor: hand;
+}
+
 
 .profile-hover:hover {
     -fx-underline: true;

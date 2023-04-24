@@ -326,18 +326,22 @@ public abstract class CommonClass {
             button.setText(message);
         } else {
             uploadService.start();
-            button.setGraphic(getLoadingImageView());
-            button.setText(message);
+            if (button != null) {
+                button.setGraphic(getLoadingImageView());
+                button.setText(message);
+            }
             start = true;
         }
     }
 
 
     public void backup(String path) throws SQLException {
-        if (path != null) {
+        if (path.length() == 0) {
             BackupService.backup(path);
         } else {
             FileChooser chooser = new FileChooser();
+            chooser.setTitle("Dooro mesha backupka dhiganayso sidoo kale magac u bixi aan wax space ah u dhaxayn");
+
             selectedFile = chooser.showSaveDialog(null);
             BackupService.backup(selectedFile.getAbsolutePath());
         }

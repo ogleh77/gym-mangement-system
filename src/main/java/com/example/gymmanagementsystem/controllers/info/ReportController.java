@@ -28,7 +28,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-public class ReportControllerHandler extends CommonClass implements Initializable {
+public class ReportController extends CommonClass implements Initializable {
 
     @FXML
     private TableColumn<DailyReport, String> dailyReportDay;
@@ -80,7 +80,7 @@ public class ReportControllerHandler extends CommonClass implements Initializabl
     private ObservableList<DailyReport> reports;
     private final ObservableList<DailyReport> weeklyReport;
 
-    public ReportControllerHandler() throws SQLException {
+    public ReportController() throws SQLException {
         weeklyReport = DailyReportModel.getWeeklyPayments(LocalDate.now());
     }
 

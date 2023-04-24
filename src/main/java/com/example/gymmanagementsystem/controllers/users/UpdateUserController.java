@@ -1,6 +1,7 @@
 package com.example.gymmanagementsystem.controllers.users;
 
 
+import animatefx.animation.FadeOut;
 import com.example.gymmanagementsystem.dao.service.GymService;
 import com.example.gymmanagementsystem.dao.service.UserService;
 import com.example.gymmanagementsystem.dependencies.Alerts;
@@ -14,21 +15,17 @@ import javafx.application.Platform;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class UpdateUserController extends CommonClass implements Initializable {
@@ -85,8 +82,6 @@ public class UpdateUserController extends CommonClass implements Initializable {
     private Stage stage;
 
     private final Gym currentGym = GymService.getGym();
-    private final ButtonType okBtn = new ButtonType("Logout", ButtonBar.ButtonData.OK_DONE);
-    private final ButtonType cancelBtn = new ButtonType("Not yet", ButtonBar.ButtonData.OK_DONE);
     private boolean itsMe = false;
     Stage parentStage;
 
@@ -106,15 +101,11 @@ public class UpdateUserController extends CommonClass implements Initializable {
         service.setOnSucceeded(e -> {
             updateBtn.setGraphic(getFirstImage("/com/example/gymmanagementsystem/style/icons/icons8-available-updates-24.png"));
             updateBtn.setText("Updated");
-
             if (itsMe) {
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
-                        "account updated successfully to see the changes please logout and sing in agayn", cancelBtn, okBtn);
-                Optional<ButtonType> result = alert.showAndWait();
-
-
-                if (result.isPresent() && result.get().equals(okBtn)) {
-                    //openLogin();
+                boolean done = Alerts.confirmationAlert("Account-kaga wa la update gareyay si aad u aragto is bedelka profile kaga" +
+                        " fadlan taabo HAA dib-na usoo gal.");
+                if (done) {
+                    openLogin();
                 }
             }
         });
@@ -145,7 +136,6 @@ public class UpdateUserController extends CommonClass implements Initializable {
         setUserData(activeUser);
     }
 
-    // TODO: 27/04/2023 more job specially confirmations
     @FXML
     void updateHandler() {
         if (isValid(getMandatoryFields(), null)) {
@@ -185,8 +175,8 @@ public class UpdateUserController extends CommonClass implements Initializable {
                             Platform.runLater(() -> Alerts.notificationAlert(
                                     "User updated successfully"));
                     } catch (Exception e) {
-                        e.printStackTrace();
                         Platform.runLater(() -> Alerts.errorAlert(e.getMessage()));
+                        e.printStackTrace();
                     }
                     return null;
                 }
@@ -196,19 +186,13 @@ public class UpdateUserController extends CommonClass implements Initializable {
 
     //----------------------helper methods-------------------
     private Users users() {
-
         String gander = male.isSelected() ? "Male" : "Female";
         String role = superAdmin.isSelected() ? "super_admin" : "admin";
+        users = new Users(Integer.parseInt(idFeild.getText()), firstname.getText().trim(), lastname.getText().trim(), phone.getText().trim(), gander,
+                shift.getValue(), username.getText().trim(), password.getText().trim(),
+                selectedFile == null ? users.getImage() : readFile(selectedFile.getAbsolutePath()), role
+        );
 
-        users.setFirstName(firstname.getText().trim());
-        users.setPhone(phone.getText().trim());
-        users.setLastName(lastname.getText().trim());
-        users.setUsername(username.getText().trim());
-        users.setPassword(password.getText().trim());
-        users.setImage(selectedFile == null ? users.getImage() : readFile(selectedFile.getAbsolutePath()));
-        users.setGender(gander);
-        users.setRole(role);
-        users.setShift(shift.getValue().trim());
         imageUploaded = true;
         return users;
     }
@@ -242,7 +226,6 @@ public class UpdateUserController extends CommonClass implements Initializable {
                 imageUploaded = true;
             }
             uploadBtn.setText("Bedelka sawirka");
-
         }
     }
 
@@ -261,24 +244,27 @@ public class UpdateUserController extends CommonClass implements Initializable {
         this.parentStage = stage;
     }
 
-    private void openLogin() throws IOException {
-//
-//        FXMLLoader loader = 
-//                OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/service/login.fxml", topPane);
-//        ;
-//        Stage loginStage = new Stage(StageStyle.UNDECORATED);
-//        Scene scene;
-//        closeStage(stage, updateBtn.getParent());
-//        try {
-//            scene = new Scene(loader.load());
-//            loginStage.setScene(scene);
-//            loginStage.show();
-//
-//
-//            parentStage.close();
-//        } catch (IOException ex) {
-//            errorMessage(ex.getMessage());
-//        }
+    @Override
+    public void setBorderPane(BorderPane borderPane) {
+        super.setBorderPane(borderPane);
+    }
+
+    private void openLogin() {
+        FadeOut fadeOut = OpenWindow.getFadeOut();
+        fadeOut.setNode(borderPane);
+        fadeOut.setSpeed(2);
+        fadeOut.setOnFinished(e -> {
+            stage.close();
+            Stage dashboard = (Stage) borderPane.getScene().getWindow();
+            dashboard.close();
+            try {
+                OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/service/login.fxml", borderPane);
+            } catch (Exception ex) {
+                Alerts.errorAlert(ex.getMessage());
+                ex.printStackTrace();
+            }
+        });
+        fadeOut.play();
     }
 
 }

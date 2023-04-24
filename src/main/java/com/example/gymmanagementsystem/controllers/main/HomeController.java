@@ -151,6 +151,7 @@ public class HomeController extends CommonClass implements Initializable {
                 RegistrationController controller = loader.getController();
                 controller.setBorderPane(borderPane);
                 controller.setCustomer(tableView.getSelectionModel().getSelectedItem());
+                controller.setActiveUser(activeUser);
             }
         } catch (Exception e) {
             Alerts.errorAlert(e.getMessage());

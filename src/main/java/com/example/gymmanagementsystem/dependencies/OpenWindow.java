@@ -32,8 +32,6 @@ public class OpenWindow {
         getSlideUp().setNode(anchorPane);
         getSlideUp().play();
         borderPane.setCenter(anchorPane);
-        HBox topBox = (HBox) borderPane.getTop();
-
         return loader;
     }
 
@@ -52,8 +50,9 @@ public class OpenWindow {
     }
 
     public static FXMLLoader secondWindow(String url, BorderPane borderPane) throws IOException {
+        System.out.println("Second ancor pane "+borderPane);
         getFadeOut().setNode(borderPane.getCenter());
-        getFadeOut().setSpeed(1.5);
+        getFadeOut().setSpeed(2);
         getFadeOut().play();
         FXMLLoader loader = new FXMLLoader(OpenWindow.class.getResource(url));
         AnchorPane anchorPane = loader.load();
@@ -88,7 +87,6 @@ public class OpenWindow {
     public static FXMLLoader openStagedWindow(String url, Node node) throws IOException {
 
         FXMLLoader loader = new FXMLLoader(OpenWindow.class.getResource(url));
-
         Stage stage = new Stage(StageStyle.UNDECORATED);
         Scene scene = new Scene(loader.load());
 
@@ -102,12 +100,33 @@ public class OpenWindow {
         return loader;
     }
 
+    public static void reOpenLogin(Stage thisStage, String username, BorderPane borderPane) {
+        boolean done = Alerts.confirmationAlert("Ma hubtaa inaad ka baxdo user ka " + username);
+        if (done) {
+            FadeOut fadeOut = OpenWindow.getFadeOut();
+            fadeOut.setNode(borderPane);
+            fadeOut.setSpeed(2);
+            fadeOut.setOnFinished(e -> {
+                thisStage.close();
+                try {
+                    OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/service/login.fxml", borderPane);
+                } catch (Exception ex) {
+                    Alerts.errorAlert(ex.getMessage());
+                    ex.printStackTrace();
+                }
+            });
+            fadeOut.play();
+        }
+    }
+
     public static void closeStage(Stage stage, Node node) {
         if (fadeOut == null) {
             fadeOut = new FadeOut(node);
-            System.out.println("Fade out init");
         }
-        fadeOut.setOnFinished(e -> stage.close());
+        fadeOut.setOnFinished(e -> {
+            stage.close();
+            System.out.println("Closed");
+        });
         fadeOut.setSpeed(2);
         fadeOut.play();
     }
@@ -131,8 +150,7 @@ public class OpenWindow {
     }
 
     public static FadeOut getFadeOut() {
-        if (fadeOut != null) return fadeOut;
-        fadeOut = new FadeOut();
+        if (fadeOut == null) fadeOut = new FadeOut();
         return fadeOut;
     }
 

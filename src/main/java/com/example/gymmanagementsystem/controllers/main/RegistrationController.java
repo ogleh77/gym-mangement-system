@@ -17,6 +17,7 @@ import javafx.collections.ObservableList;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Control;
@@ -197,10 +198,9 @@ public class RegistrationController extends CommonClass implements Initializable
                 @Override
                 protected Void call() {
                     try {
-                   //      CustomerService.insertOrUpdateCustomer(savingCustomer(), isCustomerNew);
+                        CustomerService.insertOrUpdateCustomer(savingCustomer(), isCustomerNew);
                         if (isCustomerNew) {
                             customersList.add(savingCustomer());
-                            System.out.println(customersList);
                         }
                         Thread.sleep(1000);
                         Platform.runLater(() -> {
@@ -216,18 +216,17 @@ public class RegistrationController extends CommonClass implements Initializable
                                 if (data) {
                                     openHome();
                                 }
-//                                Alerts.notificationAlert("Waad ku gulaystay update-ka macmiilka", "Updated");
                             }
                         });
                     } catch (Exception e) {
-                        e.printStackTrace();
                         if (e.getClass().isInstance(SQLException.class)) {
                             Platform.runLater(() -> errorMessage(e.getMessage() + "☹️"));
                         } else if (e.getMessage().matches("multiple points")) {
                             Platform.runLater(() -> errorMessage("Hubi inaad points racisay markii aad gelinasay cabirada (Measurements)" +
-                                    "\ncaused by " + e.getMessage() + " ☹️"));
+                                    "\n caused by " + e.getMessage() + " ☹️"));
                         } else {
-                            Platform.runLater(() -> errorMessage("error caused by" + e.getMessage()));
+                            Platform.runLater(() -> errorMessage(e.getMessage()));
+                            e.printStackTrace();
                         }
                     }
 
@@ -381,22 +380,26 @@ public class RegistrationController extends CommonClass implements Initializable
 
     private void openPayment() {
         try {
-            OpenWindow.secondWindow("/com/example/gymmanagementsystem/newviews/main/payments.fxml",
+            FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/newviews/main/payments.fxml",
                     borderPane);
+            PaymentController controller = loader.getController();
+            controller.setBorderPane(borderPane);
+            controller.setCustomer(customer);
         } catch (Exception e) {
             Alerts.errorAlert(e.getMessage());
         }
-        //  System.out.println("Payment called");
     }
 
     private void openHome() {
-//        try {
-//            OpenWindow.secondWindow("/com/example/gymmanagementsystem/newviews/main/payments.fxml",
-//                    borderPane);
-//        } catch (Exception e) {
-//            Alerts.errorAlert(e.getMessage(), "Khalad aya dhacay");
-//        }
-        System.out.println("Back to  Home");
+        try {
+            FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/newviews/main/home.fxml",
+                    borderPane);
+            HomeController controller = loader.getController();
+            controller.setActiveUser(activeUser);
+            controller.setBorderPane(borderPane);
+        } catch (Exception e) {
+            Alerts.errorAlert(e.getMessage());
+        }
     }
 
 }

@@ -15,7 +15,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="home-pane" stylesheets="@../../style/css/long-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.info.ReportControllerHandler">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="home-pane" stylesheets="@../../style/css/long-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.info.ReportController">
     <HBox alignment="CENTER" layoutX="105.0" layoutY="28.0" prefHeight="36.0" prefWidth="1016.0" spacing="500.0" styleClass="top-pane" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
         <Label prefHeight="33.0" prefWidth="181.0" styleClass="top-label" text="REPORTS PAGE" textFill="#fffbfb">
             <font>

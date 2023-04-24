@@ -2,8 +2,10 @@ package com.example.gymmanagementsystem.entities.service;
 
 import javafx.beans.property.SimpleStringProperty;
 
+import java.util.Arrays;
+
 public class Users {
-    private   int userId;
+    private final int userId;
     private final SimpleStringProperty firstName = new SimpleStringProperty();
     private final SimpleStringProperty lastName = new SimpleStringProperty();
     private final SimpleStringProperty phone = new SimpleStringProperty();
@@ -26,11 +28,6 @@ public class Users {
         this.image = image;
         this.setRole(role);
     }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
     public int getUserId() {
         return userId;
     }
@@ -126,7 +123,23 @@ public class Users {
 
     @Override
     public String toString() {
-        return username.get() + "  [" + role.getValue() + "]\n";
+        return username.get() + " [" + role.getValue() + "]\n";
     }
 
+//
+//    @Override
+//    public String toString() {
+//        return "Users{" +
+//                "userId=" + userId +
+//                ", firstName=" + firstName +
+//                ", lastName=" + lastName +
+//                ", phone=" + phone +
+//                ", gender=" + gender +
+//                ", shift=" + shift +
+//                ", username=" + username +
+//                ", password=" + password +
+//                ", image=" + Arrays.toString(image) +
+//                ", role=" + role +
+//                '}';
+//    }
 }

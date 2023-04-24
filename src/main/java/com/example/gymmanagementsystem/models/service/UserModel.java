@@ -18,7 +18,7 @@ public class UserModel {
 
     public void update(Users users) throws SQLException {
         String updateUser = "UPDATE users SET first_name=?,last_name=?,phone=?,gender=?,shift=?,username=?,password=?,image=?,role=? \n" +
-                "WHERE username='" + users.getUsername() + "'";
+                "WHERE user_id=" + users.getUserId();
         insertOrUpdateUser(users, updateUser);
     }
 
@@ -26,7 +26,7 @@ public class UserModel {
         connection.setAutoCommit(false);
         try {
             String deleteUser = "DELETE FROM users " +
-                    "WHERE username='" + users.getUsername() + "'";
+                    "WHERE user_id=" + users.getUserId();
             Statement statement = connection.createStatement();
             statement.execute(deleteUser);
             connection.commit();

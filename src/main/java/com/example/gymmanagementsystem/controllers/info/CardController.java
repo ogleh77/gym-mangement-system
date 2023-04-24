@@ -44,7 +44,7 @@ public class CardController extends CommonClass implements Initializable {
         Period period = Period.between(exp, today);
 
         fullName.setText(customer.getFirstName() + " " + customer.getMiddleName() + " " + customer.getLastName());
-        expDate.setText(customer.getPayments().get(0).getExpDate()+"");
+        expDate.setText(customer.getPayments().get(0).getExpDate() + "");
 
 
         if (period.getYears() > 0) {
@@ -59,7 +59,6 @@ public class CardController extends CommonClass implements Initializable {
             outDated.setText(period.getDays() == 1 ? period.getDays() + " day ago" : period.getDays() + " days ago");
         }
 
-        System.out.println(customer.getFirstName() + " " + period);
         phone.setText(customer.getPhone());
         shift.setText(customer.getShift());
         if (customer.getImage() != null) {

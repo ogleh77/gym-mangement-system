@@ -4,6 +4,7 @@ import animatefx.animation.FadeIn;
 import com.example.gymmanagementsystem.dao.main.PaymentService;
 import com.example.gymmanagementsystem.dao.service.GymService;
 import com.example.gymmanagementsystem.dependencies.Alerts;
+import com.example.gymmanagementsystem.dependencies.OpenWindow;
 import com.example.gymmanagementsystem.entities.main.Customers;
 import com.example.gymmanagementsystem.entities.main.Payments;
 import com.example.gymmanagementsystem.entities.service.Box;
@@ -17,6 +18,7 @@ import javafx.collections.ObservableList;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -199,7 +201,7 @@ public class PaymentController extends CommonClass implements Initializable {
                                 boolean data = Alerts.singleConfirmationAlert("New payment Created Successfully",
                                         "Back to home");
                                 if (data) {
-                                    System.out.println("Back to home");
+                                    openHome();
                                 }
                             });
                         } else {
@@ -208,7 +210,7 @@ public class PaymentController extends CommonClass implements Initializable {
                                 boolean data = Alerts.singleConfirmationAlert("Payment updated Successfully",
                                         "Back to home");
                                 if (data) {
-                                    System.out.println("backing home");
+                                    openHome();
                                 }
                             });
                         }
@@ -354,6 +356,19 @@ public class PaymentController extends CommonClass implements Initializable {
     private void checkDate(LocalDate startDate, LocalDate endDate) {
         if (startDate.isAfter(endDate)) {
             throw new RuntimeException("Wakhtiga bilowgu kama danbayn karo wakhtiga dhamanayo paymentku");
+        }
+    }
+
+
+    private void openHome() {
+        try {
+            FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/newviews/main/home.fxml",
+                    borderPane);
+            HomeController controller = loader.getController();
+            controller.setActiveUser(activeUser);
+            controller.setBorderPane(borderPane);
+        } catch (Exception e) {
+            Alerts.errorAlert(e.getMessage());
         }
     }
 }

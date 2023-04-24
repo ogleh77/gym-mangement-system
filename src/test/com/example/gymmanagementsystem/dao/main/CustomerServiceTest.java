@@ -15,4 +15,37 @@ class CustomerServiceTest {
         System.out.println(customer);
         CustomerService.deleteCustomer(customer);
     }
+
+    @Test
+    void insertOrUpdateCustomer() {
+    }
+
+    @Test
+    void predictNextId() {
+    }
+
+    @Test
+    void fetchAllCustomer() {
+    }
+
+    @Test
+    void fetchAllOnlineCustomer() {
+    }
+
+    @Test
+    void fetchOnlineCustomersWhereDateBetween() {
+        //System.out.println(CustomerService.fetchOnlineCustomersWhereDateBetween(""));
+    }
+
+    @Test
+    void fetchOfflineCustomersWhereDateBetween() {
+    }
+
+    @Test
+    void fetchPendCustomersWhereDateBetween() {
+    }
+
+    @Test
+    void fetchQualifiedOfflineCustomers() {
+    }
 }

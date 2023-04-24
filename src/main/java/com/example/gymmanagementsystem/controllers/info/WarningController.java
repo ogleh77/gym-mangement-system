@@ -42,7 +42,6 @@ public class WarningController extends CommonClass implements Initializable {
                     anchorPane.setStyle("-fx-background-color: white;-fx-background-radius: 2");
                     CardController controller = loader.getController();
                     controller.setCustomer(customer);
-
                 } catch (IOException e) {
                     e.printStackTrace();
                     throw new RuntimeException(e);

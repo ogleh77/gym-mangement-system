@@ -1,6 +1,5 @@
 package com.example.gymmanagementsystem.controllers.users;
 
-import animatefx.animation.FadeOut;
 import com.example.gymmanagementsystem.dao.service.UserService;
 import com.example.gymmanagementsystem.dependencies.Alerts;
 import com.example.gymmanagementsystem.dependencies.OpenWindow;
@@ -8,11 +7,13 @@ import com.example.gymmanagementsystem.entities.service.Users;
 import com.example.gymmanagementsystem.helpers.CommonClass;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -20,11 +21,20 @@ import java.util.ResourceBundle;
 public class UserChooserController extends CommonClass implements Initializable {
     @FXML
     private ListView<Users> listView;
+    @FXML
+    private HBox topPane;
+    @FXML
+    private AnchorPane chooserPane;
     private Stage thisStage;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Platform.runLater(() -> thisStage = (Stage) listView.getScene().getWindow());
+        Platform.runLater(() -> {
+            thisStage = (Stage) listView.getScene().getWindow();
+            paneDrag(thisStage, topPane);
+            paneDropped(thisStage, topPane);
+
+        });
     }
 
     @FXML
@@ -38,20 +48,17 @@ public class UserChooserController extends CommonClass implements Initializable 
             if (listView.getSelectionModel().getSelectedItem() == null) {
                 throw new RuntimeException("Fadlan dooro userka aad wax ka bedelayso.");
             }
-            FadeOut fadeOut = OpenWindow.getFadeOut();
-
-            fadeOut.setOnFinished(e -> {
-                try {
-                    OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/users/user-update.fxml", listView);
-                    thisStage.close();
-                } catch (IOException ex) {
-                    Alerts.errorAlert(ex.getMessage());
-                }
-            });
-//            fadeOut.setSpeed(2);
-//            fadeOut.play();
+            thisStage.close();
+            try {
+                FXMLLoader loader = OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/users/user-update.fxml", listView);
+                UpdateUserController controller = loader.getController();
+                controller.setUser(listView.getSelectionModel().getSelectedItem());
+            } catch (Exception ex) {
+                Alerts.errorAlert(ex.getMessage());
+            }
         } catch (Exception e) {
             Alerts.waningAlert(e.getMessage());
+            e.printStackTrace();
         }
 
     }
@@ -62,8 +69,8 @@ public class UserChooserController extends CommonClass implements Initializable 
             if (listView.getSelectionModel().getSelectedItem() == null) {
                 throw new RuntimeException("Fadlan dooro userka aad masaxayso");
             }
-            boolean done = Alerts.confirmationAlert("Ma hubtaa inaad delete garayso userka  "
-                    + activeUser.getUsername());
+            boolean done = Alerts.confirmationAlert("Ma hubtaa inaad delete garayso userka  " +
+                    listView.getSelectionModel().getSelectedItem().getUsername());
 
             if (done) {
                 UserService.delete(listView.getSelectionModel().getSelectedItem());
@@ -71,10 +78,9 @@ public class UserChooserController extends CommonClass implements Initializable 
             }
 
         } catch (Exception e) {
-            if (e instanceof RuntimeException)
-                Alerts.waningAlert(e.getMessage());
-            else
-                Alerts.errorAlert(e.getMessage());
+            if (e instanceof RuntimeException) Alerts.waningAlert(e.getMessage());
+            else Alerts.errorAlert(e.getMessage());
+            e.printStackTrace();
         }
 
     }

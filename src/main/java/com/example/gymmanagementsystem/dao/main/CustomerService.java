@@ -27,9 +27,9 @@ public class CustomerService {
             }
         } catch (SQLException e) {
             if (e.getMessage().contains("(UNIQUE constraint failed: customers.phone)")) {
-                throw new CustomException("Lanbarka " + customer.getPhone() + " hore ayaa loo diwaan geshay fadlan dooro lanbarkale");
+                throw new SQLException("Lanbarka " + customer.getPhone() + " hore ayaa loo diwaan geshay fadlan dooro lanbarkale");
             } else {
-                throw new CustomException("SQL error insert or update customer " + e.getMessage());
+                throw new SQLException("SQL error insert or update customer " + e.getMessage());
             }
         }
     }

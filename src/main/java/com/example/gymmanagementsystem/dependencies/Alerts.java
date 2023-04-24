@@ -22,7 +22,7 @@ public class Alerts {
         Alert warningAlert = new Alert(Alert.AlertType.WARNING);
         warningAlert.setTitle("Ma ogtahay?");
         warningAlert.setContentText(message);
-        warningAlert.showAndWait();
+        warningAlert.show();
     }
 
     public static void errorAlert(String message) {

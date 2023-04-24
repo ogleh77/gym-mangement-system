@@ -48,11 +48,11 @@
             <Font name="Tahoma Bold" size="12.0" />
         </font>
     </Label>
-    <effect>
-        <DropShadow height="34.35" radius="16.302500000000002" spread="0.03" width="32.86">
-            <color>
-                <Color red="0.4868420958518982" green="0.4395102262496948" blue="0.4395102262496948" />
-            </color>
-        </DropShadow>
-    </effect>
+   <effect>
+      <DropShadow height="33.235" radius="16.02375" spread="0.03" width="32.86">
+         <color>
+            <Color red="0.48627451062202454" green="0.43921568989753723" blue="0.43921568989753723" />
+         </color>
+      </DropShadow>
+   </effect>
 </AnchorPane>

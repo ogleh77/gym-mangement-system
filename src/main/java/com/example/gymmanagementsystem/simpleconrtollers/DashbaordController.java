@@ -121,6 +121,12 @@ public class DashbaordController extends CommonClass implements Initializable {
         dashboardStage.setIconified(true);
     }
 
+    @FXML
+    void addUserHandler() throws IOException {
+        OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/users/user-creation.fxml", activeProfile);
+    }
+
+
     private void borderPaneDrag() {
         topPane.setOnMousePressed(event -> {
             xOffset = dashboardStage.getX() - event.getScreenX();

@@ -116,7 +116,7 @@
                                     </ImageView>
                                 </graphic>
                             </MenuItem>
-                            <MenuItem mnemonicParsing="false" text="Add user">
+                            <MenuItem mnemonicParsing="false" onAction="#addUserHandler" text="Add user">
                                 <graphic>
                                     <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                         <Image url="@../style/icons/adduser.png" />

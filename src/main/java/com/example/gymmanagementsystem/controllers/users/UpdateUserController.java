@@ -137,7 +137,7 @@ public class UpdateUserController extends CommonClass implements Initializable {
             male.setDisable(true);
             shift.setItems(super.getShift());
         }
-        topText.setText("UPDATE ME");
+        topText.setText("WAX KA BEDEL ACCOUNTKAGA");
         setUserData(activeUser);
     }
 
@@ -246,7 +246,7 @@ public class UpdateUserController extends CommonClass implements Initializable {
                 imageView.setImage(image);
                 imageUploaded = true;
             }
-            updateBtn.setText("Change image");
+            uploadBtn.setText("Bedelka sawirka");
 
         }
     }

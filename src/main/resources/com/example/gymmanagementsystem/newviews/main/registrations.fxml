@@ -37,7 +37,7 @@
             <Color red="0.28143274784088135" green="0.761147677898407" blue="0.9210526347160339" />
         </selectedColor>
         <unSelectedColor>
-            <Color red="0.6447368264198303" green="0.6268274784088135" blue="0.6268274784088135" />
+            <Color red="0.6431372761726379" green="0.6274510025978088" blue="0.6274510025978088" />
         </unSelectedColor>
     </JFXRadioButton>
     <JFXRadioButton fx:id="female" layoutX="420.0" layoutY="401.0" prefHeight="17.0" prefWidth="89.0" text="Dhedig" textFill="#328ca8" AnchorPane.leftAnchor="420.0">
@@ -88,7 +88,7 @@
             <Font name="Tahoma Bold" size="16.0" />
         </font>
     </Label>
-    <VBox layoutX="801.0" layoutY="391.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="209.0" AnchorPane.rightAnchor="149.0">
+    <VBox layoutX="801.0" layoutY="391.0" AnchorPane.bottomAnchor="209.0" AnchorPane.rightAnchor="149.0">
         <effect>
             <DropShadow height="9.01" radius="4.755" spread="0.26" width="12.01">
                 <color>

@@ -18,7 +18,10 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="541.0" prefWidth="483.0" stylesheets="@../../style/css/small-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.users.UserCreationController">
     <effect>
-        <DropShadow height="86.24" radius="41.8775" width="83.27" />
+        <DropShadow height="36.58" radius="16.86" width="32.86">
+         <color>
+            <Color red="0.48627451062202454" green="0.43921568989753723" blue="0.43921568989753723" />
+         </color></DropShadow>
     </effect>
     <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="483.0" spacing="120.0" styleClass="top-pane">
         <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="259.0" spacing="10.0">
@@ -56,7 +59,7 @@
         </font>
     </Label>
     <TextField fx:id="phone" layoutX="26.0" layoutY="157.0" prefHeight="36.0" prefWidth="194.0" promptText="e.g xxx-xxx" />
-    <Label layoutX="26.0" layoutY="133.0" text="phone" textFill="#328ca8">
+    <Label layoutX="26.0" layoutY="133.0" text="talefanka" textFill="#328ca8">
         <font>
             <Font name="Tahoma" size="16.0" />
         </font>
@@ -106,7 +109,7 @@
     </Label>
     <VBox layoutX="267.0" layoutY="258.0" prefHeight="145.0" prefWidth="195.0" style="-fx-background-color: white;">
         <effect>
-            <DropShadow height="10.07" radius="5.0425" width="12.1">
+            <DropShadow>
             <color>
                <Color red="0.529411792755127" green="0.5686274766921997" blue="0.5803921818733215" />
             </color></DropShadow>

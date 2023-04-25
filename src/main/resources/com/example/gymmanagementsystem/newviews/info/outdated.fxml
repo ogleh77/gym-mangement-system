@@ -32,14 +32,14 @@
                 </color>
             </DropShadow>
         </effect>
-        <Label layoutX="19.0" layoutY="6.0" text="Customer query filter" textFill="#3a6188">
+        <Label layoutX="19.0" layoutY="6.0" text="Customer query filter" textFill="#879194">
             <font>
-                <Font name="Tahoma" size="15.0" />
+                <Font name="Verdana" size="15.0" />
             </font>
         </Label>
-        <JFXRadioButton fx:id="male" layoutX="211.0" layoutY="42.0" text="Male" textFill="#686565">
+        <JFXRadioButton fx:id="male" layoutX="211.0" layoutY="42.0" text="Male" textFill="#575454">
             <font>
-                <Font name="Verdana" size="14.0" />
+                <Font name="Tahoma" size="14.0" />
             </font>
             <unSelectedColor>
                 <Color red="0.19607843458652496" green="0.5490196347236633" blue="0.658823549747467" />
@@ -48,9 +48,9 @@
             <Color red="0.06530214101076126" green="0.5958820581436157" blue="0.8815789222717285" />
          </selectedColor>
         </JFXRadioButton>
-        <JFXRadioButton fx:id="female" layoutX="283.0" layoutY="42.0" text="Female" textFill="#686565">
+        <JFXRadioButton fx:id="female" layoutX="283.0" layoutY="42.0" text="Female" textFill="#575454">
             <font>
-                <Font name="Verdana" size="14.0" />
+                <Font name="Tahoma" size="14.0" />
             </font>
             <unSelectedColor>
                 <Color red="0.19607843458652496" green="0.5490196347236633" blue="0.658823549747467" />
@@ -59,9 +59,9 @@
             <Color red="0.06530214101076126" green="0.5958820581436157" blue="0.8815789222717285" />
          </selectedColor>
         </JFXRadioButton>
-        <JFXRadioButton fx:id="both" layoutX="373.0" layoutY="42.0" text="both" textFill="#686565">
+        <JFXRadioButton fx:id="both" layoutX="373.0" layoutY="42.0" text="both" textFill="#575454">
             <font>
-                <Font name="Verdana" size="14.0" />
+                <Font name="Tahoma" size="14.0" />
             </font>
             <unSelectedColor>
                 <Color red="0.19607843458652496" green="0.5490196347236633" blue="0.658823549747467" />
@@ -80,16 +80,16 @@
                 </color>
             </DropShadow>
         </effect>
-        <Label layoutX="20.0" layoutY="7.0" text="Payment date query" textFill="#3a6188">
+        <Label layoutX="20.0" layoutY="7.0" text="Payment date query" textFill="#879194">
             <font>
-                <Font name="Tahoma" size="15.0" />
+                <Font name="Verdana" size="15.0" />
             </font>
         </Label>
         <DatePicker fx:id="toDate" editable="false" layoutX="310.0" layoutY="34.0" stylesheets="@../../style/css/combo-style.css" />
         <DatePicker fx:id="fromDate" editable="false" layoutX="69.0" layoutY="34.0" stylesheets="@../../style/css/combo-style.css" />
-        <Label layoutX="22.0" layoutY="37.0" prefHeight="24.0" prefWidth="44.0" text="From " textFill="#686565">
+        <Label layoutX="22.0" layoutY="37.0" prefHeight="24.0" prefWidth="44.0" text="From " textFill="#575454">
             <font>
-                <Font name="Verdana" size="14.0" />
+                <Font name="Tahoma" size="14.0" />
             </font>
         </Label>
         <JFXButton fx:id="searchHandler" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="527.0" layoutY="33.0" onAction="#searchHandler" prefHeight="30.0" prefWidth="44.0" styleClass="btn-normal" stylesheets="@../../style/css/button-style.css" text="Search" textFill="WHITE">
@@ -104,9 +104,9 @@
             </ImageView>
          </graphic>
         </JFXButton>
-        <Label layoutX="281.0" layoutY="37.0" prefHeight="24.0" prefWidth="20.0" text="To" textFill="#686565">
+        <Label layoutX="281.0" layoutY="37.0" prefHeight="24.0" prefWidth="20.0" text="To" textFill="#575454">
             <font>
-                <Font name="Verdana" size="14.0" />
+                <Font name="Tahoma" size="14.0" />
             </font>
         </Label>
     </AnchorPane>

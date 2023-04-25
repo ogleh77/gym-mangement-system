@@ -46,11 +46,11 @@
             <Font name="Tahoma Bold" size="15.0" />
         </font>
     </Label>
-    <VBox layoutX="849.0" layoutY="169.0" prefHeight="161.0" prefWidth="210.0" style="-fx-background-color: white;" AnchorPane.rightAnchor="137.0">
+    <VBox layoutX="849.0" layoutY="169.0" prefHeight="161.0" prefWidth="210.0" AnchorPane.rightAnchor="137.0">
         <effect>
-            <DropShadow height="35.66" radius="15.864999999999998" spread="0.77" width="29.8">
+            <DropShadow height="32.73" radius="15.1325" width="29.8">
                 <color>
-                    <Color red="0.7763158082962036" green="0.7367811799049377" blue="0.7367811799049377" />
+                    <Color red="0.529411792755127" green="0.5686274766921997" blue="0.5803921818733215" />
                 </color>
             </DropShadow>
         </effect>
@@ -58,9 +58,9 @@
             <Image url="@../../style/icons/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpeg" />
         </ImageView>
     </VBox>
-    <Label layoutX="882.0" layoutY="339.0" text="customer profile" textFill="#328ca8" AnchorPane.rightAnchor="170.0">
+    <Label layoutX="890.0" layoutY="341.0" text="customer profile" textFill="#afd6e3" AnchorPane.rightAnchor="178.0">
         <font>
-            <Font name="Verdana Bold" size="16.0" />
+            <Font name="Tahoma Bold" size="16.0" />
         </font>
     </Label>
     <HBox alignment="CENTER" spacing="730.0" styleClass="top-pane" AnchorPane.bottomAnchor="680.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
@@ -132,16 +132,16 @@
         </font>
     </Label>
     <Circle fill="#6d7883" layoutX="122.0" layoutY="475.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
-    <Label layoutX="764.0" layoutY="415.0" prefHeight="20.0" prefWidth="167.0" text="Payment actions" textFill="#505454">
+    <Label layoutX="764.0" layoutY="415.0" prefHeight="20.0" prefWidth="167.0" text="Payment actions" textFill="#757a7c">
         <font>
-            <Font name="Tahoma" size="16.0" />
+            <Font name="Tahoma Bold" size="16.0" />
         </font>
     </Label>
     <TableView fx:id="tableView" layoutX="50.0" layoutY="499.0" prefHeight="200.0" prefWidth="1066.0" stylesheets="@../../style/css/home-table.css" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
         <columns>
-            <TableColumn fx:id="paymentDate" prefWidth="98.0" text="last paid" />
-            <TableColumn fx:id="expDate" prefWidth="97.0" text="exp date" />
-            <TableColumn fx:id="month" prefWidth="90.0" text="month" />
+            <TableColumn fx:id="paymentDate" prefWidth="118.0" text="payment date" />
+            <TableColumn fx:id="expDate" prefWidth="87.0" text="exp date" />
+            <TableColumn fx:id="month" text="month" />
             <TableColumn fx:id="year" prefWidth="77.0" text="year" />
             <TableColumn fx:id="amountPaid" prefWidth="88.0" text="amount " />
             <TableColumn fx:id="paidBy" prefWidth="92.0" text="paid by" />

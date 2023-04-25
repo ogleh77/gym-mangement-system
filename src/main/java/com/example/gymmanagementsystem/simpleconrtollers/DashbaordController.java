@@ -1,5 +1,6 @@
 package com.example.gymmanagementsystem.simpleconrtollers;
 
+import com.example.gymmanagementsystem.controllers.info.OutDatedController;
 import com.example.gymmanagementsystem.controllers.users.UpdateUserController;
 import com.example.gymmanagementsystem.dao.service.UserService;
 import com.example.gymmanagementsystem.dependencies.Alerts;
@@ -104,7 +105,9 @@ public class DashbaordController extends CommonClass implements Initializable {
 
     @FXML
     void outdatedHandler() throws IOException {
-        OpenWindow.mainWindow("/com/example/gymmanagementsystem/newviews/info/outdated.fxml", borderPane);
+        FXMLLoader loader = OpenWindow.mainWindow("/com/example/gymmanagementsystem/newviews/info/outdated.fxml", borderPane);
+        OutDatedController controller = loader.getController();
+        controller.setActiveUser(activeUser);
     }
 
     @FXML

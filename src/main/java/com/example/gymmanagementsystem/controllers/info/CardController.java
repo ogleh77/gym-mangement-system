@@ -24,7 +24,7 @@ public class CardController extends CommonClass implements Initializable {
     @FXML
     private Label fullName;
     @FXML
-    private Label lastPaid;
+    private Label expDate;
     @FXML
     private Label outDated;
     @FXML
@@ -44,7 +44,7 @@ public class CardController extends CommonClass implements Initializable {
         Period period = Period.between(exp, today);
 
         fullName.setText(customer.getFirstName() + " " + customer.getMiddleName() + " " + customer.getLastName());
-        lastPaid.setText(customer.getPayments().get(0).getStartDate()+"");
+        expDate.setText(customer.getPayments().get(0).getExpDate()+"");
 
 
         if (period.getYears() > 0) {

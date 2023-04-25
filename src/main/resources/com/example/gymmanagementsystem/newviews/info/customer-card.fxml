@@ -9,7 +9,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="149.0" prefWidth="562.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.info.CardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="149.0" prefWidth="528.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.info.CardController">
     <effect>
         <DropShadow height="38.79" radius="18.895" width="38.79">
             <color>
@@ -40,12 +40,12 @@
             <Font name="Helvetica" size="16.0" />
         </font>
     </Label>
-    <Label layoutX="184.0" layoutY="88.0" text="Last paid" textFill="#afd6e3">
+    <Label layoutX="184.0" layoutY="88.0" text="Exp date" textFill="#afd6e3">
         <font>
             <Font name="Tahoma Bold" size="16.0" />
         </font>
     </Label>
-    <Label fx:id="lastPaid" layoutX="291.0" layoutY="89.0" text="20/11/2022" textFill="#879194">
+    <Label fx:id="expDate" layoutX="291.0" layoutY="89.0" text="20/11/2022" textFill="#879194">
         <font>
             <Font name="Helvetica" size="16.0" />
         </font>

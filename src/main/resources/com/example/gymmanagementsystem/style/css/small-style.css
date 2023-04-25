@@ -34,3 +34,7 @@
     -fx-border-color: #3a6188;
     -fx-border-width: 0.5;
 }
+
+.list-view{
+    -fx-background-color:  #efefef;
+}

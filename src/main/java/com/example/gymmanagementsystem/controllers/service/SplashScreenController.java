@@ -1,6 +1,5 @@
 package com.example.gymmanagementsystem.controllers.service;
 
-import com.example.gymmanagementsystem.controllers.DashboardController;
 import com.example.gymmanagementsystem.dao.Data;
 import com.example.gymmanagementsystem.dao.main.CustomerService;
 import com.example.gymmanagementsystem.dependencies.OpenWindow;
@@ -9,7 +8,6 @@ import com.example.gymmanagementsystem.entities.main.Payments;
 import com.example.gymmanagementsystem.entities.service.Users;
 import com.example.gymmanagementsystem.helpers.CommonClass;
 import com.example.gymmanagementsystem.simpleconrtollers.DashbaordController;
-import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,7 +21,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -36,7 +33,7 @@ public class SplashScreenController extends CommonClass implements Initializable
     @FXML
     private Label waiting;
     @FXML
-    private JFXButton welcomeBtn;
+    private Label username;
     @FXML
     private ImageView loadingImage;
     @FXML
@@ -124,7 +121,7 @@ public class SplashScreenController extends CommonClass implements Initializable
         thread.setDaemon(true);
         thread.start();
         progress.progressProperty().bind(FetchOnlineCustomersByGander.progressProperty());
-        welcomeBtn.setText("Welcome " + activeUser.getUsername());
+        username.setText(activeUser.getUsername());
         waiting.textProperty().bind(FetchOnlineCustomersByGander.messageProperty());
 
         URL url = getClass().getResource(activeUser.getGender().equals("Male") ? images[1] : images[2]);

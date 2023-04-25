@@ -112,7 +112,7 @@
             <Font name="Helvetica" size="14.0" />
         </font>
     </Label>
-    <ListView fx:id="listView" layoutX="245.0" layoutY="157.0" prefHeight="200.0" prefWidth="220.0" style="-fx-background-color: #efefef;" />
+    <ListView fx:id="listView" layoutX="245.0" layoutY="157.0" prefHeight="200.0" prefWidth="220.0" />
     <JFXCheckBox fx:id="uploadImageCheck" checkedColor="#46749f" layoutX="245.0" layoutY="96.0" text="I xasuusi hadan sawirka ilaabo" textFill="#46749f" unCheckedColor="#545657">
         <font>
             <Font name="Verdana" size="13.0" />

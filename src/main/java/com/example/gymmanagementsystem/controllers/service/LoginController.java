@@ -140,4 +140,9 @@ public class LoginController extends CommonClass implements Initializable {
     private void closeStage() {
         closeStage(currentStage, userCombo.getParent());
     }
+
+    @FXML
+    void minimizeHandler() {
+        currentStage.setIconified(true);
+    }
 }

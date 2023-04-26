@@ -20,7 +20,7 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load());
         RegistrationController controller = fxmlLoader.getController();
         controller.setActiveUser(UserService.users().get(0));
-      //  controller.setCustomer(CustomerService.fetchAllCustomer(UserService.users().get(0)).get(1));
+        controller.setCustomer(CustomerService.fetchAllCustomer(UserService.users().get(0)).get(1));
 //        DashboardController controller = fxmlLoader.getController();
 //        controller.setActiveUser(UserService.users().get(0));
 //        OutDatedController controller = fxmlLoader.getController();

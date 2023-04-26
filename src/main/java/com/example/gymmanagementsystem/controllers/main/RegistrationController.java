@@ -197,16 +197,26 @@ public class RegistrationController extends CommonClass implements Initializable
                 @Override
                 protected Void call() {
                     try {
-                        // CustomerService.insertOrUpdateCustomer(savingCustomer(), isCustomerNew);
+                   //      CustomerService.insertOrUpdateCustomer(savingCustomer(), isCustomerNew);
                         if (isCustomerNew) {
                             customersList.add(savingCustomer());
                             System.out.println(customersList);
                         }
                         Thread.sleep(1000);
                         Platform.runLater(() -> {
-                            boolean data = Alerts.singleConfirmationAlert("Usamee macmiilka payment", "Go to payments");
-                            if (data) {
-                                openPayment();
+                            if (isCustomerNew) {
+                                boolean data = Alerts.singleConfirmationAlert("" +
+                                        "Waxaad samaysay macmiil cusub u samee macmiilka payment?", "Go to payments");
+                                if (data) {
+                                    openPayment();
+                                }
+                            } else {
+                                boolean data = Alerts.singleConfirmationAlert("" +
+                                        "Waad ku gulaystay update-ka macmiilka ku noqo home ka?", "Back to Home");
+                                if (data) {
+                                    openHome();
+                                }
+//                                Alerts.notificationAlert("Waad ku gulaystay update-ka macmiilka", "Updated");
                             }
                         });
                     } catch (Exception e) {
@@ -376,8 +386,17 @@ public class RegistrationController extends CommonClass implements Initializable
         } catch (Exception e) {
             Alerts.errorAlert(e.getMessage(), "Khalad aya dhacay");
         }
-      //  System.out.println("Payment called");
+        //  System.out.println("Payment called");
     }
 
+    private void openHome() {
+//        try {
+//            OpenWindow.secondWindow("/com/example/gymmanagementsystem/newviews/main/payments.fxml",
+//                    borderPane);
+//        } catch (Exception e) {
+//            Alerts.errorAlert(e.getMessage(), "Khalad aya dhacay");
+//        }
+        System.out.println("Back to  Home");
+    }
 
 }

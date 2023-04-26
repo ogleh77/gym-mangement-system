@@ -4,6 +4,7 @@ import com.example.gymmanagementsystem.dao.Data;
 import com.example.gymmanagementsystem.dao.main.CustomerService;
 import com.example.gymmanagementsystem.dao.service.GymService;
 import com.example.gymmanagementsystem.dependencies.Alerts;
+import com.example.gymmanagementsystem.dependencies.OpenWindow;
 import com.example.gymmanagementsystem.entities.main.Customers;
 import com.example.gymmanagementsystem.entities.service.Gym;
 import com.example.gymmanagementsystem.entities.service.Users;
@@ -265,8 +266,8 @@ public class RegistrationController extends CommonClass implements Initializable
 
     private void phoneValidation() {
         phone.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.matches("(\\d*)")) {
-                phone.setText(newValue.replaceAll("[^\\d.?}]", ""));
+            if (!newValue.matches("\\d*")) {
+                phone.setText(newValue.replaceAll("\\D", ""));
             }
         });
 
@@ -302,28 +303,7 @@ public class RegistrationController extends CommonClass implements Initializable
 //            }
             //}
         });
-//            if (!phone.getText().matches("\\d*")) {
-//                phone.setText(phone.getText().replaceAll("\\D", ""));
-//            } else if (!phone.getText().matches("^\\d{7,10}")) {
-//                phoneValidation.setText(phone.getText().length() < 7 ? "Fadlan lanbarku kama yaran karo 7 digit"
-//                        : "Fadlan lanbarku kama badan karo 10 digit");
-//                phoneValidation.setVisible(true);
-//            } else {
-//                phoneValidation.setVisible(false);
-//            }
     }
-//        phone.textProperty().addListener((observable, oldValue, newValue) -> {
-//            if (!newValue.matches("\\d*")) {
-//                phone.setText(newValue.replaceAll("\\D", ""));
-//            } else if (!phone.getText().matches("^\\d{7,10}")) {
-//                phoneValidation.setText(phone.getText().length() < 7 ? "Fadlan lanbarku kama yaran karo 7 digit"
-//                        : "Fadlan lanbarku kama badan karo 10 digit");
-//                phoneValidation.setVisible(true);
-//            } else {
-//                phoneValidation.setVisible(false);
-//            }
-//        });
-
 
     private void chestValidation() {
         chest.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -390,13 +370,13 @@ public class RegistrationController extends CommonClass implements Initializable
     }
 
     private void openPayment() {
-//        try {
-//            OpenWindow.secondWindow("/com/example/gymmanagementsystem/newviews/main/payments.fxml",
-//                    borderPane);
-//        } catch (Exception e) {
-//            Alerts.errorAlert(e.getMessage(), "Khalad aya dhacay");
-//        }
-        System.out.println("Payment called");
+        try {
+            OpenWindow.secondWindow("/com/example/gymmanagementsystem/newviews/main/payments.fxml",
+                    borderPane);
+        } catch (Exception e) {
+            Alerts.errorAlert(e.getMessage(), "Khalad aya dhacay");
+        }
+      //  System.out.println("Payment called");
     }
 
 

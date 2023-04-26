@@ -3,7 +3,6 @@ package com.example.gymmanagementsystem.controllers.main;
 import animatefx.animation.FadeIn;
 import com.example.gymmanagementsystem.dao.main.PaymentService;
 import com.example.gymmanagementsystem.dao.service.GymService;
-import com.example.gymmanagementsystem.dependencies.Alerts;
 import com.example.gymmanagementsystem.entities.main.Customers;
 import com.example.gymmanagementsystem.entities.main.Payments;
 import com.example.gymmanagementsystem.entities.service.Box;
@@ -18,18 +17,17 @@ import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.ByteArrayInputStream;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class PaymentController extends CommonClass implements Initializable {
@@ -88,6 +86,7 @@ public class PaymentController extends CommonClass implements Initializable {
     private Label topLabel;
     private ObservableList<Payments> paymentsList;
     private final Gym currentGym;
+    private Payments payment;
     private Payments updatePayment;
     private double _amountPaid;
     private double _discount;
@@ -97,15 +96,25 @@ public class PaymentController extends CommonClass implements Initializable {
         this.currentGym = GymService.getGym();
     }
 
+    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Platform.runLater(this::initFields);
-        if (updatePayment == null) {
-            startDate.setValue(LocalDate.now());
-            expDate.setValue(LocalDate.now().plusDays(30));
-        }
-        amountValidation();
-        validateDiscount();
+        Platform.runLater(() -> {
+            initFields();
+            if (updatePayment == null) {
+                startDate.setValue(LocalDate.now());
+                expDate.setValue(LocalDate.now().plusDays(30));
+            }
 
+
+        });
+        try {
+            amountValidation();
+            validateDiscount();
+        } catch (Exception e) {
+            System.out.println("Not " + e.getMessage());
+        }
+
+// TODO: 17/04/2023 close creat and re open insha Allah
         service.setOnSucceeded(e -> {
             createBtn.setText(newPayment ? "Created" : "Updated");
             createBtn.setGraphic(null);
@@ -115,18 +124,16 @@ public class PaymentController extends CommonClass implements Initializable {
     @FXML
     void createPaymentHandler() {
         try {
+
             _discount = (!discount.getText().isEmpty() || !discount.getText().isBlank() ? Double.parseDouble(discount.getText()) : 0);
             _amountPaid = (!amountPaid.getText().isEmpty() || !amountPaid.getText().isBlank() ? Double.parseDouble(amountPaid.getText()) : 0);
             checkDate(startDate.getValue(), expDate.getValue());
-            if (isValid(getMandatoryFields(), null) && (!discountValidation.isVisible()
-                    || discount.getText().length() == 0)) {
+
+            if (isValid(getMandatoryFields(), null)) {
                 startTask(service, createBtn, newPayment ? "Creating" : "Updating");
             }
         } catch (Exception e) {
-            if (e.getMessage().matches("multiple points"))
-                errorMessage("Fadlan hubi inaad si sax ah u gelisay discount ka ama amount ka la bixshay" +
-                        " Kana masax hadii points badan ku jiraan error caused by " + e.getMessage());
-            else errorMessage("error caused by " + e.getMessage());
+            errorMessage("Fadlan si sax ah u geli discount ka ama amount ka la bixshay" + e.getMessage());
         }
     }
 
@@ -161,29 +168,6 @@ public class PaymentController extends CommonClass implements Initializable {
     }
 
 
-    public void setUpdatePayment(Payments updatePayment) {
-        this.updatePayment = updatePayment;
-        amountPaid.setText(String.valueOf(updatePayment.getAmountPaid()));
-        poxing.setSelected(updatePayment.isPoxing());
-        discount.setText(String.valueOf(updatePayment.getDiscount()));
-        paidBy.setValue(updatePayment.getPaidBy());
-        if (updatePayment.getBox() != null) {
-            boxChooser.setValue(updatePayment.getBox());
-        }
-        createBtn.setText("Update payment");
-        topLabel.setText("FORM KA WAX KA BEDELKA PAYMENT-KA");
-        if (LocalDate.now().isAfter(updatePayment.getExpDate()) ||
-                LocalDate.now().isEqual(updatePayment.getExpDate())) {
-            startDate.setDisable(true);
-            expDate.setDisable(true);
-        }
-        startDate.setValue(updatePayment.getStartDate());
-        expDate.setValue(updatePayment.getExpDate());
-
-        newPayment = false;
-    }
-
-
     private final Service<Void> service = new Service<>() {
         @Override
         protected Task<Void> createTask() {
@@ -191,24 +175,23 @@ public class PaymentController extends CommonClass implements Initializable {
                 @Override
                 protected Void call() {
                     try {
-
-                        Thread.sleep(1000);
                         if (newPayment) {
                             insetPayment();
+                            Thread.sleep(1000);
                             Platform.runLater(() -> {
-                                boolean data = Alerts.singleConfirmationAlert("New payment Created Successfully",
-                                        "Back to home");
-                                if (data) {
+                                Optional<ButtonType> result = informationAlert("New payment Created Successfully").showAndWait();
+                                if (result.isPresent() && result.get().getButtonData().isDefaultButton()) {
                                     System.out.println("Back to home");
                                 }
                             });
                         } else {
                             updatePayment();
+                            Thread.sleep(1000);
                             Platform.runLater(() -> {
-                                boolean data = Alerts.singleConfirmationAlert("Payment updated Successfully",
-                                        "Back to home");
-                                if (data) {
-                                    System.out.println("backing home");
+                                Optional<ButtonType> result = informationAlert("Payment updated Successfully").showAndWait();
+                                if (result.isPresent() && result.get().getButtonData().isDefaultButton()) {
+                                    System.out.println("Ok");
+                                    createBtn.setDisable(true);
                                 }
                             });
                         }
@@ -222,7 +205,9 @@ public class PaymentController extends CommonClass implements Initializable {
 
     };
 
-    //-------------------------Helper methods---------------------------
+
+    //--------------------------_Helpers_-------------------
+
     public void checkPayment(Customers customer) {
         try {
             paymentsList = PaymentService.fetchAllPayments(customer.getPhone());
@@ -230,18 +215,41 @@ public class PaymentController extends CommonClass implements Initializable {
             errorMessage(e.getMessage());
         }
         for (Payments payment : paymentsList) {
-
             if (payment.isOnline()) {
+                this.payment = payment;
                 blockFields(payment);
                 newPayment = false;
                 break;
 
             } else if (payment.isPending()) {
+                this.payment = payment;
                 blockFields(payment);
                 newPayment = false;
                 break;
             }
         }
+    }
+
+    public void setUpdatePayment(Payments updatePayment) {
+        this.updatePayment = updatePayment;
+        amountPaid.setText(String.valueOf(updatePayment.getAmountPaid()));
+        poxing.setSelected(updatePayment.isPoxing());
+        discount.setText(String.valueOf(updatePayment.getDiscount()));
+        paidBy.setValue(updatePayment.getPaidBy());
+        if (updatePayment.getBox() != null) {
+            boxChooser.setValue(updatePayment.getBox());
+        }
+        createBtn.setText("Update payment");
+        topLabel.setText("UPDATE PAYMENT FORM");
+        if (LocalDate.now().isAfter(updatePayment.getExpDate()) ||
+                LocalDate.now().isEqual(updatePayment.getExpDate())) {
+            startDate.setDisable(true);
+            expDate.setDisable(true);
+        }
+        startDate.setValue(updatePayment.getStartDate());
+        expDate.setValue(updatePayment.getExpDate());
+
+        newPayment = false;
     }
 
     private void initFields() {
@@ -282,52 +290,25 @@ public class PaymentController extends CommonClass implements Initializable {
         });
     }
 
-    private void updatePayment() throws SQLException {
-        if (boxChooser.getValue() != null && !boxChooser.getValue().getBoxName().matches("remove box")) {
-            updatePayment.setBox(boxChooser.getValue());
-        } else {
-            updatePayment.setBox(null);
-            // TODO: 26/04/2023 Add box service
-        }
-        updatePayment.setPaymentID(updatePayment.getPaymentID());
-        updatePayment.setStartDate(startDate.getValue());
-        updatePayment.setExpDate(expDate.getValue());
-        updatePayment.setDiscount(_discount);
-        updatePayment.setAmountPaid(_amountPaid);
-        updatePayment.setPoxing(poxing.isSelected());
-        updatePayment.setOnline(updatePayment.isOnline());
-        updatePayment.setPending(updatePayment.isPending());
-        updatePayment.setPaidBy(paidBy.getValue());
-        PaymentService.updatePayment(updatePayment);
-
-    }
-
     private void blockFields(Payments payment) {
         amountPaid.setEditable(false);
         amountPaid.setText(String.valueOf(payment.getAmountPaid()));
-
         poxing.setSelected(payment.isPoxing());
         poxing.setDisable(true);
         poxing.setStyle("-fx-opacity: 1");
-
         paidBy.setValue(payment.getPaidBy());
         paidBy.setEditable(false);
-
         boxChooser.setValue(payment.getBox() != null ? payment.getBox() : null);
         boxChooser.setEditable(false);
-
         discount.setText(payment.getDiscount() + "");
         discount.setEditable(false);
-
+        expDate.setValue(payment.getExpDate());
+        createBtn.setDisable(true);
+        startDate.setValue(payment.getStartDate());
         startDate.setStyle("-fx-opacity: 1");
         startDate.setDisable(true);
-        startDate.setValue(payment.getStartDate());
-
         expDate.setDisable(true);
         expDate.setStyle("-fx-opacity: 1");
-        expDate.setValue(payment.getStartDate());
-
-        createBtn.setDisable(true);
         tellInfo(payment.getExpDate(), payment.isPending());
     }
 
@@ -341,6 +322,24 @@ public class PaymentController extends CommonClass implements Initializable {
         fadeIn.play();
     }
 
+    private void updatePayment() throws SQLException {
+        if (boxChooser.getValue() != null && !boxChooser.getValue().getBoxName().matches("remove box")) {
+            updatePayment.setBox(boxChooser.getValue());
+        } else {
+            updatePayment.setBox(null);
+        }
+        updatePayment.setPaymentID(updatePayment.getPaymentID());
+        updatePayment.setStartDate(startDate.getValue());
+        updatePayment.setExpDate(expDate.getValue());
+        updatePayment.setDiscount(_discount);
+        updatePayment.setAmountPaid(_amountPaid);
+        updatePayment.setPoxing(poxing.isSelected());
+        updatePayment.setOnline(updatePayment.isOnline());
+        updatePayment.setPending(updatePayment.isPending());
+        updatePayment.setPaidBy(paidBy.getValue());
+        PaymentService.updatePayment(updatePayment);
+    }
+
     private void insetPayment() throws SQLException {
         Payments payment = new Payments(0, LocalDate.now(), expDate.getValue(), String.valueOf(LocalDate.now().getMonth()), String.valueOf(LocalDate.now().getYear()), _amountPaid, paidBy.getValue(), _discount, poxing.isSelected(), customer.getPhone(), true, false);
 
@@ -348,7 +347,6 @@ public class PaymentController extends CommonClass implements Initializable {
             payment.setBox(boxChooser.getValue());
         }
         customer.getPayments().add(0, payment);
-        createBtn.setDisable(true);
         PaymentService.insertPayment(customer);
     }
 

@@ -3,7 +3,6 @@ package com.example.gymmanagementsystem.models.main;
 import com.example.gymmanagementsystem.dao.service.BoxService;
 import com.example.gymmanagementsystem.entities.main.Payments;
 import com.example.gymmanagementsystem.entities.service.Box;
-import com.example.gymmanagementsystem.helpers.CustomException;
 import com.example.gymmanagementsystem.helpers.DbConnection;
 import com.example.gymmanagementsystem.models.service.DailyReportModel;
 import javafx.collections.FXCollections;
@@ -17,7 +16,6 @@ public class PaymentModel {
 
     public void insertPayment(String customerPhone, String customerGender, Payments payment) throws SQLException {
         connection.setAutoCommit(false);
-
         try {
             String insertPaymentQuery = "INSERT INTO payments(exp_date, amount_paid, paid_by," + "discount,poxing,box_fk, customer_phone_fk,month) VALUES (?,?,?,?,?,?,?,?)";
             PreparedStatement ps = connection.prepareStatement(insertPaymentQuery);
@@ -59,17 +57,17 @@ public class PaymentModel {
             ps.setString(4, payment.getPaidBy());
             ps.setDouble(5, payment.getDiscount());
             ps.setBoolean(6, payment.isPoxing());
+
             if (payment.getBox() == null) {
                 ps.setString(7, null);
             } else {
                 ps.setInt(7, payment.getBox().getBoxId());
+                // TODO: 25/04/2023 Box fix
                 BoxService.updateBox(payment.getBox());
             }
             ps.executeUpdate();
             connection.commit();
             ps.close();
-            System.out.println("Updated");
-
         } catch (SQLException e) {
             connection.rollback();
             throw e;
@@ -82,8 +80,8 @@ public class PaymentModel {
             String query = "DELETE FROM payments WHERE payment_id=" + payment.getPaymentID();
             Statement statement = connection.createStatement();
             statement.execute(query);
-            if (payment.getBox() != null)
-                BoxService.updateBox(payment.getBox());
+            //if (payment.getBox() != null)
+            // TODO: 25/04/2023 fix box  BoxService.updateBox(payment.getBox());
             connection.commit();
         } catch (SQLException e) {
             connection.rollback();
@@ -139,7 +137,7 @@ public class PaymentModel {
                 connection.commit();
                 payment.setExpDate(LocalDate.now().plusDays(daysRemain));
             } else {
-                throw new CustomException("Paymentkan lama xayarin fadlan iska hubi");
+                throw new SQLException("Paymentkan lama xayarin fadlan iska hubi");
             }
         } catch (SQLException e) {
             connection.rollback();
@@ -227,7 +225,7 @@ public class PaymentModel {
         } catch (SQLException e) {
             connection.rollback();
             e.printStackTrace();
-            throw new CustomException("Khalad ayaa dhacay mmarka lama off garaynyay paymentkan " + e.getMessage());
+            throw e;
         }
 
     }

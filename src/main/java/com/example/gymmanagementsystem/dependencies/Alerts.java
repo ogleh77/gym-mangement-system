@@ -60,4 +60,16 @@ public class Alerts {
         return false;
     }
 
+    public static boolean singleConfirmationAlert(String message, String buttonText) {
+        ButtonType payment = new ButtonType(buttonText);
+        Optional<ButtonType> result;
+
+        Alert singleConfirmationAlert = new Alert(Alert.AlertType.CONFIRMATION, message, payment);
+        singleConfirmationAlert.setTitle("Ma hubtaa");
+        singleConfirmationAlert.setContentText(message);
+
+        result = singleConfirmationAlert.showAndWait();
+        return result.isPresent() && result.get().
+                equals(payment);
+    }
 }

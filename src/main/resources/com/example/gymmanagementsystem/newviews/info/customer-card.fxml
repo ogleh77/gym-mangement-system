@@ -20,7 +20,7 @@
     <ImageView fx:id="customerPhoto" fitHeight="130.0" fitWidth="156.0" layoutX="9.0" layoutY="10.0" pickOnBounds="true">
         <Image url="@../../style/icons/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpeg" />
     </ImageView>
-    <Label layoutX="184.0" layoutY="12.0" text="Full name" textFill="#afd6e3">
+    <Label layoutX="184.0" layoutY="12.0" text="magaca" textFill="#afd6e3">
         <font>
             <Font name="Tahoma Bold" size="16.0" />
         </font>
@@ -30,7 +30,7 @@
             <Font name="Helvetica" size="16.0" />
         </font>
     </Label>
-    <Label layoutX="184.0" layoutY="64.0" text="Phone" textFill="#afd6e3">
+    <Label layoutX="184.0" layoutY="64.0" text="lanbarka" textFill="#afd6e3">
         <font>
             <Font name="Tahoma Bold" size="16.0" />
         </font>
@@ -40,7 +40,7 @@
             <Font name="Helvetica" size="16.0" />
         </font>
     </Label>
-    <Label layoutX="184.0" layoutY="88.0" text="Exp date" textFill="#afd6e3">
+    <Label layoutX="184.0" layoutY="88.0" text="ka dhacaya" textFill="#afd6e3">
         <font>
             <Font name="Tahoma Bold" size="16.0" />
         </font>
@@ -50,7 +50,7 @@
             <Font name="Helvetica" size="16.0" />
         </font>
     </Label>
-    <Label layoutX="185.0" layoutY="117.0" text="Out dated" textFill="#b5513c">
+    <Label layoutX="185.0" layoutY="117.0" text="ka dhacay" textFill="#b5513c">
         <font>
             <Font name="Tahoma Bold" size="15.0" />
         </font>
@@ -60,7 +60,7 @@
             <Font name="Helvetica" size="16.0" />
         </font>
     </Label>
-    <Label layoutX="184.0" layoutY="38.0" text="Shift" textFill="#afd6e3">
+    <Label layoutX="184.0" layoutY="38.0" text="wakhtiga" textFill="#afd6e3">
         <font>
             <Font name="Tahoma Bold" size="16.0" />
         </font>

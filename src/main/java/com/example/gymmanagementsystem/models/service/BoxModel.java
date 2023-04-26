@@ -44,6 +44,21 @@ public class BoxModel {
             throw e;
         }
     }
+    public void boxReadyFalse(Box box) throws SQLException {
+        connection.setAutoCommit(false);
+        try {
+            String boxQuery = "UPDATE box SET is_ready=false WHERE box_id=" + box.getBoxId();
+            if (!box.isReady()) {
+                boxQuery = "UPDATE box SET is_ready=true WHERE box_id=" + box.getBoxId();
+            }
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(boxQuery);
+            connection.commit();
+        } catch (SQLException e) {
+            connection.rollback();
+            throw e;
+        }
+    }
 
     public ObservableList<Box> fetchBoxes() throws SQLException {
         ObservableList<Box> boxes = FXCollections.observableArrayList();

@@ -1,20 +1,20 @@
 package com.example.gymmanagementsystem.dao.main;
 
+import com.example.gymmanagementsystem.dao.service.UserService;
+import com.example.gymmanagementsystem.entities.main.Customers;
 import com.example.gymmanagementsystem.entities.main.Payments;
-import com.example.gymmanagementsystem.helpers.CustomException;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class PaymentServiceTest {
 
     @Test
     void deletePayment() throws SQLException {
-        Payments payment=PaymentService.fetchAllPayments("8435290").get(0);
-
-        PaymentService.deletePayment(payment);
+        //Payments payment = PaymentService.fetchAllPayments("8435290").get(0);
+        Customers customer = CustomerService.fetchAllCustomer(UserService.users().get(0)).get(0);
+      //  System.out.println(customer);
+         PaymentService.insertPayment(customer);
 
     }
 }

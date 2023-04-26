@@ -3,7 +3,6 @@ package com.example.gymmanagementsystem.controllers.main;
 import com.example.gymmanagementsystem.dao.Data;
 import com.example.gymmanagementsystem.dao.main.CustomerService;
 import com.example.gymmanagementsystem.dao.service.GymService;
-import com.example.gymmanagementsystem.dependencies.Alerts;
 import com.example.gymmanagementsystem.entities.main.Customers;
 import com.example.gymmanagementsystem.entities.service.Gym;
 import com.example.gymmanagementsystem.entities.service.Users;
@@ -17,10 +16,7 @@ import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Control;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -28,6 +24,7 @@ import javafx.scene.layout.BorderPane;
 import java.io.ByteArrayInputStream;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class RegistrationController extends CommonClass implements Initializable {
@@ -92,18 +89,25 @@ public class RegistrationController extends CommonClass implements Initializable
     public RegistrationController() throws SQLException {
         this.newCustomerID = CustomerService.predictNextId();
         this.currentGym = GymService.getGym();
+
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Platform.runLater(this::init);
+        Platform.runLater(() -> {
+            shift.setItems(getShift());
+            male.setToggleGroup(genderGroup);
+            female.setToggleGroup(genderGroup);
+            getMandatoryFields().addAll(firstName, middleName, lastName, phone, shift);
+        });
+
         phoneValidation();
+        weightValidation();
         chestValidation();
         waistValidation();
         hipsValidation();
-        chestValidation();
         forearmValidation();
-        weightValidation();
+
         service.setOnSucceeded(e -> {
             registerBtn.setGraphic(getFirstImage("/com/example/gymmanagementsystem/style/icons/icons8-save-30.png"));
             registerBtn.setText(isCustomerNew ? "Payment" : "Updated");
@@ -112,11 +116,10 @@ public class RegistrationController extends CommonClass implements Initializable
     }
 
     @FXML
-    void saveHandler() {
-        if (isValid(getMandatoryFields(), genderGroup) && (phone.getText().length() == 7 || phone.getText().length() == 10)) {
-            if (!currentGym.isImageUpload() && !imageUploaded) {
+    void customerSaveHandler() {
+        if (isValid(getMandatoryFields(), genderGroup) && (phone.getText().length() == 7)) {
+            if (currentGym.isImageUpload() && !imageUploaded) {
                 checkImage(imgView, "Fadlan sawirku wuu kaa cawinayaa inaad wejiga \n" + "macmiilka ka dhex garan kartid macamisha kle 😊");
-                return;
             }
             clearBtn.setDisable(true);
             startTask(service, registerBtn, isCustomerNew ? "Saving" : "Updating");
@@ -124,14 +127,15 @@ public class RegistrationController extends CommonClass implements Initializable
     }
 
     @FXML
+    void clearHandler() {
+        clear();
+    }
+
+    @FXML
     void uploadImageHandler() {
         uploadImage(imgView);
     }
 
-    @FXML
-    void clearHandler() {
-        clear();
-    }
 
     @Override
     public void setCustomer(Customers customer) {
@@ -170,7 +174,6 @@ public class RegistrationController extends CommonClass implements Initializable
         }
     }
 
-
     @Override
     public void setActiveUser(Users activeUser) {
         try {
@@ -188,7 +191,6 @@ public class RegistrationController extends CommonClass implements Initializable
         this.borderPane = borderPane;
     }
 
-
     private final Service<Void> service = new Service<>() {
         @Override
         protected Task<Void> createTask() {
@@ -196,25 +198,26 @@ public class RegistrationController extends CommonClass implements Initializable
                 @Override
                 protected Void call() {
                     try {
-                        // CustomerService.insertOrUpdateCustomer(savingCustomer(), isCustomerNew);
+                        CustomerService.insertOrUpdateCustomer(savingCustomer(), isCustomerNew);
                         if (isCustomerNew) {
                             customersList.add(savingCustomer());
                             System.out.println(customersList);
                         }
                         Thread.sleep(1000);
                         Platform.runLater(() -> {
-                            boolean data = Alerts.singleConfirmationAlert("Usamee macmiilka payment", "Go to payments");
-                            if (data) {
-                                openPayment();
+                            Optional<ButtonType> result = informationAlert(isCustomerNew ? "New customer registered successfully" : "Customer updated successfully").showAndWait();
+
+                            if (result.isPresent() && result.get().getButtonData().isDefaultButton()) {
+                                if (isCustomerNew) System.out.println("Go payments");
                             }
                         });
+
                     } catch (Exception e) {
                         e.printStackTrace();
                         if (e.getClass().isInstance(SQLException.class)) {
                             Platform.runLater(() -> errorMessage(e.getMessage() + "☹️"));
                         } else if (e.getMessage().matches("multiple points")) {
-                            Platform.runLater(() -> errorMessage("Hubi inaad points racisay markii aad gelinasay cabirada (Measurements)" +
-                                    "\ncaused by " + e.getMessage() + " ☹️"));
+                            Platform.runLater(() -> errorMessage("Fadlan hubi inaad si khaldan u gelisay lambarada measurements-ka\n" + "error caused by " + e.getMessage() + "☹️"));
                         } else {
                             Platform.runLater(() -> errorMessage("error caused by" + e.getMessage()));
                         }
@@ -226,7 +229,9 @@ public class RegistrationController extends CommonClass implements Initializable
         }
     };
 
-    //------------------------------Helper methods------------------------
+
+    //--------------------------Helpers------------------
+
     private Customers savingCustomer() {
 
         String gander = male.isSelected() ? "Male" : "Female";
@@ -265,65 +270,19 @@ public class RegistrationController extends CommonClass implements Initializable
 
     private void phoneValidation() {
         phone.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.matches("(\\d*)")) {
-                phone.setText(newValue.replaceAll("[^\\d.?}]", ""));
+            if (!newValue.matches("\\d*")) {
+                phone.setText(newValue.replaceAll("\\D", ""));
+                phoneValidation.setText("Fadlan lanbarka xarfo looma ogola");
+                phoneValidation.setVisible(true);
+            } else if (!phone.getText().matches("^\\d{7}")) {
+                phoneValidation.setText("Fadlan lanbarku kama yaran karo 7 digit");
+                phoneValidation.setVisible(true);
+            } else {
+                phoneValidation.setVisible(false);
             }
         });
 
-        phone.focusedProperty().addListener((observableValue, aBoolean, t1) -> {
-            if (!phone.isFocused()) {
-                if (phone.getText().length() < 7) {
-                    phoneValidation.setText("Fadlan lanbarku waa inu noqdaa 7 ama 10 lanbar");
-                    phoneValidation.setVisible(true);
-                } else if (phone.getText().length() > 7 && phone.getText().length() < 10) {
-                    phoneValidation.setText("Fadlan lanbarku waa inu noqdaa 7 ama 10 lanbar");
-                    phoneValidation.setVisible(true);
-                } else if (phone.getText().length() > 10) {
-                    phoneValidation.setText("Fadlan lanbarku kama badan karo 10 lanbar");
-                    phoneValidation.setVisible(true);
-                } else {
-                    phoneValidation.setVisible(false);
-                }
-            }
-//        phone.focusedProperty().addListener((observableValue, aBoolean, t1) -> {
-//            if (!phone.isFocused()) {
-////                if (!phone.getText().matches("^\\d{7}")) {
-//                if (phone.getText().length() < 7) {
-//                    phoneValidation.setText("Fadlan lanbarku kama yaran karo 7 digit");
-//                } else if (phone.getText().length() > 7 && phone.getText().length() < 10) {
-//                    phoneValidation.setText("Fadlan lanbarku kama badan karo 10 digit");
-//                }else {
-//                    phoneValidation.setVisible(false);
-//
-//                }
-//                phoneValidation.setVisible(true);
-//            } else {
-//                phoneValidation.setVisible(false);
-//            }
-            //}
-        });
-//            if (!phone.getText().matches("\\d*")) {
-//                phone.setText(phone.getText().replaceAll("\\D", ""));
-//            } else if (!phone.getText().matches("^\\d{7,10}")) {
-//                phoneValidation.setText(phone.getText().length() < 7 ? "Fadlan lanbarku kama yaran karo 7 digit"
-//                        : "Fadlan lanbarku kama badan karo 10 digit");
-//                phoneValidation.setVisible(true);
-//            } else {
-//                phoneValidation.setVisible(false);
-//            }
     }
-//        phone.textProperty().addListener((observable, oldValue, newValue) -> {
-//            if (!newValue.matches("\\d*")) {
-//                phone.setText(newValue.replaceAll("\\D", ""));
-//            } else if (!phone.getText().matches("^\\d{7,10}")) {
-//                phoneValidation.setText(phone.getText().length() < 7 ? "Fadlan lanbarku kama yaran karo 7 digit"
-//                        : "Fadlan lanbarku kama badan karo 10 digit");
-//                phoneValidation.setVisible(true);
-//            } else {
-//                phoneValidation.setVisible(false);
-//            }
-//        });
-
 
     private void chestValidation() {
         chest.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -367,37 +326,21 @@ public class RegistrationController extends CommonClass implements Initializable
 
     private void clear() {
         ObservableList<Control> controls = FXCollections.observableArrayList(getMandatoryFields());
-        controls.addAll(address, waist, hips, weight, chest, Forearm);
+        controls.add(weight);
+        controls.add(address);
         for (Control control : controls) {
             if (control instanceof TextField) {
                 ((TextField) control).clear();
             } else if (control instanceof ComboBox<?>) {
                 ((ComboBox<?>) control).setValue(null);
             }
+
+            if (male.isSelected()) {
+                male.setSelected(false);
+            } else {
+                female.setSelected(false);
+            }
         }
-        if (male.isSelected()) {
-            male.setSelected(false);
-        } else {
-            female.setSelected(false);
-        }
     }
-
-    private void init() {
-        shift.setItems(getShift());
-        male.setToggleGroup(genderGroup);
-        female.setToggleGroup(genderGroup);
-        getMandatoryFields().addAll(firstName, middleName, lastName, phone, shift);
-    }
-
-    private void openPayment() {
-//        try {
-//            OpenWindow.secondWindow("/com/example/gymmanagementsystem/newviews/main/payments.fxml",
-//                    borderPane);
-//        } catch (Exception e) {
-//            Alerts.errorAlert(e.getMessage(), "Khalad aya dhacay");
-//        }
-        System.out.println("Payment called");
-    }
-
 
 }

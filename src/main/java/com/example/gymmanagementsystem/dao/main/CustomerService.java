@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class CustomerService {
-    private static int nextCustomerId = 0;
     private static final CustomerModel customerModel = new CustomerModel();
     private static ObservableList<Customers> allCustomersList;
     private static ObservableList<Customers> onlineCustomersByDate;
@@ -30,7 +29,7 @@ public class CustomerService {
             if (e.getMessage().contains("(UNIQUE constraint failed: customers.phone)")) {
                 throw new CustomException("Lanbarka " + customer.getPhone() + " hore ayaa loo diwaan geshay fadlan dooro lanbarkale");
             } else {
-                throw new CustomException("Khalad ayaaa ka dhacay " + e.getMessage());
+                throw new CustomException("SQL error insert or update customer " + e.getMessage());
             }
         }
     }
@@ -67,21 +66,17 @@ public class CustomerService {
                 }
             }
         } catch (SQLException e) {
-            throw new CustomException(e.getMessage());
+            throw new SQLException("SQL error delete customers "+e.getMessage());
         }
 
     }
 
     public static int predictNextId() throws CustomException {
-        if (nextCustomerId == 0) {
-
-            try {
-                return (1 + customerModel.nextID());
-            } catch (SQLException e) {
-                throw new CustomException("Khalad nex pridiction caused" + e.getMessage());
-            }
+        try {
+            return (1 + customerModel.nextID());
+        } catch (SQLException e) {
+            throw new CustomException("SQL error customer next id predict " + e.getMessage());
         }
-        return nextCustomerId;
     }
     //---------------------------Customers Lists--------------------------------
 

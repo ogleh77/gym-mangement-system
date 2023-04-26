@@ -20,8 +20,7 @@ public class PaymentService {
             String customerGander = customer.getGander();
             paymentModel.insertPayment(customer.getPhone(), customerGander, customer.getPayments().get(0));
         } catch (SQLException e) {
-            throw new CustomException("Khalad aya ka dhacay halkan " + e.getMessage() + " " +
-                    "fadlan isku day mar danbe hadaad fahamtey nooca khaladka");
+            throw new SQLException("SQL error insert payment " + e.getMessage());
         }
 
     }
@@ -30,8 +29,7 @@ public class PaymentService {
         try {
             paymentModel.update(payment);
         } catch (SQLException e) {
-            throw new CustomException("Khalad aya ka dhacay halkan " + e.getMessage() + " " +
-                    "fadlan isku day mar danbe hadaad fahamtey nooca khaladka");
+            throw new SQLException("SQL error update payment " + e.getMessage());
         }
 
     }
@@ -40,7 +38,7 @@ public class PaymentService {
         try {
             paymentModel.deletePayment(payment);
         } catch (SQLException e) {
-            throw new CustomException("SQL error " + e.getMessage());
+            throw new SQLException("SQL error delete payment " + e.getMessage());
         }
 
     }
@@ -54,12 +52,12 @@ public class PaymentService {
                 daysRemind = 30;
             }
             if (daysRemind <= allowedDays) {
-                throw new CustomException("Fadlan lama xidhi karo payment kan waayo\n" + "wuxu ka hoseya wakhtiga loo asteyey oo ah " + allowedDays + " cisho " +
-                        "Halka payment kana u hadhay " + daysRemind + " Malmood");
+                throw new CustomException("Payment-kan lama xidhi karo wayoo wuxu ka hoseya" +
+                        " mudada loo ogolyahy macmiilka inuu ku xidhan karo oo ah " + daysRemind + " malmood wixi ka badan");
             }
             paymentModel.holdPayment(payment, daysRemind);
         } catch (SQLException e) {
-            throw new CustomException(e.getMessage());
+            throw new SQLException("SQL error payment pending" + e.getMessage());
         }
     }
 
@@ -67,7 +65,7 @@ public class PaymentService {
         try {
             paymentModel.unHold(payment);
         } catch (SQLException e) {
-            throw new CustomException(e.getMessage());
+            throw new SQLException("SQL error un pending payment " + e.getMessage());
         }
     }
 
@@ -75,34 +73,49 @@ public class PaymentService {
     //----------------------------_Payment service list-----------------------
 
 
-    public static ObservableList<Payments> fetchAllPayments(String customerPhone) throws CustomException {
+    public static ObservableList<Payments> fetchAllPayments(String customerPhone) throws SQLException {
         try {
             return paymentModel.fetchAllPayments(customerPhone);
         } catch (SQLException e) {
-            throw new CustomException("Khalad aya dhacay marka lasoo akhrinayay macmilkan payments-kiisa \n" +
-                    e.getMessage());
+            throw new SQLException("SQL error fetching all payment " + e.getMessage());
         }
-
     }
 
     public static ObservableList<Payments> fetchAllOnlinePayment(String customerPhone) throws SQLException {
-        return paymentModel.fetchAllOnlinePayment(customerPhone);
+        try {
+            return paymentModel.fetchAllOnlinePayment(customerPhone);
+        } catch (SQLException e) {
+            throw new SQLException("SQL error fetching all online payment " + e.getMessage());
+        }
     }
 
 
     public static ObservableList<Payments> fetchOnlinePaymentBetween(String customerPhone, LocalDate fromDate
             , LocalDate toDate) throws SQLException {
-        return paymentModel.fetchOnlinePaymentWhereDate(customerPhone, fromDate, toDate);
+        try {
+            return paymentModel.fetchOnlinePaymentWhereDate(customerPhone, fromDate, toDate);
+        } catch (SQLException e) {
+            throw new SQLException("SQL error fetching online payments " + e.getMessage());
+        }
     }
 
     public static ObservableList<Payments> fetchOfflinePaymentBetween(String customerPhone, LocalDate fromDate
             , LocalDate toDate) throws SQLException {
-        return paymentModel.fetchOfflinePaymentWhereDate(customerPhone, fromDate, toDate);
+
+        try {
+            return paymentModel.fetchOfflinePaymentWhereDate(customerPhone, fromDate, toDate);
+        } catch (SQLException e) {
+            throw new SQLException("SQL error fetching offline payment " + e.getMessage());
+        }
     }
 
     public static ObservableList<Payments> fetchPendingPaymentBetween(String customerPhone, LocalDate fromDate
             , LocalDate toDate) throws SQLException {
-        return paymentModel.fetchPendingPaymentWhereDate(customerPhone, fromDate, toDate);
+        try {
+            return paymentModel.fetchPendingPaymentWhereDate(customerPhone, fromDate, toDate);
+        } catch (SQLException e) {
+            throw new SQLException("SQL error fetching pending payment " + e.getMessage());
+        }
     }
 
 

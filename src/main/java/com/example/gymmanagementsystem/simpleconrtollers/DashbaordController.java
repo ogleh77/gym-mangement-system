@@ -99,6 +99,11 @@ public class DashbaordController extends CommonClass implements Initializable {
     }
 
     @FXML
+    void updateUserHandler() throws IOException {
+        OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/users/user-chooser.fxml", menuHBox);
+    }
+
+    @FXML
     void notificationHandler() throws IOException {
         OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/info/warning.fxml", topPane);
     }
@@ -129,6 +134,17 @@ public class DashbaordController extends CommonClass implements Initializable {
         OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/users/user-creation.fxml", activeProfile);
     }
 
+    @FXML
+    void backupHandler() throws IOException {
+        OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/service/backup.fxml", activeProfile);
+
+    }
+
+    @FXML
+    void gymHandler() throws IOException {
+        OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/service/gym.fxml", activeProfile);
+
+    }
 
     private void borderPaneDrag() {
         topPane.setOnMousePressed(event -> {

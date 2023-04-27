@@ -195,7 +195,7 @@
     </Label>
     <JFXButton fx:id="pendBtn" layoutX="761.0" layoutY="444.0" onAction="#pendHandler" prefHeight="42.0" prefWidth="148.0" style="-fx-background-color: #328ca8;" text="Haki(pend)" textFill="WHITE">
         <graphic>
-            <ImageView fitHeight="32.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="22.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                 <Image url="@../../style/icons/icons8-mobile-payment-50.png" />
             </ImageView>
         </graphic>

@@ -1,7 +1,7 @@
 package com.example.gymmanagementsystem;
 
 
-import com.example.gymmanagementsystem.controllers.main.PaymentController;
+import com.example.gymmanagementsystem.controllers.info.CustomerInfoController;
 import com.example.gymmanagementsystem.dao.main.CustomerService;
 import com.example.gymmanagementsystem.dao.service.UserService;
 import com.example.gymmanagementsystem.entities.main.Customers;
@@ -17,14 +17,13 @@ import java.sql.SQLException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/gymmanagementsystem/newviews/main/payments.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/gymmanagementsystem/newviews/info/customer-info.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        PaymentController controller = fxmlLoader.getController();
+        CustomerInfoController controller = fxmlLoader.getController();
         Customers customer = CustomerService.fetchAllCustomer(UserService.users().get(0)).get(7);
         //controller.setActiveUser(UserService.users().get(0));
 
-          controller.setUpdatePayment(customer.getPayments().get(0));
-      //  controller.checkPayment(customer);
+        //  controller.checkPayment(customer);
         controller.setCustomer(customer);
 //        DashboardController controller = fxmlLoader.getController();
 //        controller.setActiveUser(UserService.users().get(0));

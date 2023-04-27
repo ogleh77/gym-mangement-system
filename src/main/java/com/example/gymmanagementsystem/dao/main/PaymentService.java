@@ -20,7 +20,7 @@ public class PaymentService {
             String customerGander = customer.getGander();
             paymentModel.insertPayment(customer.getPhone(), customerGander, customer.getPayments().get(0));
         } catch (SQLException e) {
-            throw new SQLException("SQL error insert payment " + e.getMessage());
+            throw new SQLException("(From SQL insert payment) " + e.getMessage());
         }
 
     }
@@ -29,7 +29,7 @@ public class PaymentService {
         try {
             paymentModel.update(payment);
         } catch (SQLException e) {
-            throw new SQLException("SQL error update payment " + e.getMessage());
+            throw new SQLException("(Form SQL update payment) " + e.getMessage());
         }
 
     }
@@ -38,7 +38,7 @@ public class PaymentService {
         try {
             paymentModel.deletePayment(payment);
         } catch (SQLException e) {
-            throw new SQLException("SQL error delete payment " + e.getMessage());
+            throw new SQLException("(From SQL delete payment) " + e.getMessage());
         }
 
     }
@@ -53,11 +53,11 @@ public class PaymentService {
             }
             if (daysRemind <= allowedDays) {
                 throw new CustomException("Payment-kan lama xidhi karo wayoo wuxu ka hoseya" +
-                        " mudada loo ogolyahy macmiilka inuu ku xidhan karo oo ah " + daysRemind + " malmood wixi ka badan");
+                        " mudada loo ogolyahy macmiilka inuu ku xidhan karo oo ah " + allowedDays + " malmood wixi ka badan");
             }
             paymentModel.holdPayment(payment, daysRemind);
         } catch (SQLException e) {
-            throw new SQLException("SQL error payment pending" + e.getMessage());
+            throw new SQLException("(From SQL payment pending) " + e.getMessage());
         }
     }
 
@@ -65,7 +65,7 @@ public class PaymentService {
         try {
             paymentModel.unHold(payment);
         } catch (SQLException e) {
-            throw new SQLException("SQL error un pending payment " + e.getMessage());
+            throw new SQLException("(From SQL un pending payment) " + e.getMessage());
         }
     }
 

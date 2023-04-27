@@ -1,7 +1,6 @@
 package com.example.gymmanagementsystem.controllers.service;
 
 import com.example.gymmanagementsystem.dao.main.CustomerService;
-import com.example.gymmanagementsystem.dependencies.Alerts;
 import com.example.gymmanagementsystem.entities.main.Customers;
 import com.example.gymmanagementsystem.entities.service.DailyReport;
 import com.example.gymmanagementsystem.exporttoxls.ExportDataToExcel;
@@ -107,17 +106,22 @@ public class ReportControllerHandler extends CommonClass implements Initializabl
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Platform.runLater(()->{
+        Platform.runLater(() -> {
+            if (reports == null) {
+                Label label = new Label("RAADI WAKHTIGA AAD U BAHANTAY");
+                reportTbView.setPlaceholder(label);
+            }
             init();
 
             try {
                 weeklyInitTable();
             } catch (Exception e) {
                 Platform.runLater(() -> {
-                    Alerts.errorAlert(e.getMessage(),"Khalad ba dhacay");
+                    errorMessage(e.getMessage());
                 });
             }
         });
+
         exportingService.setOnSucceeded(e -> {
             exportLabel.setVisible(false);
             loadingImage.setVisible(false);
@@ -129,25 +133,20 @@ public class ReportControllerHandler extends CommonClass implements Initializabl
 
             imgViewSearch.setImage(image);
             searchBtn.setGraphic(getFirstImage("/com/example/gymmanagementsystem/style/icons/icons8-search-50.png"));
+
             try {
                 generateTable();
             } catch (SQLException ex) {
-                Alerts.errorAlert(ex.getMessage(),"Khalad ba dhacay");
+                errorMessage(ex.getMessage());
             }
         });
+
     }
 
-    @FXML
-    void searchHandler() {
-        getMandatoryFields().clear();
-        getMandatoryFields().addAll(startDate, endDate);
-        if (isValid(getMandatoryFields(), null)) {
-            startTask(service, searchBtn, "");
-        }
-    }
 
     @FXML
     void exportToExcelHandler() {
+
         getMandatoryFields().clear();
         if (!customersOnly.isSelected()) {
             getMandatoryFields().addAll(printStartDate, printEndDate);
@@ -163,52 +162,15 @@ public class ReportControllerHandler extends CommonClass implements Initializabl
                 }
             }
         }
+
     }
 
-    private final Service<Void> exportingService = new Service<>() {
-        @Override
-        protected Task<Void> createTask() {
-            return new Task<>() {
-                @Override
-                protected Void call() {
-                    try {
-                        chooseExports(printStartDate.getValue(), printEndDate.getValue());
-                        Thread.sleep(1000);
-                        Platform.runLater(() -> Alerts.notificationAlert("Report exported successfully \npath: \n"
-                                + selectedFile.getAbsolutePath(), "Good"));
-                    } catch (Exception e) {
-                        Platform.runLater(() -> Alerts.errorAlert(e.getMessage(), "Khalad baa dhacay"));
-                    }
-                    return null;
-                }
-            };
-        }
-    };
-
-    private final Service<Void> service = new Service<>() {
-        @Override
-        protected Task<Void> createTask() {
-            return new Task<>() {
-                @Override
-                protected Void call() throws Exception {
-                    reports = DailyReportModel.getPaymentsBetween(startDate.getValue(), endDate.getValue());
-                    return null;
-                }
-            };
-        }
-    };
-
-    //---------------------Helper methods---------------------–
 
     private void init() {
         customersOnly.setToggleGroup(choseGroup);
         onlineCustomers.setToggleGroup(choseGroup);
         offlineCustomers.setToggleGroup(choseGroup);
         pendCustomers.setToggleGroup(choseGroup);
-        if (reports == null) {
-            Label label = new Label("RAADI WAKHTIGA AAD U BAHANTAY");
-            reportTbView.setPlaceholder(label);
-        }
     }
 
     private boolean validChoose() {
@@ -236,13 +198,28 @@ public class ReportControllerHandler extends CommonClass implements Initializabl
         return true;
     }
 
-    private void saveFile() {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Save");
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("All Files", "*.xlsx"));
-        selectedFile = fileChooser.showSaveDialog(customersOnly.getScene().getWindow());
-        System.out.println(selectedFile);
-    }
+    private final Service<Void> exportingService = new Service<>() {
+        @Override
+        protected Task<Void> createTask() {
+            return new Task<>() {
+                @Override
+                protected Void call() {
+                    try {
+                        chooseExports(printStartDate.getValue(), printEndDate.getValue());
+                        Thread.sleep(1000);
+                        Platform.runLater(() -> infoAlert("Report exported successfully path: \n"
+                                + selectedFile.getAbsolutePath()));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        errorMessage(e.getMessage());
+                    }
+
+                    return null;
+                }
+            };
+        }
+    };
+
 
     private void chooseExports(LocalDate start, LocalDate end) throws SQLException {
         loadingImage.setVisible(true);
@@ -283,6 +260,47 @@ public class ReportControllerHandler extends CommonClass implements Initializabl
         }
     }
 
+    private void saveFile() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("All Files", "*.xlsx"));
+        selectedFile = fileChooser.showSaveDialog(customersOnly.getScene().getWindow());
+        System.out.println(selectedFile);
+    }
+
+
+    //-----------------------Table search report----------------------
+
+    @FXML
+    void searchHandler() {
+        getMandatoryFields().clear();
+        getMandatoryFields().addAll(startDate, endDate);
+        if (isValid(getMandatoryFields(), null)) {
+            if (start) {
+                service.restart();
+                searchBtn.setGraphic(getLoadingImageView());
+            } else {
+                service.start();
+                searchBtn.setGraphic(getLoadingImageView());
+                start = true;
+            }
+
+        }
+    }
+
+    private final Service<Void> service = new Service<>() {
+        @Override
+        protected Task<Void> createTask() {
+            return new Task<>() {
+                @Override
+                protected Void call() throws Exception {
+                    reports = DailyReportModel.getPaymentsBetween(startDate.getValue(), endDate.getValue());
+                    return null;
+                }
+            };
+        }
+    };
+
     private void weeklyInitTable() throws SQLException {
         tableFields(dailyReportDay, totalRegister, totalMale, totalFemale, totalVipBox);
         getMandatoryFields().addAll(startDate, endDate);
@@ -303,6 +321,7 @@ public class ReportControllerHandler extends CommonClass implements Initializabl
         }
         reportTbView.setItems(reports);
         reportTbView.refresh();
+
     }
 
     private void tableFields(TableColumn<DailyReport, String> reportTotalDay,
@@ -310,13 +329,11 @@ public class ReportControllerHandler extends CommonClass implements Initializabl
                              TableColumn<DailyReport, Integer> reportTotalMale,
                              TableColumn<DailyReport, Integer> reportTotalFemale,
                              TableColumn<DailyReport, Integer> reportTotalVip) {
-
         reportTotalDay.setCellValueFactory(new PropertyValueFactory<>("day"));
         reportTotalReg.setCellValueFactory(new PropertyValueFactory<>("registrations"));
         reportTotalMale.setCellValueFactory(new PropertyValueFactory<>("male"));
         reportTotalFemale.setCellValueFactory(new PropertyValueFactory<>("female"));
         reportTotalVip.setCellValueFactory(new PropertyValueFactory<>("vipBox"));
     }
-
 
 }

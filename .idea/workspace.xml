@@ -6,12 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="9c1a3bea-8a57-435b-b5d9-43e3f4a593e0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/database.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/info/CustomerInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/info/CustomerInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dao/main/PaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dao/main/PaymentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/info/customer-info.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/info/customer-info.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/style/css/button-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/style/css/button-style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/service/ReportControllerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/service/ReportControllerHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/infocontroller" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/infocontroller" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,11 +72,11 @@
       <recent name="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/main" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/main" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/info" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/service" />
-      <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/style/icons" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -232,7 +229,7 @@
       <workItem from="1682410641436" duration="7258000" />
       <workItem from="1682427181404" duration="5422000" />
       <workItem from="1682495644587" duration="14252000" />
-      <workItem from="1682577428464" duration="4705000" />
+      <workItem from="1682577428464" duration="6849000" />
     </task>
     <servers />
   </component>

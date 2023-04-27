@@ -8,8 +8,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/database/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/database.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/users/UserChooserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/users/UserChooserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/entities/service/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/entities/service/Users.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/service/GymController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/service/GymController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dao/service/BoxService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dao/service/BoxService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/entities/service/Gym.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/entities/service/Gym.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/com/example/gymmanagementsystem/dao/DataTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/com/example/gymmanagementsystem/dao/DataTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +122,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DataTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DataTest.setDataTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="gym-management-system" />
       <extension name="coverage">
         <pattern>
@@ -130,7 +132,8 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.example.gymmanagementsystem.dao" />
       <option name="MAIN_CLASS_NAME" value="com.example.gymmanagementsystem.dao.DataTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="setDataTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -168,10 +171,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.HelloApplication" />
+        <item itemvalue="JUnit.DataTest.setDataTest" />
         <item itemvalue="JUnit.PaymentServiceTest.deletePayment" />
         <item itemvalue="JUnit.CustomerServiceTest.deleteCustomer" />
         <item itemvalue="JUnit.com.example.gymmanagementsystem.newviews in gym-management-system" />
-        <item itemvalue="JUnit.DataTest" />
       </list>
     </recent_temporary>
   </component>
@@ -230,7 +233,7 @@
       <workItem from="1682410641436" duration="7258000" />
       <workItem from="1682427181404" duration="5422000" />
       <workItem from="1682495644587" duration="14252000" />
-      <workItem from="1682577428464" duration="11846000" />
+      <workItem from="1682577428464" duration="14247000" />
     </task>
     <servers />
   </component>

@@ -2,10 +2,10 @@ package com.example.gymmanagementsystem.controllers.service;
 
 import com.example.gymmanagementsystem.dao.service.BoxService;
 import com.example.gymmanagementsystem.dao.service.GymService;
+import com.example.gymmanagementsystem.dependencies.Alerts;
 import com.example.gymmanagementsystem.entities.service.Box;
 import com.example.gymmanagementsystem.entities.service.Gym;
 import com.example.gymmanagementsystem.helpers.CommonClass;
-import com.example.gymmanagementsystem.helpers.CustomException;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import javafx.application.Platform;
@@ -46,7 +46,6 @@ public class GymController extends CommonClass implements Initializable {
     private Stage thisStage;
     int nextId;
 
-
     public GymController() throws SQLException {
         currentGym = GymService.getGym();
         nextId = BoxService.nextBoxID();
@@ -59,7 +58,6 @@ public class GymController extends CommonClass implements Initializable {
             thisStage = (Stage) gymName.getScene().getWindow();
             enterKeyFire(updateBtn, thisStage);
         });
-
         discountValidation();
         pendValidation();
         zaadValidation();
@@ -72,7 +70,7 @@ public class GymController extends CommonClass implements Initializable {
     }
 
     @FXML
-    void createBoxHandler() throws SQLException {
+    void createBoxHandler() {
         getMandatoryFields().clear();
         getMandatoryFields().add(addBox);
 
@@ -85,9 +83,12 @@ public class GymController extends CommonClass implements Initializable {
                     listView.getItems().add(box);
                     BoxService.fetchBoxes().add(box);
                     informationAlert("New box added successfully").showAndWait();
-                } catch (CustomException e) {
-                    errorMessage(e.getMessage());
+                } catch (Exception e) {
+                    if (e instanceof SQLException)
+                        Alerts.errorAlert(e.getMessage(), "Khalad ba dhacay");
+                    else Alerts.waningAlert(e.getMessage(), "Hubso");
                 }
+
                 nextId++;
             }
         }
@@ -95,16 +96,22 @@ public class GymController extends CommonClass implements Initializable {
 
     @FXML
     void deleteBoxHandler() {
-        if (listView.getSelectionModel().getSelectedItem() != null) {
-            Box box = listView.getSelectionModel().getSelectedItem();
-            try {
-                BoxService.deleteBox(box);
-                listView.getItems().remove(box);
-                informationAlert("Box deleted successfully").showAndWait();
-            } catch (SQLException e) {
-                errorMessage(e.getMessage());
+        try {
+            if (listView.getSelectionModel().getSelectedItem() == null) {
+                throw new RuntimeException("Dooro khanada aad masixi rabto.");
             }
+            Box box = listView.getSelectionModel().getSelectedItem();
+            BoxService.deleteBox(box);
+            listView.getItems().remove(box);
+            Alerts.notificationAlert("Box deleted successfully", "War-gelin");
+        } catch (Exception e) {
+            if (e instanceof SQLException)
+                Alerts.errorAlert(e.getMessage(), "Khalad baa dhacay!");
+            else
+                Alerts.waningAlert(e.getMessage(), "Hubso");
+
         }
+
     }
 
     @FXML
@@ -129,12 +136,12 @@ public class GymController extends CommonClass implements Initializable {
                 currentGym.setMaxDiscount(max_discount);
                 currentGym.setImageUpload(uploadImageCheck.isSelected());
                 GymService.updateGym(currentGym);
-                infoAlert("Gym updated successfully");
+                Thread.sleep(100);
+                Alerts.notificationAlert("Gym updated successfully", "War-gelin");
             } catch (Exception e) {
-                errorMessage(e.getMessage());
+                Alerts.errorAlert(e.getMessage(), "Khalad ba dhacay!");
             }
         }
-
     }
 
     //----------------------Helper methods-------------------

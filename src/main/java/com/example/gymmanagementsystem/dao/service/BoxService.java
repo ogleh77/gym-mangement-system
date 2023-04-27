@@ -30,7 +30,7 @@ public class BoxService {
     public static void deleteBox(Box box) throws SQLException {
         try {
             if (!box.isReady()) {
-                throw new CustomException("Khanadan macmiil ayaa isticmalaya hada \n" + "Saaso tahay ma masaxi kartid");
+                throw new RuntimeException("Khanadan macmiil ayaa isticmalaya hada \n" + "Saaso tahay ma masaxi kartid");
             }
             boxModel.deleteBox(box);
 

@@ -114,7 +114,7 @@ public class ReportControllerHandler extends CommonClass implements Initializabl
                 weeklyInitTable();
             } catch (Exception e) {
                 Platform.runLater(() -> {
-                    Alerts.errorAlert(e.getMessage(),"Khalad ba dhacay");
+                    Alerts.errorAlert(e.getMessage());
                 });
             }
         });
@@ -132,7 +132,7 @@ public class ReportControllerHandler extends CommonClass implements Initializabl
             try {
                 generateTable();
             } catch (SQLException ex) {
-                Alerts.errorAlert(ex.getMessage(),"Khalad ba dhacay");
+                Alerts.errorAlert(ex.getMessage());
             }
         });
     }
@@ -175,9 +175,9 @@ public class ReportControllerHandler extends CommonClass implements Initializabl
                         chooseExports(printStartDate.getValue(), printEndDate.getValue());
                         Thread.sleep(1000);
                         Platform.runLater(() -> Alerts.notificationAlert("Report exported successfully \npath: \n"
-                                + selectedFile.getAbsolutePath(), "Good"));
+                                + selectedFile.getAbsolutePath()));
                     } catch (Exception e) {
-                        Platform.runLater(() -> Alerts.errorAlert(e.getMessage(), "Khalad baa dhacay"));
+                        Platform.runLater(() -> Alerts.errorAlert(e.getMessage()));
                     }
                     return null;
                 }

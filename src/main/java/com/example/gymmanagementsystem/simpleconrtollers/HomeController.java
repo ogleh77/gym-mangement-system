@@ -1,5 +1,7 @@
 package com.example.gymmanagementsystem.simpleconrtollers;
 
+import com.example.gymmanagementsystem.controllers.info.CustomerInfoController;
+import com.example.gymmanagementsystem.controllers.main.PaymentController;
 import com.example.gymmanagementsystem.dao.main.CustomerService;
 import com.example.gymmanagementsystem.dao.service.GymService;
 import com.example.gymmanagementsystem.dao.service.UserService;
@@ -96,25 +98,28 @@ public class HomeController extends CommonClass implements Initializable {
     @FXML
     void deleteHandler() {
         if (tableView.getSelectionModel().getSelectedItem() == null)
-            Alerts.notificationAlert("No member selected ", "War-bixin").showAndWait();
+            Alerts.notificationAlert("No member selected.");
         else {
             System.out.println("Good");
         }
     }
 
     @FXML
-    void fullInfoHandler() {
+    void fullInfoHandler() throws IOException {
         if (tableView.getSelectionModel().getSelectedItem() == null)
-            Alerts.notificationAlert("No member selected ", "War-bixin").showAndWait();
+            Alerts.waningAlert("No member selected. ");
         else {
-            System.out.println("Good");
+            FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/newviews/info/customer-info.fxml", borderPane);
+            CustomerInfoController controller = loader.getController();
+            controller.setBorderPane(borderPane);
+            controller.setCustomer(tableView.getSelectionModel().getSelectedItem());
         }
     }
 
     @FXML
     void paymentHandler() {
         if (tableView.getSelectionModel().getSelectedItem() == null)
-            Alerts.notificationAlert("No member selected ", "War-bixin").showAndWait();
+            Alerts.waningAlert("No member selected. ");
         else {
             System.out.println("Good");
         }
@@ -123,11 +128,13 @@ public class HomeController extends CommonClass implements Initializable {
     @FXML
     void updateHandler() throws IOException {
         if (tableView.getSelectionModel().getSelectedItem() == null)
-            Alerts.notificationAlert("No member selected ", "War-bixin").showAndWait();
+            Alerts.waningAlert("No member selected. ");
         else {
             FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/newviews/main/payments.fxml", borderPane);
-            HomeController controller = loader.getController();
+            PaymentController controller = loader.getController();
             controller.setBorderPane(borderPane);
+            controller.setCustomer(tableView.getSelectionModel().getSelectedItem());
+            controller.checkPayment(tableView.getSelectionModel().getSelectedItem());
         }
     }
 

@@ -384,7 +384,7 @@ public class RegistrationController extends CommonClass implements Initializable
             OpenWindow.secondWindow("/com/example/gymmanagementsystem/newviews/main/payments.fxml",
                     borderPane);
         } catch (Exception e) {
-            Alerts.errorAlert(e.getMessage(), "Khalad aya dhacay");
+            Alerts.errorAlert(e.getMessage());
         }
         //  System.out.println("Payment called");
     }

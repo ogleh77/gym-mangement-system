@@ -2,6 +2,7 @@ package com.example.gymmanagementsystem.controllers.service;
 
 import com.example.gymmanagementsystem.dao.Data;
 import com.example.gymmanagementsystem.dao.main.CustomerService;
+import com.example.gymmanagementsystem.dependencies.Alerts;
 import com.example.gymmanagementsystem.dependencies.OpenWindow;
 import com.example.gymmanagementsystem.entities.main.Customers;
 import com.example.gymmanagementsystem.entities.main.Payments;
@@ -40,8 +41,6 @@ public class SplashScreenController extends CommonClass implements Initializable
     private HBox topPane;
     private final ObservableList<Customers> warningList;
     private Stage stage;
-    private double xOffset = 0;
-    private double yOffset = 0;
 
     public SplashScreenController() {
         this.warningList = FXCollections.observableArrayList();
@@ -52,23 +51,16 @@ public class SplashScreenController extends CommonClass implements Initializable
     public void initialize(URL location, ResourceBundle resources) {
         Platform.runLater(() -> {
             stage = (Stage) loadingImage.getScene().getWindow();
-
-            topPane.setOnMousePressed(event -> {
-                xOffset = stage.getX() - event.getScreenX();
-                yOffset = stage.getY() - event.getScreenY();
-            });
-
-            topPane.setOnMouseDragged(event -> {
-                stage.setX(event.getScreenX() + xOffset);
-                stage.setY(event.getScreenY() + yOffset);
-            });
+            paneDrag(stage, topPane);
+            paneDropped(stage, topPane);
         });
         FetchOnlineCustomersByGander.setOnSucceeded(e -> {
             try {
                 closeStage(stage, loadingImage.getParent());
                 openDashboard();
             } catch (IOException ex) {
-                errorMessage(ex.getMessage());
+                Alerts.errorAlert(ex.getMessage());
+                ex.printStackTrace();
             }
         });
     }
@@ -99,8 +91,6 @@ public class SplashScreenController extends CommonClass implements Initializable
                     Thread.sleep(sleepTime);
                 }
                 ObservableList<Customers> customers = CustomerService.fetchAllCustomer(activeUser);
-                System.out.println(customers.size());
-
                 updateMessage("fetching All customers");
                 Data.setAllCustomersList(customers);
                 Thread.sleep(1000);
@@ -130,9 +120,9 @@ public class SplashScreenController extends CommonClass implements Initializable
     }
 
     private void openDashboard() throws IOException {
-        FXMLLoader loader = OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/redash/redash.fxml", null);
+        FXMLLoader loader = OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/redash/redash.fxml", topPane);
         DashbaordController controller = loader.getController();
-        //controller.setWarningList(warningList);
+        controller.setWarningList(warningList);
         controller.setActiveUser(activeUser);
     }
 }

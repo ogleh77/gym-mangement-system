@@ -10,35 +10,34 @@ public class Alerts {
     protected final static ButtonType ok = new ButtonType("Haa");
     protected final static ButtonType no = new ButtonType("Maya");
 
-    public static Alert notificationAlert(String message, String title) {
+    public static void notificationAlert(String message) {
         Alert notificationAlert = new Alert(Alert.AlertType.INFORMATION);
-        notificationAlert.setTitle(title);
+        notificationAlert.setTitle("Habalyo");
         notificationAlert.setContentText(message);
         notificationAlert.showAndWait();
-        return notificationAlert;
+
     }
 
-    public static Alert waningAlert(String message, String title) {
+    public static void waningAlert(String message) {
         Alert warningAlert = new Alert(Alert.AlertType.WARNING);
-        warningAlert.setTitle(title);
+        warningAlert.setTitle("Ma ogtahay?");
         warningAlert.setContentText(message);
         warningAlert.showAndWait();
-        return warningAlert;
     }
 
-    public static void errorAlert(String message, String title) {
+    public static void errorAlert(String message) {
         Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-        errorAlert.setTitle(title);
+        errorAlert.setTitle("Khalad ayaa dhacay!");
         errorAlert.setContentText(message);
         errorAlert.showAndWait();
     }
 
 
-    public static boolean confirmationAlert(String message, String title) {
+    public static boolean confirmationAlert(String message) {
         Optional<ButtonType> result;
 
         Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION, message, no, ok);
-        confirmationAlert.setTitle(title);
+        confirmationAlert.setTitle("Ma hubtaa?");
         confirmationAlert.setContentText(message);
 
 
@@ -58,7 +57,7 @@ public class Alerts {
         Optional<ButtonType> result;
 
         Alert singleConfirmationAlert = new Alert(Alert.AlertType.CONFIRMATION, message, payment);
-        singleConfirmationAlert.setTitle("Ma hubtaa");
+        singleConfirmationAlert.setTitle("Ma hubtaa?");
         singleConfirmationAlert.setContentText(message);
 
         result = singleConfirmationAlert.showAndWait();

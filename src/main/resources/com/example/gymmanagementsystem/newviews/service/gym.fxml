@@ -17,7 +17,7 @@
     <effect>
         <DropShadow height="56.58" radius="23.3425" width="38.79" />
     </effect>
-    <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="483.0" spacing="140.0" styleClass="top-pane">
+    <HBox fx:id="topPane" alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="483.0" spacing="140.0" styleClass="top-pane">
         <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="273.0" spacing="10.0">
             <HBox.margin>
                 <Insets left="10.0" />

@@ -3,8 +3,13 @@ package com.example.gymmanagementsystem;
 
 import com.example.gymmanagementsystem.controllers.users.UpdateUserController;
 import com.example.gymmanagementsystem.controllers.users.UserChooserController;
+import com.example.gymmanagementsystem.dao.main.CustomerService;
 import com.example.gymmanagementsystem.dao.service.UserService;
+import com.example.gymmanagementsystem.dependencies.OpenWindow;
+import com.example.gymmanagementsystem.entities.main.Customers;
+import com.example.gymmanagementsystem.simpleconrtollers.DashbaordController;
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -16,8 +21,14 @@ import java.sql.SQLException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/gymmanagementsystem/newviews/service/backup.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/gymmanagementsystem/redash/redash.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+        DashbaordController controller = fxmlLoader.getController();
+        controller.setWarningList( CustomerService.fetchAllCustomer(UserService.users().get(0)));
+        controller.setActiveUser(UserService.users().get(0));
+
+        //
+//
 //        UserChooserController controller = fxmlLoader.getController();
 //        controller.tempActiveUser(UserService.users().get(0));
 //       controller.setActiveUser(UserService.users().get(0));

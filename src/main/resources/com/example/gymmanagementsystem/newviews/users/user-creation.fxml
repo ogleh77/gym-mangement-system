@@ -23,7 +23,7 @@
             <Color red="0.48627451062202454" green="0.43921568989753723" blue="0.43921568989753723" />
          </color></DropShadow>
     </effect>
-    <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="483.0" spacing="120.0" styleClass="top-pane">
+    <HBox fx:id="topPane" alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="483.0" spacing="120.0" styleClass="top-pane">
         <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="259.0" spacing="10.0">
             <HBox.margin>
                 <Insets left="10.0" />
@@ -123,7 +123,7 @@
             <Font name="Tahoma" size="16.0" />
         </font>
     </Label>
-    <JFXButton fx:id="uploadImageBtn" buttonType="RAISED" layoutX="279.0" layoutY="417.0" onAction="#imageUploadHandler" prefHeight="42.0" prefWidth="171.0" styleClass="btn-upload-image" stylesheets="@../../style/css/button-style.css" text="Sawir soo doro" textFill="#403a3a">
+    <JFXButton buttonType="RAISED" layoutX="279.0" layoutY="417.0" onAction="#imageUploadHandler" prefHeight="42.0" prefWidth="171.0" styleClass="btn-upload-image" stylesheets="@../../style/css/button-style.css" text="Sawir soo doro" textFill="#403a3a">
         <font>
             <Font name="Arial" size="15.0" />
         </font>

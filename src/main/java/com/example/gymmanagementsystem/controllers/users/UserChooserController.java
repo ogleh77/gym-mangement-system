@@ -45,13 +45,13 @@ public class UserChooserController extends CommonClass implements Initializable 
                     OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/users/user-update.fxml", listView);
                     thisStage.close();
                 } catch (IOException ex) {
-                    Alerts.errorAlert(ex.getMessage(), "Khalad baa dhacay");
+                    Alerts.errorAlert(ex.getMessage());
                 }
             });
-            fadeOut.setSpeed(2);
-            fadeOut.play();
+//            fadeOut.setSpeed(2);
+//            fadeOut.play();
         } catch (Exception e) {
-            Alerts.waningAlert(e.getMessage(), "Hubso");
+            Alerts.waningAlert(e.getMessage());
         }
 
     }
@@ -63,18 +63,18 @@ public class UserChooserController extends CommonClass implements Initializable 
                 throw new RuntimeException("Fadlan dooro userka aad masaxayso");
             }
             boolean done = Alerts.confirmationAlert("Ma hubtaa inaad delete garayso userka  "
-                    + activeUser.getUsername(), "Xaqiijin");
+                    + activeUser.getUsername());
 
             if (done) {
-              //  UserService.delete(listView.getSelectionModel().getSelectedItem());
+                UserService.delete(listView.getSelectionModel().getSelectedItem());
                 listView.getItems().remove(listView.getSelectionModel().getSelectedItem());
             }
 
         } catch (Exception e) {
             if (e instanceof RuntimeException)
-                Alerts.waningAlert(e.getMessage(), "Hubso");
+                Alerts.waningAlert(e.getMessage());
             else
-                Alerts.errorAlert(e.getMessage(), "Khalad baa dhacay");
+                Alerts.errorAlert(e.getMessage());
         }
 
     }

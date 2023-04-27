@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -44,6 +45,8 @@ public class GymController extends CommonClass implements Initializable {
     private JFXCheckBox uploadImageCheck;
     private final Gym currentGym;
     private Stage thisStage;
+    @FXML
+    private HBox topPane;
     int nextId;
 
     public GymController() throws SQLException {
@@ -57,6 +60,8 @@ public class GymController extends CommonClass implements Initializable {
             initData();
             thisStage = (Stage) gymName.getScene().getWindow();
             enterKeyFire(updateBtn, thisStage);
+            paneDrag(thisStage, topPane);
+            paneDropped(thisStage, topPane);
         });
         discountValidation();
         pendValidation();
@@ -82,14 +87,15 @@ public class GymController extends CommonClass implements Initializable {
                     BoxService.insertBox(box);
                     listView.getItems().add(box);
                     BoxService.fetchBoxes().add(box);
-                    informationAlert("New box added successfully").showAndWait();
+                    Alerts.notificationAlert("New box has been added successfully");
+                    nextId++;
                 } catch (Exception e) {
                     if (e instanceof SQLException)
-                        Alerts.errorAlert(e.getMessage(), "Khalad ba dhacay");
-                    else Alerts.waningAlert(e.getMessage(), "Hubso");
+                        Alerts.errorAlert(e.getMessage());
+                    else Alerts.waningAlert(e.getMessage());
                 }
 
-                nextId++;
+
             }
         }
     }
@@ -103,15 +109,13 @@ public class GymController extends CommonClass implements Initializable {
             Box box = listView.getSelectionModel().getSelectedItem();
             BoxService.deleteBox(box);
             listView.getItems().remove(box);
-            Alerts.notificationAlert("Box deleted successfully", "War-gelin");
+            Alerts.notificationAlert("Box deleted successfully");
         } catch (Exception e) {
             if (e instanceof SQLException)
-                Alerts.errorAlert(e.getMessage(), "Khalad baa dhacay!");
+                Alerts.errorAlert(e.getMessage());
             else
-                Alerts.waningAlert(e.getMessage(), "Hubso");
-
+                Alerts.waningAlert(e.getMessage());
         }
-
     }
 
     @FXML
@@ -137,9 +141,9 @@ public class GymController extends CommonClass implements Initializable {
                 currentGym.setImageUpload(uploadImageCheck.isSelected());
                 GymService.updateGym(currentGym);
                 Thread.sleep(100);
-                Alerts.notificationAlert("Gym updated successfully", "War-gelin");
+                Alerts.notificationAlert("Gym updated successfully");
             } catch (Exception e) {
-                Alerts.errorAlert(e.getMessage(), "Khalad ba dhacay!");
+                Alerts.errorAlert(e.getMessage());
             }
         }
     }

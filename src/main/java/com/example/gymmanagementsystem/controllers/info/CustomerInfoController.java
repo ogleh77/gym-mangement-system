@@ -1,5 +1,6 @@
 package com.example.gymmanagementsystem.controllers.info;
 
+import com.example.gymmanagementsystem.controllers.main.PaymentController;
 import com.example.gymmanagementsystem.dao.main.PaymentService;
 import com.example.gymmanagementsystem.dao.service.GymService;
 import com.example.gymmanagementsystem.dependencies.Alerts;
@@ -13,6 +14,7 @@ import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -117,7 +119,6 @@ public class CustomerInfoController extends CommonClass implements Initializable
 
     @FXML
     void pendHandler() {
-        System.out.println("Pressed");
         try {
             Payments selectedPayment = tableView.getSelectionModel().getSelectedItem();
             if (selectedPayment == null) {
@@ -125,7 +126,10 @@ public class CustomerInfoController extends CommonClass implements Initializable
             }
             checkPayment(selectedPayment);
         } catch (Exception e) {
-            Alerts.errorAlert(e.getMessage(), "Khalad baa dhacay");
+            if (e instanceof RuntimeException)
+                Alerts.waningAlert(e.getMessage());
+            else
+                Alerts.errorAlert(e.getMessage());
         }
     }
 
@@ -136,10 +140,15 @@ public class CustomerInfoController extends CommonClass implements Initializable
             if (selectedPayment == null) {
                 throw new RuntimeException("Fadlan dooro payment-ka aad rabto inad wax ka bedesho");
             }
-            OpenWindow.secondWindow("/com/example/gymmanagementsystem/newviews/main/payments.fxml", borderPane);
-
+            FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/newviews/main/payments.fxml", borderPane);
+            PaymentController controller = loader.getController();
+            controller.setCustomer(customer);
+            controller.setUpdatePayment(selectedPayment);
         } catch (Exception e) {
-            Alerts.errorAlert(e.getMessage(), "Khalad baa dhacay");
+            if (e instanceof RuntimeException)
+                Alerts.waningAlert(e.getMessage());
+            else
+                Alerts.errorAlert(e.getMessage());
         }
 
     }
@@ -152,15 +161,19 @@ public class CustomerInfoController extends CommonClass implements Initializable
                 throw new RuntimeException("Fadlan dooro payment-ka aad rabto inad masaxdo");
 
             }
-
-            boolean data = Alerts.confirmationAlert("Ma hubtaa inaad masaxdo paymentkan", "Digniin");
-            if (data) {
-                // TODO: 27/04/2023 Add delete payment insha Allah
+            boolean done = Alerts.confirmationAlert("Ma hubtaa inaad masaxdo paymentkan");
+            if (done) {
                 System.out.println("Deleted");
+                PaymentService.deletePayment(payment);
                 payments.remove(payment);
+                Alerts.notificationAlert("Waad ku gulaystay inaad masaxdo inaad masaxdo payment-ka ");
+
             }
         } catch (Exception e) {
-            Alerts.errorAlert(e.getMessage(), "Khalad baa dhacay");
+            if (e instanceof RuntimeException)
+                Alerts.waningAlert(e.getMessage());
+            else
+                Alerts.errorAlert(e.getMessage());
         }
 
     }
@@ -227,8 +240,8 @@ public class CustomerInfoController extends CommonClass implements Initializable
         String daysRemain = getDaysRemind(exp);
 
         boolean done = Alerts.confirmationAlert("Ma hubtaa inaad hakisto paymentkan oo ay u hadhay \n" +
-                        "Wakhtigiisa dhicitaanka " + daysRemain,
-                "Ma hubtaa?");
+                "Wakhtigiisa dhicitaanka " + daysRemain
+        );
 
         if (done) {
             PaymentService.holdPayment(payment, currentGym.getPendingDate());
@@ -237,12 +250,13 @@ public class CustomerInfoController extends CommonClass implements Initializable
             pendBtn.setText("Dib u fur");
             pendBtn.setStyle(unPendStyle);
         }
+        Alerts.notificationAlert("Waad ku gulaystay inaad hakiso payment-kan ");
 
     }
 
     private void unPayment(Payments payment) throws SQLException {
 
-        boolean done = Alerts.confirmationAlert("Ma hubtaa inaad dib u furto paymentkan ", "Ma hubtaa?");
+        boolean done = Alerts.confirmationAlert("Ma hubtaa inaad dib u furto paymentkan ");
         if (done) {
             PaymentService.unHoldPayment(payment);
             payment.setPending(false);
@@ -250,7 +264,9 @@ public class CustomerInfoController extends CommonClass implements Initializable
             payment.setExpDate(payment.getExpDate());
             pendBtn.setText("Haki");
             pendBtn.setStyle(pendStyle);
+
         }
+        Alerts.notificationAlert("Waad ku gulaystay inaad dib u furto payment-kan ");
 
     }
 

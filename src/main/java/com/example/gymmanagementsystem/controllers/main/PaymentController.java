@@ -230,7 +230,6 @@ public class PaymentController extends CommonClass implements Initializable {
             errorMessage(e.getMessage());
         }
         for (Payments payment : paymentsList) {
-
             if (payment.isOnline()) {
                 blockFields(payment);
                 newPayment = false;

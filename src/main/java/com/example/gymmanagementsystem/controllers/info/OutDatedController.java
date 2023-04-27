@@ -184,7 +184,7 @@ public class OutDatedController extends CommonClass implements Initializable {
                         outDatedCustomers = CustomerService.fetchQualifiedOfflineCustomers(customerQuery, fromDate.getValue(), toDate.getValue());
                         Collections.sort(outDatedCustomers);
                     } catch (Exception e) {
-                        Platform.runLater(() -> Alerts.errorAlert(e.getMessage(),"Khalad baa dhacay"));
+                        Platform.runLater(() -> Alerts.errorAlert(e.getMessage() ));
                         e.printStackTrace();
                     }
                     return null;

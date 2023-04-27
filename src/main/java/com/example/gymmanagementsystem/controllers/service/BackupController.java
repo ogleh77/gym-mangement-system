@@ -21,8 +21,6 @@ public class BackupController extends CommonClass implements Initializable {
     @FXML
     private JFXButton backupBtn;
     @FXML
-    private Label lastBackup;
-    @FXML
     private ListView<String> listView;
 
     @FXML
@@ -67,12 +65,12 @@ public class BackupController extends CommonClass implements Initializable {
                 backup(location);
             }
             backupTime.setText("Date: " + BackupService.lastBackup());
-            Alerts.notificationAlert("Successfully Backup to " + location, "Good job");
+            Alerts.notificationAlert("Successfully Backup to " + location);
         } catch (Exception e) {
             if (e instanceof SQLException) {
-                Alerts.errorAlert("FROM SQL " + e.getMessage(), "Khalad ayaa dhacay");
+                Alerts.errorAlert("FROM SQL " + e.getMessage());
             } else {
-                Alerts.waningAlert(e.getMessage(), "Ogow!");
+                Alerts.waningAlert(e.getMessage());
             }
         }
 
@@ -87,12 +85,12 @@ public class BackupController extends CommonClass implements Initializable {
                         + " Kana dooro liiska sare");
             }
             BackupService.restore(location);
-            Alerts.notificationAlert("Successfully restored from " + location, "good");
+            Alerts.notificationAlert("Successfully restored from " + location);
         } catch (Exception e) {
             if (e instanceof RuntimeException) {
-                Alerts.waningAlert(e.getMessage(), "Hubso");
+                Alerts.waningAlert(e.getMessage());
             } else {
-                Alerts.errorAlert(e.getMessage(), "Khalad baa dhacay");
+                Alerts.errorAlert(e.getMessage());
             }
         }
     }
@@ -104,6 +102,7 @@ public class BackupController extends CommonClass implements Initializable {
             restoreBtn.setDisable(true);
         }
     }
+
     private void init() {
         try {
             if (BackupService.lastBackupPath() == null) {
@@ -113,7 +112,7 @@ public class BackupController extends CommonClass implements Initializable {
                 backupTime.setText(BackupService.lastBackup());
             }
         } catch (SQLException e) {
-            Alerts.errorAlert("FROM SQL:_ " + e.getMessage(), "Khaladbaa dhacay");
+            Alerts.errorAlert("FROM SQL:_ " + e.getMessage());
         }
     }
 }

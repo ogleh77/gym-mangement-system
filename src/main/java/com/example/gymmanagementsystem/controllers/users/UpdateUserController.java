@@ -3,6 +3,8 @@ package com.example.gymmanagementsystem.controllers.users;
 
 import com.example.gymmanagementsystem.dao.service.GymService;
 import com.example.gymmanagementsystem.dao.service.UserService;
+import com.example.gymmanagementsystem.dependencies.Alerts;
+import com.example.gymmanagementsystem.dependencies.OpenWindow;
 import com.example.gymmanagementsystem.entities.service.Gym;
 import com.example.gymmanagementsystem.entities.service.Users;
 import com.example.gymmanagementsystem.helpers.CommonClass;
@@ -18,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -75,14 +78,13 @@ public class UpdateUserController extends CommonClass implements Initializable {
 
     private Users users;
     private final ToggleGroup roleToggle = new ToggleGroup();
-
+    @FXML
+    private HBox topPane;
     @FXML
     private JFXButton uploadBtn;
     private Stage stage;
 
-    private boolean done = true;
-
-    private Gym currentGym = GymService.getGym();
+    private final Gym currentGym = GymService.getGym();
     private final ButtonType okBtn = new ButtonType("Logout", ButtonBar.ButtonData.OK_DONE);
     private final ButtonType cancelBtn = new ButtonType("Not yet", ButtonBar.ButtonData.OK_DONE);
     private boolean itsMe = false;
@@ -96,6 +98,8 @@ public class UpdateUserController extends CommonClass implements Initializable {
         Platform.runLater(() -> {
             stage = (Stage) topText.getScene().getWindow();
             enterKeyFire(updateBtn, stage);
+            paneDrag(stage, topPane);
+            paneDropped(stage, topPane);
             initFields();
         });
 
@@ -110,7 +114,7 @@ public class UpdateUserController extends CommonClass implements Initializable {
 
 
                 if (result.isPresent() && result.get().equals(okBtn)) {
-                    openLogin();
+                    //openLogin();
                 }
             }
         });
@@ -141,6 +145,7 @@ public class UpdateUserController extends CommonClass implements Initializable {
         setUserData(activeUser);
     }
 
+    // TODO: 27/04/2023 more job specially confirmations
     @FXML
     void updateHandler() {
         if (isValid(getMandatoryFields(), null)) {
@@ -148,17 +153,7 @@ public class UpdateUserController extends CommonClass implements Initializable {
                 checkImage(imageView, "Sawirku wuxuu ku qurxinyaa profile kaaga");
                 return;
             }
-
-            if (start) {
-                service.restart();
-                updateBtn.setGraphic(getLoadingImageView());
-                updateBtn.setText("Updating");
-            } else {
-                service.start();
-                updateBtn.setGraphic(getLoadingImageView());
-                updateBtn.setText("Updating");
-                start = true;
-            }
+            startTask(service, updateBtn, "Updating");
         }
     }
 
@@ -187,11 +182,11 @@ public class UpdateUserController extends CommonClass implements Initializable {
                     try {
                         UserService.update(users());
                         if (!itsMe)
-                            Platform.runLater(() -> infoAlert(
+                            Platform.runLater(() -> Alerts.notificationAlert(
                                     "User updated successfully"));
                     } catch (Exception e) {
                         e.printStackTrace();
-                        Platform.runLater(() -> errorMessage(e.getMessage()));
+                        Platform.runLater(() -> Alerts.errorAlert(e.getMessage()));
                     }
                     return null;
                 }
@@ -266,22 +261,24 @@ public class UpdateUserController extends CommonClass implements Initializable {
         this.parentStage = stage;
     }
 
-    private void openLogin() {
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gymmanagementsystem/newviews/service/login.fxml"));
-        Stage loginStage = new Stage(StageStyle.UNDECORATED);
-        Scene scene;
-        closeStage(stage, updateBtn.getParent());
-        try {
-            scene = new Scene(loader.load());
-            loginStage.setScene(scene);
-            loginStage.show();
-
-
-            parentStage.close();
-        } catch (IOException ex) {
-            errorMessage(ex.getMessage());
-        }
+    private void openLogin() throws IOException {
+//
+//        FXMLLoader loader = 
+//                OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/service/login.fxml", topPane);
+//        ;
+//        Stage loginStage = new Stage(StageStyle.UNDECORATED);
+//        Scene scene;
+//        closeStage(stage, updateBtn.getParent());
+//        try {
+//            scene = new Scene(loader.load());
+//            loginStage.setScene(scene);
+//            loginStage.show();
+//
+//
+//            parentStage.close();
+//        } catch (IOException ex) {
+//            errorMessage(ex.getMessage());
+//        }
     }
 
 }

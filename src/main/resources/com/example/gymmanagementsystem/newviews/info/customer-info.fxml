@@ -64,7 +64,7 @@
         </font>
     </Label>
     <HBox alignment="CENTER" spacing="730.0" styleClass="top-pane" AnchorPane.bottomAnchor="680.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
-        <Label maxWidth="-Infinity" prefHeight="29.0" prefWidth="326.0" styleClass="top-label" text="CUSTOMER INFORMATION">
+        <Label maxWidth="-Infinity" prefHeight="29.0" prefWidth="455.0" styleClass="top-label" text="XOGTA MACMIILKA OO DHAMAYSTIRAN">
             <HBox.margin>
                 <Insets left="30.0" />
             </HBox.margin>
@@ -110,7 +110,7 @@
             <Font name="Helvetica" size="17.0" />
         </font>
     </Label>
-    <Label layoutX="119.0" layoutY="405.0" prefHeight="20.0" prefWidth="240.0" text="Halkan waxad ka heli kartaa." textFill="#757a7c" AnchorPane.leftAnchor="119.0" AnchorPane.rightAnchor="841.0">
+    <Label layoutX="119.0" layoutY="409.0" prefHeight="20.0" prefWidth="240.0" text="Halkan waxad ka heli kartaa." textFill="#757a7c" AnchorPane.leftAnchor="119.0" AnchorPane.rightAnchor="841.0">
         <font>
             <Font name="Tahoma Bold" size="16.0" />
         </font>
@@ -132,12 +132,12 @@
         </font>
     </Label>
     <Circle fill="#6d7883" layoutX="122.0" layoutY="475.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
-    <Label layoutX="764.0" layoutY="415.0" prefHeight="20.0" prefWidth="167.0" text="Payment actions" textFill="#757a7c">
+    <Label layoutX="764.0" layoutY="426.0" prefHeight="20.0" prefWidth="167.0" text="Payment actions" textFill="#8f979a">
         <font>
             <Font name="Tahoma Bold" size="16.0" />
         </font>
     </Label>
-    <TableView fx:id="tableView" layoutX="50.0" layoutY="499.0" prefHeight="200.0" prefWidth="1066.0" stylesheets="@../../style/css/home-table.css" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+    <TableView fx:id="tableView" layoutX="50.0" layoutY="513.0" prefHeight="200.0" prefWidth="1066.0" stylesheets="@../../style/css/home-table.css" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
         <columns>
             <TableColumn fx:id="paymentDate" prefWidth="118.0" text="payment date" />
             <TableColumn fx:id="expDate" prefWidth="87.0" text="exp date" />
@@ -149,8 +149,8 @@
             <TableColumn fx:id="poxing" prefWidth="70.0" text="poxing" />
             <TableColumn fx:id="vipBox" prefWidth="70.0" text="vip box" />
             <TableColumn fx:id="running" prefWidth="74.0" text="online" />
-            <TableColumn fx:id="pend" text="pending" />
-            <TableColumn fx:id="daysRemind" prefWidth="174.0" text="days left" />
+            <TableColumn fx:id="pend" prefWidth="87.0" text="pending" />
+            <TableColumn fx:id="daysRemind" prefWidth="169.0" text="days left" />
         </columns>
     </TableView>
     <Label layoutX="563.0" layoutY="256.0" text="hips" textFill="#afd6e3">
@@ -193,7 +193,7 @@
             <Font name="Helvetica" size="17.0" />
         </font>
     </Label>
-    <JFXButton fx:id="pendBtn" layoutX="761.0" layoutY="444.0" onAction="#pendHandler" prefHeight="42.0" prefWidth="148.0" style="-fx-background-color: #328ca8;" text="Haki(pend)" textFill="WHITE">
+    <JFXButton fx:id="pendBtn" layoutX="761.0" layoutY="455.0" onAction="#pendHandler" prefHeight="42.0" prefWidth="148.0" style="-fx-background-color: #328ca8;" text="Haki(pend)" textFill="WHITE">
         <graphic>
             <ImageView fitHeight="22.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                 <Image url="@../../style/icons/icons8-mobile-payment-50.png" />
@@ -203,7 +203,7 @@
             <Font name="Verdana" size="14.0" />
         </font>
     </JFXButton>
-    <JFXButton layoutX="922.0" layoutY="444.0" onAction="#editHandler" prefHeight="42.0" prefWidth="107.0" style="-fx-background-color: #afd6e3;" text="Update" textFill="#363333">
+    <JFXButton layoutX="922.0" layoutY="455.0" onAction="#editHandler" prefHeight="42.0" prefWidth="107.0" style="-fx-background-color: #afd6e3;" text="Update" textFill="#363333">
         <graphic>
             <ImageView fitHeight="31.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                 <Image url="@../../style/icons/icons8-available-updates-24.png" />
@@ -213,7 +213,7 @@
             <Font name="Verdana" size="14.0" />
         </font>
     </JFXButton>
-    <JFXButton layoutX="1038.0" layoutY="445.0" onAction="#deleteHandler" prefHeight="42.0" prefWidth="107.0" style="-fx-background-color: red;" text="delete" textFill="WHITE">
+    <JFXButton layoutX="1038.0" layoutY="456.0" onAction="#deleteHandler" prefHeight="42.0" prefWidth="107.0" style="-fx-background-color: red;" text="delete" textFill="WHITE">
         <graphic>
             <ImageView fitHeight="31.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                 <Image url="@../../style/icons/icons8-delete-trash-48.png" />
@@ -223,4 +223,11 @@
             <Font name="Verdana" size="14.0" />
         </font>
     </JFXButton>
+   <effect>
+      <DropShadow height="32.86" radius="15.927500000000002" width="32.85">
+         <color>
+            <Color red="0.772549033164978" green="0.8117647171020508" blue="0.843137264251709" />
+         </color>
+      </DropShadow>
+   </effect>
 </AnchorPane>

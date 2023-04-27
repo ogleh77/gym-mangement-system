@@ -1,16 +1,21 @@
 package com.example.gymmanagementsystem.simpleconrtollers;
 
+import animatefx.animation.FadeIn;
 import com.example.gymmanagementsystem.controllers.info.OutDatedController;
+import com.example.gymmanagementsystem.controllers.info.WarningController;
 import com.example.gymmanagementsystem.controllers.users.UpdateUserController;
 import com.example.gymmanagementsystem.dao.service.UserService;
 import com.example.gymmanagementsystem.dependencies.Alerts;
 import com.example.gymmanagementsystem.dependencies.OpenWindow;
+import com.example.gymmanagementsystem.entities.main.Customers;
 import com.example.gymmanagementsystem.entities.service.Users;
 import com.example.gymmanagementsystem.helpers.CommonClass;
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
@@ -26,44 +31,39 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class DashbaordController extends CommonClass implements Initializable {
-
     @FXML
     private HBox topPane;
-    private double xOffset = 0;
-    private double yOffset = 0;
     @FXML
     private HBox menuHBox;
     private Stage dashboardStage;
-    HBox hBox;
     @FXML
     private BorderPane borderPane;
     @FXML
     private Circle activeProfile;
     @FXML
     private MenuButton username;
-    private final Users user;
+    @FXML
+    private Label warningLabel;
+    @FXML
+    private HBox warningParent;
 
-    public DashbaordController() throws SQLException {
-        this.user = UserService.users().get(0);
-    }
+    private ObservableList<Customers> warningList;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Platform.runLater(() -> {
             this.dashboardStage = (Stage) topPane.getScene().getWindow();
-            borderPaneDrag();
-            borderPaneDropped();
+            paneDrag(dashboardStage, topPane);
+            paneDropped(dashboardStage, topPane);
 
             try {
                 OpenWindow.dashboardWindow(borderPane, menuHBox);
-
             } catch (Exception e) {
-                throw new RuntimeException(e);
+                Alerts.errorAlert(e.getMessage());
             }
 
         });
     }
-
     @FXML
     void homeHandler() throws IOException, SQLException {
         FXMLLoader loader = OpenWindow.mainWindow("/com/example/gymmanagementsystem/newviews/main/home.fxml", borderPane);
@@ -91,9 +91,8 @@ public class DashbaordController extends CommonClass implements Initializable {
     @FXML
     void updateMeHandler() throws IOException {
         FXMLLoader loader = OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/users/user-update.fxml", menuHBox);
-
         UpdateUserController controller = loader.getController();
-        controller.setActiveUser(user);
+        controller.setActiveUser(activeUser);
         controller.setStage(dashboardStage);
 
     }
@@ -101,11 +100,6 @@ public class DashbaordController extends CommonClass implements Initializable {
     @FXML
     void updateUserHandler() throws IOException {
         OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/users/user-chooser.fxml", menuHBox);
-    }
-
-    @FXML
-    void notificationHandler() throws IOException {
-        OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/info/warning.fxml", topPane);
     }
 
     @FXML
@@ -117,7 +111,7 @@ public class DashbaordController extends CommonClass implements Initializable {
 
     @FXML
     void closeHandler() {
-        boolean data = Alerts.confirmationAlert("Ma hubtaa inaad ka baxdo systemka", "Doorasho");
+        boolean data = Alerts.confirmationAlert("Ma hubtaa inaad ka baxdo systemka");
         if (data) {
             OpenWindow.closeStage(dashboardStage, activeProfile);
         }
@@ -146,18 +140,19 @@ public class DashbaordController extends CommonClass implements Initializable {
 
     }
 
-    private void borderPaneDrag() {
-        topPane.setOnMousePressed(event -> {
-            xOffset = dashboardStage.getX() - event.getScreenX();
-            yOffset = dashboardStage.getY() - event.getScreenY();
-        });
-    }
+    @FXML
+    void notificationHandler() {
+        try {
+            if (!warningList.isEmpty()) {
+                warningParent.setVisible(false);
+            }
+            FXMLLoader loader = OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/info/warning.fxml", topPane);
+            WarningController controller = loader.getController();
+            controller.setOutdatedCustomers(warningList);
+        } catch (Exception e) {
+            Alerts.errorAlert(e.getMessage());
+        }
 
-    private void borderPaneDropped() {
-        topPane.setOnMouseDragged(event -> {
-            dashboardStage.setX(event.getScreenX() + xOffset);
-            dashboardStage.setY(event.getScreenY() + yOffset);
-        });
     }
 
     @Override
@@ -190,6 +185,20 @@ public class DashbaordController extends CommonClass implements Initializable {
                 Image image = new Image(bis);
                 activeProfile.setFill(new ImagePattern(image));
             }
+        }
+    }
+
+
+    //-------------------–helper methods------------------------
+    public void setWarningList(ObservableList<Customers> warningList) {
+        this.warningList = warningList;
+        if (warningList.isEmpty()) {
+            warningParent.setVisible(false);
+        } else {
+            warningLabel.setText(warningList.size() < 9 ? String.valueOf(warningList.size()) : "9 +");
+            FadeIn fadeIn = new FadeIn(warningParent);
+            fadeIn.setCycleCount(20);
+            fadeIn.play();
         }
     }
 }

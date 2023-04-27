@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -50,9 +51,6 @@ public class UserCreationController extends CommonClass implements Initializable
     private TextField phone;
 
     @FXML
-    private Label phoneValidation;
-
-    @FXML
     private ComboBox<String> shift;
 
     @FXML
@@ -60,6 +58,8 @@ public class UserCreationController extends CommonClass implements Initializable
 
     @FXML
     private TextField username;
+    @FXML
+    private HBox topPane;
     private final ToggleGroup roleToggle = new ToggleGroup();
     private final Gym currentGym;
 
@@ -75,11 +75,13 @@ public class UserCreationController extends CommonClass implements Initializable
             initFields();
             stage = (Stage) superAdmin.getScene().getWindow();
             enterKeyFire(createBtn, stage);
+            paneDrag(stage, topPane);
+            paneDropped(stage, topPane);
         });
         phoneValidation();
 
         service.setOnSucceeded(e -> {
-            createBtn.setGraphic(null);
+            createBtn.setGraphic(getFirstImage("/com/example/gymmanagementsystem/style/icons/whiteadduser.png"));
             createBtn.setText("Created");
         });
     }
@@ -113,13 +115,12 @@ public class UserCreationController extends CommonClass implements Initializable
                 @Override
                 protected Void call() {
                     try {
-                       // UserService.insertUser(users());
+                        UserService.insertUser(users());
                         UserService.users().add(users());
                         Thread.sleep(1000);
-                        Platform.runLater(() -> Alerts.notificationAlert(
-                                "Waxaad samaysay user cusub", "War-gelin"));
+                        Platform.runLater(() -> Alerts.notificationAlert("Waxaad samaysay user cusub"));
                     } catch (Exception e) {
-                        Platform.runLater(() -> Alerts.errorAlert(e.getMessage(), "Khalad baa dhacay"));
+                        Platform.runLater(() -> Alerts.errorAlert(e.getMessage()));
                     }
                     return null;
                 }

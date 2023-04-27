@@ -93,3 +93,43 @@ public class BackupModel {
         }
     }
 
+
+
+ private final Service<Void> backupService = new Service<>() {
+        @Override
+        protected Task<Void> createTask() {
+            return new Task<>() {
+                @Override
+                protected Void call() {
+                    try {
+                        if (listView.getSelectionModel().getSelectedItem() != null) {
+                            BackupService.backup(listView.getSelectionModel().getSelectedItem());
+                        } else {
+                            FileChooser chooser = new FileChooser();
+                            Platform.runLater(() -> {
+                                selectedPath = chooser.showSaveDialog(null);
+                                try {
+                                    BackupService.backup(selectedPath.getAbsolutePath());
+                                    listView.getItems().add(selectedPath.getAbsolutePath());
+                                    backupTime.setText(BackupService.lastBackup());
+                                } catch (SQLException e) {
+                                    throw new RuntimeException(e);
+                                }
+
+                            });}
+                        Thread.sleep(1000);
+                        Platform.runLater(() -> Alerts.notificationAlert("Backuped successfully.", "Good"));
+
+                    } catch (Exception e) {
+                        if (e instanceof SQLException) {
+                            Platform.runLater(() -> Alerts.errorAlert("FROM SQL " + e.getMessage(), "Khalad ayaa dhacay"));
+                        } else {
+                            Platform.runLater(() -> Alerts.waningAlert(e.getMessage(), "Ogow!"));
+                        }
+                        e.printStackTrace();
+                    }
+                    return null;
+                }
+            };
+        }
+    };

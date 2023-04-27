@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="319.0" prefWidth="491.0" styleClass="small-pane" stylesheets="@../../style/css/small-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.service.BackupController">
-    <HBox alignment="CENTER" prefHeight="37.0" prefWidth="596.0" spacing="360.0" styleClass="top-pane">
+    <HBox fx:id="topPane" alignment="CENTER" prefHeight="37.0" prefWidth="596.0" spacing="360.0" styleClass="top-pane">
         <HBox alignment="CENTER">
             <HBox alignment="CENTER" prefHeight="37.0" prefWidth="41.0">
                 <ImageView fitHeight="25.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
@@ -31,7 +31,7 @@
     </HBox>
     <Label layoutX="42.0" layoutY="55.0" styleClass="label-background" text="Backup ku wuxu ka cawinayaa inad data dada dhigato meel save ah" />
     <JFXButton layoutX="159.0" layoutY="163.0" onAction="#backupHandler" prefWidth="108.0" style="-fx-background-color: #328ca8;" text="Backup" />
-    <ListView fx:id="listView" layoutX="42.0" layoutY="88.0" prefHeight="192.0" prefWidth="316.0" />
+    <ListView fx:id="listView" layoutX="42.0" layoutY="88.0" prefHeight="192.0" prefWidth="342.0" />
     <Label layoutX="41.0" layoutY="289.0" text="Marka hore dooro locationka magacna u bixi backupka " textFill="#656363">
         <font>
             <Font name="Verdana Bold" size="11.0" />
@@ -67,9 +67,14 @@
             <Font name="Verdana" size="12.0" />
         </font>
     </Label>
-    <Label fx:id="lastBackup" layoutX="339.0" layoutY="380.0" text="PATH:">
-        <font>
-            <Font name="Verdana" size="12.0" />
-        </font>
-    </Label>
+   <Label fx:id="backupTime" layoutX="407.0" layoutY="110.0" text="Date:" textFill="#879194">
+      <font>
+         <Font name="Verdana" size="12.0" />
+      </font>
+   </Label>
+   <Label layoutX="398.0" layoutY="88.0" text="Last time backuped" textFill="#656363">
+      <font>
+         <Font name="Verdana Bold" size="11.0" />
+      </font>
+   </Label>
 </AnchorPane>

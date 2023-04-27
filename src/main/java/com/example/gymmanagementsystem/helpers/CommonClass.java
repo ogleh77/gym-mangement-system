@@ -1,6 +1,7 @@
 package com.example.gymmanagementsystem.helpers;
 
 import animatefx.animation.*;
+import com.example.gymmanagementsystem.dao.service.BackupService;
 import com.example.gymmanagementsystem.entities.main.Customers;
 import com.example.gymmanagementsystem.entities.service.Users;
 import com.jfoenix.controls.JFXButton;
@@ -45,7 +46,8 @@ public abstract class CommonClass {
 
     protected BorderPane borderPane;
     public boolean imageUploaded = false;
-
+    private double xOffset = 0;
+    private double yOffset = 0;
     protected final ButtonType ok = new ButtonType("Haa");
     protected final ButtonType no = new ButtonType("Maya");
     public final String[] images = {
@@ -234,7 +236,7 @@ public abstract class CommonClass {
         this.customer = customer;
     }
 
-    public void setActiveUser(Users activeUser)  {
+    public void setActiveUser(Users activeUser) {
         this.activeUser = activeUser;
     }
 
@@ -328,5 +330,30 @@ public abstract class CommonClass {
             button.setText(message);
             start = true;
         }
+    }
+
+
+    public void backup(String path) throws SQLException {
+        if (path != null) {
+            BackupService.backup(path);
+        } else {
+            FileChooser chooser = new FileChooser();
+            selectedFile = chooser.showSaveDialog(null);
+            BackupService.backup(selectedFile.getAbsolutePath());
+        }
+    }
+
+    public void paneDrag(Stage stage, HBox topPane) {
+        topPane.setOnMousePressed(event -> {
+            xOffset = stage.getX() - event.getScreenX();
+            yOffset = stage.getY() - event.getScreenY();
+        });
+    }
+
+    public void paneDropped(Stage stage, HBox topPane) {
+        topPane.setOnMouseDragged(event -> {
+            stage.setX(event.getScreenX() + xOffset);
+            stage.setY(event.getScreenY() + yOffset);
+        });
     }
 }

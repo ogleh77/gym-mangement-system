@@ -14,11 +14,9 @@ import java.time.LocalTime;
 
 public class BackupModel {
     private static final Connection connection = DbConnection.getConnection();
-    //    private static final ObservableList<String> fullBackupInfo = FXCollections.observableArrayList();
-    private static final ObservableList<String> paths = FXCollections.observableArrayList();
+     private static final ObservableList<String> paths = FXCollections.observableArrayList();
 
     public void backup(String path) throws SQLException {
-
         connection.setAutoCommit(false);
         try (Statement statement = connection.createStatement()) {
             String query = "BACKUP to " + path;
@@ -31,7 +29,6 @@ public class BackupModel {
             }
             connection.commit();
         } catch (SQLException e) {
-            e.printStackTrace();
             connection.rollback();
             throw e;
         }
@@ -39,17 +36,37 @@ public class BackupModel {
     }
 
 
-    public ObservableList<String> backupPaths() throws SQLException {
 
+    public void restore(String path) throws SQLException {
+        String query = "RESTORE FROM " + path;
+        Statement statement = connection.createStatement();
+        statement.executeUpdate(query);
+        statement.close();
+    }
+
+    public String lastBackupTime() throws SQLException {
         Statement statement = connection.createStatement();
 
-        ResultSet rs = statement.executeQuery("SELECT * FROM backup_table;");
-
+        ResultSet rs = statement.executeQuery("SELECT last_backup FROM backup_table;");
+        String lastBackup = null;
         while (rs.next()) {
-            paths.add(rs.getString("location"));
+            lastBackup = rs.getString("last_backup");
         }
         rs.close();
         statement.close();
-        return paths;
+        return lastBackup;
+    }
+
+    public String lastBackupPath() throws SQLException {
+        Statement statement = connection.createStatement();
+
+        ResultSet rs = statement.executeQuery("SELECT location FROM backup_table ORDER BY backup_id DESC;");
+        String backupPath = null;
+        while (rs.next()) {
+            backupPath = rs.getString("location");
+        }
+        rs.close();
+        statement.close();
+        return backupPath;
     }
 }

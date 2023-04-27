@@ -126,7 +126,7 @@ public class Users {
 
     @Override
     public String toString() {
-        return "[username:- " + username.get() + " role:- " + role.getValue() + "]\n";
+        return username.get() + "  [" + role.getValue() + "]\n";
     }
 
 }

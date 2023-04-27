@@ -1,4 +1,4 @@
-package com.example.gymmanagementsystem.controllers.service;
+package com.example.gymmanagementsystem.controllers.info;
 
 import com.example.gymmanagementsystem.dao.main.CustomerService;
 import com.example.gymmanagementsystem.dependencies.Alerts;

@@ -1,6 +1,7 @@
 package com.example.gymmanagementsystem.controllers.info;
 
 import com.example.gymmanagementsystem.dao.main.CustomerService;
+import com.example.gymmanagementsystem.dependencies.Alerts;
 import com.example.gymmanagementsystem.entities.main.Customers;
 import com.example.gymmanagementsystem.entities.service.Users;
 import com.example.gymmanagementsystem.helpers.CommonClass;
@@ -19,7 +20,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -63,10 +63,10 @@ public class OutDatedController extends CommonClass implements Initializable {
             shift.getItems().add("All");
             shift.setValue("All");
             getMandatoryFields().addAll(fromDate, toDate);
-         });
+        });
 
         service.setOnSucceeded(e -> {
-            searchHandler.setGraphic(null);
+            searchHandler.setGraphic(getFirstImage("/com/example/gymmanagementsystem/style/icons/icons8-search-50.png"));
             searchHandler.setText("Search");
             pagination.setPageFactory(outDatedCustomers.isEmpty() ? this::vBox : this::createPage);
         });
@@ -76,14 +76,7 @@ public class OutDatedController extends CommonClass implements Initializable {
     @FXML
     void searchHandler() {
         if (isValid(getMandatoryFields(), null)) {
-            if (start) {
-                service.restart();
-                searchHandler.setGraphic(getLoadingImageView());
-            } else {
-                service.start();
-                searchHandler.setGraphic(getLoadingImageView());
-                start = true;
-            }
+            startTask(service, searchHandler, "");
         }
     }
 
@@ -191,7 +184,7 @@ public class OutDatedController extends CommonClass implements Initializable {
                         outDatedCustomers = CustomerService.fetchQualifiedOfflineCustomers(customerQuery, fromDate.getValue(), toDate.getValue());
                         Collections.sort(outDatedCustomers);
                     } catch (Exception e) {
-                        Platform.runLater(() -> errorMessage(e.getMessage()));
+                        Platform.runLater(() -> Alerts.errorAlert(e.getMessage(),"Khalad baa dhacay"));
                         e.printStackTrace();
                     }
                     return null;

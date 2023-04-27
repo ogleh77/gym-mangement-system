@@ -2,6 +2,7 @@ package com.example.gymmanagementsystem.controllers.users;
 
 import com.example.gymmanagementsystem.dao.service.GymService;
 import com.example.gymmanagementsystem.dao.service.UserService;
+import com.example.gymmanagementsystem.dependencies.Alerts;
 import com.example.gymmanagementsystem.entities.service.Gym;
 import com.example.gymmanagementsystem.entities.service.Users;
 import com.example.gymmanagementsystem.helpers.CommonClass;
@@ -80,19 +81,6 @@ public class UserCreationController extends CommonClass implements Initializable
         service.setOnSucceeded(e -> {
             createBtn.setGraphic(null);
             createBtn.setText("Created");
-
-//            if (done) {
-//                createBtn.setGraphic(null);
-//                createBtn.setText("Created");
-//                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "User Created successfully",
-//                        new ButtonType("cancel"));
-//
-//                Optional<ButtonType> result = alert.showAndWait();
-//
-//                if (result.isPresent() && !result.get().equals(ButtonType.YES)) {
-//                    closeStage(stage, firstname.getParent());
-//                }
-            // }
         });
     }
 
@@ -103,7 +91,7 @@ public class UserCreationController extends CommonClass implements Initializable
 
     @FXML
     void createUserHandler() {
-        if (isValid(getMandatoryFields(), genderGroup) && (phone.getText().length() == 7 || !phoneValidation.isVisible())) {
+        if (isValid(getMandatoryFields(), genderGroup)) {
             if (currentGym.isImageUpload() && !imageUploaded) {
                 checkImage(imageView, "Profile picture maleh userku!");
             }
@@ -125,14 +113,13 @@ public class UserCreationController extends CommonClass implements Initializable
                 @Override
                 protected Void call() {
                     try {
-                        UserService.insertUser(users());
+                       // UserService.insertUser(users());
                         UserService.users().add(users());
-
-                        Platform.runLater(() -> infoAlert("New user has been created successfully"));
-
+                        Thread.sleep(1000);
+                        Platform.runLater(() -> Alerts.notificationAlert(
+                                "Waxaad samaysay user cusub", "War-gelin"));
                     } catch (Exception e) {
-//                        e.printStackTrace();
-                        Platform.runLater(() -> errorMessage(e.getMessage()));
+                        Platform.runLater(() -> Alerts.errorAlert(e.getMessage(), "Khalad baa dhacay"));
                     }
                     return null;
                 }
@@ -153,17 +140,8 @@ public class UserCreationController extends CommonClass implements Initializable
         phone.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 phone.setText(newValue.replaceAll("\\D", ""));
-                phoneValidation.setText("Fadlan lanbarka xarfo looma ogola");
-                phoneValidation.setVisible(true);
-            } else if (!phone.getText().matches("^\\d{7}")) {
-                phoneValidation.setText("Fadlan lanbarku kama yaran karo 7 digit");
-                phoneValidation.setVisible(true);
-
-            } else {
-                phoneValidation.setVisible(false);
             }
         });
-
     }
 
     private void initFields() {

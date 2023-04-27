@@ -1,8 +1,6 @@
 package com.example.gymmanagementsystem;
 
 
-import com.example.gymmanagementsystem.controllers.info.OutDatedController;
-import com.example.gymmanagementsystem.dao.service.UserService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -15,11 +13,11 @@ import java.sql.SQLException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/gymmanagementsystem/newviews/info/outdated.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/gymmanagementsystem/newviews/users/user-creation.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        OutDatedController controller = fxmlLoader.getController();
+        //OutDatedController controller = fxmlLoader.getController();
         // Customers customer = CustomerService.fetchAllCustomer(UserService.users().get(0)).get(7);
-        controller.setActiveUser(UserService.users().get(0));
+        //   controller.setActiveUser(UserService.users().get(0));
 
         //  controller.checkPayment(customer);
         // controller.setCustomer(customer);
@@ -51,6 +49,8 @@ public class HelloApplication extends Application {
         // TODO: 23/04/2023 Samee window opener ka hore fade out ku samaynaya ka danbana fadin  insha Allah 
 
         // TODO: 25/04/2023 Tables ka fontkiisa bedel insha Allah
+
+        // TODO: 27/04/2023 CHeck image upload remender
         stage.setScene(scene);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.show();

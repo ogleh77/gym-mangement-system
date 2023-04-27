@@ -123,7 +123,7 @@ public class OutDatedController extends CommonClass implements Initializable {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            Alerts.errorAlert(e.getMessage());
         }
 
         return gridView;
@@ -159,7 +159,6 @@ public class OutDatedController extends CommonClass implements Initializable {
     @Override
     public void setActiveUser(Users activeUser) {
         super.setActiveUser(activeUser);
-        System.out.println(activeUser);
         if (activeUser.getRole().equals("admin")) {
             male.setSelected(activeUser.getGender().equals("Male"));
             female.setSelected(activeUser.getGender().equals("Female"));
@@ -184,8 +183,7 @@ public class OutDatedController extends CommonClass implements Initializable {
                         outDatedCustomers = CustomerService.fetchQualifiedOfflineCustomers(customerQuery, fromDate.getValue(), toDate.getValue());
                         Collections.sort(outDatedCustomers);
                     } catch (Exception e) {
-                        Platform.runLater(() -> Alerts.errorAlert(e.getMessage() ));
-                        e.printStackTrace();
+                        Platform.runLater(() -> Alerts.errorAlert(e.getMessage()));
                     }
                     return null;
                 }

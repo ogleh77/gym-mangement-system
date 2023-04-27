@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="996.0" styleClass="home-pane" stylesheets="@../../style/css/long-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.simpleconrtollers.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="996.0" styleClass="home-pane" stylesheets="@../../style/css/long-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.main.HomeController">
     <HBox alignment="CENTER" prefWidth="1150.0" spacing="490.0" styleClass="top-pane" AnchorPane.bottomAnchor="680.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0">
         <Label maxWidth="-Infinity" prefHeight="29.0" prefWidth="218.0" styleClass="top-label" text="FORM-KA BILOWGA">
             <HBox.margin>

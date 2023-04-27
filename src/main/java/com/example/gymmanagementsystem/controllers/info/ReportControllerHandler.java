@@ -107,15 +107,12 @@ public class ReportControllerHandler extends CommonClass implements Initializabl
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Platform.runLater(()->{
+        Platform.runLater(() -> {
             init();
-
             try {
                 weeklyInitTable();
             } catch (Exception e) {
-                Platform.runLater(() -> {
-                    Alerts.errorAlert(e.getMessage());
-                });
+                Platform.runLater(() -> Alerts.errorAlert(e.getMessage()));
             }
         });
         exportingService.setOnSucceeded(e -> {
@@ -124,9 +121,7 @@ public class ReportControllerHandler extends CommonClass implements Initializabl
         });
 
         service.setOnSucceeded(e -> {
-            System.out.println(reports);
             Image image = new Image(String.valueOf(url));
-
             imgViewSearch.setImage(image);
             searchBtn.setGraphic(getFirstImage("/com/example/gymmanagementsystem/style/icons/icons8-search-50.png"));
             try {

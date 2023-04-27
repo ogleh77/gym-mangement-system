@@ -4,7 +4,6 @@ package com.example.gymmanagementsystem.controllers.main;
 import com.example.gymmanagementsystem.controllers.info.OutDatedController;
 import com.example.gymmanagementsystem.dependencies.OpenWindow;
 import com.example.gymmanagementsystem.helpers.CommonClass;
-import com.example.gymmanagementsystem.simpleconrtollers.HomeController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

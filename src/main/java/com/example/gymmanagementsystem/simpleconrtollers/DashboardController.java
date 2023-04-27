@@ -3,8 +3,8 @@ package com.example.gymmanagementsystem.simpleconrtollers;
 import animatefx.animation.FadeIn;
 import com.example.gymmanagementsystem.controllers.info.OutDatedController;
 import com.example.gymmanagementsystem.controllers.info.WarningController;
+import com.example.gymmanagementsystem.controllers.main.HomeController;
 import com.example.gymmanagementsystem.controllers.users.UpdateUserController;
-import com.example.gymmanagementsystem.dao.service.UserService;
 import com.example.gymmanagementsystem.dependencies.Alerts;
 import com.example.gymmanagementsystem.dependencies.OpenWindow;
 import com.example.gymmanagementsystem.entities.main.Customers;
@@ -25,12 +25,10 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class DashbaordController extends CommonClass implements Initializable {
+public class DashboardController extends CommonClass implements Initializable {
     @FXML
     private HBox topPane;
     @FXML
@@ -64,49 +62,77 @@ public class DashbaordController extends CommonClass implements Initializable {
 
         });
     }
+
     @FXML
-    void homeHandler() throws IOException, SQLException {
-        FXMLLoader loader = OpenWindow.mainWindow("/com/example/gymmanagementsystem/newviews/main/home.fxml", borderPane);
-        System.out.println(borderPane);
-        HomeController controller = loader.getController();
-        controller.setActiveUser(UserService.users().get(0));
-        controller.setBorderPane(borderPane);
+    void homeHandler() {
+        try {
+            FXMLLoader loader = OpenWindow.mainWindow("/com/example/gymmanagementsystem/newviews/main/home.fxml", borderPane);
+            HomeController controller = loader.getController();
+            controller.setActiveUser(activeUser);
+            controller.setBorderPane(borderPane);
+        } catch (Exception e) {
+            Alerts.errorAlert(e.getMessage());
+        }
     }
 
     @FXML
-    void dashboardHandler() throws Exception {
-        OpenWindow.dashboardWindow(borderPane, menuHBox);
+    void dashboardHandler() {
+        try {
+            OpenWindow.dashboardWindow(borderPane, menuHBox);
+        } catch (Exception e) {
+            Alerts.errorAlert(e.getMessage());
+        }
     }
 
     @FXML
-    void registrationHandler() throws Exception {
-        OpenWindow.mainWindow("/com/example/gymmanagementsystem/newviews/main/registrations.fxml", borderPane);
+    void registrationHandler() {
+        try {
+            OpenWindow.mainWindow("/com/example/gymmanagementsystem/newviews/main/registrations.fxml", borderPane);
+        } catch (Exception e) {
+            Alerts.errorAlert(e.getMessage());
+        }
     }
 
     @FXML
-    void reportHandler() throws IOException {
-        OpenWindow.mainWindow("/com/example/gymmanagementsystem/newviews/info/dailyReports.fxml", borderPane);
+    void reportHandler() {
+        try {
+            OpenWindow.mainWindow("/com/example/gymmanagementsystem/newviews/info/dailyReports.fxml", borderPane);
+        } catch (Exception e) {
+            Alerts.errorAlert(e.getMessage());
+        }
     }
 
     @FXML
-    void updateMeHandler() throws IOException {
-        FXMLLoader loader = OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/users/user-update.fxml", menuHBox);
-        UpdateUserController controller = loader.getController();
-        controller.setActiveUser(activeUser);
-        controller.setStage(dashboardStage);
+    void updateMeHandler() {
+        try {
+            FXMLLoader loader = OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/users/user-update.fxml", menuHBox);
+            UpdateUserController controller = loader.getController();
+            controller.setActiveUser(activeUser);
+            controller.setStage(dashboardStage);
+        } catch (Exception e) {
+            Alerts.errorAlert(e.getMessage());
+        }
 
     }
 
     @FXML
-    void updateUserHandler() throws IOException {
-        OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/users/user-chooser.fxml", menuHBox);
+    void updateUserHandler() {
+        try {
+            OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/users/user-chooser.fxml", menuHBox);
+        } catch (Exception e) {
+            Alerts.errorAlert(e.getMessage());
+        }
     }
 
     @FXML
-    void outdatedHandler() throws IOException {
-        FXMLLoader loader = OpenWindow.mainWindow("/com/example/gymmanagementsystem/newviews/info/outdated.fxml", borderPane);
-        OutDatedController controller = loader.getController();
-        controller.setActiveUser(activeUser);
+    void outdatedHandler() {
+        try {
+            FXMLLoader loader = OpenWindow.mainWindow("/com/example/gymmanagementsystem/newviews/info/outdated.fxml", borderPane);
+            OutDatedController controller = loader.getController();
+            controller.setActiveUser(activeUser);
+        } catch (Exception e) {
+            Alerts.errorAlert(e.getMessage());
+        }
     }
 
     @FXML
@@ -115,7 +141,6 @@ public class DashbaordController extends CommonClass implements Initializable {
         if (data) {
             OpenWindow.closeStage(dashboardStage, activeProfile);
         }
-        System.out.println(data);
     }
 
     @FXML
@@ -124,20 +149,30 @@ public class DashbaordController extends CommonClass implements Initializable {
     }
 
     @FXML
-    void addUserHandler() throws IOException {
-        OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/users/user-creation.fxml", activeProfile);
+    void addUserHandler() {
+        try {
+            OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/users/user-creation.fxml", activeProfile);
+        } catch (Exception e) {
+            Alerts.errorAlert(e.getMessage());
+        }
     }
 
     @FXML
-    void backupHandler() throws IOException {
-        OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/service/backup.fxml", activeProfile);
-
+    void backupHandler() {
+        try {
+            OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/service/backup.fxml", activeProfile);
+        } catch (Exception e) {
+            Alerts.errorAlert(e.getMessage());
+        }
     }
 
     @FXML
-    void gymHandler() throws IOException {
-        OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/service/gym.fxml", activeProfile);
-
+    void gymHandler() {
+        try {
+            OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/service/gym.fxml", activeProfile);
+        } catch (Exception e) {
+            Alerts.errorAlert(e.getMessage());
+        }
     }
 
     @FXML

@@ -8,7 +8,7 @@ import com.example.gymmanagementsystem.entities.main.Customers;
 import com.example.gymmanagementsystem.entities.main.Payments;
 import com.example.gymmanagementsystem.entities.service.Users;
 import com.example.gymmanagementsystem.helpers.CommonClass;
-import com.example.gymmanagementsystem.simpleconrtollers.DashbaordController;
+import com.example.gymmanagementsystem.simpleconrtollers.DashboardController;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -121,7 +121,7 @@ public class SplashScreenController extends CommonClass implements Initializable
 
     private void openDashboard() throws IOException {
         FXMLLoader loader = OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/redash/redash.fxml", topPane);
-        DashbaordController controller = loader.getController();
+        DashboardController controller = loader.getController();
         controller.setWarningList(warningList);
         controller.setActiveUser(activeUser);
     }

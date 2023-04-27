@@ -1,10 +1,11 @@
 package com.example.gymmanagementsystem.controllers.main;
 
 import com.example.gymmanagementsystem.controllers.info.CustomerInfoController;
-import com.example.gymmanagementsystem.dao.Data;
 import com.example.gymmanagementsystem.dao.main.CustomerService;
 import com.example.gymmanagementsystem.dao.service.GymService;
 import com.example.gymmanagementsystem.dao.service.UserService;
+import com.example.gymmanagementsystem.dependencies.Alerts;
+import com.example.gymmanagementsystem.dependencies.OpenWindow;
 import com.example.gymmanagementsystem.entities.main.Customers;
 import com.example.gymmanagementsystem.entities.service.Gym;
 import com.example.gymmanagementsystem.entities.service.Users;
@@ -17,35 +18,32 @@ import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class HomeController extends CommonClass implements Initializable {
     @FXML
     private TableColumn<Customers, Integer> customerId;
-
     @FXML
     private TableColumn<Customers, String> fullName;
-
     @FXML
     private TableColumn<Customers, String> gander;
     @FXML
     private TableColumn<Customers, String> phone;
-
     @FXML
     private TableColumn<Customers, String> shift;
     @FXML
     private TableView<Customers> tableView;
-
     @FXML
     private TableColumn<Customers, String> address;
-
     @FXML
     private TableColumn<Customers, String> imagePath;
     @FXML
@@ -56,8 +54,6 @@ public class HomeController extends CommonClass implements Initializable {
     private TableColumn<Customers, String> weight;
     @FXML
     private TableColumn<Customers, String> waist;
-    private ObservableList<Customers> customersList;
-    private FilteredList<Customers> filteredList;
     @FXML
     private Label usersCount;
     @FXML
@@ -68,8 +64,9 @@ public class HomeController extends CommonClass implements Initializable {
     private Label edahab;
     private final int nextUserId;
     private final int nextCustomerId;
-
     private final Gym currentGym;
+    private ObservableList<Customers> customersList;
+    private FilteredList<Customers> filteredList;
 
     public HomeController() throws SQLException {
         nextUserId = (UserService.predictNextId() - 1);
@@ -90,87 +87,73 @@ public class HomeController extends CommonClass implements Initializable {
 
     }
 
-    public void paymentHandler() {
+    @FXML
+    void deleteHandler() {
         Customers customer = tableView.getSelectionModel().getSelectedItem();
-        try {
-            if (customer == null) {
-                throw new RuntimeException("No customer selected");
-            }
-            FXMLLoader loader = openNormalWindow("/com/example/gymmanagementsystem/newviews/main/payments.fxml", borderPane);
-            PaymentController controller = loader.getController();
-            controller.setCustomer(tableView.getSelectionModel().getSelectedItem());
-            controller.setBorderPane(borderPane);
-            controller.setActiveUser(activeUser);
-            controller.checkPayment(customer);
-        } catch (Exception e) {
-            e.printStackTrace();
-            errorMessage(e.getMessage());
-        }
-
-    }
-
-    public void fullInfoHandler() {
-        Customers customer = tableView.getSelectionModel().getSelectedItem();
-        try {
-            if (customer == null) {
-                throw new RuntimeException("No customer selected");
-            }
-            if (tableView.getSelectionModel().getSelectedItem() != null) {
-                FXMLLoader loader = openNormalWindow("/com/example/gymmanagementsystem/newviews/info/customer-info.fxml", borderPane);
-                CustomerInfoController controller = loader.getController();
-                controller.setCustomer(tableView.getSelectionModel().getSelectedItem());
-                controller.setBorderPane(borderPane);
-            }
-        } catch (Exception e) {
-            errorMessage(e.getMessage());
-        }
-
-    }
-
-    public void updateHandler() {
-        try {
-            Customers customer = tableView.getSelectionModel().getSelectedItem();
-            if (customer == null) {
-                throw new RuntimeException("No customer selected");
-            }
-            if (tableView.getSelectionModel().getSelectedItem() != null) {
-                FXMLLoader loader = openNormalWindow("/com/example/gymmanagementsystem/newviews/main/registrations.fxml", borderPane);
-                RegistrationController controller = loader.getController();
-                controller.setCustomer(tableView.getSelectionModel().getSelectedItem());
-                controller.setActiveUser(activeUser);
-                controller.setBorderPane(borderPane);
-            }
-        } catch (Exception e) {
-            errorMessage(e.getMessage());
-        }
-
-    }
-
-    public void deleteHandler() {
-        Customers customer = tableView.getSelectionModel().getSelectedItem();
-
         if (customer == null) {
-            throw new RuntimeException("No customer selected");
+            Alerts.notificationAlert("No member selected.");
+            return;
         }
-        try {
-            ButtonType haa = new ButtonType("Haa", ButtonBar.ButtonData.YES);
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Ma hubtaa inaad masaxdo macmiilkan "
-                    , haa, new ButtonType("Maya", ButtonBar.ButtonData.NO));
 
-            Optional<ButtonType> result = alert.showAndWait();
+        boolean done = Alerts.confirmationAlert("Ma hubtaa inaad masaxdo macmiilka "
+                + customer.getFirstName() + " " + customer.getMiddleName() + " " + customer.getLastName());
 
-            if (result.isPresent() && result.get().equals(haa)) {
-
+        if (done) {
+            try {
                 CustomerService.deleteCustomer(customer);
-                infoAlert("Customer has been deleted successfully.");
-
-            } else {
-                alert.close();
+            } catch (SQLException e) {
+                Alerts.errorAlert(e.getMessage());
             }
+        }
+    }
 
-
+    @FXML
+    void fullInfoHandler() {
+        try {
+            if (tableView.getSelectionModel().getSelectedItem() == null) {
+                Alerts.waningAlert("No member selected. ");
+                return;
+            }
+            FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/newviews/info/customer-info.fxml", borderPane);
+            CustomerInfoController controller = loader.getController();
+            controller.setBorderPane(borderPane);
+            controller.setCustomer(tableView.getSelectionModel().getSelectedItem());
         } catch (Exception e) {
-            errorMessage(e.getMessage());
+            Alerts.errorAlert(e.getMessage());
+        }
+
+    }
+
+    @FXML
+    void paymentHandler() {
+        try {
+            if (tableView.getSelectionModel().getSelectedItem() == null) {
+                Alerts.waningAlert("No member selected. ");
+                return;
+            }
+            FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/newviews/main/payments.fxml", borderPane);
+            PaymentController controller = loader.getController();
+            controller.setBorderPane(borderPane);
+            controller.setCustomer(tableView.getSelectionModel().getSelectedItem());
+            controller.checkPayment(tableView.getSelectionModel().getSelectedItem());
+        } catch (Exception e) {
+            Alerts.errorAlert(e.getMessage());
+        }
+    }
+
+    @FXML
+    void updateHandler() {
+        try {
+            if (tableView.getSelectionModel().getSelectedItem() == null)
+                Alerts.waningAlert("No member selected. ");
+            else {
+                FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/newviews/main/registrations.fxml", borderPane);
+                RegistrationController controller = loader.getController();
+                controller.setBorderPane(borderPane);
+                controller.setCustomer(tableView.getSelectionModel().getSelectedItem());
+            }
+        } catch (Exception e) {
+            Alerts.errorAlert(e.getMessage());
         }
     }
 
@@ -182,11 +165,14 @@ public class HomeController extends CommonClass implements Initializable {
 
     @Override
     public void setActiveUser(Users activeUser) {
-        super.setActiveUser(activeUser);
-        customersList = Data.getAllCustomersList();
+        try {
+            super.setActiveUser(activeUser);
+            customersList = CustomerService.fetchAllCustomer(UserService.users().get(0));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    //------------------------Helper methods-------------------
     private void initTable() {
         customerId.setCellValueFactory(new PropertyValueFactory<>("customerId"));
         fullName.setCellValueFactory(customers -> new SimpleStringProperty(customers.getValue().firstNameProperty().get() + "   " + customers.getValue().getMiddleName() + "   " + customers.getValue().getLastName()));

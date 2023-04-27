@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderPane" prefHeight="802.0" prefWidth="1403.0" styleClass="dash-pane" stylesheets="@../style/css/dashboard-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.simpleconrtollers.DashbaordController">
+<BorderPane fx:id="borderPane" prefHeight="802.0" prefWidth="1403.0" styleClass="dash-pane" stylesheets="@../style/css/dashboard-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.simpleconrtollers.DashboardController">
     <top>
         <HBox fx:id="topPane" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="top-pane" BorderPane.alignment="CENTER">
             <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="413.0" spacing="10.0">

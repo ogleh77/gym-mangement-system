@@ -137,7 +137,7 @@
             <Font name="Tahoma Bold" size="16.0" />
         </font>
     </Label>
-    <TableView fx:id="tableView" layoutX="50.0" layoutY="513.0" prefHeight="200.0" prefWidth="1066.0" stylesheets="@../../style/css/home-table.css" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+    <TableView fx:id="tableView" layoutX="64.0" layoutY="513.0" prefHeight="200.0" prefWidth="1083.0" stylesheets="@../../style/css/home-table.css" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="53.0">
         <columns>
             <TableColumn fx:id="paymentDate" prefWidth="118.0" text="payment date" />
             <TableColumn fx:id="expDate" prefWidth="87.0" text="exp date" />
@@ -150,7 +150,7 @@
             <TableColumn fx:id="vipBox" prefWidth="70.0" text="vip box" />
             <TableColumn fx:id="running" prefWidth="74.0" text="online" />
             <TableColumn fx:id="pend" prefWidth="87.0" text="pending" />
-            <TableColumn fx:id="daysRemind" prefWidth="169.0" text="days left" />
+            <TableColumn fx:id="daysRemind" prefWidth="159.0" text="days left" />
         </columns>
     </TableView>
     <Label layoutX="563.0" layoutY="256.0" text="hips" textFill="#afd6e3">

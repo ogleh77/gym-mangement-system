@@ -205,7 +205,7 @@ public class CustomerInfoController extends CommonClass implements Initializable
         }
     }
 
-    //----------------------Helper methods----------------
+    //-------------------------Helper methods----------------------------
     private void checkPayment(Payments payment) throws SQLException {
         if (payment.isPending()) {
             unPayment(payment);

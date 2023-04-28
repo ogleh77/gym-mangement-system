@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/gymmanagementsystem/newviews/service/gym.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/gymmanagementsystem/newviews/service/backup.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 //        UserChooserController controller = fxmlLoader.getController();
 //        controller.tempActiveUser(UserService.users().get(0));
@@ -57,6 +57,10 @@ public class HelloApplication extends Application {
         // TODO: 25/04/2023 Tables ka fontkiisa bedel insha Allah
 
         // TODO: 27/04/2023 CHeck image upload remender
+
+        // TODO: 27/04/2023 Backub insha Allah 
+
+        // TODO: 28/04/2023 phone trigger
         stage.setScene(scene);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.show();

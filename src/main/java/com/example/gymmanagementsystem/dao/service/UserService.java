@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class UserService {
     private static int nextID = 0;
     private static final UserModel userModel;
-    private static ObservableList<Users> users = null;
+    //private static ObservableList<Users> users = null;
 
     static {
         userModel = new UserModel();
@@ -57,11 +57,11 @@ public class UserService {
     }
 
     public static ObservableList<Users> users() throws SQLException {
-        if (users == null) {
-            users = userModel.fetch();
-            users.add(new Users(0, "Mohamed", "Saeed", "4476619", "Male",
-                    "Morning", "Ogleh", "4000", null, "super_admin"));
-        }
+
+        ObservableList<Users> users = userModel.fetch();
+        users.add(new Users(0, "Mohamed", "Saeed", "4476619", "Male",
+                "Morning", "Ogleh", "4000", null, "super_admin"));
+
 
         return users;
     }

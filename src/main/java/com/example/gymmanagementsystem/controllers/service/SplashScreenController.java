@@ -8,6 +8,7 @@ import com.example.gymmanagementsystem.entities.main.Customers;
 import com.example.gymmanagementsystem.entities.main.Payments;
 import com.example.gymmanagementsystem.entities.service.Users;
 import com.example.gymmanagementsystem.helpers.CommonClass;
+import com.example.gymmanagementsystem.models.main.PaymentModel;
 import com.example.gymmanagementsystem.simpleconrtollers.DashboardController;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -56,7 +57,8 @@ public class SplashScreenController extends CommonClass implements Initializable
         });
         FetchOnlineCustomersByGander.setOnSucceeded(e -> {
             try {
-                closeStage(stage, loadingImage.getParent());
+//                closeStage(stage, loadingImage.getParent());
+                stage.close();
                 openDashboard();
             } catch (IOException ex) {
                 Alerts.errorAlert(ex.getMessage());
@@ -71,21 +73,21 @@ public class SplashScreenController extends CommonClass implements Initializable
         @Override
         protected Void call() {
             try {
-                ObservableList<Customers> offlineCustomers = CustomerService.fetchAllOnlineCustomer(activeUser);
+                ObservableList<Customers> onlineCustomer = CustomerService.fetchAllOnlineCustomer(activeUser);
                 int i = 0;
                 int sleepTime = 100;
 
-                for (Customers customer : offlineCustomers) {
+                for (Customers customer : onlineCustomer) {
                     i++;
                     updateMessage("checking for updates .. ");
-                    updateProgress(i, offlineCustomers.size());
+                    updateProgress(i, onlineCustomer.size());
                     for (Payments payment : customer.getPayments()) {
                         LocalDate expDate = payment.getExpDate();
                         if (now.plusDays(2).isEqual(expDate) || now.plusDays(1).isEqual(expDate) || now.isEqual(expDate)) {
                             warningList.add(customer);
                         } else if (now.isAfter(payment.getExpDate())) {
                             // TODO: 17/04/2023 set the payment off
-                            //PaymentModel.offPayment(payment);
+                            PaymentModel.offPayment(payment);
                         }
                     }
                     Thread.sleep(sleepTime);

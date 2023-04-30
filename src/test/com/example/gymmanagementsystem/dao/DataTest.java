@@ -36,7 +36,7 @@ class DataTest {
 
     @Test
     void dataTest2() throws SQLException {
-        System.out.println(BackupService.backupPaths());
+        //System.out.println(BackupService.backupPaths());
 
     }
 }

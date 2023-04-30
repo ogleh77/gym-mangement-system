@@ -2,6 +2,7 @@ package com.example.gymmanagementsystem.controllers.service;
 
 import com.example.gymmanagementsystem.dao.service.BackupService;
 import com.example.gymmanagementsystem.dependencies.Alerts;
+import com.example.gymmanagementsystem.dependencies.OpenWindow;
 import com.example.gymmanagementsystem.entities.service.Users;
 import com.example.gymmanagementsystem.helpers.CommonClass;
 import com.jfoenix.controls.JFXButton;
@@ -22,9 +23,6 @@ public class BackupController extends CommonClass implements Initializable {
     private JFXButton backupBtn;
     @FXML
     private ListView<String> listView;
-
-    @FXML
-    private JFXButton pathBtn;
     @FXML
     private JFXButton restoreBtn;
     @FXML
@@ -46,7 +44,7 @@ public class BackupController extends CommonClass implements Initializable {
 
     @FXML
     void cancelHandler() {
-        closeStage(stage, listView.getParent());
+        OpenWindow.closeStage(stage, listView.getParent());
     }
 
     @FXML
@@ -54,7 +52,7 @@ public class BackupController extends CommonClass implements Initializable {
         String location = listView.getSelectionModel().getSelectedItem();
         try {
             if (listView.getSelectionModel().getSelectedItem() == null) {
-                throw new RuntimeException("Fadlan marka hore dooro location-ka backup kagu kugu kaydsanaa"
+                throw new RuntimeException("Fadlan marka hore dooro location-ka database.db kagu kugu kaydsanaa"
                         + " Kana dooro liiska sare");
             }
 
@@ -81,7 +79,7 @@ public class BackupController extends CommonClass implements Initializable {
         String location = listView.getSelectionModel().getSelectedItem();
         try {
             if (location == null) {
-                throw new RuntimeException("Fadlan marka hore dooro location-ka backup kagu kugu kaydsan yahay"
+                throw new RuntimeException("Fadlan marka hore dooro location-ka database.db kagu kugu kaydsan yahay"
                         + " Kana dooro liiska sare");
             }
             BackupService.restore(location);

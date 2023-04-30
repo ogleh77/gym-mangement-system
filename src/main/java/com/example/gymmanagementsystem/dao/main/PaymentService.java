@@ -29,7 +29,7 @@ public class PaymentService {
         try {
             paymentModel.update(payment);
         } catch (SQLException e) {
-            throw new SQLException("(Form SQL update payment) " + e.getMessage());
+            throw new SQLException(e.getMessage());
         }
 
     }
@@ -38,7 +38,7 @@ public class PaymentService {
         try {
             paymentModel.deletePayment(payment);
         } catch (SQLException e) {
-            throw new SQLException("(From SQL delete payment) " + e.getMessage());
+            throw new SQLException(e.getMessage());
         }
 
     }
@@ -57,7 +57,7 @@ public class PaymentService {
             }
             paymentModel.holdPayment(payment, daysRemind);
         } catch (SQLException e) {
-            throw new SQLException("(From SQL payment pending) " + e.getMessage());
+            throw new SQLException(e.getMessage());
         }
     }
 
@@ -65,7 +65,7 @@ public class PaymentService {
         try {
             paymentModel.unHold(payment);
         } catch (SQLException e) {
-            throw new SQLException("(From SQL un pending payment) " + e.getMessage());
+            throw new SQLException(e.getMessage());
         }
     }
 

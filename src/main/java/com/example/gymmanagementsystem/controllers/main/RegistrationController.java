@@ -116,7 +116,7 @@ public class RegistrationController extends CommonClass implements Initializable
     @FXML
     void saveHandler() {
         if (isValid(getMandatoryFields(), genderGroup) && (phone.getText().length() == 7 || phone.getText().length() == 10)) {
-            if (!currentGym.isImageUpload() && !imageUploaded) {
+            if (currentGym.isImageUpload() && !imageUploaded) {
                 checkImage(imgView, "Fadlan sawirku wuu kaa cawinayaa inaad wejiga \n" + "macmiilka ka dhex garan kartid macamisha kle 😊");
                 return;
             }

@@ -95,7 +95,7 @@ public class LoginController extends CommonClass implements Initializable {
                     Thread.sleep(1000);
 
                     Platform.runLater(() -> {
-                        closeStage();
+                        currentStage.close();
                         try {
                             openSplash();
                         } catch (IOException ex) {

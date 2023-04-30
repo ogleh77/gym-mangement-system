@@ -31,7 +31,6 @@ public class PaymentModel {
                 ps.setInt(6, payment.getBox().getBoxId());
                 BoxService.updateBox(payment.getBox());
             }
-
             ps.setString(7, customerPhone);
             ps.setString(8, payment.getMonth());
             ps.executeUpdate();
@@ -232,7 +231,6 @@ public class PaymentModel {
     //---------------------------------Helpers-----------------------------
 
     private static void makeReport(Payments payment, String customerGender) throws SQLException {
-
         Statement st = connection.createStatement();
         if (customerGender.equals("Male") && payment.getBox() != null) {
             DailyReportModel.dailyReportMaleWithBox(st);

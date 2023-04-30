@@ -24,7 +24,6 @@ public class BoxService {
     public static void updateBox(Box box) throws SQLException {
         boxModel.update(box);
         box.setReady(!box.isReady());
-
     }
 
     public static void deleteBox(Box box) throws SQLException {

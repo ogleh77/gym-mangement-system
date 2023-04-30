@@ -31,7 +31,7 @@ public class BackupService {
         if (lastBackup == null) {
             lastBackup = backupModel.lastBackupTime();
         }
-        return lastBackup == null ? " No backup yet " : lastBackup;
+        return lastBackup == null ? " No database.db yet " : lastBackup;
     }
 
     public static String lastBackupPath() throws SQLException {

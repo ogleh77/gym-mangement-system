@@ -17,12 +17,15 @@ public class UserModel {
     }
 
     public void update(Users users) throws SQLException {
+        System.out.println("Updating\n "+users);
         String updateUser = "UPDATE users SET first_name=?,last_name=?,phone=?,gender=?,shift=?,username=?,password=?,image=?,role=? \n" +
                 "WHERE user_id=" + users.getUserId();
         insertOrUpdateUser(users, updateUser);
     }
 
     public void delete(Users users) throws SQLException {
+        System.out.println("delete\n "+users);
+
         connection.setAutoCommit(false);
         try {
             String deleteUser = "DELETE FROM users " +

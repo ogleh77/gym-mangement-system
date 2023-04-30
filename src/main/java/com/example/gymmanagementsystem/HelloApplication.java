@@ -16,11 +16,11 @@ import java.sql.SQLException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/gymmanagementsystem/redash/redash.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/gymmanagementsystem/newviews/service/login.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        DashboardController controller = fxmlLoader.getController();
-        controller.setWarningList( CustomerService.fetchAllCustomer(UserService.users().get(0)));
-        controller.setActiveUser(UserService.users().get(0));
+//        DashboardController controller = fxmlLoader.getController();
+//        controller.setWarningList( CustomerService.fetchAllCustomer(UserService.users().get(0)));
+//        controller.setActiveUser(UserService.users().get(0));
 
         //
 //

@@ -38,7 +38,7 @@ public class BackupModel {
 
 
     public void restore(String path) throws SQLException {
-        String query = "RESTORE FROM " + path;
+        String query = "restore from " + path;
         Statement statement = connection.createStatement();
         statement.executeUpdate(query);
         statement.close();

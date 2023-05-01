@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="550.0" prefWidth="483.0" style="-fx-background-color: #fafafa;" stylesheets="@../../style/css/small-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.service.GymController">
+<AnchorPane fx:id="gymPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="550.0" prefWidth="483.0" style="-fx-background-color: #fafafa;" stylesheets="@../../style/css/small-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.GymController">
     <effect>
         <DropShadow height="56.58" radius="23.3425" width="38.79" />
     </effect>
@@ -31,14 +31,14 @@
                 </font>
             </Label>
         </HBox>
-         <HBox alignment="CENTER" onMouseClicked="#cancelHandler" prefHeight="36.0" prefWidth="43.0" styleClass="cancel-pane">
-             <HBox.margin>
-                 <Insets left="20.0" />
-             </HBox.margin>
-             <ImageView fitHeight="20.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                 <Image url="@../../style/icons/icons8-close-30.png" />
-             </ImageView>
-         </HBox>
+        <HBox alignment="CENTER" onMouseClicked="#cancelHandler" prefHeight="36.0" prefWidth="43.0" styleClass="cancel-pane">
+            <HBox.margin>
+                <Insets left="20.0" />
+            </HBox.margin>
+            <ImageView fitHeight="20.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@../../style/icons/icons8-close-30.png" />
+            </ImageView>
+        </HBox>
     </HBox>
     <TextField fx:id="gymName" layoutX="25.0" layoutY="90.0" prefHeight="30.0" prefWidth="194.0" promptText="e.g togdheer gym" />
     <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="364.0" layoutY="364.0" onAction="#createBoxHandler" prefHeight="36.0" prefWidth="51.0" styleClass="add-icon-only-btn" stylesheets="@../../style/css/button-style.css" text="+" textFill="#0775266b">
@@ -63,22 +63,23 @@
     </JFXButton>
     <TextField fx:id="maxDiscount" layoutX="27.0" layoutY="154.0" prefHeight="30.0" prefWidth="194.0" promptText="e.g $1" />
     <TextField fx:id="addBox" layoutX="240.0" layoutY="364.0" prefHeight="36.0" prefWidth="120.0" promptText="Magaca khanada (box name)" />
-    <JFXButton fx:id="updateBtn" buttonType="RAISED" layoutX="30.0" layoutY="419.0" onAction="#updateHandler" prefHeight="42.0" prefWidth="172.0" styleClass="btn-normal" stylesheets="@../../style/css/button-style.css" text="Wax ka bedel(Update)">
+    <JFXButton fx:id="updateBtn" buttonType="RAISED" layoutX="30.0" layoutY="405.0" onAction="#updateHandler" prefHeight="42.0" prefWidth="172.0" styleClass="btn-normal" stylesheets="@../../style/css/button-style.css" text="Wax ka bedel(Update)">
         <graphic>
             <ImageView fitHeight="59.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                 <Image url="@../../style/icons/icons8-available-updates-24.png" />
             </ImageView>
         </graphic>
     </JFXButton>
-    <Label alignment="CENTER" layoutX="32.0" layoutY="477.0" prefHeight="19.0" prefWidth="228.0" styleClass="label-background" text="Halkan ka bedel ">
+    <Label alignment="CENTER" layoutX="30.0" layoutY="467.0" prefHeight="19.0" prefWidth="228.0" styleClass="label-background" text="Halkan ka bedel ">
         <font>
             <Font name="Arial Bold" size="14.0" />
         </font>
     </Label>
-    <Label layoutX="39.0" layoutY="499.0" text="shayga aad donayso inad wax ku darto ama wax ka bedesho" textFill="#879194">
-      <font>
-         <Font name="Verdana" size="14.0" />
-      </font></Label>
+    <Label layoutX="37.0" layoutY="489.0" text="shayga aad donayso inad wax ku darto ama wax ka bedesho" textFill="#879194">
+        <font>
+            <Font name="Verdana" size="14.0" />
+        </font>
+    </Label>
     <Label layoutX="26.0" layoutY="68.0" prefHeight="16.0" prefWidth="120.0" text="Magaca Gym-ka" textFill="#46749f">
         <font>
             <Font name="Helvetica" size="14.0" />
@@ -118,9 +119,7 @@
             <Font name="Verdana" size="13.0" />
         </font>
     </JFXCheckBox>
-   <ImageView fitHeight="73.0" fitWidth="81.0" layoutX="325.0" layoutY="414.0" pickOnBounds="true" preserveRatio="true">
-      <image>
-         <Image url="@../../style/icons/man-profile.jpeg" />
-      </image>
-   </ImageView>
+    <ImageView fitHeight="61.0" fitWidth="63.0" layoutX="325.0" layoutY="426.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../../style/icons/balck.png" />
+    </ImageView>
 </AnchorPane>

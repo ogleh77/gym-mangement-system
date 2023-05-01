@@ -1,9 +1,5 @@
 package com.example.gymmanagementsystem;
 
-
-import com.example.gymmanagementsystem.dao.main.CustomerService;
-import com.example.gymmanagementsystem.dao.service.UserService;
-import com.example.gymmanagementsystem.simpleconrtollers.DashboardController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,7 +12,7 @@ import java.sql.SQLException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/gymmanagementsystem/newviews/service/login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/home/home.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 //        DashboardController controller = fxmlLoader.getController();
 //        controller.setWarningList( CustomerService.fetchAllCustomer(UserService.users().get(0)));
@@ -68,7 +64,6 @@ public class HelloApplication extends Application {
 
         // TODO: 28/04/2023 phone trigger
         stage.setScene(scene);
-        stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
 
     }

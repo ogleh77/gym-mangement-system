@@ -6,20 +6,15 @@ module com.example.gymmanagementsystem {
     requires AnimateFX;
     requires org.apache.poi.poi;
     requires org.apache.poi.ooxml;
+    requires org.xerial.sqlitejdbc;
 
     opens com.example.gymmanagementsystem to javafx.fxml;
-    opens com.example.gymmanagementsystem.controllers.main to javafx.fxml;
-    opens com.example.gymmanagementsystem.controllers.info to javafx.fxml;
-    opens com.example.gymmanagementsystem.controllers.users to javafx.fxml;
-    opens com.example.gymmanagementsystem.simpleconrtollers to javafx.fxml;
+    opens com.example.gymmanagementsystem.temcont to javafx.fxml;
 
     exports com.example.gymmanagementsystem;
 
-    exports com.example.gymmanagementsystem.entities.main;
-    exports com.example.gymmanagementsystem.entities.service;
-    opens com.example.gymmanagementsystem.dao to javafx.fxml;
-    exports com.example.gymmanagementsystem.controllers.service;
-    opens com.example.gymmanagementsystem.controllers.service to javafx.fxml;
-    exports com.example.gymmanagementsystem.controllers.info;
+    exports com.example.gymmanagementsystem.data.entities.main;
+    exports com.example.gymmanagementsystem.data.entities.service;
+
 
 }

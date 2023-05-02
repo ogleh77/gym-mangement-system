@@ -1,4 +1,4 @@
-package com.example.gymmanagementsystem.controllers.info;
+package com.example.gymmanagementsystem.controllers.informations;
 
 import com.example.gymmanagementsystem.controllers.main.PaymentController;
 import com.example.gymmanagementsystem.dao.main.PaymentService;

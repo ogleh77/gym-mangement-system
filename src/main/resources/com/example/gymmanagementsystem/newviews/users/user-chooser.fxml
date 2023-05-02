@@ -9,7 +9,7 @@
 <AnchorPane fx:id="chooserPane" prefHeight="389.0" prefWidth="479.0" styleClass="small-pane"
             stylesheets="@../../style/css/small-style.css" xmlns="http://javafx.com/javafx/18"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.gymmanagementsystem.controllers.UserChooserController">
+            fx:controller="com.example.gymmanagementsystem.controllers.users.UserChooserController">
     <ListView fx:id="listView" layoutX="32.0" layoutY="85.0" prefHeight="193.0" prefWidth="308.0"/>
     <Label layoutX="32.0" layoutY="298.0" styleClass="label-background" stylesheets="@../../style/css/message.css"
            text="Dooro user ka aad donayso inad update garayso ama masaxdo">

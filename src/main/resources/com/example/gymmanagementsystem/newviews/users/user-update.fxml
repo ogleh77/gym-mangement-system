@@ -16,7 +16,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="updatePane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="545.0" prefWidth="483.0" stylesheets="@../../style/css/small-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.UserUpdateController">
+<AnchorPane fx:id="updatePane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="545.0" prefWidth="483.0" stylesheets="@../../style/css/small-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.users.UserUpdateController">
     <effect>
         <DropShadow height="38.79" radius="23.3425" width="56.58" />
     </effect>

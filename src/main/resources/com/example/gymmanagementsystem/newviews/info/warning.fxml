@@ -12,8 +12,8 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="541.0" prefWidth="594.0" stylesheets="@../../style/css/small-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.info.WarningController">
-    <HBox alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="596.0" spacing="180.0" styleClass="top-pane">
+<AnchorPane fx:id="warningPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="541.0" prefWidth="594.0" stylesheets="@../../style/css/small-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.informations.WarningController">
+    <HBox fx:id="topPane" alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="596.0" spacing="180.0" styleClass="top-pane">
         <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="342.0">
             <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                 <HBox.margin>
@@ -43,7 +43,7 @@
             </padding>
         </VBox>
     </ScrollPane>
-    <Label alignment="CENTER" layoutX="11.0" layoutY="54.0" text="Halkan waxad ka ogaan kartaa 3 casho ka hor inta macamiilka wakhtigu ka dhicin" textFill="#879194" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+    <Label alignment="CENTER" layoutX="11.0" layoutY="54.0" prefHeight="15.0" prefWidth="512.0" text="Halkan waxad ka ogaan kartaa 3 casho ka hor inta macamiilka wakhtigu ka dhicin" textFill="#879194" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="84.0">
         <font>
             <Font name="Tahoma Bold" size="12.0" />
         </font>

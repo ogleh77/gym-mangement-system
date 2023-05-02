@@ -1,4 +1,4 @@
-package com.example.gymmanagementsystem.controllers;
+package com.example.gymmanagementsystem.controllers.service;
 
 import com.example.gymmanagementsystem.data.dto.BackupService;
 import com.example.gymmanagementsystem.data.entities.service.Users;

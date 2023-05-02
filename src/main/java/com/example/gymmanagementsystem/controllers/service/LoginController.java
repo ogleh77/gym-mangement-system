@@ -1,5 +1,6 @@
-package com.example.gymmanagementsystem.controllers;
+package com.example.gymmanagementsystem.controllers.service;
 
+import com.example.gymmanagementsystem.controllers.SplashScreenController;
 import com.example.gymmanagementsystem.data.dto.GymService;
 import com.example.gymmanagementsystem.data.dto.UserService;
 import com.example.gymmanagementsystem.data.entities.service.Gym;

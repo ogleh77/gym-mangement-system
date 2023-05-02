@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="backupPane" prefHeight="319.0" prefWidth="491.0" styleClass="small-pane" stylesheets="@../../style/css/small-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.BackupController">
+<AnchorPane fx:id="backupPane" prefHeight="319.0" prefWidth="491.0" styleClass="small-pane" stylesheets="@../../style/css/small-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.service.BackupController">
     <HBox fx:id="topPane" alignment="CENTER" prefHeight="37.0" prefWidth="596.0" spacing="360.0" styleClass="top-pane">
         <HBox alignment="CENTER">
             <HBox alignment="CENTER" prefHeight="37.0" prefWidth="41.0">

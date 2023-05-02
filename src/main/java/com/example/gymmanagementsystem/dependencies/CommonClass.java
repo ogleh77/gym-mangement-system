@@ -139,7 +139,7 @@ public abstract class CommonClass {
     }
 
     public void checkImage(ImageView imageView, String title) {
-        boolean done = Alerts.confirmationAlert("Sawir kii maad ilowdey", "Haa", "May! Ogan baa u dhafay");
+        boolean done = Alerts.confirmationAlert(title, "Iska dhaaf", "Hada soo qaad");
         if (done) uploadImage(imageView);
         else imageUploaded = true;
     }

@@ -30,7 +30,7 @@ public class Alerts {
     }
 
 
-    public static boolean confirmationAlert(String message, String okBtnTitle, String cancelBtnTitle) {
+    public static boolean confirmationAlert(String message, String cancelBtnTitle, String okBtnTitle) {
         ButtonType ok = new ButtonType(okBtnTitle);
         ButtonType no = new ButtonType(cancelBtnTitle);
         Optional<ButtonType> result;

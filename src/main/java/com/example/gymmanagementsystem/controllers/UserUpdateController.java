@@ -97,6 +97,9 @@ public class UserUpdateController extends CommonClass implements Initializable {
         Platform.runLater(() -> {
             initFields();
             stage = (Stage) topPane.getScene().getWindow();
+            OpenWindow.stageDropped(stage, topPane);
+            OpenWindow.stageDrag(stage, topPane);
+            OpenWindow.stageEnterKeyFire(updateBtn, stage);
         });
 
         service.setOnSucceeded(e -> {
@@ -152,17 +155,16 @@ public class UserUpdateController extends CommonClass implements Initializable {
                 @Override
                 protected Void call() {
                     try {
-                        if (users().getUsername().equalsIgnoreCase("ogleh")) {
+                        if (users().getUsername().equalsIgnoreCase("ogleh"))
                             throw new RuntimeException("Username ka " + users().getUsername() + " horaa loo isticmalay");
-                        }
-                        if (users().getPassword().length() < 4) {
+
+                        if (users().getPassword().length() < 4)
                             throw new RuntimeException("Fadlan password ku kama yaraan karo 4 xaraf ama lanbar");
-                        }
+                        
                         UserService.updateUser(users());
                         Platform.runLater(() -> {
                             if (itsMe) {
-                                boolean done = Alerts.singleConfirmationAlert("Account-kaga wa la update gareyay si aad u aragto is bedelka profile kaga" +
-                                        " fadlan taabo logout dib-na usoo gal.", "Logout");
+                                boolean done = Alerts.singleConfirmationAlert("Account-kaga wa la update gareyay si aad u aragto is bedelka profile kaga" + " fadlan taabo logout dib-na usoo gal.", "Logout");
                                 if (done) {
                                     openLogin();
                                 }
@@ -230,10 +232,7 @@ public class UserUpdateController extends CommonClass implements Initializable {
     private Users users() {
         String gander = male.isSelected() ? "Male" : "Female";
         String role = this.admin.isSelected() ? "admin" : "user";
-        users = new Users(Integer.parseInt(idFeild.getText()), firstname.getText().trim(), lastname.getText().trim(), phone.getText().trim(), gander,
-                shift.getValue(), username.getText().trim(), password.getText().trim(),
-                selectedFile == null ? users.getImage() : readFile(selectedFile.getAbsolutePath()), role
-        );
+        users = new Users(Integer.parseInt(idFeild.getText()), firstname.getText().trim(), lastname.getText().trim(), phone.getText().trim(), gander, shift.getValue(), username.getText().trim(), password.getText().trim(), selectedFile == null ? users.getImage() : readFile(selectedFile.getAbsolutePath()), role);
 
         imageUploaded = true;
         return users;

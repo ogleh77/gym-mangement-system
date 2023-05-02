@@ -24,10 +24,9 @@ public class UserModel {
 
     public void delete(int userID) throws SQLException {
         connection.setAutoCommit(false);
-        try {
+        try (Statement statement = connection.createStatement()) {
             String deleteUser = "DELETE FROM users " +
                     "WHERE user_id=" + userID;
-            Statement statement = connection.createStatement();
             statement.execute(deleteUser);
             connection.commit();
         } catch (SQLException e) {
@@ -59,8 +58,7 @@ public class UserModel {
     //---------------Helpers--------------––
     private void insertOrUpdateUser(Users users, String updateUser) throws SQLException {
         connection.setAutoCommit(false);
-        try {
-            PreparedStatement ps = connection.prepareStatement(updateUser);
+        try (PreparedStatement ps = connection.prepareStatement(updateUser)) {
             ps.setString(1, users.getFirstName());
             ps.setString(2, users.getLastName());
             ps.setString(3, users.getPhone());
@@ -82,13 +80,13 @@ public class UserModel {
 
     public int nextIDPrediction() throws SQLException {
         Statement statement = connection.createStatement();
-
         ResultSet rs = statement.executeQuery("SELECT * FROM SQLITE_SEQUENCE WHERE name = 'users';");
         if (rs.next()) {
             return rs.getInt("seq");
         }
+        statement.close();
+        rs.close();
         return 0;
     }
-
 
 }

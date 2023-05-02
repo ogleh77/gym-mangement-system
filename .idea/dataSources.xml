@@ -8,11 +8,11 @@
       <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/src/database/database.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="mybackup" uuid="27550223-6b72-4633-87ab-5a7751bc1c80">
+    <data-source source="LOCAL" name="ddd" uuid="81c3abd1-7a1c-41eb-b2cd-5039b77083e3">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/../mybackup</jdbc-url>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/../ddd</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

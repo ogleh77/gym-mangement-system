@@ -33,22 +33,18 @@
             <Label fx:id="gymTitle" prefHeight="29.0" prefWidth="246.0" styleClass="top-label" text="Togdheer gym center" textFill="#c6d0cd" />
         </HBox>
         <HBox prefHeight="36.0" prefWidth="132.0">
-            <children>
-                <HBox alignment="CENTER" onMouseClicked="#minimizeHandler" prefHeight="38.0" prefWidth="47.0" styleClass="top-menu-hover" stylesheets="@../../style/css/dashboard-style.css">
-                    <ImageView fitHeight="25.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@../../style/icons/icons8-collapse-30.png" />
-                    </ImageView>
-                </HBox>
-                <HBox alignment="CENTER" onMouseClicked="#exitHandler" prefHeight="38.0" prefWidth="47.0" styleClass="cancel-pane">
-                    <children>
-                        <ImageView fitHeight="25.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../../style/icons/icons8-close-30.png" />
-                            </image>
-                        </ImageView>
-                    </children>
-                </HBox>
-            </children>
+            <HBox alignment="CENTER" onMouseClicked="#minimizeHandler" prefHeight="38.0" prefWidth="47.0"
+                  styleClass="top-menu-hover" stylesheets="@../../style/css/dashboard-style.css">
+                <ImageView fitHeight="25.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../../style/icons/icons8-collapse-30.png"/>
+                </ImageView>
+            </HBox>
+            <HBox alignment="CENTER" onMouseClicked="#exitHandler" prefHeight="38.0" prefWidth="47.0"
+                  styleClass="cancel-pane">
+                <ImageView fitHeight="25.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../../style/icons/icons8-close-30.png"/>
+                </ImageView>
+            </HBox>
         </HBox>
     </HBox>
     <ImageView fitHeight="25.0" fitWidth="32.0" layoutX="256.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
@@ -64,11 +60,9 @@
             <Font name="Arial" size="7.0" />
         </font>
       <graphic>
-         <ImageView fitHeight="25.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@../../style/icons/icons8-login-50.png" />
-            </image>
-         </ImageView>
+          <ImageView fitHeight="25.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+              <Image url="@../../style/icons/icons8-login-50.png"/>
+          </ImageView>
       </graphic>
     </JFXButton>
     <Label alignment="CENTER" layoutX="62.0" layoutY="351.0" prefHeight="24.0" prefWidth="228.0" styleClass="label-background" text="Formka Gelista" textFill="#3e6157">

@@ -13,6 +13,7 @@ import javafx.collections.ObservableList;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -82,6 +83,7 @@ public class LoginController extends CommonClass implements Initializable {
                             openSplash();
                         } catch (IOException ex) {
                             Alerts.errorAlert(ex.getMessage());
+                            ex.printStackTrace();
                         }
                     });
                     return null;
@@ -114,10 +116,9 @@ public class LoginController extends CommonClass implements Initializable {
 
 
     private void openSplash() throws IOException {
-        System.out.println("Splash");
-//        FXMLLoader loader = OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/service/splash-screen.fxml", topPane);
-//        SplashScreenController controller = loader.getController();
-//        controller.setActiveUser(userCombo.getValue());
+        FXMLLoader loader = OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/service/splash-screen.fxml", topPane);
+        SplashScreenController controller = loader.getController();
+        controller.setActiveUser(userCombo.getValue());
     }
 
 }

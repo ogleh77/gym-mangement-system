@@ -11,10 +11,9 @@ public class GymModel {
 
     public void update(Gym gym) throws SQLException {
         connection.setAutoCommit(false);
-        try {
-            String updateQuery = "UPDATE gym SET gym_name=? ,pending_date=?,max_discount=?,zaad_merchant=?," +
-                    "edahab_merchant=? ,image_checker=? WHERE gym_id=" + gym.getGymId();
-            PreparedStatement ps = connection.prepareStatement(updateQuery);
+        String updateQuery = "UPDATE gym SET gym_name=? ,pending_date=?,max_discount=?,zaad_merchant=?," +
+                "edahab_merchant=? ,image_checker=? WHERE gym_id=" + gym.getGymId();
+        try (PreparedStatement ps = connection.prepareStatement(updateQuery)) {
             ps.setString(1, gym.getGymName());
             ps.setInt(2, gym.getPendingDate());
             ps.setDouble(3, gym.getMaxDiscount());

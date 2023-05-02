@@ -15,10 +15,9 @@ public class BoxModel {
 
     public void insert(Box box) throws SQLException {
         connection.setAutoCommit(false);
-        try {
+        try (Statement statement = connection.createStatement()) {
             String insertBox = " INSERT INTO box(box_name) " + "VALUES ('" + box.getBoxName() + "')";
 
-            Statement statement = connection.createStatement();
             statement.executeUpdate(insertBox);
             statement.close();
             connection.commit();
@@ -30,9 +29,8 @@ public class BoxModel {
 
     public void setBoxOnline(int boxId) throws SQLException {
         connection.setAutoCommit(false);
-        try {
+        try (Statement statement = connection.createStatement()) {
             String boxQuery = "UPDATE box SET is_ready=true WHERE box_id=" + boxId;
-            Statement statement = connection.createStatement();
             statement.executeUpdate(boxQuery);
             connection.commit();
         } catch (SQLException e) {
@@ -44,9 +42,8 @@ public class BoxModel {
 
     public void setBoxOff(int boxId) throws SQLException {
         connection.setAutoCommit(false);
-        try {
+        try (Statement statement = connection.createStatement()) {
             String boxQuery = "UPDATE box SET is_ready=false WHERE box_id=" + boxId;
-            Statement statement = connection.createStatement();
             statement.executeUpdate(boxQuery);
             connection.commit();
         } catch (SQLException e) {
@@ -92,6 +89,8 @@ public class BoxModel {
         if (rs.next()) {
             return rs.getInt("seq");
         }
+        rs.close();
+        statement.close();
         return 0;
     }
 }

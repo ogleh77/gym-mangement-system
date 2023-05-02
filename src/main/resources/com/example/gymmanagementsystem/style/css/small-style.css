@@ -35,7 +35,11 @@
     -fx-border-width: 0.5;
 }
 
-.list-view-chooser{
-    -fx-background-color:  #efefef;
+.list-view-chooser {
+    -fx-background-color: #efefef;
     -fx-font-family: Verdana;
- }
+}
+
+/*.radio-button .radio {*/
+/*    -fx-background-color: #328ca8;*/
+/*}*/

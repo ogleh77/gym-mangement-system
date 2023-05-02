@@ -74,17 +74,17 @@
         <font>
             <Font name="Verdana" size="14.0" />
         </font>
-        <unSelectedColor>
-            <Color red="0.6431372761726379" green="0.6274510025978088" blue="0.6274510025978088" />
-        </unSelectedColor>
+      <selectedColor>
+         <Color red="0.19607843458652496" green="0.5490196347236633" blue="0.658823549747467" />
+      </selectedColor>
     </JFXRadioButton>
     <JFXRadioButton fx:id="female" layoutX="377.0" layoutY="164.0" text="Dhedig">
         <font>
             <Font name="Verdana" size="14.0" />
         </font>
-        <unSelectedColor>
-            <Color red="0.6431372761726379" green="0.6274510025978088" blue="0.6274510025978088" />
-        </unSelectedColor>
+      <selectedColor>
+         <Color red="0.19607843458652496" green="0.5490196347236633" blue="0.658823549747467" />
+      </selectedColor>
     </JFXRadioButton>
     <ComboBox fx:id="shift" layoutX="25.0" layoutY="231.0" prefHeight="36.0" prefWidth="194.0" promptText="Choose" stylesheets="@../../style/css/combo-style.css" />
     <Label layoutX="26.0" layoutY="204.0" text="shift-ga user-ka" textFill="#328ca8">
@@ -139,17 +139,17 @@
         <font>
             <Font name="Verdana" size="14.0" />
         </font>
-        <unSelectedColor>
-            <Color red="0.6431372761726379" green="0.6274510025978088" blue="0.6274510025978088" />
-        </unSelectedColor>
+      <selectedColor>
+         <Color red="0.19607843458652496" green="0.5490196347236633" blue="0.658823549747467" />
+      </selectedColor>
     </JFXRadioButton>
     <JFXRadioButton fx:id="user" layoutX="379.0" layoutY="224.0" text="user">
         <font>
             <Font name="Verdana" size="14.0" />
         </font>
-        <unSelectedColor>
-            <Color red="0.6431372761726379" green="0.6274510025978088" blue="0.6274510025978088" />
-        </unSelectedColor>
+      <selectedColor>
+         <Color red="0.19607843458652496" green="0.5490196347236633" blue="0.658823549747467" />
+      </selectedColor>
     </JFXRadioButton>
     <Label layoutX="26.0" layoutY="349.0" text="password" textFill="#328ca8">
         <font>

@@ -5,38 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c1a3bea-8a57-435b-b5d9-43e3f4a593e0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/PaymentsControllers.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/notdone/RegistrationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/data/dto/Data.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/data/dto/main/CustomerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/data/dto/main/PaymentService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/data/models/DailyReportModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/data/models/main/CustomerModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/data/models/main/PaymentsModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/com/example/gymmanagementsystem/data/dto/CustomerServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/com/example/gymmanagementsystem/data/dto/main/PaymentServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/27550223-6b72-4633-87ab-5a7751bc1c80.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/27550223-6b72-4633-87ab-5a7751bc1c80/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/27550223-6b72-4633-87ab-5a7751bc1c80/storage_v2/_src_/schema/main.uQUzAA.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7925137b-de75-44f6-9f13-6c2b43cc5f58.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7925137b-de75-44f6-9f13-6c2b43cc5f58.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7925137b-de75-44f6-9f13-6c2b43cc5f58/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7925137b-de75-44f6-9f13-6c2b43cc5f58/storage_v2/_src_/schema/main.uQUzAA.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/81c3abd1-7a1c-41eb-b2cd-5039b77083e3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/81c3abd1-7a1c-41eb-b2cd-5039b77083e3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d29559b0-3944-4c29-9ced-cce4f971808e.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d29559b0-3944-4c29-9ced-cce4f971808e/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d29559b0-3944-4c29-9ced-cce4f971808e/storage_v2/_src_/schema/main.uQUzAA.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/database/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/database.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/SplashScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/notdone/SplashScreenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/service/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/service/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/data/dto/BoxService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/data/dto/BoxService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dependencies/OpenWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dependencies/OpenWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/info/warning.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/info/warning.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/main/payments.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/main/payments.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/main/registrations.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/main/registrations.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -260,7 +231,7 @@
       <workItem from="1682939577947" duration="10968000" />
       <workItem from="1683004199230" duration="25260000" />
       <workItem from="1683089778693" duration="27143000" />
-      <workItem from="1683180358918" duration="2348000" />
+      <workItem from="1683180358918" duration="4371000" />
     </task>
     <servers />
   </component>

@@ -1,4 +1,4 @@
-package com.example.gymmanagementsystem.controllers;
+package com.example.gymmanagementsystem.controllers.notdone;
 
 import com.example.gymmanagementsystem.data.entities.main.Customers;
 import com.example.gymmanagementsystem.data.entities.service.Users;

@@ -20,10 +20,10 @@ public class BoxService {
 
     public static void changeBoxState(Box box) throws SQLException {
         try {
-            if (!box.isReady()) {
-                boxModel.setBoxOnline(box.getBoxId());
-            } else {
+            if (box.isReady()) {
                 boxModel.setBoxOff(box.getBoxId());
+            } else {
+                boxModel.setBoxOnline(box.getBoxId());
             }
         } catch (SQLException e) {
             throw new SQLException(message + e.getMessage());

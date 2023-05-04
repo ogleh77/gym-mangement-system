@@ -1,6 +1,9 @@
 package com.example.gymmanagementsystem;
 
-import com.example.gymmanagementsystem.controllers.informations.WarningController;
+import com.example.gymmanagementsystem.controllers.UpdatePaymentController;
+import com.example.gymmanagementsystem.data.dto.UserService;
+import com.example.gymmanagementsystem.data.dto.main.CustomerService;
+import com.example.gymmanagementsystem.data.entities.main.Customers;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -13,11 +16,17 @@ import java.sql.SQLException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/gymmanagementsystem/newviews/info/warning.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/gymmanagementsystem/newviews/main/payments/update-payments.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        WarningController controller = fxmlLoader.getController();
-
-
+        UpdatePaymentController controller = fxmlLoader.getController();
+        Customers customer = CustomerService.fetchAllCustomer(UserService.fetchAllUsers().get(0)).get(0);
+        controller.setPayment(customer.getPayments().get(0));
+        // controller.checkPayment(customer);
+        controller.setCustomer(customer);
+        //System.out.println(customer);
+//        RegistrationController controller = fxmlLoader.getController();
+//        Data.setAllCustomersList(CustomerService.fetchAllCustomer(UserService.fetchAllUsers().get(0)));
+//        controller.setActiveUser(UserService.fetchAllUsers().get(0));
         //controller.setOutdatedCustomers(new );
 //        UserChooserController controller = fxmlLoader.getController();
 //        controller.setUsersWithoutActiveOne(UserService.fetchAllUsers().get(0));

@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -37,6 +39,20 @@ public class OpenWindow {
         stage.initOwner(node != null ? node.getScene().getWindow() : null);
         stage.getIcons().add(new Image(String.valueOf(icon)));
         stage.show();
+        return loader;
+    }
+
+    public static FXMLLoader secondWindow(String url, BorderPane borderPane) throws IOException {
+        getFadeOut().setNode(borderPane.getCenter());
+        getFadeOut().setSpeed(2);
+        getFadeOut().play();
+        FXMLLoader loader = new FXMLLoader(OpenWindow.class.getResource(url));
+        AnchorPane anchorPane = loader.load();
+        getFadeOut().setOnFinished(e -> {
+            getFadeIn().setNode(anchorPane);
+            getFadeIn().play();
+            borderPane.setCenter(anchorPane);
+        });
         return loader;
     }
 
@@ -74,4 +90,14 @@ public class OpenWindow {
         });
     }
 
+    public static FadeIn getFadeIn() {
+        if (fadeIn != null) return fadeIn;
+        fadeIn = new FadeIn();
+        return fadeIn;
+    }
+
+    public static FadeOut getFadeOut() {
+        if (fadeOut == null) fadeOut = new FadeOut();
+        return fadeOut;
+    }
 }

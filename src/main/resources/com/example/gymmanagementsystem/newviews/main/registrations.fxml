@@ -15,7 +15,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="996.0" styleClass="home-pane" stylesheets="@../../style/css/long-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.main.RegistrationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="996.0" styleClass="home-pane" stylesheets="@../../style/css/long-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.notdone.RegistrationController">
     <effect>
         <DropShadow height="31.37" radius="15.555" width="32.85">
             <color>
@@ -29,23 +29,23 @@
     <TextField fx:id="firstName" layoutX="246.0" layoutY="146.0" prefHeight="40.0" prefWidth="333.0" promptText="Mohamed" AnchorPane.leftAnchor="246.0" />
     <TextField fx:id="middleName" layoutX="246.0" layoutY="208.0" prefHeight="40.0" prefWidth="333.0" promptText="Saeed" AnchorPane.leftAnchor="246.0" />
     <TextField fx:id="lastName" layoutX="246.0" layoutY="265.0" prefHeight="40.0" prefWidth="333.0" promptText="Ogleh" AnchorPane.leftAnchor="246.0" />
-    <JFXRadioButton fx:id="male" layoutX="246.0" layoutY="401.0" text="Lab" textFill="#328ca8" AnchorPane.leftAnchor="246.0">
+    <JFXRadioButton fx:id="male" layoutX="246.0" layoutY="398.0" text="Lab" textFill="#328ca8" AnchorPane.leftAnchor="246.0">
         <font>
             <Font name="Tahoma Bold" size="13.0" />
         </font>
         <selectedColor>
-            <Color red="0.28143274784088135" green="0.761147677898407" blue="0.9210526347160339" />
+            <Color red="0.19607843458652496" green="0.5490196347236633" blue="0.658823549747467" />
         </selectedColor>
         <unSelectedColor>
             <Color red="0.6431372761726379" green="0.6274510025978088" blue="0.6274510025978088" />
         </unSelectedColor>
     </JFXRadioButton>
-    <JFXRadioButton fx:id="female" layoutX="420.0" layoutY="401.0" prefHeight="17.0" prefWidth="89.0" text="Dhedig" textFill="#328ca8" AnchorPane.leftAnchor="420.0">
+    <JFXRadioButton fx:id="female" layoutX="420.0" layoutY="398.0" prefHeight="17.0" prefWidth="89.0" text="Dhedig" textFill="#328ca8" AnchorPane.leftAnchor="420.0">
         <font>
             <Font name="Tahoma Bold" size="13.0" />
         </font>
         <selectedColor>
-            <Color red="0.28143274784088135" green="0.761147677898407" blue="0.9210526347160339" />
+            <Color red="0.19607843458652496" green="0.5490196347236633" blue="0.658823549747467" />
         </selectedColor>
         <unSelectedColor>
             <Color red="0.6447368264198303" green="0.6268274784088135" blue="0.6268274784088135" />

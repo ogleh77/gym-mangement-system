@@ -21,7 +21,7 @@
                 </HBox.margin>
                 <Image url="@../../style/icons/icons8-bell-48.png" />
             </ImageView>
-            <Label prefHeight="29.0" prefWidth="218.0" styleClass="top-label" text="Warnings">
+            <Label prefHeight="29.0" prefWidth="218.0" styleClass="top-label" text="FORM-Ka DIGNIINTA">
                 <HBox.margin>
                     <Insets left="10.0" />
                 </HBox.margin>

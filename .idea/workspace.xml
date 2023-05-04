@@ -5,28 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c1a3bea-8a57-435b-b5d9-43e3f4a593e0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/PaymentsControllers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/notdone/RegistrationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/data/dto/Data.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/data/dto/main/CustomerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/data/dto/main/PaymentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/data/models/DailyReportModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/data/models/main/CustomerModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/data/models/main/PaymentsModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/com/example/gymmanagementsystem/data/dto/CustomerServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/com/example/gymmanagementsystem/data/dto/main/PaymentServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/27550223-6b72-4633-87ab-5a7751bc1c80.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/27550223-6b72-4633-87ab-5a7751bc1c80/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/27550223-6b72-4633-87ab-5a7751bc1c80/storage_v2/_src_/schema/main.uQUzAA.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7925137b-de75-44f6-9f13-6c2b43cc5f58.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7925137b-de75-44f6-9f13-6c2b43cc5f58.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7925137b-de75-44f6-9f13-6c2b43cc5f58/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7925137b-de75-44f6-9f13-6c2b43cc5f58/storage_v2/_src_/schema/main.uQUzAA.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/81c3abd1-7a1c-41eb-b2cd-5039b77083e3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/81c3abd1-7a1c-41eb-b2cd-5039b77083e3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d29559b0-3944-4c29-9ced-cce4f971808e.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d29559b0-3944-4c29-9ced-cce4f971808e/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d29559b0-3944-4c29-9ced-cce4f971808e/storage_v2/_src_/schema/main.uQUzAA.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/database.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/BackupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/service/BackupController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/GymController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/service/GymController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/service/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/UserChooserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/users/UserChooserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/UserCreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/users/UserCreationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/UserUpdateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/users/UserUpdateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/SplashScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/notdone/SplashScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/service/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/service/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/data/dto/BoxService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/data/dto/BoxService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dependencies/OpenWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dependencies/OpenWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/info/customer-card.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/info/customer-card.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/info/customer-info.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/info/customer-info.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/info/dailyReports.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/info/dailyReports.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/info/outdated.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/info/outdated.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/info/warning.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/info/warning.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/service/backup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/service/backup.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/service/gym.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/service/gym.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/service/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/service/login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/users/user-chooser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/users/user-chooser.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/users/user-creation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/users/user-creation.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/users/user-update.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/users/user-update.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/infocontroller" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/infocontroller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/main/payments.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/main/payments.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/main/registrations.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/main/registrations.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,54 +67,54 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "ToolWindowRun.ShowToolbar": "false",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "dart.analysis.tool.window.visible": "false",
-    "extract.method.default.visibility": "private",
-    "last_opened_file_path": "/Users/mrd/Desktop/gym-management-system 3/src/main/java/com/example/gymmanagementsystem/controllers/informations",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;ToolWindowRun.ShowToolbar&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/mrd/Desktop/gym-management-system 3/src/main/resources/com/example/gymmanagementsystem/newviews/main/payments&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "sqlite"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlite&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/main/payments" />
+      <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/payments" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/data/models" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/data/dto" />
       <recent name="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/informations" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dependencies" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dao/service" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/models/service" />
-      <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/service" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/main" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/style/icons" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/style" />
       <recent name="$PROJECT_DIR$/src/database" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
-      <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/main" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.example.gymmanagementsystem.data.dto.main" />
       <recent name="com.example.gymmanagementsystem.data.dto" />
       <recent name="com.example.gymmanagementsystem.dao.service" />
       <recent name="com.example.gymmanagementsystem.dao.main" />
       <recent name="com.example.gymmanagementsystem.dao" />
-      <recent name="com.example.gymmanagementsystem.exporttoxls" />
     </key>
   </component>
   <component name="RunManager" selected="Application.HelloApplication">
@@ -121,65 +131,52 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BackupServiceTest.backupTo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="rest-api | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api.http" requestIdentifier="#1" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="PaymentServiceTest.deletePayment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="gym-management-system" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.gymmanagementsystem.data.dto.*" />
+          <option name="PATTERN" value="com.example.gymmanagementsystem.data.dto.main.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.gymmanagementsystem.data.dto" />
-      <option name="MAIN_CLASS_NAME" value="com.example.gymmanagementsystem.data.dto.BackupServiceTest" />
-      <option name="METHOD_NAME" value="backupTo" />
+      <option name="PACKAGE_NAME" value="com.example.gymmanagementsystem.data.dto.main" />
+      <option name="MAIN_CLASS_NAME" value="com.example.gymmanagementsystem.data.dto.main.PaymentServiceTest" />
+      <option name="METHOD_NAME" value="deletePayment" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BackupServiceTest.lastBackupDate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PaymentServiceTest.insertPayment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="gym-management-system" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.gymmanagementsystem.data.dto.*" />
+          <option name="PATTERN" value="com.example.gymmanagementsystem.data.dto.main.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.gymmanagementsystem.data.dto" />
-      <option name="MAIN_CLASS_NAME" value="com.example.gymmanagementsystem.data.dto.BackupServiceTest" />
-      <option name="METHOD_NAME" value="lastBackupDate" />
+      <option name="PACKAGE_NAME" value="com.example.gymmanagementsystem.data.dto.main" />
+      <option name="MAIN_CLASS_NAME" value="com.example.gymmanagementsystem.data.dto.main.PaymentServiceTest" />
+      <option name="METHOD_NAME" value="insertPayment" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BackupServiceTest.lastBackupPath" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PaymentServiceTest.updatePayment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="gym-management-system" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.gymmanagementsystem.data.dto.*" />
+          <option name="PATTERN" value="com.example.gymmanagementsystem.data.dto.main.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.gymmanagementsystem.data.dto" />
-      <option name="MAIN_CLASS_NAME" value="com.example.gymmanagementsystem.data.dto.BackupServiceTest" />
-      <option name="METHOD_NAME" value="lastBackupPath" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BoxServiceTest.nextId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="gym-management-system" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.gymmanagementsystem.data.dto.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.gymmanagementsystem.data.dto" />
-      <option name="MAIN_CLASS_NAME" value="com.example.gymmanagementsystem.data.dto.BoxServiceTest" />
-      <option name="METHOD_NAME" value="nextId" />
+      <option name="PACKAGE_NAME" value="com.example.gymmanagementsystem.data.dto.main" />
+      <option name="MAIN_CLASS_NAME" value="com.example.gymmanagementsystem.data.dto.main.PaymentServiceTest" />
+      <option name="METHOD_NAME" value="updatePayment" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -188,10 +185,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.HelloApplication" />
-        <item itemvalue="JUnit.BackupServiceTest.lastBackupDate" />
-        <item itemvalue="JUnit.BackupServiceTest.backupTo" />
-        <item itemvalue="JUnit.BackupServiceTest.lastBackupPath" />
-        <item itemvalue="JUnit.BoxServiceTest.nextId" />
+        <item itemvalue="HTTP Request.rest-api | #1" />
+        <item itemvalue="JUnit.PaymentServiceTest.insertPayment" />
+        <item itemvalue="JUnit.PaymentServiceTest.deletePayment" />
+        <item itemvalue="JUnit.PaymentServiceTest.updatePayment" />
       </list>
     </recent_temporary>
   </component>
@@ -261,7 +258,9 @@
       <workItem from="1682371650621" duration="2406000" />
       <workItem from="1682938978433" duration="57000" />
       <workItem from="1682939577947" duration="10968000" />
-      <workItem from="1683004199230" duration="19758000" />
+      <workItem from="1683004199230" duration="25260000" />
+      <workItem from="1683089778693" duration="27143000" />
+      <workItem from="1683180358918" duration="2348000" />
     </task>
     <servers />
   </component>

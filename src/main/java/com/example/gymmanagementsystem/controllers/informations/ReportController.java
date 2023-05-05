@@ -11,6 +11,7 @@ import com.example.gymmanagementsystem.dependencies.ExportDataToExcel;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXRadioButton;
 import javafx.application.Platform;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
@@ -18,12 +19,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -58,16 +59,16 @@ public class ReportController extends CommonClass implements Initializable {
     @FXML
     private TableColumn<DailyReport, String> dailyReportDay;
     @FXML
-    private TableColumn<DailyReport, Integer> totalFemale;
+    private TableColumn<DailyReport, String> totalFemale;
 
     @FXML
-    private TableColumn<DailyReport, Integer> totalMale;
+    private TableColumn<DailyReport, String> totalMale;
 
     @FXML
-    private TableColumn<DailyReport, Integer> totalRegister;
+    private TableColumn<DailyReport, String> totalRegister;
 
     @FXML
-    private TableColumn<DailyReport, Integer> totalVipBox;
+    private TableColumn<DailyReport, String> totalVipBox;
 
     @FXML
     private TableView<DailyReport> dailyTbView;
@@ -76,16 +77,16 @@ public class ReportController extends CommonClass implements Initializable {
     private TableView<DailyReport> reportTbView;
 
     @FXML
-    private TableColumn<DailyReport, Integer> reportTotalFemale;
+    private TableColumn<DailyReport, String> reportTotalFemale;
 
     @FXML
-    private TableColumn<DailyReport, Integer> reportTotalMale;
+    private TableColumn<DailyReport, String> reportTotalMale;
 
     @FXML
-    private TableColumn<DailyReport, Integer> reportTotalReg;
+    private TableColumn<DailyReport, String> reportTotalReg;
 
     @FXML
-    private TableColumn<DailyReport, Integer> reportTotalVip;
+    private TableColumn<DailyReport, String> reportTotalVip;
 
     @FXML
     private TableColumn<DailyReport, String> reportTotalDay;
@@ -199,7 +200,7 @@ public class ReportController extends CommonClass implements Initializable {
                     try {
                         chooseExports(printStartDate.getValue(), printEndDate.getValue());
                         Thread.sleep(1000);
-                        Platform.runLater(() -> Alerts.notificationAlert("Report exported successfully \npath: \n" + selectedFile.getAbsolutePath()));
+                        Platform.runLater(() -> Alerts.notificationAlert("Waad dabacaday waxana aad ku save garaysay \npath: " + selectedFile.getAbsolutePath()));
                     } catch (Exception e) {
                         Platform.runLater(() -> Alerts.errorAlert(e.getMessage()));
                     }
@@ -255,7 +256,7 @@ public class ReportController extends CommonClass implements Initializable {
         }
     }
 
-    private void chooseExports(LocalDate start, LocalDate end) throws SQLException {
+    private void chooseExports(LocalDate start, LocalDate end) throws SQLException, IOException {
         loadingImage.setVisible(true);
         exportLabel.setVisible(true);
         if (customersOnly.isSelected()) {
@@ -310,13 +311,13 @@ public class ReportController extends CommonClass implements Initializable {
         reportTbView.refresh();
     }
 
-    private void tableFields(TableColumn<DailyReport, String> reportTotalDay, TableColumn<DailyReport, Integer> reportTotalReg, TableColumn<DailyReport, Integer> reportTotalMale, TableColumn<DailyReport, Integer> reportTotalFemale, TableColumn<DailyReport, Integer> reportTotalVip) {
+    private void tableFields(TableColumn<DailyReport, String> reportTotalDay, TableColumn<DailyReport, String> reportTotalReg, TableColumn<DailyReport, String> reportTotalMale, TableColumn<DailyReport, String> reportTotalFemale, TableColumn<DailyReport, String> reportTotalVip) {
 
-        reportTotalDay.setCellValueFactory(new PropertyValueFactory<>("day"));
-        reportTotalReg.setCellValueFactory(new PropertyValueFactory<>("registrations"));
-        reportTotalMale.setCellValueFactory(new PropertyValueFactory<>("male"));
-        reportTotalFemale.setCellValueFactory(new PropertyValueFactory<>("female"));
-        reportTotalVip.setCellValueFactory(new PropertyValueFactory<>("vipBox"));
+        reportTotalDay.setCellValueFactory(reports -> new SimpleStringProperty(reports.getValue().getDay()));
+        reportTotalReg.setCellValueFactory(reports -> new SimpleStringProperty(reports.getValue().getRegistrations() > 0 ? reports.getValue().getRegistrations() + " qof" : "0"));
+        reportTotalMale.setCellValueFactory(reports -> new SimpleStringProperty(reports.getValue().getMale() > 0 ? reports.getValue().getRegistrations() + " rag ah" : "0"));
+        reportTotalFemale.setCellValueFactory(reports -> new SimpleStringProperty(reports.getValue().getFemale() > 0 ? reports.getValue().getRegistrations() + " dumar ah" : "0"));
+        reportTotalVip.setCellValueFactory(reports -> new SimpleStringProperty(reports.getValue().getVipBox() > 0 ? reports.getValue().getRegistrations() + " khanadood" : "0"));
     }
 
 }

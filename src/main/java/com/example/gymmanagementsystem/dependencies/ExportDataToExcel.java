@@ -11,16 +11,17 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class ExportDataToExcel {
 
-    public static void exportAllCustomersToXls(ObservableList<Customers> customers, File file) {
+    public static void exportAllCustomersToXls(ObservableList<Customers> customers, File file) throws IOException {
         try (Workbook workbook = new XSSFWorkbook()) {
-            XSSFSheet sheet = (XSSFSheet) workbook.createSheet("Customers");
+            XSSFSheet sheet = (XSSFSheet) workbook.createSheet("Macamiisha");
 
             sheet.setColumnWidth(0, 8000);
-
-            sheet.setColumnWidth(4, 4500);
+            sheet.setColumnWidth(3, 4000);
+            sheet.setColumnWidth(4, 4000);
 
             sheet.setColumnWidth(6, 4500);
 
@@ -35,16 +36,13 @@ public class ExportDataToExcel {
                 rowCount++;
             }
             saveToXlsFile(file, workbook);
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-
 
     }
 
     public static void exportOnlineCustomersToExcel(ObservableList<Customers> customers, File file) {
         try (Workbook workbook = new XSSFWorkbook()) {
-            XSSFSheet sheet = (XSSFSheet) workbook.createSheet("online customers");
+            XSSFSheet sheet = (XSSFSheet) workbook.createSheet("macamiisha wakhtigu u socdo");
             sameFieldsOfflineAndOnline(customers, file, sheet, false);
         } catch (Exception e) {
             e.printStackTrace();
@@ -52,21 +50,17 @@ public class ExportDataToExcel {
     }
 
 
-    public static void exportOfflineCustomersToExcel(ObservableList<Customers> customers, File file) {
+    public static void exportOfflineCustomersToExcel(ObservableList<Customers> customers, File file) throws IOException {
         try (Workbook workbook = new XSSFWorkbook()) {
-            XSSFSheet sheet = (XSSFSheet) workbook.createSheet("offline customers");
+            XSSFSheet sheet = (XSSFSheet) workbook.createSheet("macamiisha wakhtigu ka dahacay");
             sameFieldsOfflineAndOnline(customers, file, sheet, true);
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
-    public static void exportPendingCustomersToExcel(ObservableList<Customers> customers, File file) {
+    public static void exportPendingCustomersToExcel(ObservableList<Customers> customers, File file) throws IOException {
         try (Workbook workbook = new XSSFWorkbook()) {
             XSSFSheet sheet = (XSSFSheet) workbook.createSheet("pending customers");
             sameFieldsOfflineAndOnline(customers, file, sheet, false);
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
@@ -76,8 +70,7 @@ public class ExportDataToExcel {
 
         XSSFRow row = sheet.createRow(rowCount);
 
-        row.createCell(0).setCellValue(customer.getFirstName() + " " +
-                customer.getMiddleName() + " " + customer.getLastName());
+        row.createCell(0).setCellValue(customer.getFirstName() + " " + customer.getMiddleName() + " " + customer.getLastName());
         row.createCell(1).setCellValue(customer.getPhone());
         row.createCell(2).setCellValue(customer.getGander());
         row.createCell(3).setCellValue(customer.getShift());
@@ -89,37 +82,39 @@ public class ExportDataToExcel {
         row.createCell(9).setCellValue(customer.getChest() + " cm");
         row.createCell(10).setCellValue(customer.getWaist() + " cm");
     }
-    private static void sameFieldsOfflineAndOnline(ObservableList<Customers> customers, File file, XSSFSheet sheet, boolean isOffline) {
+
+    private static void sameFieldsOfflineAndOnline(ObservableList<Customers> customers, File file, XSSFSheet sheet, boolean isOffline) throws IOException {
         sheet.setColumnWidth(0, 8000);
 
-        sheet.setColumnWidth(4, 4500);
+        sheet.setColumnWidth(3, 3000);
+        sheet.setColumnWidth(4, 3000);
 
-        sheet.setColumnWidth(6, 4500);
+        sheet.setColumnWidth(5, 3000);
+        sheet.setColumnWidth(6, 2700);
 
         sheet.setZoom(150);
 
         createHeader(false, sheet);
 
-        int rowCounter = 2;
+        int rowCounter = 1;
 
         for (Customers customer : customers) {
 
             for (Payments payment : customer.getPayments()) {
                 if (!customer.getPayments().isEmpty()) {
                     XSSFRow row = sheet.createRow(rowCounter);
-                    row.createCell(0).setCellValue(customer.getFirstName() + " " +
-                            customer.getMiddleName() + " " + customer.getLastName());
+                    row.createCell(0).setCellValue(customer.getFirstName() + " " + customer.getMiddleName() + " " + customer.getLastName());
                     row.createCell(1).setCellValue(customer.getPhone());
                     row.createCell(2).setCellValue(customer.getGander());
 
                     row.createCell(3).setCellValue(payment.getStartDate().toString());
                     row.createCell(4).setCellValue(payment.getExpDate().toString());
-                    row.createCell(5).setCellValue("  $" + payment.getAmountPaid());
+                    row.createCell(5).setCellValue("$" + payment.getAmountPaid());
                     row.createCell(6).setCellValue(payment.getPaidBy());
-                    row.createCell(7).setCellValue("  $" + payment.getDiscount());
-                    row.createCell(8).setCellValue(payment.isPoxing() ? "Yes(√)" : "No(X)");
-                    row.createCell(9).setCellValue(payment.isOnline() ? "Yes(√)" : "No(X)");
-                    row.createCell(10).setCellValue(payment.isPending() ? "Yes(√)" : "No(X)");
+                    row.createCell(7).setCellValue("$" + payment.getDiscount());
+                    row.createCell(8).setCellValue(payment.isPoxing() ? "Yes (√)" : "No (X)");
+                    row.createCell(9).setCellValue(payment.isOnline() ? "Yes (√)" : "No (X)");
+                    row.createCell(10).setCellValue(payment.isPending() ? "Yes (√)" : "No (X)");
                     rowCounter++;
                 }
             }
@@ -129,6 +124,7 @@ public class ExportDataToExcel {
 
         saveToXlsFile(file, sheet.getWorkbook());
     }
+
     private static void createHeader(boolean customersOnly, Sheet sheet) {
 
         XSSFRow header = (XSSFRow) sheet.createRow(0);
@@ -164,14 +160,11 @@ public class ExportDataToExcel {
 
         }
     }
-    private static void saveToXlsFile(File file, Workbook workbook) {
-        try {
-            FileOutputStream outputStream = new FileOutputStream(file);
-            workbook.write(outputStream);
-            workbook.close();
-            outputStream.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
+    private static void saveToXlsFile(File file, Workbook workbook) throws IOException {
+        FileOutputStream outputStream = new FileOutputStream(file);
+        workbook.write(outputStream);
+        workbook.close();
+        outputStream.close();
     }
 }

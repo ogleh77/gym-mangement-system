@@ -1,11 +1,7 @@
 package com.example.gymmanagementsystem;
 
-import com.example.gymmanagementsystem.controllers.main.RegistrationController;
-import com.example.gymmanagementsystem.data.dto.Data;
+import com.example.gymmanagementsystem.controllers.informations.ReportController;
 import com.example.gymmanagementsystem.data.dto.UserService;
-import com.example.gymmanagementsystem.data.dto.main.CustomerService;
-import com.example.gymmanagementsystem.data.entities.main.Customers;
-import com.example.gymmanagementsystem.data.entities.service.Users;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -18,14 +14,16 @@ import java.sql.SQLException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/gymmanagementsystem/newviews/main/registrations.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/gymmanagementsystem/newviews/info/dailyReports.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        RegistrationController controller = fxmlLoader.getController();
-        Data.setAllCustomersList(CustomerService.fetchAllCustomer(UserService.fetchAllUsers().get(0)));
-        Customers customer = CustomerService.fetchAllCustomer(UserService.fetchAllUsers().get(0)).get(0);
-        Users users=UserService.fetchAllUsers().get(0);
-        controller.setActiveUser(users);
-       // controller.setCustomer(customer);
+        ReportController controller = fxmlLoader.getController();
+        controller.setActiveUser(UserService.fetchAllUsers().get(0));
+        // CustomerInfoController controller = fxmlLoader.getController();
+        //Data.setAllCustomersList(CustomerService.fetchAllCustomer(UserService.fetchAllUsers().get(0)));
+        //Customers customer = CustomerService.fetchAllCustomer(UserService.fetchAllUsers().get(0)).get(0);
+        // Users users = UserService.fetchAllUsers().get(0);
+        // controller.setActiveUser(users);
+        //controller.setCustomer(customer);
         //  controller.checkPayment(customer);
         // controller.checkPayment(customer);
         //  controller.setCustomer(customer);

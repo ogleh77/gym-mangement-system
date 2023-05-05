@@ -5,9 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c1a3bea-8a57-435b-b5d9-43e3f4a593e0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7925137b-de75-44f6-9f13-6c2b43cc5f58.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7925137b-de75-44f6-9f13-6c2b43cc5f58.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/database/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/database.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/CreatePaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/main/payments/CreatePaymentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/UpdatePaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/main/payments/UpdatePaymentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/data/dto/BoxService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/data/dto/BoxService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/data/dto/main/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/data/dto/main/CustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/data/entities/service/Box.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/data/entities/service/Box.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/main/payments/create-payment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/main/payments/create-payment.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/main/payments/update-payments.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/main/payments/update-payments.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/main/registrations.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/main/registrations.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/com/example/gymmanagementsystem/data/dto/BoxServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/com/example/gymmanagementsystem/data/dto/BoxServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +60,7 @@
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
     &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/mrd/Desktop/gym-management-system 3/src/main/resources/com/example/gymmanagementsystem/newviews/main/payments&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/mrd/Desktop/gym-management-system 3/src/main/java/com/example/gymmanagementsystem/controllers/main&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
@@ -64,11 +75,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/main" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/main/payments" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/payments" />
       <recent name="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/data/models" />
       <recent name="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/data/dto" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/informations" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/newviews/main" />
@@ -105,6 +116,22 @@
     <configuration name="rest-api | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api.http" requestIdentifier="#1" runType="Run single request">
       <method v="2" />
     </configuration>
+    <configuration name="BoxServiceTest.testInsertBox" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="gym-management-system" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.gymmanagementsystem.data.dto.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.gymmanagementsystem.data.dto" />
+      <option name="MAIN_CLASS_NAME" value="com.example.gymmanagementsystem.data.dto.BoxServiceTest" />
+      <option name="METHOD_NAME" value="testInsertBox" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PaymentServiceTest.deletePayment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="gym-management-system" />
       <extension name="coverage">
@@ -137,29 +164,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PaymentServiceTest.updatePayment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="gym-management-system" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.gymmanagementsystem.data.dto.main.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.gymmanagementsystem.data.dto.main" />
-      <option name="MAIN_CLASS_NAME" value="com.example.gymmanagementsystem.data.dto.main.PaymentServiceTest" />
-      <option name="METHOD_NAME" value="updatePayment" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.HelloApplication" />
+        <item itemvalue="JUnit.BoxServiceTest.testInsertBox" />
         <item itemvalue="HTTP Request.rest-api | #1" />
         <item itemvalue="JUnit.PaymentServiceTest.insertPayment" />
         <item itemvalue="JUnit.PaymentServiceTest.deletePayment" />
-        <item itemvalue="JUnit.PaymentServiceTest.updatePayment" />
       </list>
     </recent_temporary>
   </component>
@@ -231,7 +242,8 @@
       <workItem from="1682939577947" duration="10968000" />
       <workItem from="1683004199230" duration="25260000" />
       <workItem from="1683089778693" duration="27143000" />
-      <workItem from="1683180358918" duration="4371000" />
+      <workItem from="1683180358918" duration="10097000" />
+      <workItem from="1683266219268" duration="2032000" />
     </task>
     <servers />
   </component>

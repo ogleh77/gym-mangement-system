@@ -8,6 +8,10 @@ public class Box {
     private final SimpleStringProperty boxName = new SimpleStringProperty();
     private final SimpleBooleanProperty ready = new SimpleBooleanProperty();
 
+    public Box(String boxName) {
+        this.setBoxName(boxName);
+    }
+
     public Box(int boxId, String boxName, boolean ready) {
         this.boxId = boxId;
         this.setBoxName(boxName);
@@ -17,9 +21,11 @@ public class Box {
     public int getBoxId() {
         return boxId;
     }
+
     public String getBoxName() {
         return boxName.get();
     }
+
     public void setBoxName(String boxName) {
         this.boxName.set(boxName);
     }
@@ -27,6 +33,7 @@ public class Box {
     public boolean isReady() {
         return ready.get();
     }
+
     public void setReady(boolean ready) {
         this.ready.set(ready);
     }

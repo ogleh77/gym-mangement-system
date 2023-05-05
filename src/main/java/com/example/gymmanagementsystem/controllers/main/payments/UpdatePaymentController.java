@@ -1,4 +1,4 @@
-package com.example.gymmanagementsystem.controllers;
+package com.example.gymmanagementsystem.controllers.main.payments;
 
 import com.example.gymmanagementsystem.data.dto.BoxService;
 import com.example.gymmanagementsystem.data.dto.GymService;

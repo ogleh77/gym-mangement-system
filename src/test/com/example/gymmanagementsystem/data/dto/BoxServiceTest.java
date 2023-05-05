@@ -35,4 +35,10 @@ class BoxServiceTest {
     void nextId() throws SQLException {
         System.out.println(BoxService.nextId());
     }
+
+    @Test
+    void testInsertBox() throws SQLException {
+        Box box = new Box("Khanad 5aad");
+        BoxService.insertBox(box);
+    }
 }

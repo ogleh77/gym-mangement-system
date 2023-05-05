@@ -1,10 +1,11 @@
 package com.example.gymmanagementsystem;
 
-import com.example.gymmanagementsystem.controllers.CreatePaymentController;
-import com.example.gymmanagementsystem.controllers.UpdatePaymentController;
+import com.example.gymmanagementsystem.controllers.main.RegistrationController;
+import com.example.gymmanagementsystem.data.dto.Data;
 import com.example.gymmanagementsystem.data.dto.UserService;
 import com.example.gymmanagementsystem.data.dto.main.CustomerService;
 import com.example.gymmanagementsystem.data.entities.main.Customers;
+import com.example.gymmanagementsystem.data.entities.service.Users;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -17,16 +18,19 @@ import java.sql.SQLException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/gymmanagementsystem/newviews/main/payments/create-payment.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/gymmanagementsystem/newviews/main/registrations.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        CreatePaymentController controller = fxmlLoader.getController();
+        RegistrationController controller = fxmlLoader.getController();
+        Data.setAllCustomersList(CustomerService.fetchAllCustomer(UserService.fetchAllUsers().get(0)));
         Customers customer = CustomerService.fetchAllCustomer(UserService.fetchAllUsers().get(0)).get(0);
-        controller.checkPayment(customer);
+        Users users=UserService.fetchAllUsers().get(0);
+        controller.setActiveUser(users);
+       // controller.setCustomer(customer);
+        //  controller.checkPayment(customer);
         // controller.checkPayment(customer);
-        controller.setCustomer(customer);
+        //  controller.setCustomer(customer);
         //System.out.println(customer);
 //        RegistrationController controller = fxmlLoader.getController();
-//        Data.setAllCustomersList(CustomerService.fetchAllCustomer(UserService.fetchAllUsers().get(0)));
 //        controller.setActiveUser(UserService.fetchAllUsers().get(0));
         //controller.setOutdatedCustomers(new );
 //        UserChooserController controller = fxmlLoader.getController();

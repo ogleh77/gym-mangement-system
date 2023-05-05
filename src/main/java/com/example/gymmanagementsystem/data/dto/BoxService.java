@@ -14,7 +14,11 @@ public class BoxService {
         try {
             boxModel.insert(box);
         } catch (SQLException e) {
-            throw new SQLException(message + e.getMessage());
+            if (e.getMessage().contains("(UNIQUE constraint failed: box.box_name)")) {
+                throw new SQLException(box.getBoxName() + " hore ayaa loo diwaan geshay fadlan dooro magac kale");
+            } else {
+                throw new SQLException("from sqlite" + e.getMessage());
+            }
         }
     }
 

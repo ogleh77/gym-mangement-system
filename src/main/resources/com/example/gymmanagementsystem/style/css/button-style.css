@@ -18,6 +18,10 @@
     -fx-background-color: #afd6e3;
 }
 
+.btn-search {
+    -fx-background-color: #afd6e3;
+    -fx-background-radius: 30;
+}
 .btn-reset {
     -fx-background-color: red;
     -fx-font-family: Verdana;

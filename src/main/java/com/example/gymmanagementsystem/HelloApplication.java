@@ -1,5 +1,6 @@
 package com.example.gymmanagementsystem;
 
+import com.example.gymmanagementsystem.controllers.informations.OutdatedController;
 import com.example.gymmanagementsystem.controllers.informations.ReportController;
 import com.example.gymmanagementsystem.data.dto.UserService;
 import javafx.application.Application;
@@ -14,10 +15,12 @@ import java.sql.SQLException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/gymmanagementsystem/newviews/info/dailyReports.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/gymmanagementsystem/newviews/info/outdated.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        ReportController controller = fxmlLoader.getController();
+        OutdatedController controller=fxmlLoader.getController();
         controller.setActiveUser(UserService.fetchAllUsers().get(0));
+//        ReportController controller = fxmlLoader.getController();
+//        controller.setActiveUser(UserService.fetchAllUsers().get(0));
         // CustomerInfoController controller = fxmlLoader.getController();
         //Data.setAllCustomersList(CustomerService.fetchAllCustomer(UserService.fetchAllUsers().get(0)));
         //Customers customer = CustomerService.fetchAllCustomer(UserService.fetchAllUsers().get(0)).get(0);

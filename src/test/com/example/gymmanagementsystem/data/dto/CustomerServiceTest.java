@@ -15,4 +15,33 @@ class CustomerServiceTest {
                 "Og");
         CustomerService.insertOrUpdateCustomer(customer, true);
     }
+
+    @Test
+    void predictNextId() {
+    }
+
+    @Test
+    void fetchAllCustomer() {
+    }
+
+    @Test
+    void fetchAllOnlineCustomer() {
+    }
+
+    @Test
+    void fetchOnlineCustomersWhereDateBetween() {
+    }
+
+    @Test
+    void fetchOfflineCustomersWhereDateBetween() {
+    }
+
+    @Test
+    void fetchPendCustomersWhereDateBetween() {
+    }
+
+    @Test
+    void fetchQualifiedOfflineCustomers() {
+        //System.out.println(CustomerService.fetchQualifiedOfflineCustomers());
+    }
 }

@@ -242,8 +242,7 @@ public class ReportController extends CommonClass implements Initializable {
         fileChooser.setTitle("Dooro halka aad dhiganayso excel sheets kaga");
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("All Files", "*.xlsx"));
         selectedFile = fileChooser.showSaveDialog(customersOnly.getScene().getWindow());
-        System.out.println(selectedFile);
-    }
+     }
 
     private void init() {
         customersOnly.setToggleGroup(choseGroup);
@@ -314,10 +313,10 @@ public class ReportController extends CommonClass implements Initializable {
     private void tableFields(TableColumn<DailyReport, String> reportTotalDay, TableColumn<DailyReport, String> reportTotalReg, TableColumn<DailyReport, String> reportTotalMale, TableColumn<DailyReport, String> reportTotalFemale, TableColumn<DailyReport, String> reportTotalVip) {
 
         reportTotalDay.setCellValueFactory(reports -> new SimpleStringProperty(reports.getValue().getDay()));
-        reportTotalReg.setCellValueFactory(reports -> new SimpleStringProperty(reports.getValue().getRegistrations() > 0 ? reports.getValue().getRegistrations() + " qof" : "0"));
-        reportTotalMale.setCellValueFactory(reports -> new SimpleStringProperty(reports.getValue().getMale() > 0 ? reports.getValue().getRegistrations() + " rag ah" : "0"));
-        reportTotalFemale.setCellValueFactory(reports -> new SimpleStringProperty(reports.getValue().getFemale() > 0 ? reports.getValue().getRegistrations() + " dumar ah" : "0"));
-        reportTotalVip.setCellValueFactory(reports -> new SimpleStringProperty(reports.getValue().getVipBox() > 0 ? reports.getValue().getRegistrations() + " khanadood" : "0"));
+        reportTotalReg.setCellValueFactory(reports -> new SimpleStringProperty(reports.getValue().getRegistrations() > 0 ? reports.getValue().getRegistrations() + " Qof" : "0"));
+        reportTotalMale.setCellValueFactory(reports -> new SimpleStringProperty(reports.getValue().getMale() > 0 ? reports.getValue().getRegistrations() + " Rag ah" : "0"));
+        reportTotalFemale.setCellValueFactory(reports -> new SimpleStringProperty(reports.getValue().getFemale() > 0 ? reports.getValue().getRegistrations() + " Dumar ah" : "0"));
+        reportTotalVip.setCellValueFactory(reports -> new SimpleStringProperty(reports.getValue().getVipBox() > 0 ? reports.getValue().getRegistrations() + " Khanadood" : "0"));
     }
 
 }

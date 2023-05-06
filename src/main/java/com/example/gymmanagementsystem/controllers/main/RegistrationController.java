@@ -1,5 +1,6 @@
 package com.example.gymmanagementsystem.controllers.main;
 
+import com.example.gymmanagementsystem.controllers.main.payments.CreatePaymentController;
 import com.example.gymmanagementsystem.data.dto.Data;
 import com.example.gymmanagementsystem.data.dto.GymService;
 import com.example.gymmanagementsystem.data.dto.main.CustomerService;
@@ -8,6 +9,7 @@ import com.example.gymmanagementsystem.data.entities.service.Gym;
 import com.example.gymmanagementsystem.data.entities.service.Users;
 import com.example.gymmanagementsystem.dependencies.Alerts;
 import com.example.gymmanagementsystem.dependencies.CommonClass;
+import com.example.gymmanagementsystem.dependencies.OpenWindow;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXRadioButton;
 import javafx.application.Platform;
@@ -16,6 +18,7 @@ import javafx.collections.ObservableList;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Control;
@@ -120,8 +123,6 @@ public class RegistrationController extends CommonClass implements Initializable
         } catch (Exception e) {
             Alerts.errorAlert("Fadlan hubi in measurementska " + "ama cabirada kaa raceen points deeriya tusaale 12.0 inaad u qortay 12.0.. " + e.getMessage());
         }
-
-
     }
 
     @FXML
@@ -169,14 +170,8 @@ public class RegistrationController extends CommonClass implements Initializable
 
     @Override
     public void setActiveUser(Users activeUser) {
-        try {
-            Data.setAllCustomersList(CustomerService.fetchAllOnlineCustomer(activeUser));
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
         super.setActiveUser(activeUser);
         this.customersList = Data.getAllCustomersList();
-        System.out.println(customersList);
     }
 
     @Override
@@ -194,8 +189,7 @@ public class RegistrationController extends CommonClass implements Initializable
                         CustomerService.insertOrUpdateCustomer(savingCustomer(), isCustomerNew);
                         if (isCustomerNew) {
                             customersList.add(savingCustomer());
-                            System.out.println(customersList);
-                        }
+                         }
                         done = true;
                         Thread.sleep(1000);
                         Platform.runLater(() -> {
@@ -246,10 +240,7 @@ public class RegistrationController extends CommonClass implements Initializable
     }
 
     private void createCustomer() {
-        customer = new Customers(newCustomerID, firstName.getText().trim(), lastName.getText().trim(),
-                middleName.getText().trim(), phone.getText().trim(), gander, _shift, _address,
-                selectedFile == null ? null : readFile(selectedFile.getAbsolutePath()), _weight,
-                activeUser.getUsername());
+        customer = new Customers(newCustomerID, firstName.getText().trim(), lastName.getText().trim(), middleName.getText().trim(), phone.getText().trim(), gander, _shift, _address, selectedFile == null ? null : readFile(selectedFile.getAbsolutePath()), _weight, activeUser.getUsername());
     }
 
     private void updateCustomer() {
@@ -345,29 +336,25 @@ public class RegistrationController extends CommonClass implements Initializable
     }
 
     private void openPayment() {
-        System.out.println("Payment");
-//        try {
-//            FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/newviews/main/payments.fxml",
-//                    borderPane);
-//            PaymentController controller = loader.getController();
-//            controller.setBorderPane(borderPane);
-//            controller.setCustomer(customer);
-//        } catch (Exception e) {
-//            Alerts.errorAlert(e.getMessage());
-//        }
+        try {
+            FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/newviews/main/payments/create-payment.fxml", borderPane);
+            CreatePaymentController controller = loader.getController();
+            controller.setBorderPane(borderPane);
+            controller.setCustomer(customer);
+        } catch (Exception e) {
+            Alerts.errorAlert(e.getMessage());
+        }
     }
 
     private void openHome() {
-        System.out.println("Home");
-//        try {
-//            FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/newviews/main/home.fxml",
-//                    borderPane);
-//            HomeController controller = loader.getController();
-//            controller.setActiveUser(activeUser);
-//            controller.setBorderPane(borderPane);
-//        } catch (Exception e) {
-//            Alerts.errorAlert(e.getMessage());
-//        }
+        try {
+            FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/newviews/main/home.fxml", borderPane);
+            HomeController controller = loader.getController();
+            controller.setActiveUser(activeUser);
+            controller.setBorderPane(borderPane);
+        } catch (Exception e) {
+            Alerts.errorAlert(e.getMessage());
+        }
     }
 
     private void clear() {

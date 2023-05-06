@@ -136,7 +136,7 @@ public class CustomerInfoController extends CommonClass implements Initializable
             if (selectedPayment == null) {
                 throw new RuntimeException("Fadlan dooro payment-ka aad rabto inad wax ka bedesho");
             }
-            FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/newviews/main/payments.fxml", borderPane);
+            FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/newviews/main/payments/update-payments.fxml", borderPane);
             UpdatePaymentController controller = loader.getController();
             controller.setCustomer(customer);
             controller.setPayment(selectedPayment);

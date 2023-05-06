@@ -1,5 +1,8 @@
 package com.example.gymmanagementsystem.controllers.main;
 
+import com.example.gymmanagementsystem.controllers.informations.OutdatedController;
+import com.example.gymmanagementsystem.controllers.informations.ReportController;
+import com.example.gymmanagementsystem.dependencies.Alerts;
 import com.example.gymmanagementsystem.dependencies.CommonClass;
 import com.example.gymmanagementsystem.dependencies.OpenWindow;
 import javafx.application.Platform;
@@ -11,7 +14,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -27,39 +29,56 @@ public class DashboardMenuController extends CommonClass implements Initializabl
     }
 
     @FXML
-    void homeMenuHandler() throws IOException {
-        FXMLLoader loader = OpenWindow.openFromDashboardWindow("/com/example/gymmanagementsystem/newviews/main/home.fxml", borderPane, menuHBo, logout);
-//        HomeController controller = loader.getController();
-//        controller.setActiveUser(activeUser);
-//        controller.setBorderPane(borderPane);
+    void homeMenuHandler() {
+        try {
+            FXMLLoader loader = OpenWindow.openFromDashboardWindow("/com/example/gymmanagementsystem/newviews/main/home.fxml", borderPane, menuHBo, logout);
+            HomeController controller = loader.getController();
+            controller.setActiveUser(activeUser);
+            controller.setBorderPane(borderPane);
+        } catch (Exception e) {
+            Alerts.errorAlert(e.getMessage());
+        }
+
     }
 
     @FXML
-    void registrationMenuHandler() throws IOException {
-        FXMLLoader loader = OpenWindow.openFromDashboardWindow("/com/example/gymmanagementsystem/newviews/main/registrations.fxml", borderPane, menuHBo, logout);
-//        RegistrationController controller = loader.getController();
-//        controller.setActiveUser(activeUser);
-//        controller.setBorderPane(borderPane);
+    void registrationMenuHandler() {
+        try {
+            FXMLLoader loader = OpenWindow.openFromDashboardWindow("/com/example/gymmanagementsystem/newviews/main/registrations.fxml", borderPane, menuHBo, logout);
+            RegistrationController controller = loader.getController();
+            controller.setActiveUser(activeUser);
+            controller.setBorderPane(borderPane);
+        } catch (Exception e) {
+            Alerts.errorAlert(e.getMessage());
+        }
     }
 
 
     @FXML
-    void outDatedMenuHandler() throws IOException {
-        FXMLLoader loader = OpenWindow.openFromDashboardWindow("/com/example/gymmanagementsystem/newviews/info/outdated.fxml", borderPane, menuHBo, logout);
-//        OutDatedController controller = loader.getController();
-//        controller.setActiveUser(activeUser);
+    void outDatedMenuHandler() {
+        try {
+            FXMLLoader loader = OpenWindow.openFromDashboardWindow("/com/example/gymmanagementsystem/newviews/info/outdated.fxml", borderPane, menuHBo, logout);
+            OutdatedController controller = loader.getController();
+            controller.setActiveUser(activeUser);
+        } catch (Exception e) {
+            Alerts.errorAlert(e.getMessage());
+        }
     }
 
     @FXML
     void logOutMenuHandler() {
-        //  OpenWindow.reOpenLogin(thisStage, activeUser.getUsername(), borderPane);
+        OpenWindow.reOpenLogin(thisStage, activeUser.getUsername(), borderPane);
     }
 
     @FXML
-    void reportMenuHandler() throws IOException {
-        FXMLLoader loader = OpenWindow.openFromDashboardWindow("/com/example/gymmanagementsystem/newviews/info/dailyReports.fxml", borderPane, menuHBo, logout);
-//        ReportController controller = loader.getController();
-//        controller.setActiveUser(activeUser);
+    void reportMenuHandler() {
+        try {
+            FXMLLoader loader = OpenWindow.openFromDashboardWindow("/com/example/gymmanagementsystem/newviews/info/dailyReports.fxml", borderPane, menuHBo, logout);
+            ReportController controller = loader.getController();
+            controller.setActiveUser(activeUser);
+        } catch (Exception e) {
+            Alerts.errorAlert(e.getMessage());
+        }
     }
 
     public void setMenus(HBox menuHBox, MenuItem logout) {
@@ -72,11 +91,5 @@ public class DashboardMenuController extends CommonClass implements Initializabl
         this.borderPane = borderPane;
     }
 
-
-//    public static SlideInUp getSlideUp() {
-//        if (slideInUp != null) return slideInUp;
-//        slideInUp = new SlideInUp();
-//        return slideInUp;
-//    }
 
 }

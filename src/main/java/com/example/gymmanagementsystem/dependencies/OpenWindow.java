@@ -68,7 +68,8 @@ public class OpenWindow {
         HBox topBox = (HBox) borderPane.getTop();
         topBox.getChildren().add(1, hBox);
         getFadeIn().play();
-        logout.setVisible(true);
+        // TODO: 06/05/2023  chec logiut
+        logout.setVisible(logout.isVisible());
         return loader;
     }
 

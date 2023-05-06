@@ -112,7 +112,7 @@ public class HomeController extends CommonClass implements Initializable {
                 Alerts.waningAlert("Macmiil maad dooran. ");
                 return;
             }
-            FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/newviews/main/payments.fxml", borderPane);
+            FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/newviews/main/payments/create-payment.fxml", borderPane);
             CreatePaymentController controller = loader.getController();
             controller.setBorderPane(borderPane);
             controller.setCustomer(tableView.getSelectionModel().getSelectedItem());
@@ -149,12 +149,12 @@ public class HomeController extends CommonClass implements Initializable {
         boolean done = Alerts.confirmationAlert("Ma hubtaa inaad masaxdo macmiilka " + customer.getFirstName() + " " + customer.getMiddleName() + " " + customer.getLastName(), "Maya", "Haa");
 
         if (done) {
-            // try {
-            //  CustomerService.deleteCustomer(customer);
-            Alerts.notificationAlert("Waad masaxdey.");
-//            } catch (SQLException e) {
-//                Alerts.errorAlert(e.getMessage());
-//            }
+            try {
+                CustomerService.deleteCustomer(customer);
+                Alerts.notificationAlert("Waad masaxdey.");
+            } catch (SQLException e) {
+                Alerts.errorAlert(e.getMessage());
+            }
         }
     }
 

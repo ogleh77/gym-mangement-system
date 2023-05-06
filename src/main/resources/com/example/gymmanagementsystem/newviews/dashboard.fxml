@@ -183,7 +183,7 @@
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="44.0" prefWidth="104.0" spacing="10.0" HBox.hgrow="ALWAYS">
                     <children>
-                        <HBox alignment="CENTER" onMouseClicked="#minimizeHandler" prefHeight="35.0" prefWidth="46.0" styleClass="top-menu-hover">
+                        <HBox alignment="CENTER" onMouseClicked="#minimizeHandler" prefHeight="44.0" prefWidth="45.0" styleClass="top-menu-hover">
                             <children>
                                 <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -192,7 +192,7 @@
                                 </ImageView>
                             </children>
                             <HBox.margin>
-                                <Insets bottom="2.0" top="2.0" />
+                                <Insets />
                             </HBox.margin>
                         </HBox>
                         <HBox alignment="CENTER" onMouseClicked="#closeHandler" prefHeight="44.0" prefWidth="49.0" styleClass="cancel-pane" stylesheets="@../style/css/small-style.css">

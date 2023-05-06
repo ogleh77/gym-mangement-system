@@ -1,6 +1,8 @@
 package com.example.gymmanagementsystem.data.dto.main;
 
+import com.example.gymmanagementsystem.data.dto.Data;
 import com.example.gymmanagementsystem.data.entities.main.Customers;
+import com.example.gymmanagementsystem.data.entities.main.Payments;
 import com.example.gymmanagementsystem.data.entities.service.Users;
 import com.example.gymmanagementsystem.data.models.main.CustomerModel;
 import javafx.collections.ObservableList;
@@ -33,6 +35,33 @@ public class CustomerService {
 
     private static void updateCustomer(Customers customer) throws SQLException {
         customerModel.update(customer);
+    }
+
+    public static void deleteCustomer(Customers customer) throws SQLException {
+        try {
+            ObservableList<Payments> payments = PaymentService.fetchAllPayments(customer.getPhone());
+
+            String pendPaymentMessage = "Macmiilkan waxa uu xidhay payment sasoo ay tahay ma delete garayn kartid" +
+                    "Marka hore dib u fur paymentkisa marka wakhtigu u dhamadana wad masaxi kartaa insha Allah.";
+            String onlinePaymentMessage = "Macmiilkan waxa uu u socda payment sasoo ay tahay ma delete garayn kartid" +
+                    " ilaa wakhtigiisa uu dhamaysanyo insha Allah.";
+
+            if (customer.getPayments().isEmpty()) {
+                Data.getAllCustomersList().remove(customer);
+                customerModel.delete(customer);
+            } else {
+                for (Payments payment : payments) {
+                    if (payment.isOnline() || payment.isPending()) {
+                        throw new SQLException(payment.isOnline() ? onlinePaymentMessage : pendPaymentMessage);
+                    }
+                    customerModel.delete(customer);
+                    Data.getAllCustomersList().remove(customer);
+                }
+            }
+        } catch (SQLException e) {
+            throw new SQLException("from sqlite " + e.getMessage());
+        }
+
     }
 
     public static int predictNextId() throws SQLException {

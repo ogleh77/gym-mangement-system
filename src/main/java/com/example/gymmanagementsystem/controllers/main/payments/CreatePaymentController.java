@@ -1,6 +1,7 @@
 package com.example.gymmanagementsystem.controllers.main.payments;
 
 import animatefx.animation.FadeIn;
+import com.example.gymmanagementsystem.controllers.main.HomeController;
 import com.example.gymmanagementsystem.data.dto.GymService;
 import com.example.gymmanagementsystem.data.dto.main.PaymentService;
 import com.example.gymmanagementsystem.data.entities.main.Customers;
@@ -9,12 +10,16 @@ import com.example.gymmanagementsystem.data.entities.service.Box;
 import com.example.gymmanagementsystem.data.entities.service.Gym;
 import com.example.gymmanagementsystem.dependencies.Alerts;
 import com.example.gymmanagementsystem.dependencies.CommonClass;
+import com.example.gymmanagementsystem.dependencies.OpenWindow;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXRadioButton;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -37,9 +42,6 @@ public class CreatePaymentController extends CommonClass implements Initializabl
 
     @FXML
     private JFXButton createBtn;
-
-    @FXML
-    private Label dateLabel;
 
     @FXML
     private TextField discount;
@@ -112,6 +114,9 @@ public class CreatePaymentController extends CommonClass implements Initializabl
         });
         amountValidation();
         validateDiscount();
+
+        service.setOnSucceeded(e -> createBtn.setText("samaysay(created)"));
+
     }
 
 
@@ -121,8 +126,7 @@ public class CreatePaymentController extends CommonClass implements Initializabl
             _discount = (!discount.getText().isEmpty() || !discount.getText().isBlank() ? Double.parseDouble(discount.getText()) : 0);
             _amountPaid = (!amountPaid.getText().isEmpty() || !amountPaid.getText().isBlank() ? Double.parseDouble(amountPaid.getText()) : 0);
             if (isValid(getMandatoryFields(), null) && (!discountValidation.isVisible() || discount.getText().length() == 0)) {
-                insetPayment();
-//                startTask(service, createBtn, newPayment ? "Creating" : "Updating");
+                startTask(service, createBtn, "Creating");
             }
         } catch (Exception e) {
             if (e.getMessage().matches("multiple points"))
@@ -180,7 +184,32 @@ public class CreatePaymentController extends CommonClass implements Initializabl
         }
     }
 
+    private final Service<Void> service = new Service<>() {
+        @Override
+        protected Task<Void> createTask() {
+            return new Task<>() {
+                @Override
+                protected Void call() {
+                    try {
+                        insetPayment();
+                        Thread.sleep(1000);
+                        Platform.runLater(() -> {
+                            boolean data = Alerts.singleConfirmationAlert("waxaad samaysay payment cusub.", "Back to home");
+                            if (data) {
+                                openHome();
+                            }
+                        });
+                    } catch (Exception e) {
+                        Platform.runLater(() -> Alerts.errorAlert(e.getMessage()));
+                    }
+                    return null;
+                }
+            };
+        }
+    };
+
     //----------------------------Helper methods---------------------
+
     private void insetPayment() throws SQLException {
         Payments payment = new Payments(0, LocalDate.now(), expDate.getValue(), String.valueOf(LocalDate.now().getMonth()), String.valueOf(LocalDate.now().getYear()), _amountPaid, paidBy.getValue(), _discount, poxing.isSelected(), customer.getPhone(), true, false);
         if (boxChooser.getValue() != null && !boxChooser.getValue().getBoxName().matches("remove box")) {
@@ -264,5 +293,16 @@ public class CreatePaymentController extends CommonClass implements Initializabl
         createBtn.setDisable(true);
 
         tellInfo(payment.getExpDate(), payment.isPending());
+    }
+
+    private void openHome() {
+        try {
+            FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/newviews/main/home.fxml", borderPane);
+            HomeController controller = loader.getController();
+            controller.setActiveUser(activeUser);
+            controller.setBorderPane(borderPane);
+        } catch (Exception e) {
+            Alerts.errorAlert(e.getMessage());
+        }
     }
 }

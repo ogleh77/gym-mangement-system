@@ -83,7 +83,10 @@ public class DashboardController extends CommonClass implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Platform.runLater(this::init);
+        Platform.runLater(() -> {
+            init();
+            backupCloseService.setOnSucceeded(e -> OpenWindow.closeStage(stage, topPane));
+        });
     }
 
 
@@ -91,7 +94,7 @@ public class DashboardController extends CommonClass implements Initializable {
     @FXML
     void dashboardHandler() {
         try {
-            OpenWindow.dashboardWindow(borderPane, menuHBox, activeUser,logout);
+            OpenWindow.dashboardWindow(borderPane, menuHBox, activeUser, logout);
         } catch (Exception e) {
             Alerts.errorAlert(e.getMessage());
         }
@@ -204,10 +207,9 @@ public class DashboardController extends CommonClass implements Initializable {
 
     @FXML
     void closeHandler() {
-        boolean data = Alerts.confirmationAlert("Ma hubtaa inaad ka baxdo systemka"
-                , "Maya", "Haa");
+        boolean data = Alerts.confirmationAlert("Ma hubtaa inaad ka baxdo systemka",
+                "Maya", "Haa");
         if (data) {
-            stage.close();
             try {
                 if (BackupService.lastBackupPath() == null) {
                     FileChooser chooser = new FileChooser();
@@ -304,7 +306,7 @@ public class DashboardController extends CommonClass implements Initializable {
         OpenWindow.stageDrag(stage, topPane);
         stackPane.getChildren().remove(loadingPane);
         try {
-            OpenWindow.dashboardWindow(borderPane, menuHBox, activeUser,logout);
+            OpenWindow.dashboardWindow(borderPane, menuHBox, activeUser, logout);
         } catch (Exception e) {
             Alerts.errorAlert(e.getMessage());
         }

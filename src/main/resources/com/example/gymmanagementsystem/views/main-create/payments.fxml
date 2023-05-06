@@ -17,7 +17,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" styleClass="home-pane" stylesheets="@../../style/css/long-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.shipable.newcontrollers.PaymentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" styleClass="home-pane" stylesheets="@../../style/css/long-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.PaymentController">
     <effect>
         <DropShadow height="35.82" radius="17.41" spread="0.01" width="35.82">
             <color>
@@ -29,7 +29,7 @@
         <Insets top="10.0" />
     </padding>
     <ImageView fitHeight="166.0" fitWidth="233.0" layoutX="242.0" layoutY="472.0" pickOnBounds="true" AnchorPane.bottomAnchor="122.0">
-        <Image url="@../../style/icons/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpeg" />
+        <Image url="@../../style/icons/535-5355451_payment-success-illustration-png-transparent-png.png" />
     </ImageView>
     <Label layoutX="666.0" layoutY="155.0" text="star date" textFill="#328ca8" AnchorPane.rightAnchor="469.0">
         <font>
@@ -145,10 +145,10 @@
             <Font name="Arial Bold" size="16.0" />
         </font>
     </Label>
-   <Label fx:id="discountValidation" layoutX="791.0" layoutY="301.0" prefHeight="20.0" prefWidth="313.0" styleClass="error-message-style" stylesheets="@../../style/css/message.css" text="Qimo dhimista u badani waa" textFill="#c94141" visible="false">
-      <font>
-         <Font name="Verdana" size="14.0" />
-      </font>
-   </Label>
+    <Label fx:id="discountValidation" layoutX="791.0" layoutY="301.0" prefHeight="20.0" prefWidth="313.0" styleClass="error-message-style" stylesheets="@../../style/css/message.css" text="Qimo dhimista u badani waa" textFill="#c94141" visible="false">
+        <font>
+            <Font name="Verdana" size="14.0" />
+        </font>
+    </Label>
 
 </AnchorPane>

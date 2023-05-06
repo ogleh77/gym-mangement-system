@@ -10,5 +10,6 @@ module com.example.gymmanagementsystem {
     opens com.example.gymmanagementsystem.controllers to javafx.fxml;
 
     exports com.example.gymmanagementsystem;
+    exports com.example.gymmanagementsystem.entities;
     opens com.example.gymmanagementsystem.controllers.done to javafx.fxml;
 }

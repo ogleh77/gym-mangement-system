@@ -24,6 +24,16 @@ public class PaymentService {
 
     }
 
+    public static void updatePayment(Payments payment) throws SQLException {
+        System.out.println(payment);
+        try {
+            paymentModel.update(payment);
+        } catch (SQLException e) {
+            throw new CustomException("Khalad ayaaa ka dhacay " + e.getMessage() + " " + "\n fadlan dib u search garee customerka kadibna payment usamee");
+        }
+
+    }
+
     public static void holdPayment(Payments payment, int allowedDays) throws SQLException {
         try {
             LocalDate exp = payment.getExpDate();

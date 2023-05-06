@@ -48,9 +48,11 @@ public class Payments {
     public int getPaymentID() {
         return paymentID;
     }
+
     public void setStartDate(LocalDate startDate) {
-      this.startDate=startDate;
+        this.startDate = startDate;
     }
+
     public LocalDate getExpDate() {
         return expDate;
     }
@@ -131,16 +133,39 @@ public class Payments {
         this.pending.set(pending);
     }
 
-    public String getDaysRemind() {
-        Period period = Period.between(LocalDate.now(), expDate);
-        if (expDate.isAfter(LocalDate.now()))
-            if (period.getMonths() > 0) {
-                return period.getMonths() + " Month";
-            }
-        if (period.getDays() < 0) {
-            return "outdate";
-        }
-        return period.getDays() == 1 ? "1 day" : period.getDays() + " days";
+    public void setPaymentID(int paymentID) {
+        this.paymentID = paymentID;
     }
 
+    public String getDaysRemind() {
+         Period period = Period.between(LocalDate.now(), expDate);
+        if (period.getDays() <= 0) {
+            return "outdate";
+        }
+        if (period.getYears() > 0) {
+            return period.getYears() + " Y -" + period.getMonths() + " M -" + period.getDays() + " days";
+
+        } else if (period.getMonths() > 0) {
+            return period.getMonths() + " M -" + (period.getDays() > 1 ? period.getDays() + " days" : period.getDays() + " day");
+
+        }
+//        if (expDate.isAfter(LocalDate.now()))
+//            if (period.getMonths() > 0) {
+//                return period.getMonths()>1? period.getMonths()>1: " Month";
+        //}
+
+        return period.getDays() <=1 ? "1 day" : period.getDays() + " days";
+    }
+
+    @Override
+    public String toString() {
+        return "Payments{" +
+                "paymentID=" + paymentID +
+                ", startDate=" + startDate +
+                ", expDate=" + expDate +
+                ", amountPaid=" + amountPaid +
+                ", paidBy=" + paidBy +
+                ", discount=" + discount +
+                '}';
+    }
 }

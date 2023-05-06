@@ -37,7 +37,7 @@ public class PaymentModel {
             ps.setString(7, customerPhone);
             ps.setString(8, payment.getMonth());
             ps.executeUpdate();
-            makeReport(payment, customerGender);
+            //   makeReport(payment, customerGender);
             connection.commit();
             ps.close();
         } catch (SQLException e) {
@@ -48,24 +48,32 @@ public class PaymentModel {
 
 
     public void update(Payments payment) throws SQLException {
-        String query = "UPDATE payments SET start_date=?,exp_date=?,amount_paid=?,paid_by=?,\n" + "discount=?,poxing=?,box_fk=? WHERE payment_id=" + payment.getPaymentID();
+        connection.setAutoCommit(false);
+        try {
+            String query = "UPDATE payments SET start_date=?,exp_date=?,amount_paid=?,paid_by=?,\n" + "discount=?,poxing=?,box_fk=? WHERE payment_id=" + payment.getPaymentID();
 
-        PreparedStatement ps = connection.prepareStatement(query);
-        ps.setString(1, payment.getStartDate().toString());
-        ps.setString(2, payment.getExpDate().toString());
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setString(1, payment.getStartDate().toString());
+            ps.setString(2, payment.getExpDate().toString());
+            ps.setDouble(3, payment.getAmountPaid());
+            ps.setString(4, payment.getPaidBy());
+            ps.setDouble(5, payment.getDiscount());
+            ps.setBoolean(6, payment.isPoxing());
+            if (payment.getBox() == null) {
+                ps.setString(7, null);
+            } else {
+                ps.setInt(7, payment.getBox().getBoxId());
+                BoxService.updateBox(payment.getBox());
+            }
+            ps.executeUpdate();
+            connection.commit();
+            ps.close();
+            System.out.println("Updated");
 
-        ps.setDouble(3, payment.getAmountPaid());
-        ps.setString(4, payment.getPaidBy());
-        ps.setDouble(5, payment.getDiscount());
-        ps.setBoolean(6, payment.isPoxing());
-        if (payment.getBox() == null) {
-            ps.setString(7, null);
-        } else {
-            ps.setInt(7, payment.getBox().getBoxId());
-            BoxService.updateBox(payment.getBox());
+        } catch (SQLException e) {
+            connection.rollback();
+            throw e;
         }
-        ps.executeUpdate();
-        ps.close();
     }
 
     public void holdPayment(Payments payment, int daysRemain) throws SQLException {
@@ -232,7 +240,7 @@ public class PaymentModel {
     }
 
     private Payments getPayments(ResultSet rs) throws SQLException {
-        return new Payments(rs.getInt("payment_id"), LocalDate.parse(rs.getString("payment_date")), LocalDate.parse(rs.getString("exp_date")), rs.getString("month"), rs.getString("year"), rs.getDouble("amount_paid"), rs.getString("paid_by"), rs.getDouble("discount"), rs.getBoolean("poxing"), rs.getString("customer_phone_fk"), rs.getBoolean("is_online"), rs.getBoolean("pending"));
+        return new Payments(rs.getInt("payment_id"), LocalDate.parse(rs.getString("start_date")), LocalDate.parse(rs.getString("exp_date")), rs.getString("month"), rs.getString("year"), rs.getDouble("amount_paid"), rs.getString("paid_by"), rs.getDouble("discount"), rs.getBoolean("poxing"), rs.getString("customer_phone_fk"), rs.getBoolean("is_online"), rs.getBoolean("pending"));
     }
 
 }

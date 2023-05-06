@@ -11,12 +11,12 @@ module com.example.gymmanagementsystem {
     opens com.example.gymmanagementsystem to javafx.fxml;
     opens com.example.gymmanagementsystem.temcont to javafx.fxml;
     opens com.example.gymmanagementsystem.controllers to javafx.fxml;
+    opens com.example.gymmanagementsystem.controllers.service to javafx.fxml;
     exports com.example.gymmanagementsystem;
 
     exports com.example.gymmanagementsystem.data.entities.main;
     exports com.example.gymmanagementsystem.data.entities.service;
-    opens com.example.gymmanagementsystem.controllers.service to javafx.fxml;
-    opens com.example.gymmanagementsystem.controllers.users to javafx.fxml;
+     opens com.example.gymmanagementsystem.controllers.users to javafx.fxml;
     opens com.example.gymmanagementsystem.controllers.informations to javafx.fxml;
     opens com.example.gymmanagementsystem.controllers.notdone to javafx.fxml;
     opens com.example.gymmanagementsystem.controllers.main to javafx.fxml;

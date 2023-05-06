@@ -93,13 +93,13 @@ public abstract class CommonClass {
 
     public ObservableList<String> getShift() {
         ObservableList<String> shift = FXCollections.observableArrayList();
-        shift.addAll("Morning", "Noon", "Afternoon", "Night");
+        shift.addAll("Subaxnimo", "Duhur", "Galabnimo", "Habeenimo");
         return shift;
     }
 
     public ObservableList<String> getPaidBy() {
         ObservableList<String> paidBy = FXCollections.observableArrayList();
-        paidBy.addAll("eDahab", "Zaad service", "other");
+        paidBy.addAll("eDahab", "Zaad service", "Hab kale");
         return paidBy;
     }
 

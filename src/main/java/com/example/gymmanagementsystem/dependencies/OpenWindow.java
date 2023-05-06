@@ -1,10 +1,13 @@
 package com.example.gymmanagementsystem.dependencies;
 
 import animatefx.animation.*;
+import com.example.gymmanagementsystem.controllers.main.DashboardMenuController;
+import com.example.gymmanagementsystem.data.entities.service.Users;
 import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -27,8 +30,7 @@ public class OpenWindow {
     private static FadeOut fadeOut;
     private static double xOffset = 0;
     private static double yOffset = 0;
-    private final static URL icon =
-            OpenWindow.class.getResource("/com/example/gymmanagementsystem/style/icons/app-icon.jpeg");
+    private final static URL icon = OpenWindow.class.getResource("/com/example/gymmanagementsystem/style/icons/app-icon.jpeg");
 
 
     public static FXMLLoader openStagedWindow(String url, Node node) throws IOException {
@@ -56,6 +58,66 @@ public class OpenWindow {
         return loader;
     }
 
+    public static FXMLLoader openFromDashboardWindow(String url, BorderPane borderPane, HBox hBox, MenuItem logout) throws IOException {
+        FXMLLoader loader = new FXMLLoader(OpenWindow.class.getResource(url));
+        AnchorPane anchorPane = loader.load();
+        getSlideUp().setNode(anchorPane);
+        getSlideUp().play();
+        borderPane.setCenter(anchorPane);
+        getFadeIn().setNode(hBox);
+        HBox topBox = (HBox) borderPane.getTop();
+        topBox.getChildren().add(1, hBox);
+        getFadeIn().play();
+        logout.setVisible(true);
+        return loader;
+    }
+
+
+    public static void dashboardWindow(BorderPane borderPane, HBox topPane, Users activeUser,MenuItem logout) throws Exception {
+        FXMLLoader loader = new FXMLLoader(OpenWindow.class.getResource("/com/example/gymmanagementsystem/newviews/main/dashboard-menu.fxml"));
+        AnchorPane anchorPane = loader.load();
+        FadeIn fadeIn = new FadeIn(anchorPane);
+        HBox hBox = (HBox) borderPane.getTop();
+        hBox.getChildren().remove(topPane);
+        DashboardMenuController controller = loader.getController();
+        controller.setBorderPane(borderPane);
+        controller.setActiveUser(activeUser);
+        controller.setMenus(topPane,logout);
+        borderPane.setCenter(anchorPane);
+        fadeIn.setSpeed(0.4);
+        fadeIn.play();
+    }
+
+    public static FXMLLoader mainWindow(String url, BorderPane borderPane) throws IOException {
+        FXMLLoader loader = new FXMLLoader(OpenWindow.class.getResource(url));
+
+        AnchorPane anchorPane = loader.load();
+        getSlideUp().setNode(anchorPane);
+        getSlideUp().play();
+        borderPane.setCenter(anchorPane);
+        return loader;
+    }
+
+    public static void reOpenLogin(Stage thisStage, String username, BorderPane borderPane) {
+        boolean done = Alerts.confirmationAlert("Ma hubtaa inaad ka baxdo user ka " + username, "Maya", "Haa");
+        if (done) {
+            FadeOut fadeOut = OpenWindow.getFadeOut();
+            fadeOut.setNode(borderPane);
+            fadeOut.setSpeed(2);
+            fadeOut.setOnFinished(e -> {
+                thisStage.close();
+                try {
+                    OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/service/login.fxml", borderPane);
+                } catch (Exception ex) {
+                    Alerts.errorAlert(ex.getMessage());
+                    ex.printStackTrace();
+                }
+            });
+            fadeOut.play();
+        }
+    }
+
+    //-------------------Helpers---------------------------–
     public static void closeStage(Stage stage, Node node) {
         if (fadeOut == null) {
             fadeOut = new FadeOut(node);
@@ -90,6 +152,18 @@ public class OpenWindow {
         });
     }
 
+    public static SlideInLeft getSlideInLeft() {
+        if (slideInLeft != null) return slideInLeft;
+        slideInLeft = new SlideInLeft();
+        return slideInLeft;
+    }
+
+    public static SlideInRight getSlideInRight() {
+        if (slideInRight != null) return slideInRight;
+        slideInRight = new SlideInRight();
+        return slideInRight;
+    }
+
     public static FadeIn getFadeIn() {
         if (fadeIn != null) return fadeIn;
         fadeIn = new FadeIn();
@@ -99,5 +173,17 @@ public class OpenWindow {
     public static FadeOut getFadeOut() {
         if (fadeOut == null) fadeOut = new FadeOut();
         return fadeOut;
+    }
+
+    public static SlideInUp getSlideUp() {
+        if (slideInUp != null) return slideInUp;
+        slideInUp = new SlideInUp();
+        return slideInUp;
+    }
+
+    public static Shake getShake() {
+        if (shake != null) return shake;
+        shake = new Shake();
+        return shake;
     }
 }

@@ -11,7 +11,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" styleClass="home-pane"
             stylesheets="@../../style/css/long-style.css" xmlns="http://javafx.com/javafx/18"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.gymmanagementsystem.controllers.PaymentsControllers">
+            fx:controller="com.example.gymmanagementsystem.controllers.notdone.PaymentsControllers">
     <effect>
         <DropShadow height="35.82" radius="17.41" spread="0.01" width="35.82">
             <color>

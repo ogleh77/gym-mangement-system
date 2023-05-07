@@ -1,5 +1,6 @@
 package com.example.gymmanagementsystem.controllers.users;
 
+import animatefx.animation.FadeOut;
 import com.example.gymmanagementsystem.data.dto.GymService;
 import com.example.gymmanagementsystem.data.dto.UserService;
 import com.example.gymmanagementsystem.data.entities.service.Gym;
@@ -83,6 +84,7 @@ public class UserUpdateController extends CommonClass implements Initializable {
     private final ToggleGroup roleToggle = new ToggleGroup();
     private Gym currentGym;
     private boolean itsMe = false;
+    Stage parentStage;
 
     public UserUpdateController() {
         try {
@@ -160,7 +162,7 @@ public class UserUpdateController extends CommonClass implements Initializable {
 
                         if (users().getPassword().length() < 4)
                             throw new RuntimeException("Fadlan password ku kama yaraan karo 4 xaraf ama lanbar");
-                        
+
                         UserService.updateUser(users());
                         Platform.runLater(() -> {
                             if (itsMe) {
@@ -229,10 +231,26 @@ public class UserUpdateController extends CommonClass implements Initializable {
         }
     }
 
+    public void setParentStage(Stage parentStage) {
+        this.parentStage = parentStage;
+    }
+
     private Users users() {
         String gander = male.isSelected() ? "Male" : "Female";
         String role = this.admin.isSelected() ? "admin" : "user";
-        users = new Users(Integer.parseInt(idFeild.getText()), firstname.getText().trim(), lastname.getText().trim(), phone.getText().trim(), gander, shift.getValue(), username.getText().trim(), password.getText().trim(), selectedFile == null ? users.getImage() : readFile(selectedFile.getAbsolutePath()), role);
+        users = new Users();
+        users.setFirstName(firstname.getText().trim());
+        users.setLastName(lastname.getText().trim());
+        users.setPhone(phone.getText().trim());
+        users.setGender(gander);
+        users.setPassword(password.getText().trim());
+        users.setUsername(username.getText().trim());
+        users.setImage(selectedFile == null ?
+                users.getImage() : readFile(selectedFile.getAbsolutePath()));
+        users.setRole(role);
+        users.setShift(shift.getValue());
+        users.setUserId(Integer.parseInt(idFeild.getText()));
+
 
         imageUploaded = true;
         return users;
@@ -250,21 +268,20 @@ public class UserUpdateController extends CommonClass implements Initializable {
     }
 
     private void openLogin() {
-        System.out.println("logouted..");
-//        FadeOut fadeOut = OpenWindow.getFadeOut();
-//        fadeOut.setNode(borderPane);
-//        fadeOut.setSpeed(2);
-//        fadeOut.setOnFinished(e -> {
-//            stage.close();
-//            Stage dashboard = (Stage) borderPane.getScene().getWindow();
-//            dashboard.close();
-//            try {
-//                OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/service/login.fxml", borderPane);
-//            } catch (Exception ex) {
-//                Alerts.errorAlert(ex.getMessage());
-//                ex.printStackTrace();
-//            }
-//        });
-//        fadeOut.play();
+        FadeOut fadeOut = OpenWindow.getFadeOut();
+        fadeOut.setNode(updatePane);
+        fadeOut.setSpeed(2);
+        fadeOut.setOnFinished(e -> {
+            stage.close();
+            Stage dashboard = (Stage) updatePane.getScene().getWindow();
+            dashboard.close();
+            try {
+                OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/views/service/login.fxml", borderPane);
+            } catch (Exception ex) {
+                Alerts.errorAlert(ex.getMessage());
+                ex.printStackTrace();
+            }
+        });
+        fadeOut.play();
     }
 }

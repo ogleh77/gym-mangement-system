@@ -153,7 +153,7 @@ public class OutdatedController extends CommonClass implements Initializable {
                 }
 
                 loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("/com/example/gymmanagementsystem/newviews/info/customer-card.fxml"));
+                loader.setLocation(getClass().getResource("/com/example/gymmanagementsystem/views/info/customer-card.fxml"));
                 anchorPane = loader.load();
                 GridPane.setMargin(anchorPane, new Insets(10));
                 CardController controller = loader.getController();

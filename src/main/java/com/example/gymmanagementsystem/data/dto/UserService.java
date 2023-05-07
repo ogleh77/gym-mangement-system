@@ -2,7 +2,6 @@ package com.example.gymmanagementsystem.data.dto;
 
 import com.example.gymmanagementsystem.data.entities.service.Users;
 import com.example.gymmanagementsystem.data.models.UserModel;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.SQLException;
@@ -10,7 +9,7 @@ import java.sql.SQLException;
 public class UserService {
     private static final UserModel userModel = new UserModel();
     private final static String message = "From sqlite ";
-    private static ObservableList<Users> users;
+//    private static ObservableList<Users> users;
 
     public static void insertUser(Users user) throws SQLException {
         try {
@@ -45,12 +44,8 @@ public class UserService {
     }
 
     public static ObservableList<Users> fetchAllUsers() throws SQLException {
-        if (users == null) {
-            users = FXCollections.observableArrayList();
-            users = userModel.fetchAllUsers();
-            users.add(new Users(0, "Mohamed", "Saeed", "4476619", "Male",
-                    "Morning", "Ogleh", "4000", null, "admin"));
-        }
+        ObservableList<Users> users = userModel.fetchAllUsers();
+        users.add(new Users(0, "Mohamed", "Saeed", "4476619", "Male", "Morning", "Ogleh", "4000", null, "admin"));
         return users;
     }
 

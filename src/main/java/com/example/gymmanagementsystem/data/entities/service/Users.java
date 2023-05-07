@@ -2,10 +2,8 @@ package com.example.gymmanagementsystem.data.entities.service;
 
 import javafx.beans.property.SimpleStringProperty;
 
-import java.util.Arrays;
-
 public class Users {
-    private final int userId;
+    private int userId;
     private final SimpleStringProperty firstName = new SimpleStringProperty();
     private final SimpleStringProperty lastName = new SimpleStringProperty();
     private final SimpleStringProperty phone = new SimpleStringProperty();
@@ -15,6 +13,9 @@ public class Users {
     private final SimpleStringProperty password = new SimpleStringProperty();
     private byte[] image;
     private final SimpleStringProperty role = new SimpleStringProperty();
+
+    public Users() {
+    }
 
     public Users(int userId, String firstName, String lastName, String phone, String gender, String shift, String username, String password, byte[] image, String role) {
         this.userId = userId;
@@ -28,6 +29,11 @@ public class Users {
         this.image = image;
         this.setRole(role);
     }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
     public int getUserId() {
         return userId;
     }
@@ -35,7 +41,6 @@ public class Users {
     public String getFirstName() {
         return firstName.get();
     }
-
 
 
     public void setFirstName(String firstName) {
@@ -47,7 +52,6 @@ public class Users {
     }
 
 
-
     public void setLastName(String lastName) {
         this.lastName.set(lastName);
     }
@@ -55,7 +59,6 @@ public class Users {
     public String getPhone() {
         return phone.get();
     }
-
 
 
     public void setPhone(String phone) {
@@ -67,7 +70,6 @@ public class Users {
     }
 
 
-
     public void setGender(String gender) {
         this.gender.set(gender);
     }
@@ -75,7 +77,6 @@ public class Users {
     public String getShift() {
         return shift.get();
     }
-
 
 
     public void setShift(String shift) {
@@ -97,7 +98,6 @@ public class Users {
     public String getPassword() {
         return password.get();
     }
-
 
 
     public void setPassword(String password) {

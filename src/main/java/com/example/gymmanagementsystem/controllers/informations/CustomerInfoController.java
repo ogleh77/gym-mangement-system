@@ -136,7 +136,7 @@ public class CustomerInfoController extends CommonClass implements Initializable
             if (selectedPayment == null) {
                 throw new RuntimeException("Fadlan dooro payment-ka aad rabto inad wax ka bedesho");
             }
-            FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/newviews/main/payments/update-payments.fxml", borderPane);
+            FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/views/main/payments/update-payments.fxml", borderPane);
             UpdatePaymentController controller = loader.getController();
             controller.setCustomer(customer);
             controller.setPayment(selectedPayment);
@@ -236,8 +236,8 @@ public class CustomerInfoController extends CommonClass implements Initializable
             payment.setOnline(false);
             pendBtn.setText("Dib u fur");
             pendBtn.setStyle(unPendStyle);
+            Alerts.notificationAlert("Waad hakisay. ");
         }
-        Alerts.notificationAlert("Waad hakisay. ");
 
     }
 
@@ -250,8 +250,8 @@ public class CustomerInfoController extends CommonClass implements Initializable
             payment.setExpDate(payment.getExpDate());
             pendBtn.setText("Haki");
             pendBtn.setStyle(pendStyle);
+            Alerts.notificationAlert("Dib ayaad u furtay.");
         }
-        Alerts.notificationAlert("Dib ayaad u furtay.");
     }
 
     private String getDaysRemind(LocalDate expDate) {

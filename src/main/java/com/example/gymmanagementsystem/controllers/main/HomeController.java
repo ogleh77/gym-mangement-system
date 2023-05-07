@@ -96,7 +96,7 @@ public class HomeController extends CommonClass implements Initializable {
                 Alerts.waningAlert("Macmiil maad dooran. ");
                 return;
             }
-            FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/newviews/info/customer-info.fxml", borderPane);
+            FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/views/info/customer-info.fxml", borderPane);
             CustomerInfoController controller = loader.getController();
             controller.setBorderPane(borderPane);
             controller.setCustomer(tableView.getSelectionModel().getSelectedItem());
@@ -112,7 +112,7 @@ public class HomeController extends CommonClass implements Initializable {
                 Alerts.waningAlert("Macmiil maad dooran. ");
                 return;
             }
-            FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/newviews/main/payments/create-payment.fxml", borderPane);
+            FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/views/main/payments/create-payment.fxml", borderPane);
             CreatePaymentController controller = loader.getController();
             controller.setBorderPane(borderPane);
             controller.setCustomer(tableView.getSelectionModel().getSelectedItem());
@@ -127,7 +127,7 @@ public class HomeController extends CommonClass implements Initializable {
         try {
             if (tableView.getSelectionModel().getSelectedItem() == null) Alerts.waningAlert("Macmiil maad dooran. ");
             else {
-                FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/newviews/main/registrations.fxml", borderPane);
+                FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/views/main/registrations.fxml", borderPane);
                 RegistrationController controller = loader.getController();
                 controller.setBorderPane(borderPane);
                 controller.setCustomer(tableView.getSelectionModel().getSelectedItem());

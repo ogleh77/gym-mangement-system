@@ -297,7 +297,7 @@ public class CreatePaymentController extends CommonClass implements Initializabl
 
     private void openHome() {
         try {
-            FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/newviews/main/home.fxml", borderPane);
+            FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/views/main/home.fxml", borderPane);
             HomeController controller = loader.getController();
             controller.setActiveUser(activeUser);
             controller.setBorderPane(borderPane);

@@ -48,7 +48,7 @@ public class WarningController extends CommonClass implements Initializable {
             FXMLLoader loader;
             AnchorPane anchorPane;
             for (Customers customer : outdatedCustomers) {
-                loader = new FXMLLoader(getClass().getResource("/com/example/gymmanagementsystem/newviews/info/customer-card.fxml"));
+                loader = new FXMLLoader(getClass().getResource("/com/example/gymmanagementsystem/views/info/customer-card.fxml"));
                 try {
                     anchorPane = loader.load();
                     anchorPane.setStyle("-fx-background-color: white;-fx-background-radius: 2");

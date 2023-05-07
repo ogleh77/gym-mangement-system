@@ -103,7 +103,7 @@ public class DashboardController extends CommonClass implements Initializable {
     @FXML
     void homeHandler() {
         try {
-            FXMLLoader loader = OpenWindow.mainWindow("/com/example/gymmanagementsystem/newviews/main/home.fxml", borderPane);
+            FXMLLoader loader = OpenWindow.mainWindow("/com/example/gymmanagementsystem/views/main/home.fxml", borderPane);
             HomeController controller = loader.getController();
             controller.setActiveUser(activeUser);
             controller.setBorderPane(borderPane);
@@ -115,7 +115,7 @@ public class DashboardController extends CommonClass implements Initializable {
     @FXML
     void registrationHandler() {
         try {
-            FXMLLoader loader = OpenWindow.mainWindow("/com/example/gymmanagementsystem/newviews/main/registrations.fxml", borderPane);
+            FXMLLoader loader = OpenWindow.mainWindow("/com/example/gymmanagementsystem/views/main/registrations.fxml", borderPane);
             RegistrationController controller = loader.getController();
             controller.setActiveUser(activeUser);
             controller.setBorderPane(borderPane);
@@ -127,7 +127,7 @@ public class DashboardController extends CommonClass implements Initializable {
     @FXML
     void reportHandler() {
         try {
-            FXMLLoader loader = OpenWindow.mainWindow("/com/example/gymmanagementsystem/newviews/info/dailyReports.fxml", borderPane);
+            FXMLLoader loader = OpenWindow.mainWindow("/com/example/gymmanagementsystem/views/info/dailyReports.fxml", borderPane);
             ReportController controller = loader.getController();
             controller.setActiveUser(activeUser);
         } catch (Exception e) {
@@ -138,7 +138,7 @@ public class DashboardController extends CommonClass implements Initializable {
     @FXML
     void outdatedHandler() {
         try {
-            FXMLLoader loader = OpenWindow.mainWindow("/com/example/gymmanagementsystem/newviews/info/outdated.fxml", borderPane);
+            FXMLLoader loader = OpenWindow.mainWindow("/com/example/gymmanagementsystem/views/info/outdated.fxml", borderPane);
             OutdatedController controller = loader.getController();
             controller.setActiveUser(activeUser);
         } catch (Exception e) {
@@ -152,7 +152,7 @@ public class DashboardController extends CommonClass implements Initializable {
             if (!warningList.isEmpty()) {
                 warningParent.setVisible(false);
             }
-            FXMLLoader loader = OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/info/warning.fxml", topPane);
+            FXMLLoader loader = OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/views/info/warning.fxml", topPane);
             WarningController controller = loader.getController();
             controller.setOutdatedCustomers(warningList);
         } catch (Exception e) {
@@ -164,7 +164,7 @@ public class DashboardController extends CommonClass implements Initializable {
     @FXML
     void backupHandler() {
         try {
-            OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/service/backup.fxml", activeProfile);
+            OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/views/service/backup.fxml", activeProfile);
         } catch (Exception e) {
             Alerts.errorAlert(e.getMessage());
         }
@@ -173,7 +173,7 @@ public class DashboardController extends CommonClass implements Initializable {
     @FXML
     void addUserHandler() {
         try {
-            OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/users/user-creation.fxml", activeProfile);
+            OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/views/users/user-creation.fxml", activeProfile);
         } catch (Exception e) {
             Alerts.errorAlert(e.getMessage());
         }
@@ -182,7 +182,7 @@ public class DashboardController extends CommonClass implements Initializable {
     @FXML
     void updateUserHandler() {
         try {
-            FXMLLoader loader = OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/users/user-chooser.fxml", menuHBox);
+            FXMLLoader loader = OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/views/users/user-chooser.fxml", menuHBox);
             UserChooserController controller = loader.getController();
             controller.setUsersWithoutActiveOne(activeUser);
         } catch (Exception e) {
@@ -193,7 +193,7 @@ public class DashboardController extends CommonClass implements Initializable {
     @FXML
     void gymHandler() {
         try {
-            OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/service/gym.fxml", activeProfile);
+            OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/views/service/gym.fxml", activeProfile);
         } catch (Exception e) {
             Alerts.errorAlert(e.getMessage());
         }
@@ -231,14 +231,13 @@ public class DashboardController extends CommonClass implements Initializable {
     @FXML
     void updateMeHandler() {
         try {
-            FXMLLoader loader = OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/users/user-update.fxml", activeProfile);
+            FXMLLoader loader = OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/views/users/user-update.fxml", activeProfile);
             UserUpdateController controller = loader.getController();
             controller.setActiveUser(activeUser);
-            //controller.setStage(dashboardStage);
+            controller.setParentStage(stage);
             controller.setBorderPane(borderPane);
         } catch (Exception e) {
             Alerts.errorAlert(e.getMessage());
-            e.printStackTrace();
         }
     }
 
@@ -302,6 +301,7 @@ public class DashboardController extends CommonClass implements Initializable {
     private void init() {
         this.stage = (Stage) username.getScene().getWindow();
         gymTitle.textProperty().bind(currentGym.gymNameProperty());
+        username.textProperty().bind(activeUser.usernameProperty());
         OpenWindow.stageDropped(stage, topPane);
         OpenWindow.stageDrag(stage, topPane);
         stackPane.getChildren().remove(loadingPane);

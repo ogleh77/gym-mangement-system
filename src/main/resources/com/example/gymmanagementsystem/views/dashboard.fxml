@@ -156,7 +156,7 @@
                         <Circle fx:id="activeProfile" fill="DODGERBLUE" onMouseClicked="#updateMeHandler" radius="17.0" stroke="#048be4" strokeLineCap="ROUND" strokeWidth="0.0" />
                         <MenuButton fx:id="username" contentDisplay="TEXT_ONLY" mnemonicParsing="false" styleClass="profile-menu-button" stylesheets="@../style/css/button-style.css" text="Mohamed Ogleh">
                             <items>
-                                <MenuItem fx:id="updateMe" mnemonicParsing="false" text="Account kayga wax ka bedel">
+                                <MenuItem fx:id="updateMe" mnemonicParsing="false" onAction="#updateMeHandler" text="Account kayga wax ka bedel">
                                     <graphic>
                                         <ImageView fitHeight="27.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                                             <image>

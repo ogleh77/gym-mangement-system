@@ -337,7 +337,7 @@ public class RegistrationController extends CommonClass implements Initializable
 
     private void openPayment() {
         try {
-            FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/newviews/main/payments/create-payment.fxml", borderPane);
+            FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/views/main/payments/create-payment.fxml", borderPane);
             CreatePaymentController controller = loader.getController();
             controller.setBorderPane(borderPane);
             controller.setCustomer(customer);
@@ -348,7 +348,7 @@ public class RegistrationController extends CommonClass implements Initializable
 
     private void openHome() {
         try {
-            FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/newviews/main/home.fxml", borderPane);
+            FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/views/main/home.fxml", borderPane);
             HomeController controller = loader.getController();
             controller.setActiveUser(activeUser);
             controller.setBorderPane(borderPane);

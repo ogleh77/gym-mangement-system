@@ -41,7 +41,7 @@ public class UserChooserController implements Initializable {
         try {
             if (user == null) throw new RuntimeException("Fadlan dooro user-ka aad rabto inaad wax ka bedesho");
             stage.close();
-            FXMLLoader loader = OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/users/user-update.fxml", topPane);
+            FXMLLoader loader = OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/views/users/user-update.fxml", topPane);
             UserUpdateController controller = loader.getController();
             controller.setUser(user);
         } catch (Exception e) {

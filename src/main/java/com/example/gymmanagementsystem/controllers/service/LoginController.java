@@ -42,6 +42,7 @@ public class LoginController extends CommonClass implements Initializable {
     private Stage stage;
 
     public LoginController() {
+        System.out.println("Called...");
         try {
             users = UserService.fetchAllUsers();
             gym = GymService.getGym();
@@ -116,7 +117,7 @@ public class LoginController extends CommonClass implements Initializable {
 
 
     private void openSplash() throws IOException {
-        FXMLLoader loader = OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/service/splash-screen.fxml", topPane);
+        FXMLLoader loader = OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/views/service/splash-screen.fxml", topPane);
         SplashScreenController controller = loader.getController();
         controller.setActiveUser(userCombo.getValue());
     }

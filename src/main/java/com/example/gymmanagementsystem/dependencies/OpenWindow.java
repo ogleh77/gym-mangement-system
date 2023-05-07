@@ -75,7 +75,7 @@ public class OpenWindow {
 
 
     public static void dashboardWindow(BorderPane borderPane, HBox topPane, Users activeUser,MenuItem logout) throws Exception {
-        FXMLLoader loader = new FXMLLoader(OpenWindow.class.getResource("/com/example/gymmanagementsystem/newviews/main/dashboard-menu.fxml"));
+        FXMLLoader loader = new FXMLLoader(OpenWindow.class.getResource("/com/example/gymmanagementsystem/views/main/dashboard-menu.fxml"));
         AnchorPane anchorPane = loader.load();
         FadeIn fadeIn = new FadeIn(anchorPane);
         HBox hBox = (HBox) borderPane.getTop();
@@ -108,7 +108,7 @@ public class OpenWindow {
             fadeOut.setOnFinished(e -> {
                 thisStage.close();
                 try {
-                    OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/service/login.fxml", borderPane);
+                    OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/views/service/login.fxml", borderPane);
                 } catch (Exception ex) {
                     Alerts.errorAlert(ex.getMessage());
                     ex.printStackTrace();

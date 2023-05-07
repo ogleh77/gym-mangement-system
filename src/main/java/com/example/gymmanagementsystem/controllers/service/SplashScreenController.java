@@ -118,7 +118,7 @@ public class SplashScreenController extends CommonClass implements Initializable
     }
 
     private void openDashboard() throws IOException {
-        FXMLLoader loader = OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/newviews/dashboard.fxml", topPane);
+        FXMLLoader loader = OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/views/dashboard.fxml", topPane);
         DashboardController controller = loader.getController();
         controller.setWarningList(warningList);
         controller.setActiveUser(activeUser);

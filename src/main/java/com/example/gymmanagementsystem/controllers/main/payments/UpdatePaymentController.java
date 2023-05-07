@@ -1,5 +1,6 @@
 package com.example.gymmanagementsystem.controllers.main.payments;
 
+import com.example.gymmanagementsystem.controllers.main.HomeController;
 import com.example.gymmanagementsystem.data.dto.BoxService;
 import com.example.gymmanagementsystem.data.dto.GymService;
 import com.example.gymmanagementsystem.data.dto.main.PaymentService;
@@ -9,6 +10,7 @@ import com.example.gymmanagementsystem.data.entities.service.Box;
 import com.example.gymmanagementsystem.data.entities.service.Gym;
 import com.example.gymmanagementsystem.dependencies.Alerts;
 import com.example.gymmanagementsystem.dependencies.CommonClass;
+import com.example.gymmanagementsystem.dependencies.OpenWindow;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXRadioButton;
@@ -16,6 +18,7 @@ import javafx.application.Platform;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -100,7 +103,10 @@ public class UpdatePaymentController extends CommonClass implements Initializabl
         });
         amountValidation();
         validateDiscount();
-        service.setOnSucceeded(e -> createBtn.setText("Bedeshay(updated)"));
+        service.setOnSucceeded(e -> {
+            createBtn.setText("Bedeshay(updated)");
+            createBtn.setGraphic(null);
+        });
     }
 
 
@@ -192,7 +198,7 @@ public class UpdatePaymentController extends CommonClass implements Initializabl
                         Platform.runLater(() -> {
                             boolean data = Alerts.singleConfirmationAlert("Wax ka bedelka payment-ka wad ku guulaystay.", "Back to home");
                             if (data) {
-                                System.out.println("Home");
+                               openHome();
                             }
                         });
                     } catch (Exception e) {
@@ -265,6 +271,17 @@ public class UpdatePaymentController extends CommonClass implements Initializabl
                 BoxService.changeBoxState(payment.getBox());
             }
 
+        }
+    }
+
+    private void openHome() {
+        try {
+            FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/views/main/home.fxml", borderPane);
+            HomeController controller = loader.getController();
+            controller.setActiveUser(activeUser);
+            controller.setBorderPane(borderPane);
+        } catch (Exception e) {
+            Alerts.errorAlert(e.getMessage());
         }
     }
 }

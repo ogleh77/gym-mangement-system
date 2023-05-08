@@ -46,17 +46,16 @@ public class CardController extends CommonClass implements Initializable {
         fullName.setText(customer.getFirstName() + " " + customer.getMiddleName() + " " + customer.getLastName());
         expDate.setText(customer.getPayments().get(0).getExpDate() + "");
 
-
         if (period.getYears() > 0) {
-            outDated.setText(period.getYears() == 1 ? period.getYears() + " year ago " : period.getYears() + " years ago");
+            outDated.setText(period.getYears() + " sano ka hor.");
         } else if (period.getMonths() > 0) {
-            outDated.setText(period.getMonths() == 1 ? period.getMonths() + " month ago" : period.getMonths() + " months ago");
+            outDated.setText(period.getMonths() == 1 ? period.getMonths() + " bil ka hor." : period.getMonths() + " bilood ka hor.");
         } else if (period.getDays() == 0) {
-            outDated.setText("today is left");
+            outDated.setText("manta u hadhay.");
         } else if (period.getDays() < 0) {
-            outDated.setText(Math.abs(period.getDays()) + " days left");
+            outDated.setText(Math.abs(period.getDays()) + " malmood baa u hadhay.");
         } else {
-            outDated.setText(period.getDays() == 1 ? period.getDays() + " day ago" : period.getDays() + " days ago");
+            outDated.setText(period.getDays() == 1 ? period.getDays() + " malin ka hor." : period.getDays() + " malmood ka hor.");
         }
 
         phone.setText(customer.getPhone());

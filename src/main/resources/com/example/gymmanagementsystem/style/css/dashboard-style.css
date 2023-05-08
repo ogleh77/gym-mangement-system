@@ -2,16 +2,11 @@
     -fx-pref-height: 850;
     -fx-pref-width: 1400;
     -fx-background-color: #fafafa;
-    /*-fx-background-color: #f1f6ff;*/
-    /*-fx-background-color: #a8b9be;*/
-    /*-fx-background-color: #f3f0f0;*/
-
 }
 
 .top-pane {
     -fx-background-color: #328ca8;
     -fx-pref-height: 37;
-
 }
 
 .menu-center-btn {
@@ -25,6 +20,7 @@
     -fx-background-color: #16a2d7;
     -fx-cursor: hand;
 }
+
 .top-menu-hover:focused {
     -fx-background-color: #1eade3;
     -fx-cursor: hand;
@@ -59,8 +55,8 @@
     -fx-pref-height: 46;
     -fx-background-color: #328ca8;
     -fx-text-fill: #efe7e7;
-
 }
+
 .side-btn-setting {
     -fx-pref-width: 176;
     -fx-pref-height: 46;
@@ -87,4 +83,16 @@
     -fx-background-color: #afd6e3;
     -fx-text-fill: black;
     -fx-cursor: hand;
+}
+
+.username {
+    -fx-text-fill: #3a3939;
+    -fx-font-family: Verdana;
+    -fx-font-size: 17;
+}
+
+.username:hover {
+    -fx-text-fill: #dbe4ec;
+    -fx-cursor: hand;
+    -fx-underline: true;
 }

@@ -166,7 +166,8 @@ public class UserUpdateController extends CommonClass implements Initializable {
                         UserService.updateUser(users());
                         Platform.runLater(() -> {
                             if (itsMe) {
-                                boolean done = Alerts.singleConfirmationAlert("Account-kaga wa la update gareyay si aad u aragto is bedelka profile kaga" + " fadlan taabo logout dib-na usoo gal.", "Logout");
+                                boolean done = Alerts.confirmationAlert("Waad update garaysay account-kaga,\n" +
+                                        "Ma donaysaa inaad dib usoo gasho", "Maya","Haa");
                                 if (done) {
                                     openLogin();
                                 }
@@ -269,18 +270,17 @@ public class UserUpdateController extends CommonClass implements Initializable {
 
     private void openLogin() {
         FadeOut fadeOut = OpenWindow.getFadeOut();
-        fadeOut.setNode(updatePane);
+        fadeOut.setNode(borderPane);
         fadeOut.setSpeed(2);
         fadeOut.setOnFinished(e -> {
             stage.close();
-            Stage dashboard = (Stage) updatePane.getScene().getWindow();
+            Stage dashboard = (Stage) borderPane.getScene().getWindow();
             dashboard.close();
             try {
                 OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/views/service/login.fxml", borderPane);
             } catch (Exception ex) {
                 Alerts.errorAlert(ex.getMessage());
-                ex.printStackTrace();
-            }
+             }
         });
         fadeOut.play();
     }

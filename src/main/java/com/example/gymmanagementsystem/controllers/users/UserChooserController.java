@@ -1,5 +1,6 @@
 package com.example.gymmanagementsystem.controllers.users;
 
+import com.example.gymmanagementsystem.data.dto.Data;
 import com.example.gymmanagementsystem.data.dto.UserService;
 import com.example.gymmanagementsystem.data.entities.service.Users;
 import com.example.gymmanagementsystem.dependencies.Alerts;
@@ -59,6 +60,7 @@ public class UserChooserController implements Initializable {
 
             if (done) {
                 UserService.deleteUser(user);
+                Data.getAllUsers().remove(user);
                 listView.getItems().remove(user);
             }
         } catch (Exception e) {
@@ -72,12 +74,16 @@ public class UserChooserController implements Initializable {
         OpenWindow.closeStage(stage, chooserPane);
     }
 
-    public void setUsersWithoutActiveOne(Users tempUser) throws SQLException {
-        for (Users user : UserService.fetchAllUsers()) {
-            if (!user.getUsername().equals(tempUser.getUsername()) && !user.getUsername().equals("Ogleh")) {
-                listView.getItems().add(user);
-            }
-        }
+    public void setUsersWithoutActiveOne(Users tempUser) {
+        // TODO: 08/05/2023 Change to straem filter insha Allah
+
+        Data.getAllUsers().stream().filter(user -> !user.getUsername().equals(tempUser.getUsername())
+                && !user.getUsername().equals("Ogleh")).forEach(user->listView.getItems().add(user));
+//        for (Users user : Data.getAllUsers()) {
+//            if (!user.getUsername().equals(tempUser.getUsername()) && !user.getUsername().equals("Ogleh")) {
+//                ;
+//            }
+//        }
     }
 
 

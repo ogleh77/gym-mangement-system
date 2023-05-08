@@ -46,7 +46,7 @@
             <Font name="Tahoma Bold" size="15.0" />
         </font>
     </Label>
-    <Label fx:id="outDated" layoutX="293.0" layoutY="117.0" prefHeight="20.0" prefWidth="137.0" text="20 days ago" textFill="#b5513c">
+    <Label fx:id="outDated" layoutX="293.0" layoutY="117.0" prefHeight="20.0" text="20 days ago" textFill="#b5513c">
         <font>
             <Font name="Helvetica" size="16.0" />
         </font>

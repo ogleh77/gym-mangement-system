@@ -38,8 +38,8 @@
                 <TableColumn fx:id="address" prefWidth="118.0" text="Ciwaanka" />
                 <TableColumn fx:id="weight" prefWidth="83.0" text="Culayska" />
                 <TableColumn fx:id="waist" prefWidth="82.0" text="Dhexda" />
-                <TableColumn fx:id="imagePath" prefWidth="93.0" text="Sawirka" />
-                <TableColumn fx:id="status" prefWidth="175.0" text="Mar-xalada(status)" />
+                <TableColumn fx:id="imagePath" prefWidth="99.0" text="Sawirka" />
+                <TableColumn fx:id="status" prefWidth="185.0" text="Mar-xalada(status)" />
             </columns>
         </TableView>
         <effect>

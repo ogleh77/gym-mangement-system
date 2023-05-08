@@ -141,16 +141,16 @@
         <columns>
             <TableColumn fx:id="paymentDate" prefWidth="118.0" text="payment date" />
             <TableColumn fx:id="expDate" prefWidth="87.0" text="exp date" />
-            <TableColumn fx:id="month" text="month" />
-            <TableColumn fx:id="year" prefWidth="77.0" text="year" />
+            <TableColumn fx:id="month" prefWidth="87.0" text="month" />
+            <TableColumn fx:id="year" prefWidth="70.0" text="year" />
             <TableColumn fx:id="amountPaid" prefWidth="88.0" text="amount " />
             <TableColumn fx:id="paidBy" prefWidth="92.0" text="paid by" />
             <TableColumn fx:id="discount" prefWidth="87.0" text="discount" />
             <TableColumn fx:id="poxing" prefWidth="70.0" text="poxing" />
             <TableColumn fx:id="vipBox" prefWidth="70.0" text="vip box" />
             <TableColumn fx:id="running" prefWidth="74.0" text="online" />
-            <TableColumn fx:id="pend" prefWidth="87.0" text="pending" />
-            <TableColumn fx:id="daysRemind" prefWidth="159.0" text="days left" />
+            <TableColumn fx:id="pend" prefWidth="94.0" text="pending" />
+            <TableColumn fx:id="daysRemind" prefWidth="143.0" text="days left" />
         </columns>
     </TableView>
     <Label layoutX="563.0" layoutY="256.0" text="hips" textFill="#afd6e3">

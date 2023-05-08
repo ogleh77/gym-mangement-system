@@ -4,7 +4,6 @@ import com.example.gymmanagementsystem.controllers.informations.CustomerInfoCont
 import com.example.gymmanagementsystem.controllers.main.payments.CreatePaymentController;
 import com.example.gymmanagementsystem.data.dto.Data;
 import com.example.gymmanagementsystem.data.dto.GymService;
-import com.example.gymmanagementsystem.data.dto.UserService;
 import com.example.gymmanagementsystem.data.dto.main.CustomerService;
 import com.example.gymmanagementsystem.data.entities.main.Customers;
 import com.example.gymmanagementsystem.data.entities.service.Gym;
@@ -71,8 +70,8 @@ public class HomeController extends CommonClass implements Initializable {
     private FilteredList<Customers> filteredList;
 
     public HomeController() throws SQLException {
-        nextUserId = (UserService.predictNextId() - 1);
-        nextCustomerId = (CustomerService.predictNextId() - 1);
+        nextUserId = Data.getAllUsers().size()-1;
+        nextCustomerId = Data.getAllCustomersList().size();
         this.currentGym = GymService.getGym();
     }
 
@@ -81,10 +80,13 @@ public class HomeController extends CommonClass implements Initializable {
         Platform.runLater(() -> {
             initTable();
             //searchFilter();
+
             usersCount.setText(nextUserId == 1 ? nextUserId + " user" : nextUserId + " users");
-            customersCount.setText(nextCustomerId == 1 ? nextCustomerId + " member" : nextCustomerId + " members");
+            customersCount.setText(nextCustomerId + " macmiil");
             edahab.setText("eDahab: " + currentGym.geteDahab());
             zaad.setText("Zaad: " + currentGym.getZaad());
+
+
         });
     }
 
@@ -178,8 +180,12 @@ public class HomeController extends CommonClass implements Initializable {
         shift.setCellValueFactory(new PropertyValueFactory<>("shift"));
         weight.setCellValueFactory(customers -> new SimpleStringProperty(customers.getValue().getWeight() + "Kg"));
         address.setCellValueFactory(new PropertyValueFactory<>("address"));
-        imagePath.setCellValueFactory(customers -> new SimpleStringProperty(customers.getValue().getImage() == null ? "X" : "√"));
-        status.setCellValueFactory(customers -> new SimpleStringProperty(!customers.getValue().getPayments().isEmpty() ? "(√)" : "No payments"));
+        imagePath.setCellValueFactory(customers -> new SimpleStringProperty(customers.getValue().getImage() == null ? "sawir maleh" : "√"));
+
+        status.setCellValueFactory(customers -> new SimpleStringProperty(
+                customers.getValue().getPayments().isEmpty() ? "payment maleh" :
+                        ((customers.getValue().getPayments().get(0).isOnline() || customers.getValue().getPayments().get(0).isPending()) ? "√" :
+                                "wakhtigu waa ka dhacay")));
 
         waist.setCellValueFactory(customers -> new SimpleStringProperty(customers.getValue().getImage() == null ? "0" : customers.getValue().getWaist() + "cm"));
 

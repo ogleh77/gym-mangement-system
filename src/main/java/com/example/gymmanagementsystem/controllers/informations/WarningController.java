@@ -1,6 +1,7 @@
 package com.example.gymmanagementsystem.controllers.informations;
 
 import com.example.gymmanagementsystem.data.entities.main.Customers;
+import com.example.gymmanagementsystem.dependencies.Alerts;
 import com.example.gymmanagementsystem.dependencies.CommonClass;
 import com.example.gymmanagementsystem.dependencies.OpenWindow;
 import javafx.application.Platform;
@@ -31,7 +32,7 @@ public class WarningController extends CommonClass implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Platform.runLater(()->{
+        Platform.runLater(() -> {
             stage = (Stage) vbox.getScene().getWindow();
             OpenWindow.stageDropped(stage, topPane);
             OpenWindow.stageDrag(stage, topPane);
@@ -51,15 +52,12 @@ public class WarningController extends CommonClass implements Initializable {
                 loader = new FXMLLoader(getClass().getResource("/com/example/gymmanagementsystem/views/info/customer-card.fxml"));
                 try {
                     anchorPane = loader.load();
-                    anchorPane.setStyle("-fx-background-color: white;-fx-background-radius: 2");
                     CardController controller = loader.getController();
                     controller.setCustomer(customer);
+                    vbox.getChildren().add(anchorPane);
                 } catch (IOException e) {
-                    e.printStackTrace();
-                    throw new RuntimeException(e);
+                    Alerts.errorAlert(e.getMessage());
                 }
-
-                vbox.getChildren().add(anchorPane);
             }
         } else {
             Label label = new Label("Ma jirto macamiil wakhtigoodu dhamaad ku dhowyahay.");

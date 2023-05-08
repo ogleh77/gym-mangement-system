@@ -23,6 +23,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 
 import java.io.ByteArrayInputStream;
 import java.net.URL;
@@ -156,6 +157,11 @@ public class UpdatePaymentController extends CommonClass implements Initializabl
                 imgView.setImage(image);
             }
         }
+    }
+
+    @Override
+    public void setBorderPane(BorderPane borderPane) {
+        super.setBorderPane(borderPane);
     }
 
     public void setPayment(Payments payment) {

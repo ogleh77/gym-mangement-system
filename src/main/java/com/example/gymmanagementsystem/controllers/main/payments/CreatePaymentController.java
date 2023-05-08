@@ -115,7 +115,10 @@ public class CreatePaymentController extends CommonClass implements Initializabl
         amountValidation();
         validateDiscount();
 
-        service.setOnSucceeded(e -> createBtn.setText("samaysay(created)"));
+        service.setOnSucceeded(e -> {
+            createBtn.setText("samaysay(created)");
+            createBtn.setGraphic(null);
+        });
 
     }
 

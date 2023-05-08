@@ -108,20 +108,3 @@
 
 }
 
-/*------------profile menu----------------*/
-
-.profile-menu-button {
-    -fx-background-color: #328ca8;
-}
-
-.profile-menu-button .label {
-    -fx-text-fill: #3a3939;
-    -fx-font-family: Verdana;
-    -fx-font-size: 15;
-}
-
-.profile-menu-button .label:hover {
-    -fx-text-fill: white;
-    -fx-cursor: hand;
-    -fx-underline: true;
-}

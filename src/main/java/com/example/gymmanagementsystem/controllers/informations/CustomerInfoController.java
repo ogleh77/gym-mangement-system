@@ -140,6 +140,7 @@ public class CustomerInfoController extends CommonClass implements Initializable
             UpdatePaymentController controller = loader.getController();
             controller.setCustomer(customer);
             controller.setPayment(selectedPayment);
+            controller.setBorderPane(borderPane);
         } catch (Exception e) {
             if (e instanceof RuntimeException) Alerts.waningAlert(e.getMessage());
             else Alerts.errorAlert(e.getMessage());

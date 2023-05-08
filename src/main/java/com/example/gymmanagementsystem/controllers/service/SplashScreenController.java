@@ -2,10 +2,12 @@ package com.example.gymmanagementsystem.controllers.service;
 
 import com.example.gymmanagementsystem.controllers.DashboardController;
 import com.example.gymmanagementsystem.data.dto.Data;
+import com.example.gymmanagementsystem.data.dto.UserService;
 import com.example.gymmanagementsystem.data.dto.main.CustomerService;
 import com.example.gymmanagementsystem.data.entities.main.Customers;
 import com.example.gymmanagementsystem.data.entities.main.Payments;
 import com.example.gymmanagementsystem.data.entities.service.Users;
+import com.example.gymmanagementsystem.data.models.main.PaymentsModel;
 import com.example.gymmanagementsystem.dependencies.Alerts;
 import com.example.gymmanagementsystem.dependencies.CommonClass;
 import com.example.gymmanagementsystem.dependencies.OpenWindow;
@@ -84,15 +86,18 @@ public class SplashScreenController extends CommonClass implements Initializable
                         if (now.plusDays(2).isEqual(expDate) || now.plusDays(1).isEqual(expDate) || now.isEqual(expDate)) {
                             warningList.add(customer);
                         } else if (now.isAfter(payment.getExpDate())) {
-                            // TODO: 17/04/2023 set the payment off
-                            //PaymentsModel.offPayment(payment);
+                            PaymentsModel.offPayment(payment);
                         }
                     }
                     Thread.sleep(sleepTime);
                 }
                 ObservableList<Customers> customers = CustomerService.fetchAllCustomer(activeUser);
+                ObservableList<Users> users = UserService.fetchAllUsers();
+
                 updateMessage("fetching All customers");
                 Data.setAllCustomersList(customers);
+                Data.setAllUsers(users);
+
                 Thread.sleep(1000);
                 updateMessage("fetched successfully..");
             } catch (Exception e) {

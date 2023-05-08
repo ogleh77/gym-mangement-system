@@ -29,8 +29,7 @@ public class BackupController extends CommonClass implements Initializable {
     private JFXButton backupBtn;
     @FXML
     private ListView<String> listView;
-    @FXML
-    private JFXButton restoreBtn;
+
     @FXML
     private Label backupTime;
     @FXML
@@ -45,17 +44,11 @@ public class BackupController extends CommonClass implements Initializable {
             stage = (Stage) backupPane.getScene().getWindow();
             OpenWindow.stageDropped(stage, topPane);
             OpenWindow.stageDrag(stage, topPane);
+            backupBtn.setText("Backup to " + (listView.getItems().isEmpty() ? "halka aan dorto" : listView.getItems().get(0)));
         });
-
         backupService.setOnSucceeded(e -> {
             backupBtn.setGraphic(getFirstImage("/com/example/gymmanagementsystem/style/icons/backup.png"));
-            backupBtn.setText("Backup");
-        });
-
-        restoreService.setOnSucceeded(e -> {
-            restoreBtn.setGraphic(getFirstImage("/com/example/gymmanagementsystem/style/icons/icons8-reset-48.png"));
-            restoreBtn.setText("Restore");
-
+            backupBtn.setText("Backuped to " + listView.getItems().get(0));
         });
     }
 
@@ -80,18 +73,6 @@ public class BackupController extends CommonClass implements Initializable {
     }
 
     @FXML
-    void restoreHandler() {
-        try {
-            if (listView.getSelectionModel().getSelectedItem() == null && !listView.getItems().isEmpty())
-                throw new RuntimeException("Fadlan marka hore dooro location-ka backup kagu " +
-                        "kugu kaydsanaa" + " Kana dooro liiska sare");
-            startTask(restoreService, restoreBtn, "Restoring");
-        } catch (RuntimeException e) {
-            Alerts.waningAlert(e.getMessage());
-        }
-    }
-
-    @FXML
     void cancelHandler() {
         OpenWindow.closeStage(stage, backupPane);
     }
@@ -105,39 +86,10 @@ public class BackupController extends CommonClass implements Initializable {
                     try {
                         Thread.sleep(1000);
                         String message = "Waxaad samasay backup waxadna dhigatay ";
-                        Platform.runLater(() -> {
-                            Alerts.notificationAlert(!listView.getItems().isEmpty() ?
-                                    message + " " + listView.getSelectionModel().getSelectedItem() : message + " " + selectedFile.getAbsolutePath());
-                        });
+                        Platform.runLater(() -> Alerts.notificationAlert(!listView.getItems().isEmpty() ?
+                                message + " " + listView.getSelectionModel().getSelectedItem() : message + " " + selectedFile.getAbsolutePath()));
                     } catch (Exception e) {
-                        Platform.runLater(() -> Alerts.errorAlert("FROM SQL " + e.getMessage()));
-                    }
-                    return null;
-                }
-            };
-        }
-    };
-
-    private final Service<Void> restoreService = new Service<>() {
-        @Override
-        protected Task<Void> createTask() {
-            return new Task<>() {
-                @Override
-                protected Void call() {
-                    try {
-                        Thread.sleep(1000);
-                        BackupService.restoreFrom();
-                        // TODO: 02/05/2023 Logout
-                        Platform.runLater(() -> {
-                            Alerts.notificationAlert("Waxaad ku gulaysatay inaad kasoo restore garayso " +
-                                    listView.getSelectionModel().getSelectedItem());
-                        });
-
-                    } catch (Exception e) {
-                        Platform.runLater(() -> {
-                            Alerts.errorAlert(e.getMessage());
-                            e.printStackTrace();
-                        });
+                        Platform.runLater(() -> Alerts.errorAlert("from sqlite " + e.getMessage()));
                     }
                     return null;
                 }
@@ -149,9 +101,7 @@ public class BackupController extends CommonClass implements Initializable {
     @Override
     public void setActiveUser(Users activeUser) {
         super.setActiveUser(activeUser);
-        if (!activeUser.getRole().equals("admin")) {
-            restoreBtn.setDisable(true);
-        }
+        backupBtn.setText(listView.getItems().isEmpty() ? " path" : listView.getItems().get(0));
     }
 
     private void init() {
@@ -163,7 +113,7 @@ public class BackupController extends CommonClass implements Initializable {
                 backupTime.setText(BackupService.lastBackupDate());
             }
         } catch (SQLException e) {
-            Alerts.errorAlert("FROM sqlite :_ " + e.getMessage());
+            Alerts.errorAlert("from sqlite : " + e.getMessage());
         }
     }
 

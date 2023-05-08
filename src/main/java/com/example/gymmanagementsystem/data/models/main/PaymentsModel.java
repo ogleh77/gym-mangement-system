@@ -69,9 +69,9 @@ public class PaymentsModel {
         try (Statement statement = connection.createStatement()) {
             statement.execute(query);
             if (payment.getBox() != null) {
-                System.out.println("yes payment had a boxand state is "+payment.getBox().isReady());
+                System.out.println("yes payment had a boxand state is " + payment.getBox().isReady());
                 BoxService.changeBoxState(payment.getBox());
-            }else {
+            } else {
                 System.out.println("no payment had a boxand state is ");
             }
             connection.commit();
@@ -192,7 +192,7 @@ public class PaymentsModel {
         connection.setAutoCommit(false);
         try (Statement statement = connection.createStatement()) {
             String query = "UPDATE payments SET is_online=false WHERE payment_id=" + payment.getPaymentID();
-            if (payment.getBox() != null && !payment.getBox().isReady()) {
+            if (payment.getBox() != null) {
                 BoxService.changeBoxState(payment.getBox());
             }
             statement.executeUpdate(query);

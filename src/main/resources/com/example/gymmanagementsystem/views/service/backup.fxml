@@ -42,7 +42,7 @@
             <Font name="Verdana" size="12.0" />
         </font>
     </Label>
-    <JFXButton fx:id="backupBtn" layoutX="43.0" layoutY="366.0" onAction="#backupHandler" prefHeight="47.0" prefWidth="108.0" style="-fx-background-color: #afd6e3;" text="Backup" textFill="#171717">
+    <JFXButton fx:id="backupBtn" layoutX="43.0" layoutY="366.0" onAction="#backupHandler" prefHeight="47.0" prefWidth="500.0" style="-fx-background-color: #afd6e3;" text="Backup to" textFill="#171717">
         <graphic>
             <ImageView fitHeight="28.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                 <Image url="@../../style/icons/backup.png" />
@@ -50,16 +50,6 @@
         </graphic>
         <font>
             <Font name="Verdana" size="14.0" />
-        </font>
-    </JFXButton>
-    <JFXButton fx:id="restoreBtn" layoutX="162.0" layoutY="366.0" onAction="#restoreHandler" prefHeight="47.0" prefWidth="118.0" styleClass="btn-save" stylesheets="@../../style/css/button-style.css" text="Restore" textFill="WHITE">
-        <graphic>
-            <ImageView fitHeight="21.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                <Image url="@../../style/icons/icons8-reset-48.png" />
-            </ImageView>
-        </graphic>
-        <font>
-            <Font name="Verdana" size="15.0" />
         </font>
     </JFXButton>
     <Label layoutX="42.0" layoutY="325.0" text="aad ku samaysay backup ka kadib taabo buttonka RESTORE" textFill="#879194">

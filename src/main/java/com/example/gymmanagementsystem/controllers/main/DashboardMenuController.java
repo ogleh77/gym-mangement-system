@@ -31,7 +31,7 @@ public class DashboardMenuController extends CommonClass implements Initializabl
     @FXML
     void homeMenuHandler() {
         try {
-            FXMLLoader loader = OpenWindow.openFromDashboardWindow("/com/example/gymmanagementsystem/views/main/home.fxml", borderPane, menuHBo, logout);
+            FXMLLoader loader = OpenWindow.openFromDashboardWindow("/com/example/gymmanagementsystem/views/main/home.fxml", borderPane, menuHBo);
             HomeController controller = loader.getController();
             controller.setActiveUser(activeUser);
             controller.setBorderPane(borderPane);
@@ -44,7 +44,7 @@ public class DashboardMenuController extends CommonClass implements Initializabl
     @FXML
     void registrationMenuHandler() {
         try {
-            FXMLLoader loader = OpenWindow.openFromDashboardWindow("/com/example/gymmanagementsystem/views/main/registrations.fxml", borderPane, menuHBo, logout);
+            FXMLLoader loader = OpenWindow.openFromDashboardWindow("/com/example/gymmanagementsystem/views/main/registrations.fxml", borderPane, menuHBo);
             RegistrationController controller = loader.getController();
             controller.setActiveUser(activeUser);
             controller.setBorderPane(borderPane);
@@ -57,7 +57,7 @@ public class DashboardMenuController extends CommonClass implements Initializabl
     @FXML
     void outDatedMenuHandler() {
         try {
-            FXMLLoader loader = OpenWindow.openFromDashboardWindow("/com/example/gymmanagementsystem/views/info/outdated.fxml", borderPane, menuHBo, logout);
+            FXMLLoader loader = OpenWindow.openFromDashboardWindow("/com/example/gymmanagementsystem/views/info/outdated.fxml", borderPane, menuHBo);
             OutdatedController controller = loader.getController();
             controller.setActiveUser(activeUser);
         } catch (Exception e) {
@@ -73,7 +73,7 @@ public class DashboardMenuController extends CommonClass implements Initializabl
     @FXML
     void reportMenuHandler() {
         try {
-            FXMLLoader loader = OpenWindow.openFromDashboardWindow("/com/example/gymmanagementsystem/views/info/dailyReports.fxml", borderPane, menuHBo, logout);
+            FXMLLoader loader = OpenWindow.openFromDashboardWindow("/com/example/gymmanagementsystem/views/info/dailyReports.fxml", borderPane, menuHBo);
             ReportController controller = loader.getController();
             controller.setActiveUser(activeUser);
         } catch (Exception e) {
@@ -81,10 +81,9 @@ public class DashboardMenuController extends CommonClass implements Initializabl
         }
     }
 
-    public void setMenus(HBox menuHBox, MenuItem logout) {
+    public void setMenus(HBox menuHBox) {
         this.menuHBo = menuHBox;
-        this.logout = logout;
-    }
+     }
 
     @Override
     public void setBorderPane(BorderPane borderPane) {

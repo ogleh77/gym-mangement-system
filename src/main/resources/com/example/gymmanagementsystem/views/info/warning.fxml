@@ -12,8 +12,8 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="warningPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="541.0" prefWidth="594.0" stylesheets="@../../style/css/small-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.informations.WarningController">
-    <HBox fx:id="topPane" alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="596.0" spacing="180.0" styleClass="top-pane">
+<AnchorPane fx:id="warningPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="541.0" prefWidth="570.0" style="-fx-background-color: white;" stylesheets="@../../style/css/small-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.informations.WarningController">
+    <HBox fx:id="topPane" alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="570.0" spacing="180.0" styleClass="top-pane">
         <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="342.0">
             <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                 <HBox.margin>
@@ -21,7 +21,7 @@
                 </HBox.margin>
                 <Image url="@../../style/icons/icons8-bell-48.png" />
             </ImageView>
-            <Label prefHeight="29.0" prefWidth="218.0" styleClass="top-label" text="FORM-Ka DIGNIINTA">
+            <Label prefHeight="29.0" prefWidth="218.0" styleClass="top-label" text="FORM-KA DIGNIINTA">
                 <HBox.margin>
                     <Insets left="10.0" />
                 </HBox.margin>
@@ -29,21 +29,21 @@
         </HBox>
         <HBox alignment="CENTER" onMouseClicked="#cancelHandler" prefHeight="35.0" prefWidth="43.0" styleClass="cancel-pane">
             <HBox.margin>
-                <Insets left="31.0" />
+                <Insets left="10.0" />
             </HBox.margin>
             <ImageView fitHeight="23.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                 <Image url="@../../style/icons/icons8-close-30.png" />
             </ImageView>
         </HBox>
     </HBox>
-    <ScrollPane hbarPolicy="NEVER" layoutY="85.0" prefHeight="456.0" prefWidth="596.0" style="-fx-background-color: #fafafa;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-        <VBox fx:id="vbox" alignment="CENTER" prefHeight="4.0" prefWidth="595.0" spacing="5.0">
+    <ScrollPane hbarPolicy="NEVER" layoutX="11.0" layoutY="78.0" prefHeight="456.0" prefWidth="562.0" style="-fx-background-color: #fafafa;" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0">
+        <VBox fx:id="vbox" alignment="CENTER" prefHeight="14.0" prefWidth="543.0" spacing="5.0">
             <padding>
                 <Insets top="10.0" />
             </padding>
         </VBox>
     </ScrollPane>
-    <Label alignment="CENTER" layoutX="11.0" layoutY="54.0" prefHeight="15.0" prefWidth="512.0" text="Halkan waxad ka ogaan kartaa 3 casho ka hor inta macamiilka wakhtigu ka dhicin" textFill="#879194" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="84.0">
+    <Label alignment="CENTER" layoutX="14.0" layoutY="54.0" prefHeight="15.0" prefWidth="500.0" text="Halkan waxad ka ogaan kartaa 3 casho ka hor inta macamiilka wakhtigu ka dhicin." textFill="#879194" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="48.0">
         <font>
             <Font name="Tahoma Bold" size="12.0" />
         </font>

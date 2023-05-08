@@ -7,7 +7,6 @@ import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -58,7 +57,7 @@ public class OpenWindow {
         return loader;
     }
 
-    public static FXMLLoader openFromDashboardWindow(String url, BorderPane borderPane, HBox hBox, MenuItem logout) throws IOException {
+    public static FXMLLoader openFromDashboardWindow(String url, BorderPane borderPane, HBox hBox) throws IOException {
         FXMLLoader loader = new FXMLLoader(OpenWindow.class.getResource(url));
         AnchorPane anchorPane = loader.load();
         getSlideUp().setNode(anchorPane);
@@ -68,13 +67,11 @@ public class OpenWindow {
         HBox topBox = (HBox) borderPane.getTop();
         topBox.getChildren().add(1, hBox);
         getFadeIn().play();
-        // TODO: 06/05/2023  chec logiut
-        logout.setVisible(logout.isVisible());
         return loader;
     }
 
 
-    public static void dashboardWindow(BorderPane borderPane, HBox topPane, Users activeUser,MenuItem logout) throws Exception {
+    public static void dashboardWindow(BorderPane borderPane, HBox topPane, Users activeUser) throws Exception {
         FXMLLoader loader = new FXMLLoader(OpenWindow.class.getResource("/com/example/gymmanagementsystem/views/main/dashboard-menu.fxml"));
         AnchorPane anchorPane = loader.load();
         FadeIn fadeIn = new FadeIn(anchorPane);
@@ -83,7 +80,7 @@ public class OpenWindow {
         DashboardMenuController controller = loader.getController();
         controller.setBorderPane(borderPane);
         controller.setActiveUser(activeUser);
-        controller.setMenus(topPane,logout);
+        controller.setMenus(topPane);
         borderPane.setCenter(anchorPane);
         fadeIn.setSpeed(0.4);
         fadeIn.play();
@@ -124,9 +121,7 @@ public class OpenWindow {
             fadeOut = new FadeOut(node);
         }
         fadeOut.setSpeed(2);
-        fadeOut.setOnFinished(e -> {
-            stage.close();
-        });
+        fadeOut.setOnFinished(e -> stage.close());
         fadeOut.play();
     }
 

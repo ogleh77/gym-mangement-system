@@ -24,7 +24,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -67,12 +66,16 @@ public class DashboardController extends CommonClass implements Initializable {
     private HBox topPane;
 
     @FXML
-    private MenuButton username;
+    private Label username;
 
     @FXML
     private HBox warningParent;
     @FXML
-    private MenuItem logout;
+    private MenuItem chooseUser;
+    @FXML
+    private MenuItem addUser;
+    @FXML
+    private MenuItem gym;
     private ObservableList<Customers> warningList;
     private final Gym currentGym;
     private Stage stage;
@@ -94,7 +97,7 @@ public class DashboardController extends CommonClass implements Initializable {
     @FXML
     void dashboardHandler() {
         try {
-            OpenWindow.dashboardWindow(borderPane, menuHBox, activeUser, logout);
+            OpenWindow.dashboardWindow(borderPane, menuHBox, activeUser);
         } catch (Exception e) {
             Alerts.errorAlert(e.getMessage());
         }
@@ -241,14 +244,16 @@ public class DashboardController extends CommonClass implements Initializable {
         }
     }
 
-    @FXML
-    void logOutMenuHandler() {
-        OpenWindow.reOpenLogin(stage, activeUser.getUsername(), borderPane);
-    }
 
     @Override
     public void setActiveUser(Users activeUser) {
         super.setActiveUser(activeUser);
+        if (!activeUser.getRole().equals("admin")) {
+            addUser.setDisable(true);
+            chooseUser.setDisable(true);
+            gym.setDisable(true);
+        }
+
         HBox hBox = (HBox) topPane.getChildren().get(1);
         topPane.getChildren().remove(hBox);
         URL url;
@@ -306,7 +311,7 @@ public class DashboardController extends CommonClass implements Initializable {
         OpenWindow.stageDrag(stage, topPane);
         stackPane.getChildren().remove(loadingPane);
         try {
-            OpenWindow.dashboardWindow(borderPane, menuHBox, activeUser, logout);
+            OpenWindow.dashboardWindow(borderPane, menuHBox, activeUser);
         } catch (Exception e) {
             Alerts.errorAlert(e.getMessage());
         }

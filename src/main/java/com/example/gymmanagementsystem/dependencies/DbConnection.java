@@ -13,7 +13,7 @@ public abstract class DbConnection {
             if (connection == null) {
                 Class.forName("org.sqlite.JDBC");
                 connection = DriverManager.getConnection("jdbc:sqlite:src/database/database.db");
-             }
+            }
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
             alert.showAndWait();

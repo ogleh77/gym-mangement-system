@@ -9,7 +9,6 @@ import java.sql.SQLException;
 public class UserService {
     private static final UserModel userModel = new UserModel();
     private final static String message = "From sqlite ";
-//    private static ObservableList<Users> users;
 
     public static void insertUser(Users user) throws SQLException {
         try {
@@ -18,7 +17,7 @@ public class UserService {
             if (e.getMessage().contains("(UNIQUE constraint failed: users.username"))
                 throw new SQLException(message + " username ka " + user.getUsername() + " horaa lo isticmalay");
             else if (e.getMessage().contains("(UNIQUE constraint failed: users.phone"))
-                throw new SQLException(message + " lanbar ka " + user.getPhone() + "horaa lo isticmalay");
+                throw new SQLException(message + " lanbar ka " + user.getPhone() + " horaa lo isticmalay");
             else {
                 throw e;
             }
@@ -32,7 +31,7 @@ public class UserService {
             if (e.getMessage().contains("(UNIQUE constraint failed: users.username"))
                 throw new SQLException(message + " username ka " + user.getUsername() + " horaa lo isticmalay");
             else if (e.getMessage().contains("(UNIQUE constraint failed: users.phone"))
-                throw new SQLException(message + " lanbar ka" + user.getPhone() + "horaa lo isticmalay");
+                throw new SQLException(message + " lanbar ka" + user.getPhone() + " horaa lo isticmalay");
             else {
                 throw e;
             }

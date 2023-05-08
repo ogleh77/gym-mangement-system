@@ -5,54 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c1a3bea-8a57-435b-b5d9-43e3f4a593e0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/157ea88f-bc7a-47a5-aa4c-6c22f2542a52/storage_v2/_src_/schema/main.uQUzAA.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/157ea88f-bc7a-47a5-aa4c-6c22f2542a52/storage_v2/_src_/schema/main.uQUzAA.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/822b43a8-04f3-42b6-a64b-a79172c1eff9.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/822b43a8-04f3-42b6-a64b-a79172c1eff9/storage_v2/_src_/schema/main.uQUzAA.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/822b43a8-04f3-42b6-a64b-a79172c1eff9/storage_v2/_src_/schema/main.uQUzAA.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/a35e1548-1b9a-4edb-8ee6-6d0bd57c7a51.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/a35e1548-1b9a-4edb-8ee6-6d0bd57c7a51/storage_v2/_src_/schema/main.uQUzAA.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/a35e1548-1b9a-4edb-8ee6-6d0bd57c7a51/storage_v2/_src_/schema/main.uQUzAA.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/d3e4a1c2-449c-4a75-8212-ee97e7b53219.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/d3e4a1c2-449c-4a75-8212-ee97e7b53219/storage_v2/_src_/schema/main.uQUzAA.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/d3e4a1c2-449c-4a75-8212-ee97e7b53219/storage_v2/_src_/schema/main.uQUzAA.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7925137b-de75-44f6-9f13-6c2b43cc5f58.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/157ea88f-bc7a-47a5-aa4c-6c22f2542a52.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/database/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/database.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/DashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/informations/CardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/informations/CardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/informations/WarningController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/informations/WarningController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/main/DashboardMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/main/DashboardMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/main/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/main/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/main/payments/CreatePaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/main/payments/CreatePaymentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/main/payments/UpdatePaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/main/payments/UpdatePaymentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/notdone/PaymentsControllers.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/notdone/RegistrationController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/service/BackupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/service/BackupController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/service/SplashScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/service/SplashScreenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/users/UserChooserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/users/UserChooserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/users/UserUpdateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/controllers/users/UserUpdateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/data/dto/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/data/dto/Data.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/data/dto/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/data/dto/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/data/models/main/PaymentsModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/data/models/main/PaymentsModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dependencies/DbConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dependencies/DbConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dependencies/OpenWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/dependencies/OpenWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/temcont/NextCont.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gymmanagementsystem/temcont/homeContr.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/style/css/button-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/style/css/button-style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/style/css/dashboard-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/style/css/dashboard-style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/views/dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/views/dashboard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/views/info/customer-card.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/views/info/customer-card.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/views/info/customer-info.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/views/info/customer-info.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/views/info/warning.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/views/info/warning.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/views/main/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/views/main/home.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/views/service/backup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/views/service/backup.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/views/service/splash-screen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gymmanagementsystem/views/service/splash-screen.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -285,7 +239,7 @@
       <workItem from="1683438441305" duration="1810000" />
       <workItem from="1683533436733" duration="101000" />
       <workItem from="1683533565195" duration="608000" />
-      <workItem from="1683534252448" duration="15189000" />
+      <workItem from="1683534252448" duration="15959000" />
     </task>
     <servers />
   </component>

@@ -70,7 +70,7 @@ public class HomeController extends CommonClass implements Initializable {
     private FilteredList<Customers> filteredList;
 
     public HomeController() throws SQLException {
-        nextUserId = Data.getAllUsers().size()-1;
+        nextUserId = Data.getAllUsers().size() - 1;
         nextCustomerId = Data.getAllCustomersList().size();
         this.currentGym = GymService.getGym();
     }
@@ -79,7 +79,7 @@ public class HomeController extends CommonClass implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Platform.runLater(() -> {
             initTable();
-            //searchFilter();
+            searchFilter();
 
             usersCount.setText(nextUserId == 1 ? nextUserId + " user" : nextUserId + " users");
             customersCount.setText(nextCustomerId + " macmiil");
@@ -179,7 +179,7 @@ public class HomeController extends CommonClass implements Initializable {
         gander.setCellValueFactory(new PropertyValueFactory<>("gander"));
         shift.setCellValueFactory(new PropertyValueFactory<>("shift"));
         weight.setCellValueFactory(customers -> new SimpleStringProperty(customers.getValue().getWeight() + "Kg"));
-        address.setCellValueFactory(new PropertyValueFactory<>("address"));
+        address.setCellValueFactory(customers -> new SimpleStringProperty(customers.getValue().getAddress().length()==0 ? "ciwaan maleh" : customers.getValue().getAddress()));
         imagePath.setCellValueFactory(customers -> new SimpleStringProperty(customers.getValue().getImage() == null ? "sawir maleh" : "√"));
 
         status.setCellValueFactory(customers -> new SimpleStringProperty(

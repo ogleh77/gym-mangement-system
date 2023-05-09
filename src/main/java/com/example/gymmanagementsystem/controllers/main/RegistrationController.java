@@ -172,6 +172,8 @@ public class RegistrationController extends CommonClass implements Initializable
     public void setActiveUser(Users activeUser) {
         super.setActiveUser(activeUser);
         this.customersList = Data.getAllCustomersList();
+        if (activeUser.getGender().equals("Male")) male.setSelected(true);
+        else female.setSelected(true);
     }
 
     @Override
@@ -189,7 +191,7 @@ public class RegistrationController extends CommonClass implements Initializable
                         CustomerService.insertOrUpdateCustomer(savingCustomer(), isCustomerNew);
                         if (isCustomerNew) {
                             customersList.add(savingCustomer());
-                         }
+                        }
                         done = true;
                         Thread.sleep(1000);
                         Platform.runLater(() -> {

@@ -84,6 +84,10 @@ public class RegistrationController extends CommonClass implements Initializable
     private double _weight;
     private int customerId;
     private String _shift;
+
+    private String _firstNameCap;
+    private String _middleNameCap;
+    private String _lastNameCap;
     private boolean done = false;
     private int newCustomerID;
 
@@ -115,13 +119,15 @@ public class RegistrationController extends CommonClass implements Initializable
             if (isValid(getMandatoryFields(), genderGroup) && (phone.getText().length() == 7 || phone.getText().length() == 10)) {
                 if (currentGym.isImageUpload() && !imageUploaded) {
                     checkImage(imgView, "Fadlan sawirku wuu kaa cawinayaa inaad wejiga \n" + "macmiilka ka dhex garan kartid macamisha kle 😊");
-
                 }
                 clearBtn.setDisable(true);
                 startTask(service, registerBtn, isCustomerNew ? "Saving" : "Updating");
             }
         } catch (Exception e) {
-            Alerts.errorAlert("Fadlan hubi in measurementska " + "ama cabirada kaa raceen points deeriya tusaale 12.0 inaad u qortay 12.0.. " + e.getMessage());
+            if (e instanceof NumberFormatException)
+                Alerts.errorAlert("Fadlan hubi in measurementska " + "ama cabirada kaa raceen points deeriya tusaale 12.0 inaad u qortay 12.0.. " + e.getMessage());
+            else Alerts.errorAlert(e.getMessage());
+
         }
     }
 
@@ -223,7 +229,7 @@ public class RegistrationController extends CommonClass implements Initializable
 
     private Customers savingCustomer() {
         gander = male.isSelected() ? "Male" : "Female";
-        _address = address.getText() != null ? address.getText().trim() : "No address";
+        _address = address.getText() == null ? "No address" : address.getText().substring(0, 1).toUpperCase() + address.getText().substring(1);
         _weight = ((!weight.getText().isEmpty() || !weight.getText().isBlank())) ? Double.parseDouble(weight.getText().trim()) : 65.0;
         customerId = super.customer == null ? 0 : customer.getCustomerId();
         _shift = shift.getValue() != null ? shift.getValue() : "Morning";
@@ -231,6 +237,9 @@ public class RegistrationController extends CommonClass implements Initializable
         _hips = (!hips.getText().isEmpty() || !hips.getText().isBlank() ? Double.parseDouble(hips.getText()) : 0);
         _forearm = (!Forearm.getText().isEmpty() || !Forearm.getText().isBlank() ? Double.parseDouble(Forearm.getText()) : 0);
         _chest = (!chest.getText().isEmpty() || !chest.getText().isBlank() ? Double.parseDouble(chest.getText()) : 0);
+        _firstNameCap = (firstName.getText().substring(0, 1).toUpperCase() + firstName.getText().substring(1));
+        _lastNameCap = (lastName.getText().substring(0, 1).toUpperCase() + lastName.getText().substring(1));
+        _middleNameCap = (middleName.getText().substring(0, 1).toUpperCase() + middleName.getText().substring(1));
 
         if (customer == null) {
             createCustomer();
@@ -242,20 +251,20 @@ public class RegistrationController extends CommonClass implements Initializable
     }
 
     private void createCustomer() {
-        customer = new Customers(newCustomerID, firstName.getText().trim(), lastName.getText().trim(), middleName.getText().trim(), phone.getText().trim(), gander, _shift, _address, selectedFile == null ? null : readFile(selectedFile.getAbsolutePath()), _weight, activeUser.getUsername());
+        customer = new Customers(newCustomerID, firstName.getText().trim(), _lastNameCap, _middleNameCap, phone.getText().trim(), gander, _shift, _address, selectedFile == null ? null : readFile(selectedFile.getAbsolutePath()), _weight, activeUser.getUsername());
     }
 
     private void updateCustomer() {
 
         customer.setShift(_shift);
         customer.setCustomerId(customerId);
-        customer.setFirstName(firstName.getText().trim());
+        customer.setFirstName(_firstNameCap);
         customer.setGander(gander);
         customer.setWhoAdded(activeUser.getUsername());
         customer.setImage(selectedFile == null ? customer.getImage() : readFile(selectedFile.getAbsolutePath()));
         customer.setAddress(_address.trim());
-        customer.setLastName(lastName.getText().trim());
-        customer.setMiddleName(middleName.getText().trim());
+        customer.setLastName(_lastNameCap);
+        customer.setMiddleName(_middleNameCap);
         customer.setPhone(phone.getText().trim());
 
         customer.setWeight(_weight);

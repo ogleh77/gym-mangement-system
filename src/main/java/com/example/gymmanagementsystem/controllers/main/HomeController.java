@@ -80,13 +80,10 @@ public class HomeController extends CommonClass implements Initializable {
         Platform.runLater(() -> {
             initTable();
             searchFilter();
-
             usersCount.setText(nextUserId == 1 ? nextUserId + " user" : nextUserId + " users");
             customersCount.setText(nextCustomerId + " macmiil");
             edahab.setText("eDahab: " + currentGym.geteDahab());
             zaad.setText("Zaad: " + currentGym.getZaad());
-
-
         });
     }
 

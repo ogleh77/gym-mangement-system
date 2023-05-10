@@ -1,6 +1,6 @@
 package com.example.gymmanagementsystem.controllers.main.payments;
 
-import com.example.gymmanagementsystem.controllers.main.HomeController;
+import com.example.gymmanagementsystem.controllers.informations.CustomerInfoController;
 import com.example.gymmanagementsystem.data.dto.BoxService;
 import com.example.gymmanagementsystem.data.dto.GymService;
 import com.example.gymmanagementsystem.data.dto.main.PaymentService;
@@ -181,7 +181,7 @@ public class UpdatePaymentController extends CommonClass implements Initializabl
             expDate.setStyle("-fx-opacity: 1");
             dateInfo.setVisible(true);
             boxChooser.setValue(payment.getBox() != null ? payment.getBox() : new Box(0, "Khanad maleh", false));
-         } else {
+        } else {
             boxChooser.getItems().add(new Box(0, "remove box", false));
             if (payment.getBox() == null) {
                 currentGym.getVipBoxes().stream().filter(Box::isReady).forEach(box -> boxChooser.getItems().add(box));
@@ -202,9 +202,9 @@ public class UpdatePaymentController extends CommonClass implements Initializabl
                         updatePayment();
                         Thread.sleep(1000);
                         Platform.runLater(() -> {
-                            boolean data = Alerts.singleConfirmationAlert("Wax ka bedelka payment-ka wad ku guulaystay.", "Back to home");
+                            boolean data = Alerts.singleConfirmationAlert("Wax ka bedelka payment-ka wad ku guulaystay.", "Back to info");
                             if (data) {
-                               openHome();
+                                backToCustomerInfo();
                             }
                         });
                     } catch (Exception e) {
@@ -280,12 +280,13 @@ public class UpdatePaymentController extends CommonClass implements Initializabl
         }
     }
 
-    private void openHome() {
+    private void backToCustomerInfo() {
         try {
-            FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/views/main/home.fxml", borderPane);
-            HomeController controller = loader.getController();
+            FXMLLoader loader = OpenWindow.secondWindow("/com/example/gymmanagementsystem/views/info/customer-info.fxml", borderPane);
+            CustomerInfoController controller = loader.getController();
             controller.setActiveUser(activeUser);
             controller.setBorderPane(borderPane);
+            controller.setCustomer(customer);
         } catch (Exception e) {
             Alerts.errorAlert(e.getMessage());
         }

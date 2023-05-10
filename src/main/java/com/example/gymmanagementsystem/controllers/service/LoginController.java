@@ -99,6 +99,7 @@ public class LoginController extends CommonClass implements Initializable {
             Users activeUser = userCombo.getValue();
             if (!password.getText().equals(activeUser.getPassword())) {
                 Alerts.errorAlert("Fadlan hubi passwordka & user ka aad dorantay\nin ay isleyihiin!");
+                password.setText(null);
                 return;
             }
             startTask(service, loginBtn, "Logging");

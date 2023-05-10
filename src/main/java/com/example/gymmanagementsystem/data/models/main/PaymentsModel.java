@@ -69,10 +69,7 @@ public class PaymentsModel {
         try (Statement statement = connection.createStatement()) {
             statement.execute(query);
             if (payment.getBox() != null) {
-                System.out.println("yes payment had a boxand state is " + payment.getBox().isReady());
                 BoxService.changeBoxState(payment.getBox());
-            } else {
-                System.out.println("no payment had a boxand state is ");
             }
             connection.commit();
         } catch (SQLException e) {

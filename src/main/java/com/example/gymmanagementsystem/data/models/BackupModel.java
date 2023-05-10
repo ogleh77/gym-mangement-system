@@ -18,10 +18,7 @@ public class BackupModel {
 
             statement.executeUpdate(backupQuery);
             statement.executeUpdate(updateTimeQuery);
-
             connection.commit();
-            System.out.println(" path updated");
-
         } catch (SQLException e) {
             connection.rollback();
             throw e;
@@ -38,8 +35,7 @@ public class BackupModel {
             statement.executeUpdate(backupQuery);
             statement.executeUpdate(insertPath);
             connection.commit();
-            System.out.println("New path inserted");
-        } catch (SQLException e) {
+         } catch (SQLException e) {
             connection.rollback();
             throw e;
         }

@@ -74,7 +74,6 @@ public abstract class CommonClass {
                 ((Node) group.getToggles().get(1)).setStyle(null);
             }
         } catch (NullPointerException e) {
-            //  System.out.println(e.getMessage());
         }
         return isValid;
     }

@@ -42,7 +42,6 @@ public class LoginController extends CommonClass implements Initializable {
     private Stage stage;
 
     public LoginController() {
-        System.out.println("Called...");
         try {
             users = UserService.fetchAllUsers();
             gym = GymService.getGym();

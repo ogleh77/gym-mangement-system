@@ -167,7 +167,7 @@ public class UserUpdateController extends CommonClass implements Initializable {
                         Platform.runLater(() -> {
                             if (itsMe) {
                                 boolean done = Alerts.confirmationAlert("Waad update garaysay account-kaga,\n" +
-                                        "Ma donaysaa inaad dib usoo gasho", "Maya","Haa");
+                                        "Ma donaysaa inaad dib usoo gasho", "Maya", "Haa");
                                 if (done) {
                                     openLogin();
                                 }
@@ -239,13 +239,16 @@ public class UserUpdateController extends CommonClass implements Initializable {
     private Users users() {
         String gander = male.isSelected() ? "Male" : "Female";
         String role = this.admin.isSelected() ? "admin" : "user";
+        String _firstname = (firstname.getText().substring(0, 1).toUpperCase() + firstname.getText().substring(1));
+        String _lastname = (lastname.getText().substring(0, 1).toUpperCase() + lastname.getText().substring(1));
+        String _username = (username.getText().substring(0, 1).toUpperCase() + username.getText().substring(1));
         users = new Users();
-        users.setFirstName(firstname.getText().trim());
-        users.setLastName(lastname.getText().trim());
+        users.setFirstName(_firstname);
+        users.setLastName(_lastname);
         users.setPhone(phone.getText().trim());
         users.setGender(gander);
         users.setPassword(password.getText().trim());
-        users.setUsername(username.getText().trim());
+        users.setUsername(_username);
         users.setImage(selectedFile == null ?
                 users.getImage() : readFile(selectedFile.getAbsolutePath()));
         users.setRole(role);
@@ -280,7 +283,7 @@ public class UserUpdateController extends CommonClass implements Initializable {
                 OpenWindow.openStagedWindow("/com/example/gymmanagementsystem/views/service/login.fxml", borderPane);
             } catch (Exception ex) {
                 Alerts.errorAlert(ex.getMessage());
-             }
+            }
         });
         fadeOut.play();
     }

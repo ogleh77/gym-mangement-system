@@ -150,8 +150,11 @@ public class UserCreationController extends CommonClass implements Initializable
     private Users users() {
         String gander = male.isSelected() ? "Male" : "Female";
         String role = admin.isSelected() ? "admin" : "user";
-        return new Users(nextID, firstname.getText().trim(), lastname.getText().trim(), phone.getText().trim(), gander,
-                shift.getValue().trim(), username.getText().trim(),
+        String _firstname = (firstname.getText().substring(0, 1).toUpperCase() + firstname.getText().substring(1));
+        String _lastname = (lastname.getText().substring(0, 1).toUpperCase() + lastname.getText().substring(1));
+        String _username = (username.getText().substring(0, 1).toUpperCase() + username.getText().substring(1));
+        return new Users(nextID, _firstname, _lastname, phone.getText().trim(), gander,
+                shift.getValue().trim(), _username,
                 password.getText().trim(), selectedFile == null ? null : readFile(selectedFile.getAbsolutePath()), role);
     }
 

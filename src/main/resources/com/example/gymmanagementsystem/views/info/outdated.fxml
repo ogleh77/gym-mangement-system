@@ -16,6 +16,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="home-pane" stylesheets="@../../style/css/long-style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gymmanagementsystem.controllers.informations.OutdatedController">
+    <Pagination fx:id="pagination" layoutX="40.0" layoutY="155.0" pageCount="0" prefHeight="582.0" prefWidth="1069.0" style="-fx-background-color: eaeaea;" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" />
     <HBox alignment="CENTER" layoutY="12.0" prefHeight="38.0" prefWidth="1150.0" spacing="800.0" styleClass="top-pane" AnchorPane.bottomAnchor="700.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
         <Label maxWidth="-Infinity" prefHeight="29.0" prefWidth="531.0" styleClass="top-label" text="FORM-KA MACAMIISHA WAKHTIGU KA DHACAY">
             <HBox.margin>
@@ -23,8 +24,7 @@
             </HBox.margin>
         </Label>
     </HBox>
-    <Pagination fx:id="pagination" layoutX="40.0" layoutY="155.0" pageCount="0" prefHeight="582.0" prefWidth="1069.0" style="-fx-background-color: eaeaea;" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" />
-    <AnchorPane layoutX="49.0" layoutY="72.0" prefHeight="72.0" prefWidth="465.0" style="-fx-background-color: white; -fx-border-radius: 10; -fx-background-position: 10;">
+    <AnchorPane layoutX="49.0" layoutY="72.0" prefHeight="72.0" prefWidth="483.0" style="-fx-background-color: white; -fx-border-radius: 10; -fx-background-position: 10;">
         <effect>
             <DropShadow height="35.85" radius="17.425" width="35.85">
                 <color>
@@ -37,7 +37,7 @@
                 <Font name="Verdana" size="15.0" />
             </font>
         </Label>
-        <JFXRadioButton fx:id="male" layoutX="219.0" layoutY="42.0" text="Male" textFill="#575454">
+        <JFXRadioButton fx:id="male" layoutX="219.0" layoutY="42.0" text="Lab" textFill="#575454">
             <font>
                 <Font name="Tahoma" size="14.0" />
             </font>
@@ -48,7 +48,7 @@
                 <Color red="0.19607843458652496" green="0.5490196347236633" blue="0.658823549747467" />
             </selectedColor>
         </JFXRadioButton>
-        <JFXRadioButton fx:id="female" layoutX="291.0" layoutY="42.0" text="Female" textFill="#575454">
+        <JFXRadioButton fx:id="female" layoutX="286.0" layoutY="42.0" text="Dhedig" textFill="#575454">
             <font>
                 <Font name="Tahoma" size="14.0" />
             </font>
@@ -59,7 +59,7 @@
                 <Color red="0.19607843458652496" green="0.5490196347236633" blue="0.658823549747467" />
             </selectedColor>
         </JFXRadioButton>
-        <JFXRadioButton fx:id="both" layoutX="381.0" layoutY="42.0" text="both" textFill="#575454">
+        <JFXRadioButton fx:id="both" layoutX="371.0" layoutY="42.0" text="Labadaba" textFill="#575454">
             <font>
                 <Font name="Tahoma" size="14.0" />
             </font>

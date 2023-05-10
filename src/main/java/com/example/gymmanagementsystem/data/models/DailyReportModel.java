@@ -5,7 +5,6 @@ import com.example.gymmanagementsystem.dependencies.DbConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -44,7 +43,6 @@ public class DailyReportModel {
 
     public static ObservableList<DailyReport> getWeeklyPayments(LocalDate today) throws SQLException {
         ObservableList<DailyReport> dailyReports = FXCollections.observableArrayList();
-        System.out.println(dailyReports);
         String sql = "SELECT * FROM daily_report WHERE report_date between " +
                 "'" + today.minusDays(7) + "' AND '" + today + "'";
         statement(dailyReports, sql);

@@ -120,7 +120,7 @@
             <Image url="@../../style/icons/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpeg" />
         </ImageView>
     </VBox>
-    <Label layoutX="262.0" layoutY="196.0" text="Role-ka" textFill="#328ca8">
+    <Label layoutX="262.0" layoutY="196.0" text="role-ka" textFill="#328ca8">
         <font>
             <Font name="Tahoma" size="16.0" />
         </font>

@@ -163,14 +163,13 @@ public class ReportController extends CommonClass implements Initializable {
         getMandatoryFields().clear();
         getMandatoryFields().addAll(startDate, endDate);
         if (isValid(getMandatoryFields(), null)) {
-            startTask(service, searchBtn, "");
+            startTask(service, searchBtn, "Raadi");
         }
     }
 
     @Override
     public void setActiveUser(Users activeUser) {
         super.setActiveUser(activeUser);
-
         if (!activeUser.getRole().equals("admin")) {
             exportBtn.setDisable(true);
             message.setVisible(true);
@@ -239,7 +238,7 @@ public class ReportController extends CommonClass implements Initializable {
 
     private void saveFile() {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Dooro halka aad dhiganayso excel sheets kaga");
+        fileChooser.setTitle("Dooro halka aad dhiganayso file kaaga");
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("All Files", "*.xlsx"));
         selectedFile = fileChooser.showSaveDialog(customersOnly.getScene().getWindow());
      }
@@ -250,7 +249,7 @@ public class ReportController extends CommonClass implements Initializable {
         offlineCustomers.setToggleGroup(choseGroup);
         pendCustomers.setToggleGroup(choseGroup);
         if (reports == null) {
-            Label label = new Label("RAADI WAKHTIGA AAD U BAHANTAY");
+            Label label = new Label("HALKAN KA RAADI WAKHTIGA AAD U BAHANTAY");
             reportTbView.setPlaceholder(label);
         }
     }
@@ -292,11 +291,10 @@ public class ReportController extends CommonClass implements Initializable {
         tableFields(dailyReportDay, totalRegister, totalMale, totalFemale, totalVipBox);
         getMandatoryFields().addAll(startDate, endDate);
         if (weeklyReport.isEmpty()) {
-            Label label = new Label("MA JIRO WAX REPORT AH OO U WIIGAN ");
+            Label label = new Label("MA JIRO WAX REPORT AH OO WIIGAN LA DIWAN GASHEY");
             dailyTbView.setPlaceholder(label);
         }
         dailyTbView.setItems(DailyReportModel.getWeeklyPayments(LocalDate.now()));
-
     }
 
     private void generateTable() throws SQLException {
